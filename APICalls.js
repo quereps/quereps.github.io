@@ -81,6 +81,8 @@ var getLastMissionResponse = async function(placeID,campaingnID,timeFrame){
 
 
 var getGrid = async function(MRID){
+
+  return new Promise(async (resolve, reject) => {
     url = "https://api.gospotcheck.com/external/v2/companies/"+companyID+"/image_rec/photo_grids?mission_response_id="+MRID;
     try {
       const data = await APICall("GET",url, tokenV2);
@@ -97,10 +99,10 @@ var getGrid = async function(MRID){
 
         await Promise.all(tagPromises);
 
-        createReport();
+        
 
-           
-
+        resolve();
+        
       }
       else{
         console.log("No Grid found");
@@ -110,10 +112,15 @@ var getGrid = async function(MRID){
         setTimeout(function(){
           getGrid(MRID)}, 5000);
         }
+
+        
         
     } catch (error) {
       console.error("Failed to get Grids:", error);
+      reject(error);
     }
+
+     });
 }
 
 var getTags = async function(GridID){

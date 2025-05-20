@@ -286,7 +286,9 @@ let createReport = function(){
         }
 
 
-        getGrid(lastItem.id);
+        getGrid(lastItem.id).then(()=>{
+          createReport();
+        });
 
       });
   });
