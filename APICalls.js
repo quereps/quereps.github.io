@@ -51,18 +51,12 @@ var getLastMissionResponse = async function(placeID,campaingnID,timeFrame){
 
     try {
       const data = await APICall("GET",url, tokenV1);
-      //const data = await APICall("POST",url, tokenV2,{"photo_grid_id":GridID});
+
       console.log("Response Data received:", data);
 
       if(data && data.data){
 
-       
-
         var lastItem = data.data[data.data.length - 1];
-
-
-
-        
 
         resolve(lastItem);
 
@@ -76,12 +70,8 @@ var getLastMissionResponse = async function(placeID,campaingnID,timeFrame){
           getLastMissionResponse(placeID,campaingnID)}, 5000);
         }
 
-      
-
-      
-
     } catch (error) {
-      console.error("Failed to get Tags:", error);
+      console.error("Failed to get last Mission response:", error);
       reject(error); 
     }
       });
