@@ -286,7 +286,17 @@ let createReport = function(){
         }
 
 
-        getGrid(lastItem.id).then(()=>{
+        getGrid(lastItem.id).then((photo_grids)=>{
+
+          removeNotification();
+
+
+          // Create an array of promises from getTags
+          let tagPromises = photo_grids.map(grid => getTags(grid.id));
+
+          await Promise.all(tagPromises);
+
+
           createReport();
         });
 

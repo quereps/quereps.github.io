@@ -91,17 +91,11 @@ var getGrid = async function(MRID){
 
       if(data && data.photo_grids && data.photo_grids.length>0){
 
-        removeNotification();
-
-
-        // Create an array of promises from getTags
-        let tagPromises = data.photo_grids.map(grid => getTags(grid.id));
-
-        await Promise.all(tagPromises);
+        
 
         
 
-        resolve();
+        resolve(data.photo_grids);
         
       }
       else{
