@@ -26,22 +26,23 @@ var getPlaceData = async function(placeID){
 
     return new Promise(async (resolve, reject) => {
 
-    url = "https://admin.gospotcheck.com/external/v1/places/"+placeID;
-    try {
-      const data = await APICall("GET",url, tokenV1);
-      //const data = await APICall("POST",url, tokenV2,{"photo_grid_id":GridID});
-      console.log("Place Data received:", data);
+      url = "https://admin.gospotcheck.com/external/v1/places/"+placeID;
+      try {
+        const data = await APICall("GET",url, tokenV1);
+        //const data = await APICall("POST",url, tokenV2,{"photo_grid_id":GridID});
+        console.log("Place Data received:", data);
 
-     
+       
 
 
-      //getLastMissionResponse(placeID,missionID);
+        //getLastMissionResponse(placeID,missionID);
 
-      resolve(data.data);
+        resolve(data.data);
 
-    } catch (error) {
-      console.error("Failed to get Tags:", error);
-    }
+      } catch (error) {
+        console.error("Failed to get Tags:", error);
+      }
+  }
 }
 
 
