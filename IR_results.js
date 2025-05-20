@@ -321,7 +321,7 @@ let createReport = function(){
 
       $('#table-container').append(tableElement);
 
-      getLastMissionResponse(placeID,missionID);
+      getLastMissionResponse(placeID,missionID,600000);
   });
  };
 
