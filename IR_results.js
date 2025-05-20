@@ -258,12 +258,11 @@ let createReport = function(){
 
 
           // Create an array of promises from getTags
-          let tagPromises = photo_grids.map(grid => 
-            getTags(grid.id).then((tags)=>{
+          let tagPromises = photo_grids.map(async grid => 
+              const tags = await getTags(grid.id);
               removeNotification();
               extractData(tags);
-            })
-            );
+            });
 
           await Promise.all(tagPromises);
 
@@ -272,7 +271,6 @@ let createReport = function(){
         });
 
       });
-  });
  };
 
  return {
