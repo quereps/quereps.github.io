@@ -95,12 +95,6 @@ barcode() {
   }
   
 
-function getAverage(arr) {
-  if (!Array.isArray(arr) || arr.length === 0) return 0;
-  const sum = arr.reduce((acc, val) => acc + val, 0);
-  return sum / arr.length;
-}
-
 
   var APICall = function (method, url, token, body) {
     return fetch(url, {
@@ -421,9 +415,9 @@ var extractData = function(data){
 
     var addFilters = function(){
 
-      console.log("hey: "+sections);
+      //console.log("hey: "+sections);
       for(let filter in sections){
-console.log("hoooo: "+sections[filter],"hey"+filter);
+//console.log("hoooo: "+sections[filter],"hey"+filter);
           var button = $('<div id="filter'+filter+'" class="filter '+filter+'">'+filter+'</div>');
           $('#filtersContainer').append(button);
 
@@ -526,13 +520,12 @@ let createReport = function(){
 
  return {
     Run: function (settings) {
-      console.log("tesssstttt2");
       init(settings);
     }
   }
 })(jQuery, ksAPI);
 
-console.log("tesssstttt");
+
 
 /*(function($, ksAPI){
   ksAPI.runCustomCode(function () {
@@ -540,7 +533,7 @@ console.log("tesssstttt");
   });
 })(jQuery, ksAPI);
 */
-
+/*
 var ukDemo = {
       companyID:"5402",
       missionID:"4219984",
@@ -552,5 +545,5 @@ var ukDemo = {
         images:true,
       },
      }
-
+*/
    
