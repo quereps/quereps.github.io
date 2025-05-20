@@ -39,7 +39,7 @@ var getPlaceData = async function(placeID){
         console.error("Failed to get Tags:", error);
         reject(error);
       }
-  }
+  });
 }
 
 
