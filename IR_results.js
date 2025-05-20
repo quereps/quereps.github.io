@@ -526,7 +526,7 @@ let createReport = function(){
 
  return {
     Run: function (settings) {
-      console.log("tesssstttt");
+      console.log("tesssstttt2");
       init(settings);
     }
   }
