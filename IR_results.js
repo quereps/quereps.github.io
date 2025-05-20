@@ -252,7 +252,7 @@ let createReport = function(){
         }
 
 
-        getGrid(lastItem.id).then( (photo_grids)=>{
+        getGrid(lastItem.id).then(async (photo_grids)=>{
 
           removeNotification();
 
