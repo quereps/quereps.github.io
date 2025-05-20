@@ -249,7 +249,7 @@ let createReport = function(){
 
 
 
- var init = function (settings) {
+ var init = async function (settings) {
 
    companyID = settings.companyID;
    missionID = settings.missionID;
@@ -286,7 +286,7 @@ let createReport = function(){
         }
 
 
-        getGrid(lastItem.id).then(async (photo_grids)=>{
+        getGrid(lastItem.id).then( (photo_grids)=>{
 
           removeNotification();
 
