@@ -97,38 +97,6 @@ barcode() {
 
 
 
-
-
-var createTable = function(data, title, structure) {
-  // Create a table element with an optional border.
-  var $table = $('<table border="1"></table>');
-
-  // If a title is provided, add a caption to the table.
-  if (title) {
-    $table.append($('<caption></caption>').text(title));
-  }
-
-  // Create the table body.
-  var $tbody = $('<tbody></tbody>');
-  
-  // Iterate through the structure.
-  // Each property in the structure object represents one row of the table,
-  // where the key is the label and the value is the display value.
-  $.each(structure, function(label, value) {
-    var $row = $('<tr></tr>');
-    // Add the label cell.
-    $row.append($('<th></th>').text(label));
-    // Add the corresponding value cell.
-    $row.append($('<td></td>').text(value));
-    $tbody.append($row);
-  });
-
-  $table.append($tbody);
-  return $table;
-};
-
-
-
 var getImages = function(data){
 
   let imagesArray = data.task_responses[0].value;
@@ -145,8 +113,6 @@ var getImages = function(data){
 
    $('#table-container').append($imageContainer);
 }
-
-
 
 
 
