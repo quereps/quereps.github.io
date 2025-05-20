@@ -292,7 +292,12 @@ let createReport = function(){
 
 
           // Create an array of promises from getTags
-          let tagPromises = photo_grids.map(grid => getTags(grid.id));
+          let tagPromises = photo_grids.map(grid => 
+            getTags(grid.id).then((tags)={
+              removeNotification();
+              extractData(tags);
+            })
+            );
 
           await Promise.all(tagPromises);
 

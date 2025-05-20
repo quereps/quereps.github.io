@@ -126,9 +126,8 @@ var getTags = async function(GridID){
     APICall("GET",url, tokenV2).then((data) => {
 
        if(data &&  data.tags && data.tags.length>0){
-          removeNotification();
-          extractData(data.tags);
-          resolve();
+          
+          resolve(data.tags);
       }
       else{
         console.log("No Tags found");
