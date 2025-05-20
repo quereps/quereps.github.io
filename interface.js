@@ -63,7 +63,7 @@ var createTable = function(data, title, structure) {
   // Iterate through the structure.
   // Each property in the structure object represents one row of the table,
   // where the key is the label and the value is the display value.
-  $.each(structure, function(label, value) {
+  jQuery.each(structure, function(label, value) {
     var $row = jQuery('<tr></tr>');
     // Add the label cell.
     $row.append(jQuery('<th></th>').text(label));
