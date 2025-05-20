@@ -321,7 +321,26 @@ let createReport = function(){
 
       $('#table-container').append(tableElement);
 
-      getLastMissionResponse(placeID,missionID,600000);
+      getLastMissionResponse(placeID,missionID,600000).then((data)=>{
+
+         removeNotification();
+
+        let tableElement = createTable(lastItem,"Latest Mission", {
+          "Completed":moment(lastItem.completed_at).fromNow(),
+          "Completed By":lastItem.user.first_name+" "+lastItem.user.last_name
+        });
+
+
+        $('#table-container').append(tableElement);
+
+        if(features.images){
+          getImages(lastItem);
+        }
+
+
+        getGrid(lastItem.id);
+
+      });
   });
  };
 

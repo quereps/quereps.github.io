@@ -45,6 +45,8 @@ var getPlaceData = async function(placeID){
 
 var getLastMissionResponse = async function(placeID,campaingnID,timeFrame){
 
+    return new Promise(async (resolve, reject) => {
+
     url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_id.eq="+campaingnID+"&place_id.eq="+placeID+"&completed_at.gt="+getTimeStamps(timeFrame).back+"&include=user,task_responses";
 
     try {
@@ -54,27 +56,15 @@ var getLastMissionResponse = async function(placeID,campaingnID,timeFrame){
 
       if(data && data.data){
 
-        removeNotification();
+       
 
         var lastItem = data.data[data.data.length - 1];
 
-        let tableElement = createTable(lastItem,"Latest Mission", {
-          "Completed":moment(lastItem.completed_at).fromNow(),
-          "Completed By":lastItem.user.first_name+" "+lastItem.user.last_name
-        });
 
 
-        $('#table-container').append(tableElement);
+        
 
-
-        getGrid(lastItem.id);
-
-
-        //getImages(lastItem);
-
-        if(features.images){
-          getImages(lastItem);
-        }
+        resolve(lastItem);
 
       }
       else{
@@ -92,7 +82,9 @@ var getLastMissionResponse = async function(placeID,campaingnID,timeFrame){
 
     } catch (error) {
       console.error("Failed to get Tags:", error);
+      reject(error); 
     }
+      });
 }
 
 
