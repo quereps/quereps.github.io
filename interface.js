@@ -117,10 +117,10 @@ function JSONToGraph(jsonArray, type, destination) {
     const canvasID = destination+"_canvas";
 
     // Remove any previous canvas with this id (if re-rendering)
-    let oldCanvas = document.getElementById(canvasID);
-    if (oldCanvas) {
-        oldCanvas.remove();
-    }
+    //let oldCanvas = document.getElementById(canvasID);
+    //if (oldCanvas) {
+    //    oldCanvas.remove();
+    //}
 
     // Create a new canvas and append it to a parent container
     let parent = document.getElementById('table-container') || document.body; // fallback to body
