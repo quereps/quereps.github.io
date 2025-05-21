@@ -29,7 +29,7 @@
       url = "https://api.gospotcheck.com/external/v2/companies/:company_id/image_rec/photo_grids";
       var body = {
           "image_url": imageURL, 
-          "photo_type_id": "urn:company:"+companyID+":photo_type:"+photogrid;
+          "photo_type_id": "urn:company:"+companyID+":photo_type:"+photogrid
       }
 
       try {

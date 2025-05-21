@@ -204,53 +204,12 @@ let createReport = function(){
    tokenV2 = settings.tokenV2;
    features = settings.features;
    report = settings.report;
+   photoGrid = settings.photoGrid;
 
-  let placeID = vpGetTextResults("PlaceID");
-
-  getPlaceData(placeID).then((data)=>{
-       let tableElement = createTable(data,"Store", {
-        "Name":data.name,
-        "City":data.city,
-        "Address":data.address
-      });
+    $('#table-container').append(tableElement);
 
 
-      $('#table-container').append(tableElement);
 
-      getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
-
-         removeNotification();
-
-        let tableElement = createTable(lastItem,"Latest Mission", {
-          "Completed":moment(lastItem.completed_at).fromNow(),
-          "Completed By":lastItem.user.first_name+" "+lastItem.user.last_name
-        });
-
-
-        $('#table-container').append(tableElement);
-
-
-        getGrid(lastItem.id).then(async (photo_grids)=>{
-
-          removeNotification();
-
-
-          // Create an array of promises from getTags
-          let tagPromises = photo_grids.map(async grid => {
-              const tags = await getTags(grid.id);
-              removeNotification();
-              extractData(tags);
-            
-          });
-
-          await Promise.all(tagPromises);
-
-
-          createReport();
-        });
-
-      });
-      });
  };
 
  return {
@@ -258,7 +217,14 @@ let createReport = function(){
       init(settings);
     },
     GetIRAAS:function(){
-      console.log("ho ho ho");
+
+      if(vpGetResults("Q1.A1")){
+        var imageURL = vpGetResults("Q1.A1")[0].urlDownload;
+        sendIRPhoto(imageURL, companyID, photogrid).then((data)=>{
+          console.log(data);
+        });
+      }
+      
     }
   }
 })(jQuery, ksAPI);
