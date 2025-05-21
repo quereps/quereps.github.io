@@ -193,7 +193,7 @@ let createReport = function(){
         createHTMLSection(current.title,current.logo);
 
         for(let currentGraph of current.graphs){
-            JSONToGraph(graph(currentGraph.dimmension), currentGraph.type, "Grid_GraphContainer");
+            JSONToGraph(graph(currentGraph.dimmension), currentGraph.type, "GraphsContainer");
         }
 
       }
