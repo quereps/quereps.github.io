@@ -204,19 +204,19 @@ let createReport = function(){
 
 
 
-    //if(!$(".oosContainer")){
-      var oosContainer = $('<div id="oosContainer"><h3><img src="https://em-content.zobj.net/source/apple/419/package_1f4e6.png"/>Restock</h3></div>');
-      $('#table-container').append(oosContainer);
+   //if(!$(".oosContainer")){
+   //   var oosContainer = $('<div id="oosContainer"><h3><img src="https://em-content.zobj.net/source/apple/419/package_1f4e6.png"/>Restock</h3></div>');
+   //   $('#table-container').append(oosContainer);
     //}
 
    // if(!$(".pricingContainer")){
-      var pricingContainer = $('<div id="pricingContainer"><h3><img src="https://em-content.zobj.net/source/apple/419/label_1f3f7-fe0f.png"/>Price Tags</h3></div>');
-      $('#table-container').append(pricingContainer);
+   //   var pricingContainer = $('<div id="pricingContainer"><h3><img src="https://em-content.zobj.net/source/apple/419/label_1f3f7-fe0f.png"/>Price Tags</h3></div>');
+   //   $('#table-container').append(pricingContainer);
    // }
 
-  for(let sku in skuList){
-    skuList[sku].showTile();
-  }
+ // for(let sku in skuList){
+ //   skuList[sku].showTile();
+ // }
 }
 
 
