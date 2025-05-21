@@ -114,7 +114,7 @@ function JSONToGraph(jsonArray, type, destination) {
     const labels = entries.map(([k, v]) => k);
     const data = entries.map(([k, v]) => v);
 
-    var amount = jQuery("canvas").length;
+    var amount = jQuery("canvas").length+1;
 
     const canvasID = destination+"_canvas"+amount;
 
@@ -128,8 +128,8 @@ function JSONToGraph(jsonArray, type, destination) {
     let parent = document.getElementById('table-container') || document.body; // fallback to body
     let canvas = document.createElement('canvas');
     canvas.id = canvasID;
-    canvas.width = 150;
-    canvas.height = 150;
+    canvas.width = 250;
+    canvas.height = 250;
     canvas.style.width = "100px";
     canvas.style.height = "100px";
     parent.appendChild(canvas);
