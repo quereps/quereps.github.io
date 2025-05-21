@@ -116,3 +116,29 @@ function createHTMLSection(name, imageURL,getData){
         getData();
     }
 }
+
+
+
+function graph = function(category, destination){
+
+  var graphData = {};
+
+  for(let sku in skuList){
+    var current = skuList[sku];
+    var categoryValue = skuList[sku][category];
+
+    graphData[categoryValue] = graphData[categoryValue]+current.facings;
+
+  }
+
+  console.log(graphData);
+
+  //jQuery("#"+destination).append(html);
+}
+
+
+
+
+
+
+

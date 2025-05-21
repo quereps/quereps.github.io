@@ -198,6 +198,11 @@ let createReport = function(){
         JSONToHTMLTable(rankObjects(skuList, "facings", features.skuList), "SKU_ListContainer") 
       }
 
+      if(features.gridGraph){
+        createHTMLSection("Grid Graph","https://fonts.gstatic.com/s/e/notoemoji/latest/1f9ec/emoji.svg");
+        graph("brand","Grid_GraphContainer");
+      }
+
 
 
    //if(!$(".oosContainer")){
