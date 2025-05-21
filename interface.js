@@ -150,7 +150,7 @@ function JSONToGraph(jsonArray, type, destination) {
             }]
         },
         options: {
-            responsive: false,
+            responsive: true,
             plugins: {
             legend: {
                 display: false
