@@ -205,11 +205,13 @@ function graph (category, destination){
 
 
 
-    var showSections = function(){
+    var showSections = function(destination){
+
+      console.log("sections: "+sections);
 
       for(let filter in sections){
           var button = $('<div id="filter'+filter+'" class="filter '+filter+'">'+filter+'</div>');
-          $('#sectionsContainer').append(button);
+          jQuery('#'+destination).append(button);
 
       }
 }
