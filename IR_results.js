@@ -184,26 +184,27 @@ let createReport = function(){
 
     for(var element in report){
       var current = report[element];
+      var containerID = "Container"+element;
 
       if(current.type=="sections"){
-        createHTMLSection(current.title,current.logo);
-        showSections(current.title+"Container");
+        createHTMLSection(element,current.title,current.logo);
+        showSections(containerID);
       }
 
        if(current.type=="graphBar"){
-        createHTMLSection(current.title,current.logo);
+        createHTMLSection(element,current.title,current.logo);
 
         for(let currentGraph of current.graphs){
-            JSONToGraph(graph(currentGraph.dimmension), currentGraph.type, "GraphsContainer");
+            JSONToGraph(graph(currentGraph.dimmension), currentGraph.type, containerID);
         }
 
       }
 
       
       if(current.type=="skuList"){
-        createHTMLSection(current.title,current.logo);
+        createHTMLSection(element,current.title,current.logo);
         //createHTMLSection("SKU List","https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1fa90/u1fa90_u1f440.png?fbx");
-        JSONToHTMLTable(rankObjects(skuList, "facings", current.columns), "SKU_ListContainer") 
+        JSONToHTMLTable(rankObjects(skuList, "facings", current.columns), containerID) 
       }
 
        //if(!$(".oosContainer")){
