@@ -37,7 +37,7 @@
 
         console.log("Place Data received:", data);
 
-        resolve(data.data);
+        resolve(data);
 
       } catch (error) {
         console.error("Failed to get Tags:", error);
