@@ -221,7 +221,7 @@ let createReport = function(){
 
       if(vpGetResults("Q1.A1")){
         var imageURL = vpGetResults("Q1.A1")[0].urlDownload;
-        sendIRPhoto(imageURL, companyID, photogrid).then((data)=>{
+        sendIRPhoto(imageURL, companyID, photoGrid).then((data)=>{
           console.log(data);
         });
       }
