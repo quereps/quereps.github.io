@@ -27,13 +27,13 @@
     return new Promise(async (resolve, reject) => {
     
       url = "https://api.gospotcheck.com/external/v2/companies/:company_id/image_rec/photo_grids";
-      {
+      var body = {
           "image_url": imageURL, 
           "photo_type_id": "urn:company:"+companyID+":photo_type:"+photogrid;
       }
 
       try {
-        const data = await APICall("GET",url, tokenV2, );
+        const data = await APICall("GET",url, tokenV2, body);
 
         console.log("Place Data received:", data);
 
