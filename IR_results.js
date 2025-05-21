@@ -196,14 +196,13 @@ let createReport = function(){
             JSONToGraph(graph(currentGraph.dimmension), currentGraph.type, "Grid_GraphContainer");
         }
 
-        //JSONToGraph(graph("brand","Grid_GraphContainer"), "bar", "Grid_GraphContainer");
-        //JSONToGraph(graph("classification","Grid_GraphContainer"), "pie", "Grid_GraphContainer");
       }
 
       
-      if(features.skuList){
-        createHTMLSection("SKU List","https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1fa90/u1fa90_u1f440.png?fbx");
-        JSONToHTMLTable(rankObjects(skuList, "facings", features.skuList), "SKU_ListContainer") 
+      if(current.type=="skuList"){
+        createHTMLSection(current.title,current.logo);
+        //createHTMLSection("SKU List","https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1fa90/u1fa90_u1f440.png?fbx");
+        JSONToHTMLTable(rankObjects(skuList, "facings", current.columns), "SKU_ListContainer") 
       }
 
        //if(!$(".oosContainer")){
