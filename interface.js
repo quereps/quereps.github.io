@@ -205,5 +205,12 @@ function graph (category, destination){
 
 
 
+    var showSections = function(){
 
+      for(let filter in sections){
+          var button = $('<div id="filter'+filter+'" class="filter '+filter+'">'+filter+'</div>');
+          $('#sectionsContainer').append(button);
+
+      }
+}
 

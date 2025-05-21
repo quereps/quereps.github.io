@@ -176,14 +176,7 @@ var extractData = function(data){
     }
 
 
-    var showSections = function(){
 
-      for(let filter in sections){
-          var button = $('<div id="filter'+filter+'" class="filter '+filter+'">'+filter+'</div>');
-          $('#sectionsContainer').append(button);
-
-      }
-}
 
 
 let createReport = function(){
@@ -192,7 +185,8 @@ let createReport = function(){
       var current = report[element];
 
       if(current.type=="sections"){
-        createHTMLSection(current.title,current.logo,showSections);
+        createHTMLSection(current.title,current.logo);
+        showSections(current.title+"Container");
       }
 
        if(features.gridGraph){
