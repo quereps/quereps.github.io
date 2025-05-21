@@ -189,18 +189,17 @@ var extractData = function(data){
 
 let createReport = function(){
 
-      var filtersContainer = $('<div id="filtersContainer"></div>');
-      $('#table-container').append(filtersContainer);
-
-      if(features.sections){
-        addFilters();
-      }
       
 
-      var SKUtableContainer = $('<div id="SKUtableContainer"></div>');
-      $('#table-container').append(SKUtableContainer);
-      JSONToHTMLTable(rankObjects(skuList, "facings", ["upc", "name", "facings"]), "SKUtableContainer") 
-
+      if(features.sections){
+        createHTMLSection("sections","https://fonts.gstatic.com/s/e/notoemoji/latest/1f4da/emoji.svg",addFilters);
+      }
+      
+      if(features.skuList){
+        var SKUtableContainer = $('<div id="SKUtableContainer"></div>');
+        $('#table-container').append(SKUtableContainer);
+        JSONToHTMLTable(rankObjects(skuList, "facings", ["upc", "name", "facings"]), "SKUtableContainer") 
+      }
 
 
 
@@ -306,6 +305,7 @@ var ukDemo = {
       inventoryDM:"inventory",
       features:{
         sections:true,
+        skuList:true,
         images:true,
       },
      }
