@@ -114,7 +114,9 @@ function JSONToGraph(jsonArray, type, destination) {
     const labels = entries.map(([k, v]) => k);
     const data = entries.map(([k, v]) => v);
 
-    const canvasID = destination+"_canvas";
+    var amount = jQuery("canvas").length;
+
+    const canvasID = destination+"_canvas"+amount;
 
     // Remove any previous canvas with this id (if re-rendering)
     //let oldCanvas = document.getElementById(canvasID);
@@ -127,9 +129,9 @@ function JSONToGraph(jsonArray, type, destination) {
     let canvas = document.createElement('canvas');
     canvas.id = canvasID;
     canvas.width = 100;
-canvas.height = 100;
-canvas.style.width = "100px";
-canvas.style.height = "100px";
+    canvas.height = 100;
+    canvas.style.width = "100px";
+    canvas.style.height = "100px";
     parent.appendChild(canvas);
 
     // Destroy previous chart if needed
