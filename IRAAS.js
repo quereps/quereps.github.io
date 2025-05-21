@@ -225,6 +225,7 @@ let createReport = function(){
         sendIRPhoto(imageURL, companyID, photoGrid).then((data)=>{
           getTags(data.id).then((data)=>{
             extractData(data);
+            createReport();
           });
         });
       }
