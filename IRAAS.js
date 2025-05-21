@@ -219,6 +219,8 @@ let createReport = function(){
     },
     GetIRAAS:function(){
 
+      jQuery("#table-container").empty();
+
       if(vpGetResults("Q1.A1")){
         //var imageURL = "https://app.form.com/"+vpGetResults("Q1.A1")[0].urlDownload;
         var imageURL = "https://app.form.com/"+vpGetTextResults("Q1.A1")+"?filename=image.jpg";
