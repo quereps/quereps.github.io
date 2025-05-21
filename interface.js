@@ -125,7 +125,7 @@ function JSONToGraph(jsonArray, type, destination) {
     //}
 
     // Create a new canvas and append it to a parent container
-    let parent = document.getElementById('table-container') || document.body; // fallback to body
+    let parent = document.getElementById(destination) || document.body; // fallback to body
     let canvas = document.createElement('canvas');
     canvas.id = canvasID;
     canvas.width = 250;
