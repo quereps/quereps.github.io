@@ -189,7 +189,7 @@ let createReport = function(){
         showSections(current.title+"Container");
       }
 
-       if(current.type=="graph"){
+       if(current.type=="graphBar"){
         createHTMLSection(current.title,current.logo);
 
         for(let currentGraph in current.graphs){
