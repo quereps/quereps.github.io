@@ -207,7 +207,7 @@ function graph (category){
 
     var showSections = function(destination){
 
-      console.log("sections: "+sections);
+      jQuery('#'+destination).addClass("buttons");
 
       for(let filter in sections){
           var button = jQuery('<div id="filter'+filter+'" class="filter '+filter+'">'+filter+'</div>');
