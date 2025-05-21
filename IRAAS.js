@@ -196,6 +196,8 @@ let createReport = function(){
 
  var init = async function (settings) {
 
+  console.log("iniiiiit");
+
    companyID = settings.companyID;
    missionID = settings.missionID;
    tokenV1 = settings.tokenV1;
