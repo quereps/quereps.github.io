@@ -155,6 +155,7 @@ function JSONToGraph(jsonArray, type, destination) {
         },
         options: {
             responsive: true,
+            maintainAspectRatio: false,
             plugins: {
             legend: {
                 display: false
