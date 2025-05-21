@@ -197,6 +197,13 @@ let createReport = function(){
       }
       
 
+      var SKUtableContainer = $('<div id="SKUtableContainer"></div>');
+      $('#table-container').append(SKUtableContainer);
+      JSONToHTMLTable(rankObjects(skuList, "facings", ["upc", "name", "facings"]), "SKUtableContainer") 
+
+
+
+
     //if(!$(".oosContainer")){
       var oosContainer = $('<div id="oosContainer"><h3><img src="https://em-content.zobj.net/source/apple/419/package_1f4e6.png"/>Restock</h3></div>');
       $('#table-container').append(oosContainer);

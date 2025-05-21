@@ -79,7 +79,7 @@ var createTable = function(data, title, structure) {
 
 
 
-function JSONToHTMLTable(jsonArray) {
+function JSONToHTMLTable(jsonArray, destination) {
     const keys = Array.from(
         jsonArray.reduce((set, obj) => {
             Object.keys(obj).forEach(key => set.add(key));
@@ -98,6 +98,11 @@ function JSONToHTMLTable(jsonArray) {
     });
 
     html += "</tbody></table>";
+
+    if(destination){
+      jQuery("#"+destination).append(html);
+    }
+
     return html;
 }
 
