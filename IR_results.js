@@ -194,9 +194,8 @@ let createReport = function(){
       }
       
       if(features.skuList){
-        var SKUtableContainer = $('<div id="SKUtableContainer"></div>');
-        $('#table-container').append(SKUtableContainer);
-        JSONToHTMLTable(rankObjects(skuList, "facings", ["upc", "name", "facings"]), "SKUtableContainer") 
+        createHTMLSection("SKU List","https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1fa90/u1fa90_u1f440.png?fbx");
+        JSONToHTMLTable(rankObjects(skuList, "facings", ["upc", "name", "facings"]), "SKU_ListContainer") 
       }
 
 
