@@ -22,6 +22,32 @@
   };
 
 
+
+  var sendIRPhoto = async function(imageURL, companyID, photogrid){
+    return new Promise(async (resolve, reject) => {
+    
+      url = "https://api.gospotcheck.com/external/v2/companies/:company_id/image_rec/photo_grids";
+      {
+          "image_url": imageURL, 
+          "photo_type_id": "urn:company:"+companyID+":photo_type:"+photogrid;
+      }
+
+      try {
+        const data = await APICall("GET",url, tokenV2, );
+
+        console.log("Place Data received:", data);
+
+        resolve(data.data);
+
+      } catch (error) {
+        console.error("Failed to get Tags:", error);
+        reject(error);
+      }
+
+      });
+  }
+
+
 var getPlaceData = async function(placeID){
 
     return new Promise(async (resolve, reject) => {
@@ -96,7 +122,7 @@ var getGrid = async function(MRID){
         
 
         resolve(data.photo_grids);
-        
+
       }
       else{
         console.log("No Grid found");
