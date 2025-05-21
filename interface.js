@@ -114,17 +114,18 @@ function JSONToGraph(jsonArray, type, destination) {
     const labels = entries.map(([k, v]) => k);
     const data = entries.map(([k, v]) => v);
 
+    const canvasID = destination+"_canvas";
 
     // Remove any previous canvas with this id (if re-rendering)
-    //let oldCanvas = document.getElementById(destination);
-    //if (oldCanvas) {
-    //    oldCanvas.remove();
-    //}
+    let oldCanvas = document.getElementById(canvasID);
+    if (oldCanvas) {
+        oldCanvas.remove();
+    }
 
     // Create a new canvas and append it to a parent container
     let parent = document.getElementById('table-container') || document.body; // fallback to body
     let canvas = document.createElement('canvas');
-    canvas.id = destination;
+    canvas.id = canvasID;
     parent.appendChild(canvas);
 
     // Destroy previous chart if needed
