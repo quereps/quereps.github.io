@@ -33,6 +33,7 @@ class skuObj {
       this.classification = IRData.classification;
       this.subclassification = IRData.subclassification;
 
+      this.size = IRData.size;
       
       this.supplier = IRData.supplier;
       this.brand_family = IRData.brand_family;
