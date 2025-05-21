@@ -196,7 +196,7 @@ let createReport = function(){
        if(features.gridGraph){
         createHTMLSection("Grid Graph","https://fonts.gstatic.com/s/e/notoemoji/latest/1f9ec/emoji.svg");
         JSONToGraph(graph("brand","Grid_GraphContainer"), "bar", "Grid_GraphContainer");
-        JSONToGraph(graph("classification","Grid_GraphContainer"), "polarArea", "Grid_GraphContainer");
+        JSONToGraph(graph("classification","Grid_GraphContainer"), "pie", "Grid_GraphContainer");
       }
 
       
