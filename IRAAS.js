@@ -220,7 +220,7 @@ let createReport = function(){
     GetIRAAS:function(){
 
       if(vpGetResults("Q1.A1")){
-        var imageURL = vpGetResults("Q1.A1")[0].urlDownload;
+        var imageURL = "https://app.form.com/"+vpGetResults("Q1.A1")[0].urlDownload;
         sendIRPhoto(imageURL, companyID, photoGrid).then((data)=>{
           console.log(data);
         });
