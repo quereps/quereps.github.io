@@ -152,7 +152,7 @@ var getTags = async function(GridID){
     APICall("GET",url, tokenV2).then((data) => {
 
        if(data &&  data.tags && data.tags.length>0){
-          
+          removeNotification();
           resolve(data.tags);
       }
       else{
