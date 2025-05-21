@@ -177,11 +177,9 @@ var extractData = function(data){
 
     var addFilters = function(){
 
-      //console.log("hey: "+sections);
       for(let filter in sections){
-//console.log("hoooo: "+sections[filter],"hey"+filter);
           var button = $('<div id="filter'+filter+'" class="filter '+filter+'">'+filter+'</div>');
-          $('#filtersContainer').append(button);
+          $('#sectionsContainer').append(button);
 
       }
 }
