@@ -26,7 +26,7 @@
   var sendIRPhoto = async function(imageURL, companyID, photogrid){
     return new Promise(async (resolve, reject) => {
     
-      url = "https://api.gospotcheck.com/external/v2/companies/:company_id/image_rec/photo_grids";
+      url = "https://api.gospotcheck.com/external/v2/companies/"+companyID+"/image_rec/photo_grids";
       var body = {
           "image_url": imageURL, 
           "photo_type_id": "urn:company:"+companyID+":photo_type:"+photogrid
