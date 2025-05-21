@@ -149,6 +149,11 @@ canvas.style.height = "100px";
         },
         options: {
             responsive: false,
+            plugins: {
+            legend: {
+                display: false
+            }
+        }
         }
     });
 }
