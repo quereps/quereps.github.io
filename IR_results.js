@@ -192,17 +192,19 @@ let createReport = function(){
       if(features.sections){
         createHTMLSection("sections","https://fonts.gstatic.com/s/e/notoemoji/latest/1f4da/emoji.svg",addFilters);
       }
+
+       if(features.gridGraph){
+        createHTMLSection("Grid Graph","https://fonts.gstatic.com/s/e/notoemoji/latest/1f9ec/emoji.svg");
+        graph("brand","Grid_GraphContainer");
+      }
+
       
       if(features.skuList){
         createHTMLSection("SKU List","https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1fa90/u1fa90_u1f440.png?fbx");
         JSONToHTMLTable(rankObjects(skuList, "facings", features.skuList), "SKU_ListContainer") 
       }
 
-      if(features.gridGraph){
-        createHTMLSection("Grid Graph","https://fonts.gstatic.com/s/e/notoemoji/latest/1f9ec/emoji.svg");
-        graph("brand","Grid_GraphContainer");
-      }
-
+     
 
 
    //if(!$(".oosContainer")){
