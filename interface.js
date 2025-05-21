@@ -119,7 +119,7 @@ function createHTMLSection(name, imageURL,getData){
 
 
 
-function graph = function(category, destination){
+function graph (category, destination){
 
   var graphData = {};
 
