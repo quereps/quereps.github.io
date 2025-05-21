@@ -10,6 +10,7 @@ let sections = {};
   let missionID = "";
   let tokenV1 = "";
   let tokenV2 = "";
+  let photoGrid = "";
 
 var APIModule = (function ($, ksAPI) {
 
