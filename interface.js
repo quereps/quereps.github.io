@@ -160,7 +160,7 @@ function JSONToGraph(jsonArray, title, type, destination) {
               title: {
               display: true,             // Show the title
               text: title,
-            }
+            },
             legend: {
                 display: false
             }
