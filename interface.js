@@ -108,7 +108,7 @@ function JSONToHTMLTable(jsonArray, destination) {
 
 
 
-function JSONToGraph(jsonArray, type, destination) {
+function JSONToGraph(jsonArray, title, type, destination) {
     let entries = Object.entries(jsonArray);
     entries.sort((a, b) => b[1] - a[1]);
     const labels = entries.map(([k, v]) => k);
@@ -157,6 +157,10 @@ function JSONToGraph(jsonArray, type, destination) {
             responsive: true,
             maintainAspectRatio: true,
             plugins: {
+              title: {
+              display: true,             // Show the title
+              text: title,
+            }
             legend: {
                 display: false
             }

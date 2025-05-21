@@ -195,7 +195,7 @@ let createReport = function(){
         createHTMLSection(element,current.title,current.logo);
 
         for(let currentGraph of current.graphs){
-            JSONToGraph(graph(currentGraph.dimmension), currentGraph.type, containerID);
+            JSONToGraph(graph(currentGraph.dimmension), currentGraph.dimmension ,currentGraph.type, containerID);
         }
 
       }
@@ -203,24 +203,8 @@ let createReport = function(){
       
       if(current.type=="skuList"){
         createHTMLSection(element,current.title,current.logo);
-        //createHTMLSection("SKU List","https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1fa90/u1fa90_u1f440.png?fbx");
         JSONToHTMLTable(rankObjects(skuList, "facings", current.columns), containerID) 
       }
-
-       //if(!$(".oosContainer")){
-       //   var oosContainer = $('<div id="oosContainer"><h3><img src="https://em-content.zobj.net/source/apple/419/package_1f4e6.png"/>Restock</h3></div>');
-       //   $('#table-container').append(oosContainer);
-        //}
-
-       // if(!$(".pricingContainer")){
-       //   var pricingContainer = $('<div id="pricingContainer"><h3><img src="https://em-content.zobj.net/source/apple/419/label_1f3f7-fe0f.png"/>Price Tags</h3></div>');
-       //   $('#table-container').append(pricingContainer);
-       // }
-
-     // for(let sku in skuList){
-     //   skuList[sku].showTile();
-     // }
-
 
     }
 
