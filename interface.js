@@ -126,7 +126,7 @@ function JSONToGraph(jsonArray, type, destination) {
     let parent = document.getElementById('table-container') || document.body; // fallback to body
     let canvas = document.createElement('canvas');
     canvas.id = canvasID;
-    canvas.width = "100";
+    canvas.style.width = 100;
     parent.appendChild(canvas);
 
     // Destroy previous chart if needed
