@@ -33,7 +33,7 @@
       }
 
       try {
-        const data = await APICall("GET",url, tokenV2, body);
+        const data = await APICall("POST",url, tokenV2, body);
 
         console.log("Place Data received:", data);
 
