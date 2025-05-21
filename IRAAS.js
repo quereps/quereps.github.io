@@ -206,7 +206,7 @@ let createReport = function(){
    report = settings.report;
    photoGrid = settings.photoGrid;
 
-    $('#table-container').append(tableElement);
+  //  $('#table-container').append(tableElement);
 
 
 
