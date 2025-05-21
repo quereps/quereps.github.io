@@ -108,6 +108,48 @@ function JSONToHTMLTable(jsonArray, destination) {
 
 
 
+function JSONToGraph(jsonArray, type, destination) {
+    // Prepare data for Chart.js
+    const labels = Object.keys(jsonArray);
+    const data = Object.values(jsonArray);
+
+    // Optional: Destroy previous chart if needed
+    if (window.currentChart) {
+        window.currentChart.destroy();
+    }
+
+    // Get or create the canvas
+    let ctx = document.getElementById(destination);
+    if (!ctx) {
+        // If the element doesn't exist, create it and append to body
+        ctx = document.createElement('canvas');
+        ctx.id = destination;
+        document.body.appendChild(ctx);
+    }
+
+    // Create the chart
+    window.currentChart = new Chart(ctx, {
+        type: type, // 'bar', 'pie', 'doughnut', etc.
+        data: {
+            labels: labels,
+            datasets: [{
+                label: "Count",
+                data: data,
+                // backgroundColor: [...], // You can add color customization here
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: (type === 'pie' || type === 'doughnut'), // Hide legend for bar/column if you want
+                }
+            }
+        }
+    });
+}
+
+
 function createHTMLSection(name, imageURL,getData){
         name = name.replace(/\s+/g, "_"); // Replace spaces with underscores
         var Container = jQuery('<div id="'+name+'Container"><h3><img height="40" src="'+imageURL+'"/>'+name+'</h3></div>');
@@ -138,9 +180,8 @@ function graph (category, destination){
 
   }
 
-  console.log(graphData);
+  return graphData;
 
-  //jQuery("#"+destination).append(html);
 }
 
 
