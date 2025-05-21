@@ -192,8 +192,8 @@ let createReport = function(){
        if(current.type=="graphBar"){
         createHTMLSection(current.title,current.logo);
 
-        for(let currentGraph in current.graphs){
-            JSONToGraph(graph(currentGraph.dimmension,"Grid_GraphContainer"), currentGraph.type, "Grid_GraphContainer");
+        for(let currentGraph of current.graphs){
+            JSONToGraph(graph(currentGraph.dimmension), currentGraph.type, "Grid_GraphContainer");
         }
 
         //JSONToGraph(graph("brand","Grid_GraphContainer"), "bar", "Grid_GraphContainer");
