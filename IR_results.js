@@ -195,7 +195,7 @@ let createReport = function(){
       
       if(features.skuList){
         createHTMLSection("SKU List","https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1fa90/u1fa90_u1f440.png?fbx");
-        JSONToHTMLTable(rankObjects(skuList, "facings", ["upc", "name", "facings"]), "SKU_ListContainer") 
+        JSONToHTMLTable(rankObjects(skuList, "facings", features.skuList), "SKU_ListContainer") 
       }
 
 
