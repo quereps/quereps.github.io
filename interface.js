@@ -75,3 +75,31 @@ var createTable = function(data, title, structure) {
   $table.append($tbody);
   return $table;
 };
+
+
+
+
+function JSONToHTMLTable(jsonArray) {
+    const keys = Array.from(
+        jsonArray.reduce((set, obj) => {
+            Object.keys(obj).forEach(key => set.add(key));
+            return set;
+        }, new Set())
+    );
+
+    let html = "<table><thead><tr>";
+    html += keys.map(key => `<th>${key}</th>`).join("");
+    html += "</tr></thead><tbody>";
+
+    jsonArray.forEach(obj => {
+        html += "<tr>";
+        html += keys.map(key => `<td>${obj[key] !== undefined ? obj[key] : ""}</td>`).join("");
+        html += "</tr>";
+    });
+
+    html += "</tbody></table>";
+    return html;
+}
+
+
+

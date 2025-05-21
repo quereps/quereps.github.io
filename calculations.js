@@ -34,3 +34,38 @@ function getAverage(arr) {
   const sum = arr.reduce((acc, val) => acc + val, 0);
   return sum / arr.length;
 }
+
+
+function rankObjects(obj, rankBy, attributes) {
+  const items = Object.values(obj);
+
+  items.sort((a, b) => b[rankBy] - a[rankBy]);
+
+  const result = items.map(item => {
+    return attributes.reduce((acc, attr) => {
+      acc[attr] = item[attr];
+      return acc;
+    }, {});
+  });
+
+  return result;
+}
+
+
+
+
+function rankObjects(obj, rankBy, attributes) {
+  const items = Object.values(obj);
+
+  items.sort((a, b) => b[rankBy] - a[rankBy]);
+
+  const result = items.map(item => {
+    return attributes.reduce((acc, attr) => {
+      acc[attr] = item[attr];
+      return acc;
+    }, {});
+  });
+
+  console.log(result);
+  return result;
+}
