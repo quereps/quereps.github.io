@@ -110,7 +110,7 @@ function JSONToHTMLTable(jsonArray, destination) {
 
 function createHTMLSection(name, imageURL,getData){
         name = name.replace(/\s+/g, "_"); // Replace spaces with underscores
-        var Container = jQuery('<div id="'+name+'Container"><h3><img height="70" src="'+imageURL+'"/>'+name+'</h3></div>');
+        var Container = jQuery('<div id="'+name+'Container"><h3><img height="40" src="'+imageURL+'"/>'+name+'</h3></div>');
         jQuery('#table-container').append(Container);
         if (getData && typeof getData === "function") {
         getData();
