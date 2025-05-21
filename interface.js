@@ -109,7 +109,7 @@ function JSONToHTMLTable(jsonArray, destination) {
 
 
 function createHTMLSection(name, imageURL,getData){
-        var Container = jQuery('<div id="'+name+'Container"><h3><img src="'+imageURL+'"/></h3>'+name+'</div>');
+        var Container = jQuery('<div id="'+name+'Container"><h3><img height="70" src="'+imageURL+'"/></h3>'+name+'</div>');
         jQuery('#table-container').append(Container);
         getData();
 }
