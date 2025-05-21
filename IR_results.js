@@ -192,7 +192,7 @@ let createReport = function(){
       
 
       if(features.sections){
-        createHTMLSection("sections","https://fonts.gstatic.com/s/e/notoemoji/latest/1f4da/emoji.svg",addFilters);
+        createHTMLSection("sections","https://fonts.gstatic.com/s/e/notoemoji/latest/1f4da/emoji.svg",addFilters());
       }
       
       if(features.skuList){
