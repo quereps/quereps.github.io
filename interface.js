@@ -210,7 +210,7 @@ function graph (category, destination){
       console.log("sections: "+sections);
 
       for(let filter in sections){
-          var button = $('<div id="filter'+filter+'" class="filter '+filter+'">'+filter+'</div>');
+          var button = jQuery('<div id="filter'+filter+'" class="filter '+filter+'">'+filter+'</div>');
           jQuery('#'+destination).append(button);
 
       }
