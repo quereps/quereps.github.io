@@ -135,9 +135,9 @@ function JSONToGraph(jsonArray, type, destination) {
     parent.appendChild(canvas);
 
     // Destroy previous chart if needed
-    if (window.currentChart) {
-        window.currentChart.destroy();
-    }
+    //if (window.currentChart) {
+   //     window.currentChart.destroy();
+   // }
 
     // Create the chart
     window.currentChart = new Chart(canvas, {
