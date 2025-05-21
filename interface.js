@@ -148,7 +148,7 @@ canvas.style.height = "100px";
             }]
         },
         options: {
-            responsive: true,
+            responsive: false,
         }
     });
 }
