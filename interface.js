@@ -109,8 +109,11 @@ function JSONToHTMLTable(jsonArray, destination) {
 
 
 function JSONToGraph(jsonArray, type, destination) {
-    const labels = Object.keys(jsonArray);
-    const data = Object.values(jsonArray);
+    let entries = Object.entries(jsonArray);
+    entries.sort((a, b) => b[1] - a[1]);
+    const labels = entries.map(([k, v]) => k);
+    const data = entries.map(([k, v]) => v);
+
 
     // Remove any previous canvas with this id (if re-rendering)
     let oldCanvas = document.getElementById(destination);
