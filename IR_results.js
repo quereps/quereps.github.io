@@ -3,6 +3,7 @@
 let sections = {};
  let skuList = {};
  let features = {};
+ let report = {};
 
  let ingest = "";
   let companyID = "";
@@ -175,7 +176,7 @@ var extractData = function(data){
     }
 
 
-    var addFilters = function(){
+    var showSections = function(){
 
       for(let filter in sections){
           var button = $('<div id="filter'+filter+'" class="filter '+filter+'">'+filter+'</div>');
@@ -187,10 +188,11 @@ var extractData = function(data){
 
 let createReport = function(){
 
-      
+    for(var element in report){
+      var current = report[element];
 
-      if(features.sections){
-        createHTMLSection("sections","https://fonts.gstatic.com/s/e/notoemoji/latest/1f4da/emoji.svg",addFilters);
+      if(current.type=="sections"){
+        createHTMLSection(current.title,current.logo,showSections);
       }
 
        if(features.gridGraph){
@@ -205,22 +207,24 @@ let createReport = function(){
         JSONToHTMLTable(rankObjects(skuList, "facings", features.skuList), "SKU_ListContainer") 
       }
 
-     
+       //if(!$(".oosContainer")){
+       //   var oosContainer = $('<div id="oosContainer"><h3><img src="https://em-content.zobj.net/source/apple/419/package_1f4e6.png"/>Restock</h3></div>');
+       //   $('#table-container').append(oosContainer);
+        //}
+
+       // if(!$(".pricingContainer")){
+       //   var pricingContainer = $('<div id="pricingContainer"><h3><img src="https://em-content.zobj.net/source/apple/419/label_1f3f7-fe0f.png"/>Price Tags</h3></div>');
+       //   $('#table-container').append(pricingContainer);
+       // }
+
+     // for(let sku in skuList){
+     //   skuList[sku].showTile();
+     // }
 
 
-   //if(!$(".oosContainer")){
-   //   var oosContainer = $('<div id="oosContainer"><h3><img src="https://em-content.zobj.net/source/apple/419/package_1f4e6.png"/>Restock</h3></div>');
-   //   $('#table-container').append(oosContainer);
-    //}
+    }
 
-   // if(!$(".pricingContainer")){
-   //   var pricingContainer = $('<div id="pricingContainer"><h3><img src="https://em-content.zobj.net/source/apple/419/label_1f3f7-fe0f.png"/>Price Tags</h3></div>');
-   //   $('#table-container').append(pricingContainer);
-   // }
 
- // for(let sku in skuList){
- //   skuList[sku].showTile();
- // }
 }
 
 
@@ -233,6 +237,7 @@ let createReport = function(){
    tokenV1 = settings.tokenV1;
    tokenV2 = settings.tokenV2;
    features = settings.features;
+   report = settings.report;
 
   let placeID = vpGetTextResults("PlaceID");
 
