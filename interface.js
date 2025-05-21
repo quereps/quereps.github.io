@@ -109,42 +109,38 @@ function JSONToHTMLTable(jsonArray, destination) {
 
 
 function JSONToGraph(jsonArray, type, destination) {
-    // Prepare data for Chart.js
     const labels = Object.keys(jsonArray);
     const data = Object.values(jsonArray);
 
-    // Optional: Destroy previous chart if needed
+    // Remove any previous canvas with this id (if re-rendering)
+    let oldCanvas = document.getElementById(destination);
+    if (oldCanvas) {
+        oldCanvas.remove();
+    }
+
+    // Create a new canvas and append it to a parent container
+    let parent = document.getElementById('table-container') || document.body; // fallback to body
+    let canvas = document.createElement('canvas');
+    canvas.id = destination;
+    parent.appendChild(canvas);
+
+    // Destroy previous chart if needed
     if (window.currentChart) {
         window.currentChart.destroy();
     }
 
-    // Get or create the canvas
-    let ctx = document.getElementById(destination);
-    if (!ctx) {
-        // If the element doesn't exist, create it and append to body
-        ctx = document.createElement('canvas');
-        ctx.id = destination;
-        document.body.appendChild(ctx);
-    }
-
     // Create the chart
-    window.currentChart = new Chart(ctx, {
-        type: type, // 'bar', 'pie', 'doughnut', etc.
+    window.currentChart = new Chart(canvas, {
+        type: type,
         data: {
             labels: labels,
             datasets: [{
                 label: "Count",
                 data: data,
-                // backgroundColor: [...], // You can add color customization here
             }]
         },
         options: {
             responsive: true,
-            plugins: {
-                legend: {
-                    display: (type === 'pie' || type === 'doughnut'), // Hide legend for bar/column if you want
-                }
-            }
         }
     });
 }
