@@ -189,10 +189,15 @@ let createReport = function(){
         showSections(current.title+"Container");
       }
 
-       if(features.gridGraph){
-        createHTMLSection("Grid Graph","https://fonts.gstatic.com/s/e/notoemoji/latest/1f9ec/emoji.svg");
-        JSONToGraph(graph("brand","Grid_GraphContainer"), "bar", "Grid_GraphContainer");
-        JSONToGraph(graph("classification","Grid_GraphContainer"), "pie", "Grid_GraphContainer");
+       if(current.type=="graph"){
+        createHTMLSection(current.title,current.logo);
+
+        for(let currentGraph in current.graphs){
+            JSONToGraph(graph(currentGraph.dimmension,"Grid_GraphContainer"), currentGraph.type, "Grid_GraphContainer");
+        }
+
+        //JSONToGraph(graph("brand","Grid_GraphContainer"), "bar", "Grid_GraphContainer");
+        //JSONToGraph(graph("classification","Grid_GraphContainer"), "pie", "Grid_GraphContainer");
       }
 
       
