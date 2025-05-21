@@ -127,7 +127,14 @@ function graph (category, destination){
     var current = skuList[sku];
     var categoryValue = skuList[sku][category];
 
-    graphData[categoryValue] = graphData[categoryValue]+current.facings;
+     var facings = Number(current.facings) || 0;
+
+     if (!graphData[categoryValue]) {
+      graphData[categoryValue] = 0;
+    }
+
+
+    graphData[categoryValue] += facings;
 
   }
 
