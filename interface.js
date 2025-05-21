@@ -114,7 +114,7 @@ function JSONToGraph(jsonArray, type, destination) {
     const labels = entries.map(([k, v]) => k);
     const data = entries.map(([k, v]) => v);
 
-    if(jQuery("#"+destination+" canvasContainer").length==0){
+    if(jQuery("#"+destination+" .canvasContainer").length==0){
       jQuery("#"+destination).append("<div class='canvasContainer'></div>");
     }
 
