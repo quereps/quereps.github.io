@@ -166,6 +166,9 @@ function JSONToGraph(jsonArray, title, type, destination) {
 
 
 function createHTMLSection(id,name, imageURL,getData){
+
+        console.log("createHTMLSection: ",id,name);
+
         title = name;
         name = name.replace(/\s+/g, "_"); // Replace spaces with underscores
         var Container = jQuery('<div id="Container'+id+'"><h3><img height="40" src="'+imageURL+'"/>'+title+'</h3></div>');
