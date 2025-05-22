@@ -163,7 +163,10 @@ var extractData = function(data){
 
 let createReport = function(){
 
+  console.log(report);
+
     for(var element in report){
+
       var current = report[element];
       var containerID = "Container"+element;
 
