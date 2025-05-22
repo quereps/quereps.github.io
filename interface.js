@@ -109,6 +109,8 @@ function JSONToHTMLTable(jsonArray, destination) {
 
 
 function JSONToGraph(jsonArray, title, type, destination) {
+
+    console.log("JSONToGraph Start");
     let entries = Object.entries(jsonArray);
     entries.sort((a, b) => b[1] - a[1]);
     const labels = entries.map(([k, v]) => k);
