@@ -180,7 +180,7 @@ let createReport = function(){
        if(current.type=="graph"){
         //createHTMLSection(element,current.title,current.logo);
 
-        JSONToGraph(graph(current.dimmension), current.dimmension ,current.type, containerID);
+        JSONToGraph(graph(current.dimmension), current.dimmension ,current.graphType, containerID);
 
       }
 
