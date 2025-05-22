@@ -170,13 +170,15 @@ let createReport = function(){
       var current = report[element];
       var containerID = "Container"+element;
 
+      createHTMLSection(element,current.title,current.logo);
+
       if(current.type=="sections"){
-        createHTMLSection(element,current.title,current.logo);
+        //createHTMLSection(element,current.title,current.logo);
         showSections(containerID);
       }
 
        if(current.type=="graph"){
-        createHTMLSection(element,current.title,current.logo);
+        //createHTMLSection(element,current.title,current.logo);
 
         JSONToGraph(graph(current.dimmension), current.dimmension ,current.type, containerID);
 
@@ -184,7 +186,7 @@ let createReport = function(){
 
       
       if(current.type=="skuList"){
-        createHTMLSection(element,current.title,current.logo);
+        //createHTMLSection(element,current.title,current.logo);
         JSONToHTMLTable(rankObjects(skuList, "facings", current.columns), containerID) 
       }
 
