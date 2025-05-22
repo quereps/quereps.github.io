@@ -172,12 +172,10 @@ let createReport = function(){
         showSections(containerID);
       }
 
-       if(current.type=="graphBar"){
+       if(current.type=="graph"){
         createHTMLSection(element,current.title,current.logo);
 
-        for(let currentGraph of current.graphs){
-            JSONToGraph(graph(currentGraph.dimmension), currentGraph.dimmension ,currentGraph.type, containerID);
-        }
+        JSONToGraph(graph(current.dimmension), current.dimmension ,current.type, containerID);
 
       }
 
