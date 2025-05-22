@@ -107,21 +107,23 @@ var extractData = function(data){
 
   for(let item in data){
 
-    if(!realogram[data[item].values.shelf_index_y]){
-      realogram[data[item].values.shelf_index_y]=[];
+    const y = data[item].values.shelf_index_y;
+    const x = data[item].values.shelf_index_x;
+
+
+    if (!realogram[y]) {
+      realogram[y] = [];
     }
 
-    if(data[item].type=="coldbox_unrecognizable_product"){
-      realogram[data[item].values.shelf_index_y][data[item].values.shelf_index_x] == "unknown";
+    
+    if (data[item].type == "coldbox_unrecognizable_product") {
+      realogram[y][x] = "unknown"; // <-- Assignment!
     }
-
-    if(data[item].type=="empty_facing"){
-      realogram[data[item].values.shelf_index_y][data[item].values.shelf_index_x] == "empty";
+    else if (data[item].type == "empty_facing") {
+      realogram[y][x] = "empty"; // <-- Assignment!
     }
-
-    if(data[item].type=="shelf_product" && data[item].values.upc){
-
-      realogram[data[item].values.shelf_index_y][data[item].values.shelf_index_x] == data[item].values;
+    else if (data[item].type == "shelf_product" && data[item].values.upc) {
+      realogram[y][x] = data[item].values;
 
       console.log(data[item]);
 
