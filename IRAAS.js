@@ -230,7 +230,7 @@ let createReport = function(){
         var imageURL = "https://app.form.com/"+vpGetTextResults("Q1.A1")+"?filename=image.jpg";
 
         //https://app.form.com/app/public/download/file/74689b288733eff59741c0b49cb1158b/1575907578/109542884/412390885
-        var imageURL = "https://stitched-images.gospotcheck.com/scene_id%3A19085710%2Cgrid_id%3A23391756/kpi_response/0/realogram/0da32b9b-739c-47d6-98fe-3e74fb0e5c38/0.jpg?auto=format%2Ccompress&quality=70&fit=cover&optimize=true";
+        //var imageURL = "https://stitched-images.gospotcheck.com/scene_id%3A19085710%2Cgrid_id%3A23391756/kpi_response/0/realogram/0da32b9b-739c-47d6-98fe-3e74fb0e5c38/0.jpg?auto=format%2Ccompress&quality=70&fit=cover&optimize=true";
         sendIRPhoto(imageURL, companyID, photoGrid).then((data)=>{
           getTags(data.id).then((data)=>{
             extractData(data);
