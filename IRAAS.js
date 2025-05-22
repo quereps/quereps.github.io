@@ -121,7 +121,7 @@ var extractData = function(data){
 
     if(data[item].type=="shelf_product" && data[item].values.upc){
 
-      realogram[data[item].values.shelf_index_y][data[item].values.shelf_index_x] == [data[item].values;
+      realogram[data[item].values.shelf_index_y][data[item].values.shelf_index_x] == data[item].values;
 
       console.log(data[item]);
 
