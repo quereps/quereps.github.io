@@ -4,6 +4,8 @@ let sections = {};
  let skuList = {};
  let features = {};
  let report = {};
+ let realogram = [];
+
 
  let ingest = "";
   let companyID = "";
@@ -40,6 +42,7 @@ class skuObj {
       this.brand_family = IRData.brand_family;
       this.brand = IRData.brand;
     }
+
     return this;
     
   }
@@ -104,7 +107,21 @@ var extractData = function(data){
 
   for(let item in data){
 
+    if(!realogram[data[item].values.shelf_index_y]){
+      realogram[data[item].values.shelf_index_y]=[];
+    }
+
+    if(data[item].type=="coldbox_unrecognizable_product"){
+      realogram[data[item].values.shelf_index_y][data[item].values.shelf_index_x] == "unknown";
+    }
+
+    if(data[item].type=="empty_facing"){
+      realogram[data[item].values.shelf_index_y][data[item].values.shelf_index_x] == "empty";
+    }
+
     if(data[item].type=="shelf_product" && data[item].values.upc){
+
+      realogram[data[item].values.shelf_index_y][data[item].values.shelf_index_x] == [data[item].values;
 
       console.log(data[item]);
 
