@@ -116,13 +116,7 @@ function JSONToGraph(jsonArray, title, type, destination) {
     const labels = entries.map(([k, v]) => k);
     const data = entries.map(([k, v]) => v);
 
-    if(jQuery("#"+destination+" .canvasContainer").length==0){
-      jQuery("#"+destination).append("<div class='canvasContainer'></div>");
-    }
-
-    var amount = jQuery("#"+destination+" .canvasContainer canvas").length+1;
-
-    const canvasID = destination+"_canvas"+amount;
+    jQuery("#"+destination).append("<div class='canvasContainer'></div>");
 
     // Remove any previous canvas with this id (if re-rendering)
     //let oldCanvas = document.getElementById(canvasID);
@@ -133,7 +127,6 @@ function JSONToGraph(jsonArray, title, type, destination) {
     // Create a new canvas and append it to a parent container
     let parent = jQuery("#"+destination+" .canvasContainer")[0] || document.body; // fallback to body
     let canvas = document.createElement('canvas');
-    canvas.id = canvasID;
     canvas.width = 250;
     canvas.height = 250;
     canvas.style.width = "100px";
