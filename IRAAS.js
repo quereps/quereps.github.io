@@ -226,6 +226,8 @@ let createReport = function(){
       jQuery("#table-container").empty();
 
       if(imageURL){
+
+        console.log("imageURL",imageURL);
         //var imageURL = "https://app.form.com/"+vpGetResults("Q1.A1")[0].urlDownload;
         var imageURL = "https://app.form.com/"+imageURL+"?filename=image.jpg";
 
