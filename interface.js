@@ -150,7 +150,7 @@ function JSONToGraph(jsonArray, title, type, destination) {
         },
         options: {
             responsive: true,
-            maintainAspectRatio: true,
+            maintainAspectRatio: false,
             plugins: {
               title: {
               display: true,             // Show the title
