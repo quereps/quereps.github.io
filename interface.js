@@ -224,5 +224,5 @@ var POG = function(category,destination){
   
   html=category;
 
-  jQuery('#'+destination).happend(html);
+  jQuery('#'+destination).append(html);
 }
