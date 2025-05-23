@@ -218,3 +218,11 @@ function graph (category){
       }
 }
 
+
+
+var POG = function(category,destination){
+  
+  html=category;
+
+  jQuery('#'+destination).happend(html);
+}

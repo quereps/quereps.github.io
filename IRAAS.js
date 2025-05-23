@@ -192,21 +192,19 @@ let createReport = function(){
       createHTMLSection(element,current.title,current.logo);
 
       if(current.type=="sections"){
-        //createHTMLSection(element,current.title,current.logo);
         showSections(containerID);
       }
 
        if(current.type=="graph"){
-        //createHTMLSection(element,current.title,current.logo);
-
         JSONToGraph(graph(current.dimmension), current.dimmension ,current.graphType, containerID);
-
+      }
+ 
+      if(current.type=="skuList"){
+        JSONToHTMLTable(rankObjects(skuList, "facings", current.columns), containerID) 
       }
 
-      
-      if(current.type=="skuList"){
-        //createHTMLSection(element,current.title,current.logo);
-        JSONToHTMLTable(rankObjects(skuList, "facings", current.columns), containerID) 
+      if(current.type=="pog"){
+        POG(cetegory,containerID);
       }
 
     }
