@@ -124,7 +124,7 @@ var extractData = function(data){
       realogram[y][x].type = "empty"; // <-- Assignment!
     }
     else if (data[item].type == "shelf_product" && data[item].values.upc) {
-      
+      realogram[y][x].type = "sku"; // <-- Assignment!
 
       console.log(data[item]);
 
