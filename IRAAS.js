@@ -115,15 +115,16 @@ var extractData = function(data){
       realogram[y] = [];
     }
 
-    
+    realogram[y][x] = data[item].values;
+
     if (data[item].type == "coldbox_unrecognizable_product") {
-      realogram[y][x] = "unknown"; // <-- Assignment!
+      realogram[y][x].type = "unknown"; // <-- Assignment!
     }
     else if (data[item].type == "empty_facing") {
-      realogram[y][x] = "empty"; // <-- Assignment!
+      realogram[y][x].type = "empty"; // <-- Assignment!
     }
     else if (data[item].type == "shelf_product" && data[item].values.upc) {
-      realogram[y][x] = data[item].values;
+      
 
       console.log(data[item]);
 
