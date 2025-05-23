@@ -222,9 +222,6 @@ function graph (category){
 
 var POG = function(category,destination){
 
-
-
-
   if(realogram && realogram.length>0){
     var POGElement = jQuery('<div class="pog '+category+'"></div>');
     jQuery('#'+destination).append(POGElement);
@@ -235,11 +232,21 @@ var POG = function(category,destination){
       var ShelfElement = jQuery('<div class="shelf shelf_'+shelf+'"></div>');
       jQuery('#'+destination+" .pog").append(ShelfElement);
 
+      for(let sku in currentShelf){
+        var currentSKU = currentShelf[sku];
+
+        console.log(currentSKU);
+
+        var SKUElement = jQuery('<div class="sku sku_'+sku+'">'+currentSKU.facings+' facings</div>');
+        jQuery('#'+destination+" .pog .shelf"+shelf).append(SKUElement);
+
+      }
+
     }
 
   }
   
-  html=category;
+  //html=category;
 
-  jQuery('#'+destination+" .pog").append(html);
+  //jQuery('#'+destination+" .pog").append(html);
 }
