@@ -237,7 +237,7 @@ var POG = function(category,destination){
 
         console.log(currentSKU);
 
-        var SKUElement = jQuery('<div class="sku sku_'+sku+'">'+currentSKU.facings+' facings</div>');
+        var SKUElement = jQuery('<div class="sku '+currentSKU[destination]+' sku_'+sku+'">facings</div>');
         jQuery('#'+destination+" .pog .shelf_"+shelf).append(SKUElement);
 
       }
