@@ -157,22 +157,6 @@ let createReport = function(){
     Run: function (settings) {
       init(settings);
     },
-    GetIRAAS:function(imageURL){
-
-      jQuery("#table-container").empty();
-
-      if(imageURL){
-
-        console.log("imageURL",imageURL);
-         sendIRPhoto(imageURL, companyID, photoGrid).then((data)=>{
-          getTags(data.id).then((data)=>{
-            extractData(data);
-            createReport();
-          });
-        });
-      }
-      
-    }
   }
 })(jQuery, ksAPI);
 
