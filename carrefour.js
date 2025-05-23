@@ -43,7 +43,7 @@ var APIModule = (function ($, ksAPI) {
 
     }     
   }
-}
+
 
 
 var createReport = function(){
