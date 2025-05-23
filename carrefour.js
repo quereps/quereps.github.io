@@ -96,9 +96,9 @@ var createReport = function(){
 
    getPlaceData(vpGetTextResults("PlaceID")).then((placeData)=>{
        let tableElement = createTable(placeData, "Place", {
-        "Name":data.name,
-        "City":data.city,
-        "Address":data.address
+        "Name":placeData.name,
+        "City":placeData.city,
+        "Address":placeData.address
       });
 
 
