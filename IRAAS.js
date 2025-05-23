@@ -190,7 +190,7 @@ let createReport = function(){
       var current = report[element];
       var containerID = "Container"+element;
 
-      createHTMLSection(element,current.title,current.logo);
+      createHTMLSection(element,current.title,current.logo,current.type);
 
       if(current.type=="sections"){
         showSections(containerID);
