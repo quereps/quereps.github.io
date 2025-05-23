@@ -93,6 +93,20 @@ let createReport = function(){
    report = settings.report;
    photoGrid = settings.photoGrid;
 
+
+   getPlaceData(vpGetTextResults("PlaceID")).then((placeData)=>{
+       let tableElement = createTable(placeData, "Place", {
+        "Name":data.name,
+        "City":data.city,
+        "Address":data.address
+      });
+
+
+      $('#table-container').append(tableElement);
+
+   });
+   
+
   //  $('#table-container').append(tableElement);
 
  };
