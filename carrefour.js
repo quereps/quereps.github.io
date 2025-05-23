@@ -46,7 +46,7 @@ var APIModule = (function ($, ksAPI) {
 }
 
 
-let createReport = function(){
+var createReport = function(){
 
   console.log(report);
 
