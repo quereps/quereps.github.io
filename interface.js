@@ -221,6 +221,15 @@ function graph (category){
 
 
 var POG = function(category,destination){
+
+
+
+
+  if(realogram && realogram.length>0){
+    var POGElement = $('<div class="pog '+category+'"></div>');
+    jQuery('#'+destination).append(POGElement);
+
+  }
   
   html=category;
 
