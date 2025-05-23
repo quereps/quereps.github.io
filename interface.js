@@ -229,6 +229,14 @@ var POG = function(category,destination){
     var POGElement = $('<div class="pog '+category+'"></div>');
     jQuery('#'+destination).append(POGElement);
 
+    for(let shelf in realogram){
+      let currentShelf = realogram[shelf];
+
+      var ShelfElement = $('<div class="shelf shelf_'+shelf+'"></div>');
+      jQuery('#'+destination+" .pog").append(ShelfElement);
+
+    }
+
   }
   
   html=category;
