@@ -246,9 +246,6 @@ var POG = function(category,destination){
 
   }
   
-  //html=category;
-
-  //jQuery('#'+destination+" .pog").append(html);
 }
 
 
