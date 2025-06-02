@@ -3,10 +3,28 @@ function commaToPipe(ref){
   vpSetResults(ref,vpGetTextResults(ref).replace(/,/g, '|'));
 }
 
-function selectMOL(dm){
+function selectAllMOL(dm){
         vpResetResults(dm);
         jQuery(".aDivQId_"+dm+" .lookupCheckbox label").each(function() { jQuery(this).click(); });
-      }
+}
+
+
+function selectRandomMOL(dm, qty) {
+    vpResetResults(dm);
+
+    let items = jQuery(".aDivQId_" + dm + " .lookupCheckbox label").toArray();
+
+    // Shuffle the array
+    let shuffled = items.sort(() => 0.5 - Math.random());
+
+    // Limit to qty
+    let selected = shuffled.slice(0, qty);
+
+    // Click each selected item
+    selected.forEach(el => jQuery(el).click());
+}
+
+
 
 
 
@@ -31,12 +49,7 @@ var molToMatrix = function(mapping){
       }
 
     }
-
-      vpHideLoader();
-      jQuery(".HBUTTONS").show();
-
-    } , 1500);
-
-
-  
+    vpHideLoader();
+    jQuery(".HBUTTONS").show();
+  } , 1500); 
 }
