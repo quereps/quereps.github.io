@@ -1,31 +1,52 @@
 
 function commaToPipe(ref){
-  vpSetResults(ref,vpGetTextResults(ref).replace(/,/g, '|'));
+  const text = vpGetTextResults(ref) || '';
+  vpSetResults(ref, text.replace(/,/g, '|'));
 }
 
 function selectAllMOL(dm){
         vpResetResults(dm);
-        jQuery(".aDivQId_"+dm+" .lookupCheckbox label").each(function() { jQuery(this).click(); });
+        const $labels = jQuery(`.aDivQId_${dm} .lookupCheckbox label`);
+        $labels.each((i, el) => jQuery(el).click());
 }
 
 
 function selectRandomMOL(dm, qty) {
+
+    return new Promise((resolve, reject) => {
     vpResetResults(dm);
 
-    let items = jQuery(".aDivQId_" + dm + " .lookupCheckbox label").toArray();
+    const items = jQuery(".aDivQId_" + dm + " .lookupCheckbox label").toArray();
 
     // Shuffle the array
-    let shuffled = items.sort(() => 0.5 - Math.random());
+    const shuffled = items.sort(() => 0.5 - Math.random());
 
     // Limit to qty
-    let selected = shuffled.slice(0, qty);
+    const selected = shuffled.slice(0, qty);
 
     // Click each selected item
     selected.forEach(el => jQuery(el).click());
+
+     // Now poll every 200ms up to 10 times (so up to ~2 seconds) to see if vpResetResults(dm).length > 0
+    let attempts = 0;
+    const intervalId = setInterval(() => {
+      attempts++;
+      const results = vpGetResults(dm);
+      if (results && results.length > 0) {
+        clearInterval(intervalId);
+        resolve("It worked!");
+      } else if (attempts >= 10) {
+        clearInterval(intervalId);
+        reject("Something went wrong (no results after clicking).");
+      }
+    }, 200);
+});
 }
 
 
-
+function getMOLLength(dm){
+  return jQuery(".aDivQId_" + dm + " .lookupCheckbox label").length;
+}
 
 
 var molToMatrix = function(mapping){
