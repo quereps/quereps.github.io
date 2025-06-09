@@ -8,7 +8,6 @@ class skuObj {
     this.shelf_index_xArray = [];
     this.shelf_index_yArray = [];
     this.stack_indexArray = [];
-    //this.prices = [];
 
     if(IRData){
       this.facings=0;
@@ -36,8 +35,8 @@ class skuObj {
       this.shelf_index_xArray.push(IRData.shelf_index_x);
       this.shelf_index_yArray.push(IRData.shelf_index_y);
       this.stack_indexArray.push(IRData.stack_index);
-      IRData.height ? this.heightArray.push(IRData.height);
-      IRData.width ? this.widthArray.push(IRData.width);
+      if (IRData.height) this.heightArray.push(IRData.height);
+      if (IRData.width) this.widthArray.push(IRData.width);
 
       this.updateAverages();
     }
