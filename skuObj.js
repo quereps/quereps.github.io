@@ -8,6 +8,7 @@ class skuObj {
     this.shelf_index_xArray = [];
     this.shelf_index_yArray = [];
     this.stack_indexArray = [];
+    this.prices = [];
 
     if(IRData){
       this.facings=0;
@@ -29,7 +30,6 @@ class skuObj {
     
   }
 
-
   addFacing(IRData){
     if(IRData){
       this.facings++;
@@ -40,6 +40,15 @@ class skuObj {
       this.widthArray.push(IRData.width);
 
       this.updateAverages();
+    }
+  }
+
+  checkFacingsCompliance(exp){
+    if(this.facings == exp){
+      this.facingCompliance = true;
+    }
+    else{
+      this.facingCompliance =  false;
     }
   }
 
