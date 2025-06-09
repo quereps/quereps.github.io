@@ -1,6 +1,6 @@
 
 
-let arrayToPipe = function(array){
+let arrayToPipe = function(arr){
   return arr.join('|');
 }
 
