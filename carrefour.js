@@ -92,9 +92,10 @@ var createReport = function(){
    features = settings.features;
    report = settings.report;
    photoGrid = settings.photoGrid;
+   PlaceID = vpGetTextResults("PlaceID");
 
 
-   getPlaceData(vpGetTextResults("PlaceID")).then((placeData)=>{
+   getPlaceData(PlaceID).then((placeData)=>{
        let tableElement = createTable(placeData, "Place", {
         "Name":placeData.name,
         "City":placeData.city,
