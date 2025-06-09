@@ -52,6 +52,15 @@ class skuObj {
     }
   }
 
+    checkPricingCompliance(exp){
+      if(this.prices[0] == exp){
+        this.pricingCompliance = true;
+      }
+      else{
+        this.pricingCompliance =  false;
+      }
+    }
+
   updateAverages(){
     this.shelf_index_x = getAverage(this.shelf_index_xArray);
     this.shelf_index_y = getAverage(this.shelf_index_yArray);

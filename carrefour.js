@@ -72,6 +72,7 @@ var complianceCheck = function(){
     console.log(theupc,exp_facings,exp_price);
 
     skuList[theupc].checkFacingsCompliance(exp_facings);
+    skuList[theupc].checkPricingCompliance(exp_price);
     console.log("Result Compliance: ",skuList[theupc].facingCompliance);
 
   }
