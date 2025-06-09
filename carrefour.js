@@ -46,8 +46,8 @@ var APIModule = (function ($, ksAPI) {
 
 
     vpSetResults("upcs",arrayToPipe(Object.keys(skuList)));
-    selectAllMOL("ingest").then(()=>{
-      console.log("It's all selected !!!");
+    selectAllMOL("ingest").then((a)=>{
+      console.log(a);
     });
 
   }
