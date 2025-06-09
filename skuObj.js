@@ -36,8 +36,8 @@ class skuObj {
       this.shelf_index_xArray.push(IRData.shelf_index_x);
       this.shelf_index_yArray.push(IRData.shelf_index_y);
       this.stack_indexArray.push(IRData.stack_index);
-      this.heightArray.push(IRData.height);
-      this.widthArray.push(IRData.width);
+      IRData.height ? this.heightArray.push(IRData.height);
+      IRData.width ? this.widthArray.push(IRData.width);
 
       this.updateAverages();
     }
