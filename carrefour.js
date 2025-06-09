@@ -117,9 +117,9 @@ var createReport = function(){
 
         $('#table-container').append(tableElement);
 
-        if(features.images){
+        /*if(features.images){
           getImages(lastItem);
-        }
+        }*/
 
 
         getGrid(lastItem.id).then(async (photo_grids)=>{
