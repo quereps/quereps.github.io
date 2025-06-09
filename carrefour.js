@@ -104,6 +104,48 @@ var createReport = function(){
 
       $('#table-container').append(tableElement);
 
+      getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
+
+         removeNotification();
+
+        let tableElement = createTable(lastItem,"Latest Mission", {
+          "Completed":moment(lastItem.completed_at).fromNow(),
+          "Completed By":lastItem.user.first_name+" "+lastItem.user.last_name
+        });
+
+
+        $('#table-container').append(tableElement);
+
+        if(features.images){
+          getImages(lastItem);
+        }
+
+
+        getGrid(lastItem.id).then(async (photo_grids)=>{
+
+          removeNotification();
+
+
+          // Create an array of promises from getTags
+          let tagPromises = photo_grids.map(async grid => {
+              const tags = await getTags(grid.id);
+              removeNotification();
+              extractData(tags);
+            
+          });
+
+          await Promise.all(tagPromises);
+
+
+          createReport();
+        });
+
+      });
+
+
+
+
+
    });
    
 
