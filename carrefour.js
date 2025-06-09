@@ -45,7 +45,7 @@ var APIModule = (function ($, ksAPI) {
     }    
 
 
-    vpSetResults("upcs",arrayToPipe(Object.keys(skuList)));
+  /*  vpSetResults("upcs",arrayToPipe(Object.keys(skuList)));
 
     setTimeout(()=>{
       selectAllMOL("ingest").then((a)=>{
@@ -53,7 +53,7 @@ var APIModule = (function ($, ksAPI) {
       });
 
     }, 2000);
-
+*/
     
 
   }
@@ -167,7 +167,16 @@ var createReport = function(){
 
           await Promise.all(tagPromises);
 
-          complianceCheck();
+          vpSetResults("upcs",arrayToPipe(Object.keys(skuList)));
+
+          setTimeout(()=>{
+            selectAllMOL("ingest").then((a)=>{
+              complianceCheck();
+            });
+
+          }, 2000);
+
+          
           //createReport();
         });
 
