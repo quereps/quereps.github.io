@@ -35,12 +35,12 @@ var APIModule = (function ($, ksAPI) {
             skuList[upcTarget].addFacing(IRData);
         }
 
-       //   if(skuList[upcTarget].prices){
+          if(skuList[upcTarget].prices){
             Array.prototype.push.apply(skuListTarget.prices, data[item].values.prices);
-       //   }
-       //   else{
-       //     skuList[upcTarget].prices = data[item].values.prices;
-       //   }
+          }
+          else{
+            skuList[upcTarget].prices = data[item].values.prices;
+          }
 
     }    
 
