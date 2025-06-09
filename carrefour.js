@@ -165,7 +165,7 @@ var createReport = function(){
 
           await Promise.all(tagPromises);
 
-
+          complianceCheck();
           //createReport();
         });
 
