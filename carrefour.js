@@ -148,7 +148,7 @@ var createReport = function(){
           await Promise.all(tagPromises);
 
 
-          createReport();
+          //createReport();
         });
 
       });
