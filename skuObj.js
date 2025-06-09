@@ -8,7 +8,7 @@ class skuObj {
     this.shelf_index_xArray = [];
     this.shelf_index_yArray = [];
     this.stack_indexArray = [];
-    this.prices = [];
+    //this.prices = [];
 
     if(IRData){
       this.facings=0;
