@@ -131,8 +131,8 @@ var createReport = function(){
           let tagPromises = photo_grids.map(async grid => {
               const tags = await getTags(grid.id);
               removeNotification();
-              extractData(tags);
-            
+              //extractData(tags);
+              extractIRData(tags);
           });
 
           await Promise.all(tagPromises);
