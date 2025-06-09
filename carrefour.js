@@ -21,7 +21,7 @@ var APIModule = (function ($, ksAPI) {
     for(let item in data){
 
 
-        console.log(data[item]);
+        //console.log(data[item]);
 
         let upcTarget = data[item].values.upc;
         let skuListTarget = skuList[upcTarget];
@@ -52,7 +52,7 @@ var APIModule = (function ($, ksAPI) {
         console.log(a);
       });
 
-    }, 5000);
+    }, 2000);
 
     
 
