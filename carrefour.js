@@ -58,7 +58,25 @@ var APIModule = (function ($, ksAPI) {
 
   }
 
+var complianceCheck = function(){
+  const upcList = vpGetResults("ingest.A3");
 
+  for(let upc in upcList){
+
+    let upc = upcList[upc][0].value;
+    let exp_facings = vpGetResults("ingest.A5")[upc][0].value;
+    let exp_price = vpGetResults("ingest.A6")[upc][0].value;
+
+    console.log(upc,exp_facings,exp_price);
+
+    skuList[upcList[upc][0].value].checkFacingsCompliance(exp_facings);
+    console.log("Result Compliance: ",skuList[upcList[upc][0].value].facingCompliance);
+
+  }
+  //const exp_facings = vpGetResults("ingest.A5");
+  //const exp_facings = vpGetResults("ingest.A6");
+
+}
 
 var createReport = function(){
 
