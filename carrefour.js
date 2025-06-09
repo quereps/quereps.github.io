@@ -16,7 +16,7 @@ let sections = {};
 
 var APIModule = (function ($, ksAPI) {
 
-  var extractIRData = function(data){
+  var extractIRData = async function(data){
 
     for(let item in data){
 
