@@ -59,6 +59,8 @@ var APIModule = (function ($, ksAPI) {
   }
 
 var complianceCheck = function(){
+
+  console.log("complianceCheck start");
   const upcList = vpGetResults("ingest.A3");
 
   for(let upc in upcList){
