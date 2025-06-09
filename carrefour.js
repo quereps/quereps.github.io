@@ -92,7 +92,7 @@ var createReport = function(){
    features = settings.features;
    report = settings.report;
    photoGrid = settings.photoGrid;
-   PlaceID = vpGetTextResults("PlaceID");
+   const PlaceID = vpGetTextResults("PlaceID");
 
 
    getPlaceData(PlaceID).then((placeData)=>{
