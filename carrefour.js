@@ -15,6 +15,7 @@ let sections = {};
   let photoGrid = "";
 
 var APIModule = (function ($, ksAPI) {
+
   var extractIRData = function(data){
 
     for(let item in data){
@@ -41,7 +42,11 @@ var APIModule = (function ($, ksAPI) {
             skuList[upcTarget].prices = data[item].values.prices;
           }
 
-    }     
+    }    
+
+
+    vpSetResults("upcs",arrayToPipe(Object.keys(skuList)));
+
   }
 
 
@@ -74,11 +79,7 @@ var createReport = function(){
       }
 
     }
-
-
 }
-
-
 
 
  var init = async function (settings) {

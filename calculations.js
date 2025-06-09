@@ -1,5 +1,10 @@
 
 
+let arrayToPipe = function(array){
+  return arr.join('|');
+}
+
+
 let getTimeStamps = function(minBack) {
   let timeframeMinutes = minBack;
 
@@ -50,8 +55,6 @@ function rankObjects(obj, rankBy, attributes) {
 
   return result;
 }
-
-
 
 
 function rankObjects(obj, rankBy, attributes) {
