@@ -65,14 +65,14 @@ var complianceCheck = function(){
 
   for(let upc in upcList){
 
-    let upc = upcList[upc][0].value;
+    let theupc = upcList[upc][0].value;
     let exp_facings = vpGetResults("ingest.A5")[upc][0].value;
     let exp_price = vpGetResults("ingest.A6")[upc][0].value;
 
-    console.log(upc,exp_facings,exp_price);
+    console.log(theupc,exp_facings,exp_price);
 
-    skuList[upcList[upc][0].value].checkFacingsCompliance(exp_facings);
-    console.log("Result Compliance: ",skuList[upcList[upc][0].value].facingCompliance);
+    skuList[theupc].checkFacingsCompliance(exp_facings);
+    console.log("Result Compliance: ",skuList[theupc].facingCompliance);
 
   }
   //const exp_facings = vpGetResults("ingest.A5");
