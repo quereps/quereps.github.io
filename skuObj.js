@@ -29,6 +29,15 @@ class skuObj {
     
   }
 
+  htmlTile(title,description,mainNumber,dataObj,barcode){
+    let HTMLOutput = "";
+
+    let titleHTML = title ? "<h1>"+title+"</h1>" : ""; 
+    let descHTML = title ? "<h1>"+description+"</h1>" : ""; 
+
+    return HTMLOutput;
+  }
+
   addFacing(IRData){
     if(IRData){
       this.facings++;
