@@ -226,9 +226,12 @@ var createReport = function(){
  };
 
   var update = async function () {
+            setTimeout(()=>{
             selectAllMOL("ingest").then((a)=>{
               complianceCheck();
             });
+
+          }, 2000);
   }
 
 
