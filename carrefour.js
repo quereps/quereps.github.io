@@ -225,11 +225,20 @@ var createReport = function(){
 
  };
 
+  var update = async function () {
+            selectAllMOL("ingest").then((a)=>{
+              complianceCheck();
+            });
+  }
+
 
  return {
     Run: function (settings) {
       init(settings);
     },
+    Update: function(){
+      update();
+    }
   }
 })(jQuery, ksAPI);
 
