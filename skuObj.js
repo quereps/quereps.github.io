@@ -29,14 +29,22 @@ class skuObj {
     
   }
 
-  htmlTile(title,subtitle,description,mainNumber,dataObj,barcode){
+  htmlTile(title,subtitle,description,mainNumber,dataTable,barcode){
     let HTMLOutput = "";
 
     let titleHTML = title ? "<h1>"+title+"</h1>" : ""; 
     let subtitleHTML = title ? "<h2>"+subtitle+"</h2>" : ""; 
     let descHTML = title ? "<p>"+description+"</p>" : ""; 
+    let tableHTML = "<table>"
 
-    HTMLOutput = titleHTML+descHTML;
+    for(let i in dataTable){
+        let item = dataTable[i];
+        tableHTML=tableHTML+"<tr><th>"+item+"</th><td>"+this[dataTable[i]]+"</td></tr>";
+    }
+
+    tableHTML = tableHTML+"</table>";
+
+    HTMLOutput = titleHTML+subtitleHTML+descHTML+tableHTML;
 
     console.log(HTMLOutput);
     return HTMLOutput;
