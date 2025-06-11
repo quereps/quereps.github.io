@@ -89,9 +89,10 @@ var addToMatrix = function(question,idColumn,sku){
 
   vpSetResults(question+".A"+nextSlot+"."+idColumn,sku.upc);
 
-  const labelElm = jQuery(".aDivQId_"+question+" #SKULabel"+nextSlot);
+  const labelElm = jQuery(".aDivQId_"+question+" div#SKULabel"+nextSlot);
 
-  jQuery(labelElm).append(sku.htmlTile(sku.upc,sku.name,sku.facings,[],true));
+  //jQuery(labelElm).append(sku.htmlTile(sku.upc,sku.name,sku.facings,[],true));
+  jQuery(labelElm).append(sku.htmlTile(this.upc,this.name,this.facings,[],true));
 
 } 
 

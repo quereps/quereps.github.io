@@ -29,11 +29,12 @@ class skuObj {
     
   }
 
-  htmlTile(title,description,mainNumber,dataObj,barcode){
+  htmlTile(title,subtitle,description,mainNumber,dataObj,barcode){
     let HTMLOutput = "";
 
     let titleHTML = title ? "<h1>"+title+"</h1>" : ""; 
-    let descHTML = title ? "<h1>"+description+"</h1>" : ""; 
+    let subtitleHTML = title ? "<h2>"+subtitle+"</h2>" : ""; 
+    let descHTML = title ? "<p>"+description+"</p>" : ""; 
 
     HTMLOutput = titleHTML+descHTML;
 
