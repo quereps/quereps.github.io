@@ -37,7 +37,7 @@ class skuObj {
     let descHTML = title ? "<p class='description'>"+description+"</p>" : ""; 
     let numberHTML = title ? "<div class='result'>"+result+"</div>" : ""; 
     let targetHTML = title ? "<div class='target'>"+target+"</div>" : ""; 
-    let resultHTML = "<div class='result'>"+numberHTML+targetHTML"</div>"
+    let resultHTML = "<div class='result'>"+numberHTML+targetHTML+"</div>"
     let tableHTML = "<table>"
 
     for(let i in dataTable){
