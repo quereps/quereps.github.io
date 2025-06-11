@@ -80,7 +80,7 @@ class skuObj {
     console.log("exp:", exp, typeof exp);
 
     this.expFacings = Number(exp);
-    if(Number(this.facings) === Number(exp)){
+    if(this.facings == exp){
       this.facingCompliance = true;
     }
     else{
