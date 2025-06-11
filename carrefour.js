@@ -201,12 +201,12 @@ var createReport = function(){
 
           vpSetResults("upcs",arrayToPipe(Object.keys(skuList)));
 
-          setTimeout(()=>{
+          /*setTimeout(()=>{
             selectAllMOL("ingest").then((a)=>{
               complianceCheck();
             });
 
-          }, 2000);
+          }, 2000);*/
 
           
           //createReport();
