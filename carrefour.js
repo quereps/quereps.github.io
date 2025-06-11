@@ -72,7 +72,7 @@ var complianceCheck = function(){
 
     if(!skuList[theupc].checkFacingsCompliance(exp_facings)){
       console.log("Facings are not compliant");
-      addToMatrix("Q5.C4",skuList[theupc]);
+      addToMatrix("Q5","C4",skuList[theupc]);
     }
 
 
