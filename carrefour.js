@@ -226,6 +226,8 @@ var createReport = function(){
  };
 
   var update = async function () {
+
+            vpResetResults("oosMatrix");
             setTimeout(()=>{
             selectAllMOL("ingest").then((a)=>{
               complianceCheck();
