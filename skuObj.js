@@ -78,7 +78,7 @@ class skuObj {
 
 
 
-    console.log(this.facings,"______"+exp);
+    console.log(this.facings,"______",exp);
 
     this.expFacings = parseInt(exp);
     if(this.facings == parseInt(exp)){
