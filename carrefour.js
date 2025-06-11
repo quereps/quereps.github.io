@@ -71,7 +71,11 @@ var complianceCheck = function(){
 
     console.log(theupc,exp_facings,exp_price);
 
-    skuList[theupc].checkFacingsCompliance(exp_facings);
+    if(!skuList[theupc].checkFacingsCompliance(exp_facings)){
+      console.log("Facings are not compliant");
+    }
+
+
     skuList[theupc].checkPricingCompliance(exp_price);
     console.log("Result Compliance: ",skuList[theupc].facingCompliance);
 
@@ -109,6 +113,11 @@ var createReport = function(){
       }
 
     }
+}
+
+
+var createOOSMatrix = function{
+
 }
 
 

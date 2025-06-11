@@ -54,9 +54,11 @@ class skuObj {
     checkPricingCompliance(exp){
       if(this.prices[0] == exp){
         this.pricingCompliance = true;
+        return true;
       }
       else{
         this.pricingCompliance =  false;
+        return false;
       }
     }
 
