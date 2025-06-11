@@ -59,7 +59,6 @@ var APIModule = (function ($, ksAPI) {
   }
 
 var complianceCheck = function(){
-
   console.log("complianceCheck start");
   const upcList = vpGetResults("ingest.A3");
 
@@ -73,6 +72,7 @@ var complianceCheck = function(){
 
     if(!skuList[theupc].checkFacingsCompliance(exp_facings)){
       console.log("Facings are not compliant");
+      addToMatrix("Q5.C4",skuList[theupc]);
     }
 
 
@@ -80,10 +80,18 @@ var complianceCheck = function(){
     console.log("Result Compliance: ",skuList[theupc].facingCompliance);
 
   }
-  //const exp_facings = vpGetResults("ingest.A5");
-  //const exp_facings = vpGetResults("ingest.A6");
-
 }
+
+
+
+var addToMatrix = function(question,idColumn,sku){
+  var nextSlot = vpGetResults(question+"."+idColumn).length+1;
+
+  vpSetResults(question+".A"+nextSlot+"."+idColumn,sku.upc);
+} 
+
+
+
 
 var createReport = function(){
 
