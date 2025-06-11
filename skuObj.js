@@ -29,12 +29,15 @@ class skuObj {
     
   }
 
-  htmlTile(title,subtitle,description,mainNumber,dataTable,barcode){
+  htmlTile(title,subtitle,description,result,target,dataTable,barcode){
     let HTMLOutput = "";
 
     let titleHTML = title ? "<h1>"+title+"</h1>" : ""; 
     let subtitleHTML = title ? "<h2>"+subtitle+"</h2>" : ""; 
-    let descHTML = title ? "<p>"+description+"</p>" : ""; 
+    let descHTML = title ? "<p class='description'>"+description+"</p>" : ""; 
+    let numberHTML = title ? "<div class='result'>"+result+"</div>" : ""; 
+    let targetHTML = title ? "<div class='target'>"+target+"</div>" : ""; 
+    let resultHTML = "<div class='result'>"+numberHTML+targetHTML"</div>"
     let tableHTML = "<table>"
 
     for(let i in dataTable){
@@ -44,7 +47,11 @@ class skuObj {
 
     tableHTML = tableHTML+"</table>";
 
-    HTMLOutput = titleHTML+subtitleHTML+descHTML+tableHTML;
+    if(barcode){
+      let barcodeHTML = "<img class='barcode' id='barcode"+this.upc+"' scr='' />";
+    }
+
+    HTMLOutput = titleHTML+subtitleHTML+descHTML+resultHTML+tableHTML;
 
     console.log(HTMLOutput);
     return HTMLOutput;
