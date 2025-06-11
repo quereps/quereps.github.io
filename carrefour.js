@@ -116,9 +116,6 @@ var createReport = function(){
 }
 
 
-var createOOSMatrix = function{
-
-}
 
 
  var init = async function (settings) {
