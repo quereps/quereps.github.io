@@ -35,6 +35,7 @@ class skuObj {
     let titleHTML = title ? "<h1>"+title+"</h1>" : ""; 
     let descHTML = title ? "<h1>"+description+"</h1>" : ""; 
 
+    console.log(HTMLOutput);
     return HTMLOutput;
   }
 
