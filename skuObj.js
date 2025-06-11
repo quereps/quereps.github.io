@@ -35,9 +35,13 @@ class skuObj {
     let titleHTML = title ? "<h1>"+title+"</h1>" : ""; 
     let subtitleHTML = title ? "<h2>"+subtitle+"</h2>" : ""; 
     let descHTML = title ? "<p class='description'>"+description+"</p>" : ""; 
-    let numberHTML = title ? "<div class='result'>"+result+"</div>" : ""; 
-    let targetHTML = title ? "<div class='target'>"+target+"</div>" : ""; 
-    let resultHTML = "<div class='result'>"+numberHTML+targetHTML+"</div>"
+    let numberHTML = result ? "<div class='result'>"+result+"</div>" : ""; 
+    let targetHTML = target ? "<div class='target'>"+target+"</div>" : ""; 
+    let low = target/100*20;
+    let high = target/100*80;
+
+    let gaugeHTML = result && target ? "<meter value="+result+" min='0' max="+target+" low="+low+" high="+high+" optimum="+target+"></meter>" : ""; 
+    let resultHTML = "<div class='result'>"+numberHTML+targetHTML+gaugeHTML+"</div>"
     let tableHTML = "<table>"
 
     for(let i in dataTable){
