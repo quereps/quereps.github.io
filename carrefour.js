@@ -88,9 +88,8 @@ var addToMatrix = function(question,upcColumn,dmIDColumn,sku){
   var nextSlot = vpGetResults(question+"."+upcColumn).length+1;
   var placeID = vpGetTextResults("PlaceID");
 
-
   vpSetResults(question+".A"+nextSlot+"."+upcColumn,sku.upc);
-  vpSetResults(question+".A"+nextSlot+"."+dmIDColumn,placeID+sku.upc);
+  vpSetResults(question+".A"+nextSlot+"."+dmIDColumn,placeID+"_"+sku.upc);
 
   const labelElm = jQuery(".aDivQId_"+question+" div#SKULabel"+nextSlot);
 
