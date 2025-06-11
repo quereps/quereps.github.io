@@ -135,6 +135,12 @@ var createReport = function(){
 
  var init = async function (settings) {
 
+
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = "https://quereps.github.io/design.css"; // Replace with your actual file path
+  document.head.appendChild(link);
+
   console.log("iniiiiit");
 
    companyID = settings.companyID;
