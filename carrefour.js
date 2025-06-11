@@ -91,7 +91,7 @@ var addToMatrix = function(question,idColumn,sku){
 
   const labelElm = jQuery(".aDivQId_"+question+" div#SKULabel"+nextSlot);
 
-  const dataTable = [classification,subclassification,size];
+  const dataTable = ["classification","subclassification","size"];
 
   jQuery(labelElm).append(sku.htmlTile(sku.upc,sku.name,sku.facings,dataTable,true));
 
