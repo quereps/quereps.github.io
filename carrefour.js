@@ -70,14 +70,16 @@ var complianceCheck = function(){
 
     console.log(theupc,exp_facings,exp_price);
 
-    if(!skuList[theupc].checkFacingsCompliance(exp_facings)){
-      console.log("Facings are not compliant");
+    skuList[theupc].checkFacingsCompliance(exp_facings);
+
+    if(!skuList[theupc].facingCompliance){
+      console.log("Facings are not compliant",skuList[theupc].facingCompliance);
       addToMatrix("oosMatrix","C4","C5",skuList[theupc]);
     }
 
 
     skuList[theupc].checkPricingCompliance(exp_price);
-    console.log("Result Compliance: ",skuList[theupc].facingCompliance);
+    console.log("Result Compliance: ",skuList[theupc].pricingCompliance);
 
   }
 }
