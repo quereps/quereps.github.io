@@ -72,7 +72,7 @@ var complianceCheck = function(){
 
     if(!skuList[theupc].checkFacingsCompliance(exp_facings)){
       console.log("Facings are not compliant");
-      addToMatrix("oosMatrix","C4",skuList[theupc]);
+      addToMatrix("oosMatrix","C4","C5",skuList[theupc]);
     }
 
 
@@ -84,10 +84,13 @@ var complianceCheck = function(){
 
 
 
-var addToMatrix = function(question,idColumn,sku){
-  var nextSlot = vpGetResults(question+"."+idColumn).length+1;
+var addToMatrix = function(question,upcColumn,dmIDColumn,sku){
+  var nextSlot = vpGetResults(question+"."+upcColumn).length+1;
+  var placeID = vpGetTextResults("PlaceID");
 
-  vpSetResults(question+".A"+nextSlot+"."+idColumn,sku.upc);
+
+  vpSetResults(question+".A"+nextSlot+"."+upcColumn,sku.upc);
+  vpSetResults(question+".A"+nextSlot+"."+dmIDColumn,placeID+sku.upc);
 
   const labelElm = jQuery(".aDivQId_"+question+" div#SKULabel"+nextSlot);
 
