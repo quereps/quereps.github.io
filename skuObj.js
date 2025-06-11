@@ -71,6 +71,7 @@ class skuObj {
   }
 
   checkFacingsCompliance(exp){
+    this.expFacings = exp;
     if(this.facings == exp){
       this.facingCompliance = true;
     }
@@ -80,6 +81,7 @@ class skuObj {
   }
 
     checkPricingCompliance(exp){
+      this.expPricing = exp;
       if(this.prices[0] == exp){
         this.pricingCompliance = true;
         return true;
