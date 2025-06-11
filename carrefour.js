@@ -72,7 +72,7 @@ var complianceCheck = function(){
 
     if(!skuList[theupc].checkFacingsCompliance(exp_facings)){
       console.log("Facings are not compliant");
-      addToMatrix("Q5","C4",skuList[theupc]);
+      addToMatrix("oosMatrix","C4",skuList[theupc]);
     }
 
 
@@ -88,6 +88,11 @@ var addToMatrix = function(question,idColumn,sku){
   var nextSlot = vpGetResults(question+"."+idColumn).length+1;
 
   vpSetResults(question+".A"+nextSlot+"."+idColumn,sku.upc);
+
+  const labelElm = jQuery(".aDivQId_"+question+" #SKULabel"+nextSlot);
+
+  jQuery(labelElm).append(sku.name);
+
 } 
 
 
