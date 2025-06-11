@@ -76,9 +76,8 @@ class skuObj {
 
   checkFacingsCompliance(exp){
 
-
-
-    console.log(this.facings,"______",exp);
+    console.log("facings:", this.facings, typeof this.facings);
+    console.log("exp:", exp, typeof exp);
 
     this.expFacings = Number(exp);
     if(Number(this.facings) === Number(exp)){
