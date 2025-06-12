@@ -29,11 +29,12 @@ class skuObj {
     
   }
 
-  htmlTile(title,subtitle,description,result,target,dataTable,barcode){
+  htmlTile(title,subtitle,colored,description,result,target,dataTable,barcode){
     let HTMLOutput = "";
 
     let titleHTML = title ? "<h1>"+title+"</h1>" : ""; 
     let subtitleHTML = title ? "<h2>"+subtitle+"</h2>" : ""; 
+    let coloredHTML = title ? "<div class='colored'>"+colored+"</div>" : ""; 
     let descHTML = title ? "<p class='description'>"+description+"</p>" : ""; 
     let numberHTML = result ? "<div class='result'>"+result+"</div>" : ""; 
     let targetHTML = target ? "<div class='target'>"+target+"</div>" : ""; 
@@ -55,7 +56,7 @@ class skuObj {
       let barcodeHTML = "<img class='barcode' id='barcode"+this.upc+"' scr='' />";
     }
 
-    HTMLOutput = titleHTML+subtitleHTML+descHTML+resultHTML+tableHTML;
+    HTMLOutput = titleHTML+subtitleHTML+coloredHTML+descHTML+resultHTML+tableHTML;
 
     console.log(HTMLOutput);
     return HTMLOutput;

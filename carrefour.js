@@ -98,7 +98,7 @@ var addToMatrix = function(question,upcColumn,dmIDColumn,sku){
   const dataTable = ["classification","subclassification","size"];
 
   jQuery(labelElm).empty();
-  jQuery(labelElm).append(sku.htmlTile(sku.name,sku.upc,sku.supplier,sku.facings,sku.expFacings,dataTable,true));
+  jQuery(labelElm).append(sku.htmlTile(sku.name,null,sku.upc,sku.supplier,sku.facings,sku.expFacings,dataTable,true));
 
 } 
 
