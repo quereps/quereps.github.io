@@ -42,7 +42,7 @@ class skuObj {
     let high = target/100*80;
 
     let gaugeHTML = result && target ? "<meter value="+result+" min='0' max="+target+" low="+low+" high="+high+" optimum="+target+"></meter>" : ""; 
-    let resultHTML = "<div class='resultContainer'>"+numberHTML+targetHTML+gaugeHTML+"</div>"
+    let resultHTML = "<div class='resultContainer'>"+numberHTML+gaugeHTML+targetHTML+"</div>"
     let tableHTML = "<table>"
 
     for(let i in dataTable){
