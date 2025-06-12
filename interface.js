@@ -262,6 +262,7 @@ var POG = function(category,destination){
     let targetHTML = target ? "<div class='target'>"+target+"</div>" : ""; 
     let low = target/100*20;
     let high = target/100*80;
+    let barcodeHTML = barcode ? "<img class='barcode' id='barcode"+barcode+"' scr='' />" : "";
 
     let gaugeHTML = result && target ? "<meter value="+result+" min='0' max="+target+" low="+low+" high="+high+" optimum="+target+"></meter>" : ""; 
     let resultHTML = "<div class='resultContainer'>"+numberHTML+gaugeHTML+targetHTML+"</div>"
@@ -277,10 +278,6 @@ var POG = function(category,destination){
     
 
     tableHTML = tableHTML+"</table>";
-
-    if(barcode){
-      let barcodeHTML = "<img class='barcode' id='barcode"+barcode+"' scr='' />";
-    }
 
     HTMLOutput = "<div id='"+barcode+"'>"+titleHTML+subtitleHTML+coloredHTML+descHTML+barcodeHTML+resultHTML+tableHTML+"</div>";
 
