@@ -222,9 +222,9 @@ var createReport = function(){
             selectAllMOL("ingest").then((a)=>{
               complianceCheck();
             });
-            selectAllMOL("ingest_1").then((a)=>{
+            //selectAllMOL("ingest_1").then((a)=>{
               //complianceCheck();
-            });
+            //});
 
           }, 2000);
   }
