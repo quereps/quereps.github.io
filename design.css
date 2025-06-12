@@ -101,6 +101,7 @@
   grid-area: result;
   text-align: center;
   font-weight: normal;
+  height: 1em;
 } 
 
 .SKULabel table{
