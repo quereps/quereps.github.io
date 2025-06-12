@@ -81,7 +81,7 @@ var complianceCheck = function(){
 }
 
 var fillInData = function(question,nextSlot,data){
-  vpSetResults(question+".A"+nextSlot,sku.upc);
+  vpSetResults(question+".A"+nextSlot,data);
 }
 
 var addTile = function(container,id,sku){
