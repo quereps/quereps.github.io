@@ -29,6 +29,7 @@
     overflow: hidden !important;
     box-shadow: var(--box-shadow);
     font-size: 0.9em;
+    container-type: inline-size;
 }
 
 
@@ -74,10 +75,10 @@
 
 .SKULabel{
   display:grid;
-  grid-template-columns:auto 200px 200px;
+  grid-template-columns: auto 150px 200px;
   column-gap:1em;
   row-gap:0.5em;
-  grid-template-areas: 
+  grid-template-areas:
     "title barcode result"
     "supplier supplier supplier"
     "table . .";
@@ -98,7 +99,7 @@
   background:var(--bkhighlight-color);
   border-radius:var(--border-radius);
   padding:var(--padding);
-  grid-area: result;
+  grid-area: barcode;
   text-align: center;
   font-weight: normal;
   height: 1em;
@@ -119,6 +120,7 @@
   /* width:10%; */
   display:flex;
   flex-wrap:wrap;
+  grid-area: result;
 }
 
 .SKULabel .resultContainer .result{
@@ -136,8 +138,9 @@
 }
 
 .SKULabel .resultContainer meter{
-  flex-grow:1;
+  /* flex-grow:1; */
   height:30px;
+  width: 100%;
 }
 
 /* Inside it, a child element */
@@ -146,9 +149,20 @@ h1 {
 }
 
 /* Style the .card based on container's width */
-@container (min-width: 400px) {
-  h1 {
-    font-size: 1.5rem;
-    color:var(--main-color);
+@container (max-width: 800px) {
+  .SKULabel{
+    grid-template-columns: auto auto auto;
+    grid-template-areas:
+      "title title title"
+      "barcode . ."
+      "result . ."
+      "table . .";
+  }
+
+  .SKULabel table{
+    display:none;
+  }
+  .SKULabel p{
+    display:none;
   }
 }
