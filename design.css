@@ -49,6 +49,11 @@
   width:1%;
 }
 
+.aDivtypeMatrix3D .Column3,
+.aDivtypeMatrix3D .Column4{
+    display:none;
+}
+
 .aDivtypeMatrix3D input[type="text"],
 .aDivtypeMatrix3D input[type="tel"]{
   min-width:170px;
