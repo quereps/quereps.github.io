@@ -33,9 +33,9 @@ class skuObj {
     let HTMLOutput = "";
 
     let titleHTML = title ? "<h1>"+title+"</h1>" : ""; 
-    let subtitleHTML = title ? "<h2>"+subtitle+"</h2>" : ""; 
-    let coloredHTML = title ? "<div class='colored'>"+colored+"</div>" : ""; 
-    let descHTML = title ? "<p class='description'>"+description+"</p>" : ""; 
+    let subtitleHTML = subtitle ? "<h2>"+subtitle+"</h2>" : ""; 
+    let coloredHTML = colored ? "<div class='colored'>"+colored+"</div>" : ""; 
+    let descHTML = description ? "<p class='description'>"+description+"</p>" : ""; 
     let numberHTML = result ? "<div class='result'>"+result+"</div>" : ""; 
     let targetHTML = target ? "<div class='target'>"+target+"</div>" : ""; 
     let low = target/100*20;
