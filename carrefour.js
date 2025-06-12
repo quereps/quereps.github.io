@@ -69,6 +69,7 @@ var complianceCheck = function(){
 
       fillInData("fc_ids",faceCompID,placeID+"_"+skuList[theupc].upc);
       addTile("facingCompliance-container",faceCompID,skuList[theupc]);
+      addCheckbox("facingCompliance-container #"+skuList[theupc]);
       faceCompID++;
     }
 
