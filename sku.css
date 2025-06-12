@@ -63,34 +63,6 @@
   container-type: inline-size; /* or size */
 }
 
-.SKULabel{
-  display:flex;
-  flex-wrap:wrap;
-}
-
-.SKULabel table{
-  width:100%;
-  color:var(--details-color);
-  font-weight:normal;
-  text-align:center;
-}
-
-.SKULabel table th{
-   font-weight:normal;
-}
-
-.SKULabel .resultContainer{
-  background:red;
-  width:100%;
-  display:flex;
-}
-
-.SKULabel .result meter{
-  flex-grow:1;
-  height:30px;
-  width:100%;
-}
-
 /* Inside it, a child element */
 h1 {
   font-size: var(--font-size);
