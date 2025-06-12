@@ -32,6 +32,11 @@
     font-size: 0.9em;
 }
 
+
+.aDivtypeMatrix3D .scrollableTableFixedThead{
+    display:none;
+}
+
 .aDivtypeMatrix3D .tblAnswer thead tr{
     background: none;
 }
