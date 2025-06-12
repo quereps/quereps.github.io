@@ -1,4 +1,19 @@
-/*test*/
+
+:root {
+  --main-color: #10529c; /* blue */
+  --secondary-color: #1f1f68; /* purple */
+  --highlight-color: #d60d12; /* red */
+  --details-color:#9e9e9e; /* grey */
+  --bkhighlight-color:#feed00; /* yellow */
+
+  --padding: 16px;
+  --paddingY: 6px;
+  --font-size: 16px;
+
+  --border-radius:8px;
+}
+
+
 
 h1 {
     color: red;
@@ -14,13 +29,13 @@ h1 {
 
 /* Inside it, a child element */
 h1 {
-  font-size: 1rem;
+  font-size: var(--font-size);
 }
 
 /* Style the .card based on container's width */
 @container (min-width: 400px) {
   h1 {
     font-size: 1.5rem;
-    color:blue;
+    color:var(--main-color);
   }
 }
