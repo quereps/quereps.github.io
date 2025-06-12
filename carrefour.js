@@ -47,6 +47,10 @@ var APIModule = (function ($, ksAPI) {
   }
 
 var complianceCheck = function(){
+
+  var placeID = vpGetTextResults("PlaceID");
+
+  let faceCompID = 1;
   console.log("complianceCheck start");
   const upcList = vpGetResults("ingest.A3");
 
@@ -62,7 +66,11 @@ var complianceCheck = function(){
 
     if(!skuList[theupc].facingCompliance){
       console.log("Facings are not compliant",skuList[theupc].facingCompliance);
-      addToMatrix("inStockMatrix","C4","C5",skuList[theupc]);
+
+      fillInData(fc_ids,faceCompID,placeID+"_"+skuList[theupc].upc);
+      //addToMatrix("inStockMatrix","C4","C5",skuList[theupc]);
+      //addTile("",faceCompID,"facingCompliance-container",faceCompID,skuList[theupc]);
+      faceCompID++;
     }
 
 
@@ -71,6 +79,26 @@ var complianceCheck = function(){
 
   }
 }
+
+var fillInData = function(question,nextSlot,data){
+  vpSetResults(question+".A"+nextSlot,sku.upc);
+}
+
+var addTile = function(container,id,sku){
+
+  
+
+  
+  vpSetResults(question+".A"+nextSlot+"."+dmIDColumn,placeID+"_"+sku.upc);
+
+  const labelElm = jQuery(".aDivQId_"+question+" div#SKULabel"+nextSlot);
+
+  const dataTable = ["classification","subclassification","size"];
+
+  jQuery(labelElm).empty();
+  jQuery(labelElm).append(sku.htmlTile(sku.name,null,sku.upc,sku.supplier,sku.facings,sku.expFacings,dataTable,true));
+
+} 
 
 
 
