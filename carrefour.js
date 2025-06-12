@@ -68,8 +68,7 @@ var complianceCheck = function(){
       console.log("Facings are not compliant",skuList[theupc].facingCompliance);
 
       fillInData("fc_ids",faceCompID,placeID+"_"+skuList[theupc].upc);
-      //addToMatrix("inStockMatrix","C4","C5",skuList[theupc]);
-      //addTile("",faceCompID,"facingCompliance-container",faceCompID,skuList[theupc]);
+      addTile("facingCompliance-container",faceCompID,skuList[theupc]);
       faceCompID++;
     }
 
@@ -85,19 +84,7 @@ var fillInData = function(question,nextSlot,data){
 }
 
 var addTile = function(container,id,sku){
-
-  
-
-  
-  vpSetResults(question+".A"+nextSlot+"."+dmIDColumn,placeID+"_"+sku.upc);
-
-  const labelElm = jQuery(".aDivQId_"+question+" div#SKULabel"+nextSlot);
-
-  const dataTable = ["classification","subclassification","size"];
-
-  jQuery(labelElm).empty();
-  jQuery(labelElm).append(sku.htmlTile(sku.name,null,sku.upc,sku.supplier,sku.facings,sku.expFacings,dataTable,true));
-
+  jQuery("#"+container).append(sku.htmlTile(sku.name,null,sku.upc,sku.supplier,sku.facings,sku.expFacings,dataTable,true));
 } 
 
 
