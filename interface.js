@@ -288,5 +288,5 @@ var POG = function(category,destination){
 
 
 function addCheckbox(elm){
-  jQuery('#'+elm).append('<label onclick="console.log(''test'')">Restocked</label>');
+  jQuery('#'+elm).append('<label onclick="vpSetResults(\'fc_restocked.A1\')">Restocked</label>');
 }
