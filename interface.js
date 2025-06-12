@@ -251,7 +251,7 @@ var POG = function(category,destination){
 
 
 
-  function htmlTile(title,subtitle,colored,description,result,target,dataTable,barcode){
+   function htmlTile(title,subtitle,colored,description,result,target,dataTable,barcode){
     let HTMLOutput = "";
 
     let titleHTML = title ? "<h1>"+title+"</h1>" : ""; 
