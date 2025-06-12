@@ -282,7 +282,7 @@ var POG = function(category,destination){
       let barcodeHTML = "<img class='barcode' id='barcode"+barcode+"' scr='' />";
     }
 
-    HTMLOutput = "<div>"+titleHTML+subtitleHTML+coloredHTML+descHTML+resultHTML+tableHTML+"</div>";
+    HTMLOutput = "<div id='"+barcode+"'>"+titleHTML+subtitleHTML+coloredHTML+descHTML+barcodeHTML+resultHTML+tableHTML+"</div>";
 
     console.log(HTMLOutput);
     return HTMLOutput;
