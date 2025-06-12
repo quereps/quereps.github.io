@@ -279,7 +279,7 @@ var POG = function(category,destination){
 
     tableHTML = tableHTML+"</table>";
 
-    HTMLOutput = "<div id='"+barcode+"'>"+titleHTML+subtitleHTML+coloredHTML+descHTML+barcodeHTML+resultHTML+tableHTML+"</div>";
+    HTMLOutput = "<div id='fc"+barcode+"'>"+titleHTML+subtitleHTML+coloredHTML+descHTML+barcodeHTML+resultHTML+tableHTML+"</div>";
 
     console.log(HTMLOutput);
     return HTMLOutput;
