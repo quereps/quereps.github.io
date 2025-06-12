@@ -44,18 +44,6 @@ var APIModule = (function ($, ksAPI) {
 
     }    
 
-
-  /*  vpSetResults("upcs",arrayToPipe(Object.keys(skuList)));
-
-    setTimeout(()=>{
-      selectAllMOL("ingest").then((a)=>{
-        console.log(a);
-      });
-
-    }, 2000);
-*/
-    
-
   }
 
 var complianceCheck = function(){
@@ -74,7 +62,7 @@ var complianceCheck = function(){
 
     if(!skuList[theupc].facingCompliance){
       console.log("Facings are not compliant",skuList[theupc].facingCompliance);
-      addToMatrix("oosMatrix","C4","C5",skuList[theupc]);
+      addToMatrix("inStockMatrix","C4","C5",skuList[theupc]);
     }
 
 
@@ -228,10 +216,14 @@ var createReport = function(){
 
   var update = async function () {
 
+            vpResetResults("inStockMatrix");
             vpResetResults("oosMatrix");
             setTimeout(()=>{
             selectAllMOL("ingest").then((a)=>{
               complianceCheck();
+            });
+            selectAllMOL("ingest_1").then((a)=>{
+              //complianceCheck();
             });
 
           }, 2000);
