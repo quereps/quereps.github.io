@@ -67,7 +67,7 @@ var complianceCheck = function(){
     if(!skuList[theupc].facingCompliance){
       console.log("Facings are not compliant",skuList[theupc].facingCompliance);
 
-      fillInData(fc_ids,faceCompID,placeID+"_"+skuList[theupc].upc);
+      fillInData("fc_ids",faceCompID,placeID+"_"+skuList[theupc].upc);
       //addToMatrix("inStockMatrix","C4","C5",skuList[theupc]);
       //addTile("",faceCompID,"facingCompliance-container",faceCompID,skuList[theupc]);
       faceCompID++;
