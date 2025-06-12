@@ -85,7 +85,7 @@ var fillInData = function(question,nextSlot,data){
 
 var addTile = function(container,id,sku){
   const dataTable = ["size","classification","subclassification"];
-  jQuery("#"+container).append(sku.htmlTile(sku.name,null,sku.upc,sku.supplier,sku.facings,sku.expFacings,dataTable,true));
+  jQuery("#"+container).append(htmlTile(sku.name,null,sku.upc,sku.supplier,sku.facings,sku.expFacings,dataTable,sku.upc));
 } 
 
 
