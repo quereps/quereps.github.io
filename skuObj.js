@@ -29,39 +29,6 @@ class skuObj {
     
   }
 
-  htmlTile(title,subtitle,colored,description,result,target,dataTable,barcode){
-    let HTMLOutput = "";
-
-    let titleHTML = title ? "<h1>"+title+"</h1>" : ""; 
-    let subtitleHTML = subtitle ? "<h2>"+subtitle+"</h2>" : ""; 
-    let coloredHTML = colored ? "<div class='colored'>"+colored+"</div>" : ""; 
-    let descHTML = description ? "<p class='description'>"+description+"</p>" : ""; 
-    let numberHTML = result ? "<div class='result'>"+result+"</div>" : ""; 
-    let targetHTML = target ? "<div class='target'>"+target+"</div>" : ""; 
-    let low = target/100*20;
-    let high = target/100*80;
-
-    let gaugeHTML = result && target ? "<meter value="+result+" min='0' max="+target+" low="+low+" high="+high+" optimum="+target+"></meter>" : ""; 
-    let resultHTML = "<div class='resultContainer'>"+numberHTML+gaugeHTML+targetHTML+"</div>"
-    let tableHTML = "<table>"
-
-    for(let i in dataTable){
-        let item = dataTable[i];
-        tableHTML=tableHTML+"<tr><th>"+item+"</th><td>"+this[dataTable[i]]+"</td></tr>";
-    }
-
-    tableHTML = tableHTML+"</table>";
-
-    if(barcode){
-      let barcodeHTML = "<img class='barcode' id='barcode"+this.upc+"' scr='' />";
-    }
-
-    HTMLOutput = titleHTML+subtitleHTML+coloredHTML+descHTML+resultHTML+tableHTML;
-
-    console.log(HTMLOutput);
-    return HTMLOutput;
-  }
-
   addFacing(IRData){
     if(IRData){
       this.facings++;
@@ -137,5 +104,4 @@ barcode() {
   });
 }
 
-    
-  }
+}
