@@ -80,8 +80,8 @@ var complianceCheck = function(){
     if(!skuList[theupc].pricingCompliance){
       console.log("Pricing are not compliant",skuList[theupc].pricingCompliance);
 
-      fillInData("fp_ids",priceCompID,placeID+"_"+skuList[theupc].upc);
-      addPricingTile("fp_replaced.A"+priceCompID,priceCompID,skuList[theupc]);
+      fillInData("pc_ids",priceCompID,placeID+"_"+skuList[theupc].upc);
+      addPricingTile("pc_replaced.A"+priceCompID,priceCompID,skuList[theupc]);
       //addCheckbox("priceCompliance-container #fc"+skuList[theupc].upc,"fp_replaced",priceCompID);
       priceCompID++;
     }
