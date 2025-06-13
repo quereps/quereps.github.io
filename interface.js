@@ -262,22 +262,22 @@ var POG = function(category,destination){
         },
         table = [],
         result:{
-          expected = "",
-          actual = "",
+          expected = 0,
+          actual = 0,
         },
         barcode = ""
       }){
     let HTMLOutput = "";
 
-    let titleHTML = data.title ? "<h1>"+data.title+"</h1>" : ""; 
-    let subtitleHTML = data.subtitle ? "<h2>"+data.subtitle+"</h2>" : ""; 
-    let coloredHTML = colored ? "<div class='colored'>"+colored+"</div>" : ""; 
-    let descHTML = data.description ? "<p class='description'>"+data.description+"</p>" : ""; 
-    let numberHTML = result.actual ? "<div class='result'>"+result+"</div>" : ""; 
-    let targetHTML = result.expected ? "<div class='target'>"+target+"</div>" : ""; 
-    let low = result.expected/100*20;
-    let high = result.expected/100*80;
-    let barcodeHTML = barcode ? "<img class='barcode' id='barcode"+barcode+"' scr='' />" : "";
+    let titleHTML = title ? "<h1>"+title+"</h1>" : ""; 
+    let subtitleHTML = subtitle ? "<h2>"+subtitle+"</h2>" : ""; 
+    let coloredHTML = number ? "<div class='colored'>"+number+"</div>" : ""; 
+    let descHTML = description ? "<p class='description'>"+description+"</p>" : ""; 
+    let numberHTML = actual ? "<div class='result'>"+actual+"</div>" : ""; 
+    let targetHTML = expected ? "<div class='target'>"+expected+"</div>" : ""; 
+    let low = expected/100*20;
+    let high = expected/100*80;
+    let barcodeHTML = barcode ? "<img class='barcode' id='barcode"+barcode+"' src='' />" : "";
 
     let gaugeHTML = actual && expected ? "<meter value="+result.actual+" min='0' max="+result.expected+" low="+low+" high="+high+" optimum="+target+"></meter>" : ""; 
     let resultHTML = "<div class='resultContainer'>"+numberHTML+gaugeHTML+targetHTML+"</div>"
