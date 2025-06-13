@@ -287,6 +287,15 @@ var POG = function(category,destination){
 
 
 
-function addCheckbox(elm){
-  jQuery('#'+elm).append('<label onclick="vpSetResults(\'fc_restocked.A1\')">Restocked</label>');
+function addCheckbox(elm,num){
+  jQuery('#'+elm).append('<label onclick="toggleCheckbox(\'fc_restocked.A'+num+'\')">Restocked</label>');
+}
+
+function toggleCheckbox(a){
+  if(vpGetResults(a) && vpGetResults(a).length==0){
+    vpSetResults(a);
+  }
+  else{
+      vpResetResults(a);
+  }
 }

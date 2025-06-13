@@ -69,7 +69,7 @@ var complianceCheck = function(){
 
       fillInData("fc_ids",faceCompID,placeID+"_"+skuList[theupc].upc);
       addTile("facingCompliance-container",faceCompID,skuList[theupc]);
-      addCheckbox("facingCompliance-container #fc"+skuList[theupc].upc);
+      addCheckbox("facingCompliance-container #fc"+skuList[theupc].upc,faceCompID);
       faceCompID++;
     }
 
@@ -91,7 +91,7 @@ var addTile = function(container,id,sku){
 
 
 
-var addToMatrix = function(question,upcColumn,dmIDColumn,sku){
+/*var addToMatrix = function(question,upcColumn,dmIDColumn,sku){
   var nextSlot = vpGetResults(question+"."+upcColumn).length+1;
   var placeID = vpGetTextResults("PlaceID");
 
@@ -106,7 +106,7 @@ var addToMatrix = function(question,upcColumn,dmIDColumn,sku){
   jQuery(labelElm).append(sku.htmlTile(sku.name,null,sku.upc,sku.supplier,sku.facings,sku.expFacings,dataTable,true));
 
 } 
-
+*/
 
 
 
