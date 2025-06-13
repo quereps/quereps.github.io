@@ -51,6 +51,7 @@ var complianceCheck = function(){
   var placeID = vpGetTextResults("PlaceID");
 
   let faceCompID = 1;
+  let priceCompID = 1;
   console.log("complianceCheck start");
   const upcList = vpGetResults("ingest.A3");
 
@@ -75,6 +76,17 @@ var complianceCheck = function(){
 
 
     skuList[theupc].checkPricingCompliance(exp_price);
+
+    if(!skuList[theupc].pricingCompliance){
+      console.log("Pricing are not compliant",skuList[theupc].pricingCompliance);
+
+      fillInData("fp_ids",priceCompID,placeID+"_"+skuList[theupc].upc);
+      addTile("priceCompliance-container",priceCompID,skuList[theupc]);
+      addCheckbox("priceCompliance-container #fc"+skuList[theupc].upc,"fp_replaced",priceCompID);
+      priceCompID++;
+    }
+
+
     console.log("Result Compliance: ",skuList[theupc].pricingCompliance);
 
   }
