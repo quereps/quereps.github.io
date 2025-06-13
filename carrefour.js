@@ -100,13 +100,13 @@ var addFacingTile = function(destination,id,sku){
 
   let container = vpGetLabel(destination);
   const dataTable = ["size","classification","subclassification"];
-  jQuery("#"+container).append(htmlTile(sku.name,null,sku.upc,sku.supplier,sku.facings,sku.expFacings,dataTable,sku.upc));
+  jQuery(container).append(htmlTile(sku.name,null,sku.upc,sku.supplier,sku.facings,sku.expFacings,dataTable,sku.upc));
 } 
 
 var addPricingTile = function(destination,id,sku){
   let container = vpGetLabel(destination);
   const dataTable = ["size","classification","subclassification"];
-  jQuery("#"+container).append(htmlTile(sku.name,null,sku.upc,sku.supplier,sku.prices,sku.expPricing,dataTable,sku.upc));
+  jQuery(container).append(htmlTile(sku.name,null,sku.upc,sku.supplier,sku.prices,sku.expPricing,dataTable,sku.upc));
 } 
 
 
