@@ -288,7 +288,10 @@ var POG = function(category,destination){
 
 
 function addCheckbox(elm,checkboxQuestion,num){
-  jQuery('.aDivQId_'+checkboxQuestion+' tr.mobileFriendControl[class*="_A'+num+'"] .H3').appendTo('#'+elm);
+  let checkBoxToMove = vpGetElement(checkboxQuestion+".A"+num);
+  //jQuery('.aDivQId_'+checkboxQuestion+' tr.mobileFriendControl[class*="_A'+num+'"] .H3').appendTo('#'+elm);
+  jQuery(checkBoxToMove).appendTo('#'+elm);
+
 }
 
 function toggleCheckbox(a){
