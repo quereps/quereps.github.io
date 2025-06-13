@@ -287,8 +287,8 @@ var POG = function(category,destination){
 
 
 
-function addCheckbox(elm,num){
-  jQuery('#'+elm).append('<label onclick="toggleCheckbox(\'fc_restocked.A'+num+'\')">Restocked</label>');
+function addCheckbox(elm,checkboxQuestion,num){
+  jQuery('.aDivQId_'+checkboxQuestion).appendTo('#'+elm);
 }
 
 function toggleCheckbox(a){
