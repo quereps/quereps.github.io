@@ -290,7 +290,7 @@ var POG = function(category,destination){
     if(table){
       for(let i in table){
           let item = table[i];
-          tableHTML=tableHTML+"<tr><th>"+item+"</th><td>"+this[table[i]]+"</td></tr>";
+          tableHTML=tableHTML+"<tr><th>"+item+"</th><td>"+object[table[i]]+"</td></tr>";
       }
 
     }
