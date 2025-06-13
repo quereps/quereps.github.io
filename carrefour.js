@@ -108,6 +108,7 @@ var addFacingTile = function(destination,id,sku){
         description: sku.supplier,
         number: sku.upc,
       },
+      table:["classification","subclassification","size"],
       result:{
         expected: sku.exp_facings,
         actual: sku.facings

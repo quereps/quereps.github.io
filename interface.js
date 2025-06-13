@@ -287,10 +287,10 @@ var POG = function(category,destination){
     let tableHTML = "<table>"
 
     if(table){
-        //for(let i in dataTable){
-       //   let item = dataTable[i];
-      //    tableHTML=tableHTML+"<tr><th>"+item+"</th><td>"+this[dataTable[i]]+"</td></tr>";
-      //}
+      for(let i in table){
+          let item = table[i];
+          tableHTML=tableHTML+"<tr><th>"+item+"</th><td>"+this[table[i]]+"</td></tr>";
+      }
 
     }
     
