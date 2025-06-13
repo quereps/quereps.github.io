@@ -274,8 +274,9 @@ var POG = function(category,destination){
     let coloredHTML = number ? "<div class='colored'>"+number+"</div>" : ""; 
     let descHTML = description ? "<p class='description'>"+description+"</p>" : ""; 
     let numberHTML = actual ? "<div class='result'>"+actual+"</div>" : ""; 
+    let targetHTML = "";
     if(expected){
-      let targetHTML = "<div class='target'>"+expected+"</div>"; 
+      targetHTML = "<div class='target'>"+expected+"</div>"; 
       let low = expected/100*20;
       let high = expected/100*80;
     }
