@@ -69,7 +69,7 @@ var complianceCheck = function(){
       console.log("Facings are not compliant",skuList[theupc].facingCompliance);
 
       fillInData("fc_ids",faceCompID,placeID+"_"+skuList[theupc].upc);
-      addTile("facingCompliance-container",faceCompID,skuList[theupc]);
+      addFacingTile("facingCompliance-container",faceCompID,skuList[theupc]);
       addCheckbox("facingCompliance-container #fc"+skuList[theupc].upc,"fc_restocked",faceCompID);
       faceCompID++;
     }
@@ -81,7 +81,7 @@ var complianceCheck = function(){
       console.log("Pricing are not compliant",skuList[theupc].pricingCompliance);
 
       fillInData("fp_ids",priceCompID,placeID+"_"+skuList[theupc].upc);
-      addTile("priceCompliance-container",priceCompID,skuList[theupc]);
+      addPricingTile("priceCompliance-container",priceCompID,skuList[theupc]);
       addCheckbox("priceCompliance-container #fc"+skuList[theupc].upc,"fp_replaced",priceCompID);
       priceCompID++;
     }
@@ -96,9 +96,14 @@ var fillInData = function(question,nextSlot,data){
   vpSetResults(question+".A"+nextSlot,data);
 }
 
-var addTile = function(container,id,sku){
+var addFacingTile = function(container,id,sku){
   const dataTable = ["size","classification","subclassification"];
   jQuery("#"+container).append(htmlTile(sku.name,null,sku.upc,sku.supplier,sku.facings,sku.expFacings,dataTable,sku.upc));
+} 
+
+var addPricingTile = function(container,id,sku){
+  const dataTable = ["size","classification","subclassification"];
+  jQuery("#"+container).append(htmlTile(sku.name,null,sku.upc,sku.supplier,sku.prices,sku.expPricing,dataTable,sku.upc));
 } 
 
 
