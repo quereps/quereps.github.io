@@ -279,7 +279,7 @@ var POG = function(category,destination){
 
     tableHTML = tableHTML+"</table>";
 
-    HTMLOutput = "<div id='fc"+barcode+"'>"+titleHTML+subtitleHTML+coloredHTML+descHTML+barcodeHTML+resultHTML+tableHTML+"</div>";
+    HTMLOutput = "<div claas='SKULabel' id='fc"+barcode+"'>"+titleHTML+subtitleHTML+coloredHTML+descHTML+barcodeHTML+resultHTML+tableHTML+"</div>";
 
     console.log(HTMLOutput);
     return HTMLOutput;
@@ -289,11 +289,13 @@ var POG = function(category,destination){
 
 function addCheckbox(elm,checkboxQuestion,num){
 
-  let QNum = vpFindQuestion(checkboxQuestion).prefix;
+  //let QNum = vpFindQuestion(checkboxQuestion).prefix;
   //let checkBoxToMove = vpGetElements(checkboxQuestion+".A"+num);
-  jQuery('.aDivQId_'+checkboxQuestion+' tr.mobileFriendControl.aDivQA_'+QNum+'_A'+num).appendTo('#'+elm);
+  //jQuery('.aDivQId_'+checkboxQuestion+' tr.mobileFriendControl.aDivQA_'+QNum+'_A'+num).appendTo('#'+elm);
   //jQuery(checkBoxToMove).appendTo('#'+elm);
 
+  let button = "<div class='restock'>Restocked</div>"
+  jQuery(button).appendTo('#'+elm);
 }
 
 function toggleCheckbox(a){
