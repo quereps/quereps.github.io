@@ -106,6 +106,7 @@ var addFacingTile = function(destination,id,sku){
         title: sku.name,
       }
 }));
+};
 
 var addPricingTile = function(destination,id,sku){
   let container = vpGetLabel(destination);
