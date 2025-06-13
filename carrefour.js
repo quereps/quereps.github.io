@@ -104,6 +104,10 @@ var addFacingTile = function(destination,id,sku){
     {
       data:{
         title: sku.name,
+      },
+      result:{
+        expected: sku.exp_facings,
+        actual: sku.facings
       }
 }));
 };
