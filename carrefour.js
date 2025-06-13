@@ -77,7 +77,7 @@ var complianceCheck = function(){
 
     skuList[theupc].checkPricingCompliance(exp_price);
 
-    if(!skuList[theupc].pricingCompliance){
+    if(skuList[theupc].pricingCompliance===false){
       console.log("Pricing are not compliant",skuList[theupc].pricingCompliance);
 
       fillInData("pc_ids",priceCompID,placeID+"_"+skuList[theupc].upc);
