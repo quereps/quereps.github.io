@@ -262,8 +262,8 @@ var POG = function(category,destination){
         },
         table = [],
         result = {
-          expected = "";
-          actual = "";
+          expected = "",
+          actual = "",
         },
         barcode = ""
       }){
