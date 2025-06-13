@@ -121,6 +121,21 @@ var addPricingTile = function(destination,id,sku){
   let container = vpGetLabel(destination);
   const dataTable = ["size","classification","subclassification"];
   //jQuery(container).append(htmlTile(sku.name,null,sku.upc,sku.supplier,sku.prices,sku.expPricing,dataTable,sku.upc));
+  jQuery(container).append(htmlTile(
+    {
+      object:sku,
+      data:{
+        title: sku.name,
+        subtitle: sku.category,
+        description: sku.supplier,
+        number: sku.upc,
+      },
+      table:["classification","subclassification","size"],
+      result:{
+        expected: sku.exp_price,
+        actual: sku.prices
+      }
+}));
 } 
 
 
