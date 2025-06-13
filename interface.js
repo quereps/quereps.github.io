@@ -261,7 +261,7 @@ var POG = function(category,destination){
           number = "",
         },
         table = [],
-        result = {
+        result:{
           expected = "",
           actual = "",
         },
