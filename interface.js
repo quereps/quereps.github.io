@@ -274,9 +274,11 @@ var POG = function(category,destination){
     let coloredHTML = number ? "<div class='colored'>"+number+"</div>" : ""; 
     let descHTML = description ? "<p class='description'>"+description+"</p>" : ""; 
     let numberHTML = actual ? "<div class='result'>"+actual+"</div>" : ""; 
-    let targetHTML = expected ? "<div class='target'>"+expected+"</div>" : ""; 
-    let low = expected/100*20;
-    let high = expected/100*80;
+    if(expected){
+      let targetHTML = "<div class='target'>"+expected+"</div>"; 
+      let low = expected/100*20;
+      let high = expected/100*80;
+    }
     let barcodeHTML = barcode ? "<img class='barcode' id='barcode"+barcode+"' src='' />" : "";
 
     let gaugeHTML = actual && expected ? "<meter value="+result.actual+" min='0' max="+result.expected+" low="+low+" high="+high+" optimum="+target+"></meter>" : ""; 
