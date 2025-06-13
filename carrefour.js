@@ -102,6 +102,7 @@ var addFacingTile = function(destination,id,sku){
   const dataTable = ["size","classification","subclassification"];
   jQuery(container).append(htmlTile(
     {
+      object:sku,
       data:{
         title: sku.name,
         subtitle: sku.category,

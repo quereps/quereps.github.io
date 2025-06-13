@@ -254,6 +254,7 @@ var POG = function(category,destination){
    //function htmlTile(title,subtitle,colored,description,result,target,dataTable,barcode){
     function htmlTile(
       {
+        object = {},
         data:{
           title = "",
           subtitle = "",
