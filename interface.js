@@ -252,24 +252,38 @@ var POG = function(category,destination){
 
 
    //function htmlTile(title,subtitle,colored,description,result,target,dataTable,barcode){
-    function htmlTile({title,subtitle,colored,description,result,target,dataTable,barcode}){
+    function htmlTile(
+      {
+        data:{
+          title = "",
+          subtitle = "",
+          description = "",
+          number = "",
+        },
+        table = [],
+        result = {
+          expected = "";
+          actual = "";
+        },
+        barcode = ""
+      }){
     let HTMLOutput = "";
 
-    let titleHTML = title ? "<h1>"+title+"</h1>" : ""; 
-    let subtitleHTML = subtitle ? "<h2>"+subtitle+"</h2>" : ""; 
+    let titleHTML = data.title ? "<h1>"+data.title+"</h1>" : ""; 
+    let subtitleHTML = data.subtitle ? "<h2>"+data.subtitle+"</h2>" : ""; 
     let coloredHTML = colored ? "<div class='colored'>"+colored+"</div>" : ""; 
-    let descHTML = description ? "<p class='description'>"+description+"</p>" : ""; 
-    let numberHTML = result ? "<div class='result'>"+result+"</div>" : ""; 
-    let targetHTML = target ? "<div class='target'>"+target+"</div>" : ""; 
-    let low = target/100*20;
-    let high = target/100*80;
+    let descHTML = data.description ? "<p class='description'>"+data.description+"</p>" : ""; 
+    let numberHTML = result.actual ? "<div class='result'>"+result+"</div>" : ""; 
+    let targetHTML = result.expected ? "<div class='target'>"+target+"</div>" : ""; 
+    let low = result.expected/100*20;
+    let high = result.expected/100*80;
     let barcodeHTML = barcode ? "<img class='barcode' id='barcode"+barcode+"' scr='' />" : "";
 
-    let gaugeHTML = result && target ? "<meter value="+result+" min='0' max="+target+" low="+low+" high="+high+" optimum="+target+"></meter>" : ""; 
+    let gaugeHTML = actual && expected ? "<meter value="+result.actual+" min='0' max="+result.expected+" low="+low+" high="+high+" optimum="+target+"></meter>" : ""; 
     let resultHTML = "<div class='resultContainer'>"+numberHTML+gaugeHTML+targetHTML+"</div>"
     let tableHTML = "<table>"
 
-    if(dataTable){
+    if(table){
         //for(let i in dataTable){
        //   let item = dataTable[i];
       //    tableHTML=tableHTML+"<tr><th>"+item+"</th><td>"+this[dataTable[i]]+"</td></tr>";
