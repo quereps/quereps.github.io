@@ -273,7 +273,7 @@ var createReport = function(){
     Run: function (settings) {
       init(settings);
     },
-    Update: function(settings{
+    Update: function(settings){
       update(settings);
     }
   }
