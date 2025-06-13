@@ -251,7 +251,7 @@ var createReport = function(){
 
  };
 
-  var update = async function () {
+  var update = async function (settings) {
 
             missionID = settings.missionID;
 
