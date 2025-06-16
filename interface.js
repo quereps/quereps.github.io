@@ -276,7 +276,7 @@ var POG = function(category,destination){
         high = expected * 0.8;
       }
 
-    const result = { expected = 0, actual = 0 } = result;
+    //const result = { expected = 0, actual = 0 } = result;
     let titleHTML = title ? "<h1>"+title+"</h1>" : ""; 
     let subtitleHTML = subtitle ? "<h2>"+subtitle+"</h2>" : ""; 
     let coloredHTML = number ? "<div class='colored'>"+number+"</div>" : ""; 
