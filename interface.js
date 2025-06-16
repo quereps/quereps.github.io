@@ -281,10 +281,8 @@ var POG = function(category,destination){
     let subtitleHTML = subtitle ? "<h2>"+subtitle+"</h2>" : ""; 
     let coloredHTML = number ? "<div class='colored'>"+number+"</div>" : ""; 
     let descHTML = description ? "<p class='description'>"+description+"</p>" : ""; 
-    let numberHTML = actual ? "<div class='result'>"+actual+"</div>" : ""; 
-    let targetHTML = expected ? "<div class='result'>"+actual+"</div>" : ""; 
-
-    
+    let numberHTML = actual ? "<div class='actual'>"+actual+"</div>" : ""; 
+    let targetHTML = expected ? "<div class='expected'>"+actual+"</div>" : ""; 
 
     let barcodeHTML = barcode ? "<img class='barcode' id='barcode"+barcode+"' src='' />" : "";
 
