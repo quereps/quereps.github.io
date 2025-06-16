@@ -270,6 +270,7 @@ var POG = function(category,destination){
       }){
     let HTMLOutput = "";
 
+    const { expected = 0, actual = 0 } = result;
     let titleHTML = title ? "<h1>"+title+"</h1>" : ""; 
     let subtitleHTML = subtitle ? "<h2>"+subtitle+"</h2>" : ""; 
     let coloredHTML = number ? "<div class='colored'>"+number+"</div>" : ""; 
