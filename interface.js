@@ -296,6 +296,8 @@ var POG = function(category,destination){
           tableHTML=tableHTML+"<tr><th>"+item+"</th><td>"+object[table[i]]+"</td></tr>";
       }
 
+      object.barcode();
+
     }
     
 
