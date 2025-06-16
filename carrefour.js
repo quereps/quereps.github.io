@@ -285,6 +285,8 @@ var createReport = function(){
 
             vpResetResults("fc_restocked");
             vpResetResults("pc_replaced");
+            vpResetResults("fc_ids");
+            vpResetResults("pc_ids");
             setTimeout(()=>{
             selectAllMOL("ingest").then((a)=>{
               complianceCheck();
