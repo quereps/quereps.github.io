@@ -262,12 +262,21 @@ var POG = function(category,destination){
           number = "",
         },
         table = [],
-        result:{},
+        result: {
+          expected = 0,
+          actual   = 0
+        } = {},
         barcode = ""
       }){
-    let HTMLOutput = "";
 
-    const { expected = 0, actual = 0 } = result;
+      let low = 0;
+      let high = 0;
+      if (expected) {
+        low  = expected * 0.2;
+        high = expected * 0.8;
+      }
+
+    const result = { expected = 0, actual = 0 } = result;
     let titleHTML = title ? "<h1>"+title+"</h1>" : ""; 
     let subtitleHTML = subtitle ? "<h2>"+subtitle+"</h2>" : ""; 
     let coloredHTML = number ? "<div class='colored'>"+number+"</div>" : ""; 
@@ -275,14 +284,11 @@ var POG = function(category,destination){
     let numberHTML = result.actual ? "<div class='result'>"+actual+"</div>" : ""; 
     let targetHTML = "";
 
-    if(expected){
-      targetHTML = "<div class='target'>"+expected+"</div>"; 
-      let low = result.expected/100*20;
-      let high = result.expected/100*80;
-    }
+    
+
     let barcodeHTML = barcode ? "<img class='barcode' id='barcode"+barcode+"' src='' />" : "";
 
-    let gaugeHTML = result.actual && result.expected ? "<meter value="+result.actual+" min='0' max="+result.expected+" low="+low+" high="+high+" optimum="+result.expected+"></meter>" : ""; 
+    let gaugeHTML = actual && expected ? "<meter value="+actual+" min='0' max="+expected+" low="+low+" high="+high+" optimum="+expected+"></meter>" : ""; 
     let resultHTML = "<div class='resultContainer'>"+numberHTML+gaugeHTML+targetHTML+"</div>"
     let tableHTML = "<table>"
 
@@ -297,7 +303,7 @@ var POG = function(category,destination){
 
     tableHTML = tableHTML+"</table>";
 
-    HTMLOutput = "<div class='SKULabel' id='fc"+barcode+"'>"+titleHTML+subtitleHTML+coloredHTML+descHTML+barcodeHTML+resultHTML+tableHTML+"</div>";
+    const HTMLOutput = "<div class='SKULabel' id='fc"+barcode+"'>"+titleHTML+subtitleHTML+coloredHTML+descHTML+barcodeHTML+resultHTML+tableHTML+"</div>";
 
     console.log(HTMLOutput);
     return HTMLOutput;
