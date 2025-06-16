@@ -75,34 +75,37 @@
 
 .SKULabel{
   display:grid;
-  grid-template-columns: auto 150px 200px;
+  grid-template-columns: 50% 50px 200px 150px;
   column-gap:1em;
-  row-gap:0.5em;
+  /* row-gap:0.5em; */
   grid-template-areas:
-    "title barcode result"
-    "supplier supplier supplier"
-    "table . .";
+    "title size barcode result";
+  align-items: anchor-center;
 }
 
 .SKULabel h1{
   margin:0;
   grid-area: title;
+  text-align: right;
+  color: black;
+  font-weight: normal;
 } 
 
 .SKULabel p{
   width:100%;
   margin:0;
-  grid-area: supplier;
+  grid-area: size;
+  color:var(--main-color);
 } 
 
 .SKULabel div.colored{
-  background:var(--bkhighlight-color);
+  /* background:var(--bkhighlight-color); */
   border-radius:var(--border-radius);
   padding:var(--padding);
   grid-area: barcode;
   text-align: center;
   font-weight: normal;
-  height: 1em;
+  /* height: 1em; */
 } 
 
 .SKULabel table{
@@ -121,9 +124,11 @@
   display:flex;
   flex-wrap:wrap;
   grid-area: result;
+  gap: 0.5em;
+  align-items: anchor-center;
 }
 
-.SKULabel .resultContainer .result{
+.SKULabel .resultContainer .actual{
   text-align:center;
   flex-grow:1;
   font-weight:bold;
@@ -138,9 +143,10 @@
 }
 
 .SKULabel .resultContainer meter{
-  /* flex-grow:1; */
+  flex-grow:1;
   height:30px;
-  width: 100%;
+  /* width: 100%; */
+  align-items: center;
 }
 
 /* Inside it, a child element */
@@ -194,3 +200,29 @@ h1 {
 
 
 /* Out of Stocks MOL - END */
+
+
+
+
+/* Carrefour Specifics */
+
+
+.aDivQId_fc_restocked .fsQuestion,
+.aDivQId_pc_replaced .fsQuestion{
+  padding:0;
+}
+
+.aDivQId_fc_restocked .H3,
+.aDivQId_pc_replaced .H3{
+  padding-top:0 ;
+  padding-bottom:0 ;
+}
+
+
+.tablebckg .aDivQId_fc_restocked .H3 .ui-state-default,
+.tablebckg .aDivQId_pc_replaced .H3 .ui-state-default{
+  background:none;
+  border:0px;
+  border-bottom:1px solid var(--details-color);
+  border-radius:0;
+}
