@@ -283,8 +283,8 @@ var createReport = function(){
 
             missionID = settings.missionID;
 
-            //vpResetResults("inStockMatrix");
-            //vpResetResults("oosMatrix");
+            vpResetResults("fc_restocked");
+            vpResetResults("pc_replaced");
             setTimeout(()=>{
             selectAllMOL("ingest").then((a)=>{
               complianceCheck();
