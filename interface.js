@@ -274,16 +274,17 @@ var POG = function(category,destination){
     let subtitleHTML = subtitle ? "<h2>"+subtitle+"</h2>" : ""; 
     let coloredHTML = number ? "<div class='colored'>"+number+"</div>" : ""; 
     let descHTML = description ? "<p class='description'>"+description+"</p>" : ""; 
-    let numberHTML = actual ? "<div class='result'>"+actual+"</div>" : ""; 
+    let numberHTML = result.actual ? "<div class='result'>"+actual+"</div>" : ""; 
     let targetHTML = "";
+
     if(expected){
       targetHTML = "<div class='target'>"+expected+"</div>"; 
-      let low = expected/100*20;
-      let high = expected/100*80;
+      let low = result.expected/100*20;
+      let high = result.expected/100*80;
     }
     let barcodeHTML = barcode ? "<img class='barcode' id='barcode"+barcode+"' src='' />" : "";
 
-    let gaugeHTML = actual && expected ? "<meter value="+actual+" min='0' max="+expected+" low="+low+" high="+high+" optimum="+target+"></meter>" : ""; 
+    let gaugeHTML = result.actual && result.expected ? "<meter value="+result.actual+" min='0' max="+result.expected+" low="+low+" high="+high+" optimum="+result.expected+"></meter>" : ""; 
     let resultHTML = "<div class='resultContainer'>"+numberHTML+gaugeHTML+targetHTML+"</div>"
     let tableHTML = "<table>"
 
@@ -298,7 +299,7 @@ var POG = function(category,destination){
 
     tableHTML = tableHTML+"</table>";
 
-    HTMLOutput = "<div class='SKULabel' id='fc"+barcode+"'>"+titleHTML+subtitleHTML+coloredHTML+descHTML+barcodeHTML+gaugeHTML+resultHTML+tableHTML+"</div>";
+    HTMLOutput = "<div class='SKULabel' id='fc"+barcode+"'>"+titleHTML+subtitleHTML+coloredHTML+descHTML+barcodeHTML+resultHTML+tableHTML+"</div>";
 
     console.log(HTMLOutput);
     return HTMLOutput;
