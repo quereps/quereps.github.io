@@ -298,7 +298,7 @@ var POG = function(category,destination){
 
     tableHTML = tableHTML+"</table>";
 
-    HTMLOutput = "<div class='SKULabel' id='fc"+barcode+"'>"+titleHTML+subtitleHTML+coloredHTML+descHTML+barcodeHTML+resultHTML+tableHTML+"</div>";
+    HTMLOutput = "<div class='SKULabel' id='fc"+barcode+"'>"+titleHTML+subtitleHTML+coloredHTML+descHTML+barcodeHTML+gaugeHTML+resultHTML+tableHTML+"</div>";
 
     console.log(HTMLOutput);
     return HTMLOutput;
