@@ -109,7 +109,7 @@ var addFacingTile = function(destination,id,sku){
         description: sku.supplier,
         number: sku.upc,
       },
-      table:["classification","subclassification","size"],
+      table:["size"],
       result:{
         expected: sku.exp_facings,
         actual: sku.facings
@@ -130,7 +130,7 @@ var addPricingTile = function(destination,id,sku){
         description: sku.supplier,
         number: sku.upc,
       },
-      table:["classification","subclassification","size"],
+      table:[],
       result:{
         expected: sku.exp_price,
         actual: sku.prices
