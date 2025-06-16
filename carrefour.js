@@ -112,7 +112,9 @@ var addFacingTile = function(destination,id,sku){
       result:{
         expected: sku.expFacings,
         actual: sku.facings
-      }
+      },
+      barcode:sku.upc,
+
 }));
 };
 
