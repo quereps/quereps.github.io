@@ -282,7 +282,7 @@ var POG = function(category,destination){
     let coloredHTML = number ? "<div class='colored'>"+number+"</div>" : ""; 
     let descHTML = description ? "<p class='description'>"+description+"</p>" : ""; 
     let numberHTML = actual ? "<div class='actual'>"+actual+"</div>" : ""; 
-    let targetHTML = expected ? "<div class='expected'>"+actual+"</div>" : ""; 
+    let targetHTML = expected ? "<div class='expected'>"+expected+"</div>" : ""; 
 
     let barcodeHTML = object.upc ? "<img class='barcode' id='barcode"+object.upc+"' src='' />" : "";
 
