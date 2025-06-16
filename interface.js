@@ -262,10 +262,7 @@ var POG = function(category,destination){
           number = "",
         },
         table = [],
-        result:{
-          expected = 0,
-          actual = 0,
-        },
+        result:{},
         barcode = ""
       }){
     let HTMLOutput = "";
