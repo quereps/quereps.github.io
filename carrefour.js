@@ -111,7 +111,7 @@ var addFacingTile = function(destination,id,sku){
       },
       table:["size"],
       result:{
-        expected: sku.exp_facings,
+        expected: sku.expFacings,
         actual: sku.facings
       }
 }));
@@ -132,7 +132,7 @@ var addPricingTile = function(destination,id,sku){
       },
       table:[],
       result:{
-        expected: sku.exp_price,
+        expected: sku.expPricing,
         actual: sku.prices
       }
 }));
