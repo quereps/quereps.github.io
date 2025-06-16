@@ -284,7 +284,7 @@ var POG = function(category,destination){
     let numberHTML = actual ? "<div class='actual'>"+actual+"</div>" : ""; 
     let targetHTML = expected ? "<div class='expected'>"+actual+"</div>" : ""; 
 
-    let barcodeHTML = barcode ? "<img class='barcode' id='barcode"+object.upc+"' src='' />" : "";
+    let barcodeHTML = object.upc ? "<img class='barcode' id='barcode"+object.upc+"' src='' />" : "";
 
     let gaugeHTML = (actual && expected) ? "<meter value="+actual+" min='0' max="+expected+" low="+low+" high="+high+" optimum="+expected+"></meter>" : ""; 
     let resultHTML = "<div class='resultContainer'>"+numberHTML+gaugeHTML+targetHTML+"</div>"
