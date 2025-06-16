@@ -106,10 +106,9 @@ var addFacingTile = function(destination,id,sku){
       data:{
         title: sku.name,
         subtitle: sku.category,
-        description: sku.supplier,
+        description: sku.size,
         number: sku.upc,
       },
-      table:["size"],
       result:{
         expected: sku.expFacings,
         actual: sku.facings
@@ -127,10 +126,9 @@ var addPricingTile = function(destination,id,sku){
       data:{
         title: sku.name,
         subtitle: sku.category,
-        description: sku.supplier,
+        description: sku.size,
         number: sku.upc,
       },
-      table:[],
       result:{
         expected: sku.expPricing,
         actual: sku.prices
