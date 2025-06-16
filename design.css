@@ -10,7 +10,7 @@
   --box-shadow: 2px 2px 5px #ccc;
 
     --margin: 16px;
-  --padding: 6px 16px;
+  --padding: 0em 0em;
   --font-size: 16px;
 
   --border-radius:8px;
@@ -74,39 +74,37 @@
 }
 
 .SKULabel{
-  display:grid;
-  grid-template-columns: 50% 50px 200px 150px;
-  column-gap:1em;
-  /* row-gap:0.5em; */
-  grid-template-areas:
-    "title size barcode result";
-  align-items: anchor-center;
+  display:flex;
+  flex-wrap:no-wrap;
+  align-items:center;
+  gap:1em;
 }
 
 .SKULabel h1{
   margin:0;
-  grid-area: title;
+  flex-grow:1;
   text-align: right;
   color: black;
   font-weight: normal;
 } 
 
 .SKULabel p{
-  width:100%;
-  margin:0;
-  grid-area: size;
   color:var(--main-color);
 } 
 
 .SKULabel div.colored{
-  /* background:var(--bkhighlight-color); */
   border-radius:var(--border-radius);
   padding:var(--padding);
-  grid-area: barcode;
   text-align: center;
   font-weight: normal;
-  /* height: 1em; */
+  min-width:150px;
 } 
+
+.SKULabel p.description{
+  white-space:nowrap;
+  width:70px;
+  /* background:yellow; */
+}
 
 .SKULabel table{
   color:var(--details-color);
@@ -120,7 +118,7 @@
 }
 
 .SKULabel .resultContainer{
-  /* width:10%; */
+  min-width:150px;
   display:flex;
   flex-wrap:wrap;
   grid-area: result;
@@ -154,24 +152,6 @@ h1 {
   font-size: var(--font-size);
 }
 
-/* Style the .card based on container's width */
-@container (max-width: 800px) {
-  .SKULabel{
-    grid-template-columns: auto auto auto;
-    grid-template-areas:
-      "title title title"
-      "barcode . ."
-      "result . ."
-      "table . .";
-  }
-
-  .SKULabel table{
-    display:none;
-  }
-  .SKULabel p{
-    display:none;
-  }
-}
 
 
 
@@ -217,6 +197,7 @@ h1 {
   padding-top:0 ;
   padding-bottom:0;
   padding:0;
+  
 }
 
 
@@ -226,6 +207,8 @@ h1 {
   border:0px;
   border-bottom:1px solid var(--details-color);
   border-radius:0;
+  container-type: inline-size;
+  display:block !important;
 }
 
 
@@ -240,4 +223,35 @@ h1 {
   background-color:var(--main-color) !important;
   color:white !important;
   transition:all 1s;
+}
+
+/* Style the .card based on container's width */
+@container (max-width: 700px) {
+  .SKULabel{
+    gap:0 1em;
+    flex-wrap:wrap;
+  }
+  .SKULabel h1{
+    text-align:left;
+    width:calc(100% - 150px - 1em);
+}
+  .SKULabel .colored{
+    text-align:left !important;
+    padding:0 !important;
+}
+
+  .SKULabel p{
+    white-space:nowrap;
+    margin:0;
+  }
+}
+
+/* Style the .card based on container's width */
+@container (max-width: 400px) {
+  .SKULabel h1{
+    width:100%;
+}
+  .SKULabel .resultContainer{
+    width:100%;
+  }
 }

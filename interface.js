@@ -303,7 +303,7 @@ var POG = function(category,destination){
 
     tableHTML = tableHTML+"</table>";
 
-    const HTMLOutput = "<div class='SKULabel' id='fc"+barcode+"'>"+titleHTML+subtitleHTML+coloredHTML+descHTML+barcodeHTML+resultHTML+tableHTML+"</div>";
+    const HTMLOutput = "<div class='SKULabel' id='fc"+barcode+"'>"+titleHTML+coloredHTML+subtitleHTML+descHTML+barcodeHTML+resultHTML+tableHTML+"</div>";
 
     console.log(HTMLOutput);
     return HTMLOutput;
