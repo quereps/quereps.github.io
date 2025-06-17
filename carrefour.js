@@ -272,9 +272,13 @@ var createReport = function(){
 
   var update = async function (settings) {
 
+
+
             missionID = settings.missionID;
             const placeID = settings.placeID;
 
+
+            console.log(placeID);
 
             getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
 
