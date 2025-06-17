@@ -16,10 +16,14 @@ function selectAllMOL(dm){
 
     // Now poll every 200ms up to 10 times (so up to ~2 seconds) to see if vpResetResults(dm).length > 0
     let attempts = 0;
+    let prev = 0;
+
     const intervalId = setInterval(() => {
       attempts++;
       const results = vpGetResults(dm);
-      if (results && results.length > 0) {
+      const newLength = vpGetResults(dm).length;
+
+      if (results && results.length > 0 && newLength==prev) {
         clearInterval(intervalId);
         setTimeout(()=>{resolve("It worked!");}, 1000);
         
@@ -27,6 +31,8 @@ function selectAllMOL(dm){
         clearInterval(intervalId);
         reject("Something went wrong (no results after clicking).");
       }
+      prev=newLength;
+      console.log("prev: ",prev);
     }, 200);
 
 
