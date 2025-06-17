@@ -62,14 +62,16 @@ var oosMOLExtract = function(){
     jQuery(container).append(htmlTile(
       {
         data:{
-          title: name[item],
-          number: upc[item],
+          title: name[item][0].value,
+          number: upc[item][0].value,
         },
         result:{
-          expected: expected[item],
+          expected: expected[item][0].value,
         }
 
   }));
+
+    oosompID++;
   }
   
 
