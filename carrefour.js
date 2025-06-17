@@ -51,7 +51,7 @@ var APIModule = (function ($, ksAPI) {
 var oosMOLExtract = function(){
   let upc = vpGetResults("oosMOL.A3");
   let expected = vpGetResults("oosMOL.A5");
-  let name = vpGetResults("oosMOL.A5");
+  let name = vpGetResults("oosMOL.A7");
 
   let oosompID = 1;
 
