@@ -57,7 +57,7 @@ var oosMOLExtract = function(){
 
   for(let item in upc){
     
-    vpSetResults("oos_ids",upc[item][0].value);
+    vpSetResults("oos_ids.A"+oosompID,upc[item][0].value);
     const container = vpGetLabel("oos_restocked.A"+oosompID);
 
     jQuery(container).append(htmlTile(

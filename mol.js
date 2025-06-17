@@ -6,7 +6,7 @@ function commaToPipe(ref){
 
 function selectAllMOL(dm){
 
-  console.log("I am in selectAllMOL");
+  //console.log("I am in selectAllMOL");
 
   return new Promise((resolve, reject) => {
         vpResetResults(dm);
@@ -21,7 +21,8 @@ function selectAllMOL(dm){
       const results = vpGetResults(dm);
       if (results && results.length > 0) {
         clearInterval(intervalId);
-        resolve("It worked!");
+        setTimeout(()=>{resolve("It worked!");}, 1000);
+        
       } else if (attempts >= 10) {
         clearInterval(intervalId);
         reject("Something went wrong (no results after clicking).");
