@@ -46,6 +46,37 @@ var APIModule = (function ($, ksAPI) {
 
   }
 
+
+
+var oosMOLExtract = function(){
+  let upc = vpGetResults("oosMOL.A3");
+  let expected = vpGetResults("oosMOL.A5");
+  let name = vpGetResults("oosMOL.A5");
+
+  let oosompID = 1;
+
+  for(let item in upc){
+    
+    const container = vpGetLabel("oos_restocked.A"+oosompID);
+
+    jQuery(container).append(htmlTile(
+      {
+        data:{
+          title: name[item],
+          number: upc[item],
+        },
+        result:{
+          expected: expected[item],
+        }
+
+  }));
+  }
+  
+
+}
+
+
+
 var complianceCheck = function(){
 
   var placeID = vpGetTextResults("PlaceID");
@@ -292,7 +323,7 @@ var createReport = function(){
               complianceCheck();
             });
             selectAllMOL("oosMOL").then((a)=>{
-              console.log("a: ",a);
+              oosMOLExtract();
             });
             //selectAllMOL("ingest_1").then((a)=>{
               //complianceCheck();
