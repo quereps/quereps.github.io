@@ -134,7 +134,7 @@ var addFacingTile = function(destination,id,sku){
 
   let container = vpGetLabel(destination);
   const dataTable = ["size","classification","subclassification"];
-  jQuery(container).append(htmlTile(
+  jQuery(container).html(htmlTile(
     {
       object:sku,
       data:{
@@ -155,7 +155,7 @@ var addPricingTile = function(destination,id,sku){
   let container = vpGetLabel(destination);
   const dataTable = ["size","classification","subclassification"];
   //jQuery(container).append(htmlTile(sku.name,null,sku.upc,sku.supplier,sku.prices,sku.expPricing,dataTable,sku.upc));
-  jQuery(container).append(htmlTile(
+  jQuery(container).html(htmlTile(
     {
       object:sku,
       data:{
@@ -320,6 +320,7 @@ var createReport = function(){
             vpResetResults("fc_restocked");
             vpResetResults("pc_replaced");
             vpResetResults("oos_restocked");
+            vpResetResults("oos_ids");
             vpResetResults("fc_ids");
             vpResetResults("pc_ids");
             setTimeout(()=>{
