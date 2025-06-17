@@ -103,6 +103,7 @@
 .SKULabel p.description{
   white-space:nowrap;
   width:70px;
+  margin:0;
   /* background:yellow; */
 }
 
