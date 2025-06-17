@@ -33,25 +33,26 @@
 }
 
 
-.aDivtypeMatrix3D .scrollableTableFixedThead{
+.aDivtypeRankGrid .scrollableTableFixedThead{
     display:none;
 }
 
-.aDivtypeMatrix3D .tblAnswer thead tr{
+.aDivtypeRankGrid .tblAnswer thead tr{
     background: none;
 }
 
-.aDivtypeMatrix3D .tblAnswer thead th, 
-.aDivtypeMatrix3D .tblAnswer .HRG3D{
+.aDivtypeRankGrid .tblAnswer thead th, 
+.aDivtypeRankGrid .tblAnswer .HRG3D{
   border:0px;
 }
 
 
-.aDivtypeMatrix3D .Column1,
-.aDivtypeMatrix3D .Column2,
-.aDivtypeMatrix3D .Column3,
-.aDivtypeMatrix3D .Column4{
+.aDivtypeRankGrid .Column1,
+.aDivtypeRankGrid .Column2,
+.aDivtypeRankGrid .Column3,
+.aDivtypeRankGrid .Column4{
   width:1%;
+  border-top:1px solid #bebfc1 !important;
 }
 
 .aDivtypeMatrix3D .Column3,
