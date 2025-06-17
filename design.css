@@ -188,12 +188,14 @@ h1 {
 
 
 .aDivQId_fc_restocked .fsQuestion,
-.aDivQId_pc_replaced .fsQuestion{
+.aDivQId_pc_replaced .fsQuestion,
+.oos_restocked .fsQuestion{
   padding:0;
 }
 
 .aDivQId_fc_restocked .H3,
-.aDivQId_pc_replaced .H3{
+.aDivQId_pc_replaced .H3,
+.oos_restocked .H3{
   padding-top:0 ;
   padding-bottom:0;
   padding:0;
@@ -202,7 +204,8 @@ h1 {
 
 
 .tablebckg .aDivQId_fc_restocked .H3 .ui-state-default,
-.tablebckg .aDivQId_pc_replaced .H3 .ui-state-default{
+.tablebckg .aDivQId_pc_replaced .H3 .ui-state-default,
+.tablebckg .oos_restocked .H3 .ui-state-default{
   background:none;
   border:0px;
   border-bottom:1px solid var(--details-color);
@@ -213,7 +216,8 @@ h1 {
 
 
 .tablebckg .aDivQId_fc_restocked .H3 .ui-state-active,
-.tablebckg .aDivQId_pc_replaced .H3 .ui-state-active{
+.tablebckg .aDivQId_pc_replaced .H3 .ui-state-active,
+.tablebckg .oos_restocked .H3 .ui-state-active{
   background:lime;
   transition:all 1s;
 }
