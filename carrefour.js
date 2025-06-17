@@ -291,6 +291,9 @@ var createReport = function(){
             selectAllMOL("ingest").then((a)=>{
               complianceCheck();
             });
+            selectAllMOL("oosMOL").then((a)=>{
+              console.log("a: ",a);
+            });
             //selectAllMOL("ingest_1").then((a)=>{
               //complianceCheck();
             //});
