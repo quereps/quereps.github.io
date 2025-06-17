@@ -273,13 +273,13 @@ var createReport = function(){
   var update = async function (settings) {
 
             missionID = settings.missionID;
-
+            const placeID = settings.placeID;
 
 
             getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
 
          removeNotification();
-         const placeID = vpGetTextResults("PlaceID");
+
         let tableElement = createTable(lastItem,"Latest Mission", {
           "Completed":moment(lastItem.completed_at).fromNow(),
           "Completed By":lastItem.user.first_name+" "+lastItem.user.last_name
