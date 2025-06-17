@@ -56,7 +56,7 @@
 
 .aDivtypeMatrix3D .Column3,
 .aDivtypeMatrix3D .Column4{
-    display:none;
+    /* display:none; */
 }
 
 .aDivtypeMatrix3D input[type="text"],
