@@ -310,18 +310,6 @@ var createReport = function(){
 
           vpSetResults("upcs",arrayToPipe(Object.keys(skuList)));
 
-          /*setTimeout(()=>{
-            selectAllMOL("ingest").then((a)=>{
-              complianceCheck();
-            });
-
-          }, 2000);*/
-
-          
-          //createReport();
-        });
-
-      });
 
             vpResetResults("fc_restocked");
             vpResetResults("pc_replaced");
@@ -341,6 +329,13 @@ var createReport = function(){
             //});
 
           }, 2000);
+
+          
+        });
+
+      });
+
+          
   }
 
 
