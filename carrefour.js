@@ -242,7 +242,7 @@ var createReport = function(){
    features = settings.features;
    report = settings.report;
    photoGrid = settings.photoGrid;
-   const placeID = vpGetTextResults("PlaceID");
+   const placeID = vpGetTextResults("placeID");
 
 
    getPlaceData(placeID).then((placeData)=>{
