@@ -255,7 +255,28 @@ var createReport = function(){
 
       $('#table-container').append(tableElement);
 
-      getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
+      
+
+
+
+
+
+   });
+   
+
+  //  $('#table-container').append(tableElement);
+
+ };
+
+
+
+  var update = async function (settings) {
+
+            missionID = settings.missionID;
+
+
+
+            getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
 
          removeNotification();
 
@@ -301,21 +322,6 @@ var createReport = function(){
         });
 
       });
-
-
-
-
-
-   });
-   
-
-  //  $('#table-container').append(tableElement);
-
- };
-
-  var update = async function (settings) {
-
-            missionID = settings.missionID;
 
             vpResetResults("fc_restocked");
             vpResetResults("pc_replaced");
