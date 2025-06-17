@@ -319,6 +319,7 @@ var createReport = function(){
 
             vpResetResults("fc_restocked");
             vpResetResults("pc_replaced");
+            vpResetResults("oos_restocked");
             vpResetResults("fc_ids");
             vpResetResults("pc_ids");
             setTimeout(()=>{
