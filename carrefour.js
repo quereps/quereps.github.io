@@ -57,7 +57,8 @@ var oosMOLExtract = function(){
 
   for(let item in upc){
     
-    vpSetResults("oos_ids.A"+oosompID,upc[item][0].value);
+   // vpSetResults("oos_ids.A"+oosompID,upc[item][0].value);
+    fillInData("oos_ids",oosompID,placeID+"_"+upc[item][0].value);
     //const container = vpGetLabel("oos_restocked.A"+oosompID);
 
     addTile("oos_restocked.A"+oosompID,oosompID,null,{
@@ -175,27 +176,6 @@ var addTile = function(destination,id,sku,profile){
   jQuery(container).empty();
   jQuery(container).html(htmlTile(profile));
 };
-
-/*
-var addPricingTile = function(destination,id,sku){
-  let container = vpGetLabel(destination);
-  const dataTable = ["size","classification","subclassification"];
-  jQuery(container).empty();
-  jQuery(container).html(htmlTile(
-    {
-      object:sku,
-      data:{
-        title: sku.name,
-        subtitle: sku.category,
-        description: sku.size,
-        number: sku.upc,
-      },
-      result:{
-        expected: sku.expPricing,
-        actual: sku.prices
-      }
-}));
-} */
 
 
 var createReport = function(){
