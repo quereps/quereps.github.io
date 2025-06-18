@@ -280,18 +280,21 @@ var POG = function(category,destination){
         high = full * 0.8;
       }
 
-    //const result = { expected = 0, actual = 0 } = result;
     let titleHTML = title ? "<h1>"+title+"</h1>" : ""; 
     let subtitleHTML = subtitle ? "<h2>"+subtitle+"</h2>" : ""; 
     let coloredHTML = number ? "<div class='colored'>"+number+"</div>" : ""; 
     let descHTML = description ? "<p class='description'>"+description+"</p>" : ""; 
-    let valueHTML = value ? "<div class='value'>"+value+"</div>" : ""; 
-    let fullHTML = full ? "<div class='full'>"+full+"</div>" : ""; 
+
+    if(value && full){
+      let valueHTML = value ? "<div class='value'>"+value+"</div>" : ""; 
+      let fullHTML = full ? "<div class='full'>"+full+"</div>" : ""; 
+      let gaugeHTML = (value && full) ? "<meter value="+value+" min='0' max="+full+" low="+low+" high="+high+" optimum="+full+"></meter>" : ""; 
+      let meterHTML = "<div class='resultContainer'>"+valueHTML+gaugeHTML+fullHTML+"</div>"
+    }
+   
 
     let barcodeHTML = object.upc ? "<img class='barcode' id='barcode"+object.upc+"' src='' />" : "";
 
-    let gaugeHTML = (value && full) ? "<meter value="+value+" min='0' max="+full+" low="+low+" high="+high+" optimum="+full+"></meter>" : ""; 
-    let resultHTML = "<div class='resultContainer'>"+valueHTML+gaugeHTML+fullHTML+"</div>"
     let tableHTML = "<table>";
     let packshot = "<div class='packshot pshot"+number+"''></div>"
 
@@ -308,7 +311,7 @@ var POG = function(category,destination){
 
     tableHTML = tableHTML+"</table>";
 
-    const HTMLOutput = "<div class='SKULabel' id='fc"+barcode+"'>"+titleHTML+coloredHTML+packshot+subtitleHTML+descHTML+barcodeHTML+resultHTML+tableHTML+"</div>";
+    const HTMLOutput = "<div class='SKULabel' id='fc"+barcode+"'>"+titleHTML+coloredHTML+packshot+subtitleHTML+descHTML+barcodeHTML+meterHTML+tableHTML+"</div>";
 
     console.log(HTMLOutput);
     return HTMLOutput;
