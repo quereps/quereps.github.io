@@ -266,14 +266,18 @@ var POG = function(category,destination){
           expected = 0,
           actual   = 0
         } = {},
+        meter: {
+          value = 0,
+          full   = 0
+        } = {},
         barcode = ""
       }){
 
       let low = 0;
       let high = 0;
       if (expected) {
-        low  = expected * 0.2;
-        high = expected * 0.8;
+        low  = full * 0.2;
+        high = full * 0.8;
       }
 
     //const result = { expected = 0, actual = 0 } = result;
@@ -281,13 +285,13 @@ var POG = function(category,destination){
     let subtitleHTML = subtitle ? "<h2>"+subtitle+"</h2>" : ""; 
     let coloredHTML = number ? "<div class='colored'>"+number+"</div>" : ""; 
     let descHTML = description ? "<p class='description'>"+description+"</p>" : ""; 
-    let numberHTML = actual ? "<div class='actual'>"+actual+"</div>" : ""; 
-    let targetHTML = expected ? "<div class='expected'>"+expected+"</div>" : ""; 
+    let valueHTML = value ? "<div class='value'>"+value+"</div>" : ""; 
+    let fullHTML = full ? "<div class='full'>"+full+"</div>" : ""; 
 
     let barcodeHTML = object.upc ? "<img class='barcode' id='barcode"+object.upc+"' src='' />" : "";
 
-    let gaugeHTML = (actual && expected) ? "<meter value="+actual+" min='0' max="+expected+" low="+low+" high="+high+" optimum="+expected+"></meter>" : ""; 
-    let resultHTML = "<div class='resultContainer'>"+numberHTML+gaugeHTML+targetHTML+"</div>"
+    let gaugeHTML = (value && full) ? "<meter value="+value+" min='0' max="+full+" low="+low+" high="+high+" optimum="+full+"></meter>" : ""; 
+    let resultHTML = "<div class='resultContainer'>"+valueHTML+gaugeHTML+fullHTML+"</div>"
     let tableHTML = "<table>";
     let packshot = "<div class='packshot pshot"+number+"''></div>"
 
