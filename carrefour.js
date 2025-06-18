@@ -228,10 +228,15 @@ var createReport = function(){
  var init = async function (settings) {
 
 
-  const link = document.createElement("link");
-  link.rel = "stylesheet";
-  link.href = "https://quereps.github.io/design.css"; // Replace with your actual file path
-  document.head.appendChild(link);
+  const link1 = document.createElement("link");
+  link1.rel = "stylesheet";
+  link1.href = "https://quereps.github.io/design.css";
+  document.head.appendChild(link1);
+
+  const link2 = document.createElement("link");
+  link2.rel = "stylesheet";
+  link2.href = "https://quereps.github.io/pkshot.css";
+  document.head.appendChild(link2);
 
   console.log("iniiiiit");
 
