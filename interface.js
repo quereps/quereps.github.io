@@ -277,7 +277,7 @@ var POG = function(category,destination){
 
       let low = 0;
       let high = 0;
-      if (expected) {
+      if (full) {
         low  = full * 0.2;
         high = full * 0.8;
       }
