@@ -288,7 +288,8 @@ var POG = function(category,destination){
 
     let gaugeHTML = (actual && expected) ? "<meter value="+actual+" min='0' max="+expected+" low="+low+" high="+high+" optimum="+expected+"></meter>" : ""; 
     let resultHTML = "<div class='resultContainer'>"+numberHTML+gaugeHTML+targetHTML+"</div>"
-    let tableHTML = "<table>"
+    let tableHTML = "<table>";
+    let packshot = "<div class='packshot pshot"+number+"''></div>"
 
     if(table){
       for(let i in table){
@@ -303,7 +304,7 @@ var POG = function(category,destination){
 
     tableHTML = tableHTML+"</table>";
 
-    const HTMLOutput = "<div class='SKULabel pshot"+number+"' id='fc"+barcode+"'>"+titleHTML+coloredHTML+subtitleHTML+descHTML+barcodeHTML+resultHTML+tableHTML+"</div>";
+    const HTMLOutput = "<div class='SKULabel' id='fc"+barcode+"'>"+titleHTML+coloredHTML+packshot+subtitleHTML+descHTML+barcodeHTML+resultHTML+tableHTML+"</div>";
 
     console.log(HTMLOutput);
     return HTMLOutput;
