@@ -108,6 +108,7 @@ var complianceCheck = function(){
     console.log(theupc,exp_facings,exp_price);
 
     skuList[theupc].checkFacingsCompliance(exp_facings);
+    let sku=skuList[theupc];
 
     if(!skuList[theupc].facingCompliance){
       console.log("Facings are not compliant",skuList[theupc].facingCompliance);
