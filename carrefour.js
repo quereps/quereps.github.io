@@ -60,7 +60,15 @@ var oosMOLExtract = function(){
     vpSetResults("oos_ids.A"+oosompID,upc[item][0].value);
     //const container = vpGetLabel("oos_restocked.A"+oosompID);
 
-    addTile("oos_restocked.A"+oosompID,oosompID,null,oosProfile);
+    addTile("oos_restocked.A"+oosompID,oosompID,null,{
+        data:{
+          title: name[item][0].value,
+          number: upc[item][0].value,
+        },
+        result:{
+          expected: expected[item][0].value,
+        }
+  });
 
    /* jQuery(container).append(htmlTile(
       {
@@ -105,7 +113,19 @@ var complianceCheck = function(){
       console.log("Facings are not compliant",skuList[theupc].facingCompliance);
 
       fillInData("fc_ids",faceCompID,placeID+"_"+skuList[theupc].upc);
-      addTile("fc_restocked.A"+faceCompID,faceCompID,skuList[theupc],facingsProfile);
+      addTile("fc_restocked.A"+faceCompID,faceCompID,skuList[theupc],{
+      object:sku,
+      data:{
+        title: sku.name,
+        subtitle: sku.category,
+        description: sku.size,
+        number: sku.upc,
+      },
+      meter:{
+        value: sku.facings,
+        full: sku.expFacings
+      }
+});
       //addCheckbox("facingCompliance-container #fc"+skuList[theupc].upc,"fc_restocked",faceCompID);
       faceCompID++;
     }
@@ -117,7 +137,19 @@ var complianceCheck = function(){
       console.log("Pricing are not compliant",skuList[theupc].pricingCompliance);
 
       fillInData("pc_ids",priceCompID,placeID+"_"+skuList[theupc].upc);
-      addTile("pc_replaced.A"+priceCompID,priceCompID,skuList[theupc],pricingProfile);
+      addTile("pc_replaced.A"+priceCompID,priceCompID,skuList[theupc],{
+      object:sku,
+      data:{
+        title: sku.name,
+        subtitle: sku.category,
+        description: sku.size,
+        number: sku.upc,
+      },
+      result:{
+        expected: sku.expPricing,
+        actual: sku.prices
+      }
+});
       //addCheckbox("priceCompliance-container #fc"+skuList[theupc].upc,"fp_replaced",priceCompID);
       priceCompID++;
     }
@@ -132,43 +164,7 @@ var fillInData = function(question,nextSlot,data){
   vpSetResults(question+".A"+nextSlot,data);
 }
 
-const oosProfile = {
-        data:{
-          title: name[item][0].value,
-          number: upc[item][0].value,
-        },
-        result:{
-          expected: expected[item][0].value,
-        }
-  }
 
-const facingsProfile = {
-      object:sku,
-      data:{
-        title: sku.name,
-        subtitle: sku.category,
-        description: sku.size,
-        number: sku.upc,
-      },
-      meter:{
-        value: sku.facings,
-        full: sku.expFacings
-      }
-}
-
-const pricingProfile = {
-      object:sku,
-      data:{
-        title: sku.name,
-        subtitle: sku.category,
-        description: sku.size,
-        number: sku.upc,
-      },
-      result:{
-        expected: sku.expPricing,
-        actual: sku.prices
-      }
-}
 
 var addTile = function(destination,id,sku,profile){
 
