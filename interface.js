@@ -352,7 +352,7 @@ function toggleCheckbox(a){
   }
 
 
-barcodeGenerate(code) {
+function barcodeGenerate(code) {
   let format;
   if (code.length === 8) {
     format = "EAN8";
