@@ -58,9 +58,11 @@ var oosMOLExtract = function(){
   for(let item in upc){
     
     vpSetResults("oos_ids.A"+oosompID,upc[item][0].value);
-    const container = vpGetLabel("oos_restocked.A"+oosompID);
+    //const container = vpGetLabel("oos_restocked.A"+oosompID);
 
-    jQuery(container).append(htmlTile(
+    addTile("oos_restocked.A"+oosompID,oosompID,null,oosProfile);
+
+   /* jQuery(container).append(htmlTile(
       {
         data:{
           title: name[item][0].value,
@@ -70,7 +72,7 @@ var oosMOLExtract = function(){
           expected: expected[item][0].value,
         }
 
-  }));
+  }));*/
 
     oosompID++;
   }
@@ -103,7 +105,7 @@ var complianceCheck = function(){
       console.log("Facings are not compliant",skuList[theupc].facingCompliance);
 
       fillInData("fc_ids",faceCompID,placeID+"_"+skuList[theupc].upc);
-      addFacingTile("fc_restocked.A"+faceCompID,faceCompID,skuList[theupc]);
+      addTile("fc_restocked.A"+faceCompID,faceCompID,skuList[theupc],facingsProfile);
       //addCheckbox("facingCompliance-container #fc"+skuList[theupc].upc,"fc_restocked",faceCompID);
       faceCompID++;
     }
@@ -115,7 +117,7 @@ var complianceCheck = function(){
       console.log("Pricing are not compliant",skuList[theupc].pricingCompliance);
 
       fillInData("pc_ids",priceCompID,placeID+"_"+skuList[theupc].upc);
-      addPricingTile("pc_replaced.A"+priceCompID,priceCompID,skuList[theupc]);
+      addTile("pc_replaced.A"+priceCompID,priceCompID,skuList[theupc],pricingProfile);
       //addCheckbox("priceCompliance-container #fc"+skuList[theupc].upc,"fp_replaced",priceCompID);
       priceCompID++;
     }
@@ -130,7 +132,45 @@ var fillInData = function(question,nextSlot,data){
   vpSetResults(question+".A"+nextSlot,data);
 }
 
-var addFacingTile = function(destination,id,sku){
+const oosProfile = {
+        data:{
+          title: name[item][0].value,
+          number: upc[item][0].value,
+        },
+        result:{
+          expected: expected[item][0].value,
+        }
+  }
+
+const facingsProfile = {
+      object:sku,
+      data:{
+        title: sku.name,
+        subtitle: sku.category,
+        description: sku.size,
+        number: sku.upc,
+      },
+      meter:{
+        value: sku.facings,
+        full: sku.expFacings
+      }
+}
+
+const pricingProfile = {
+      object:sku,
+      data:{
+        title: sku.name,
+        subtitle: sku.category,
+        description: sku.size,
+        number: sku.upc,
+      },
+      result:{
+        expected: sku.expPricing,
+        actual: sku.prices
+      }
+}
+
+var addFacingTile = function(destination,id,sku,profile){
 
   let container = vpGetLabel(destination);
   const dataTable = ["size","classification","subclassification"];
@@ -148,14 +188,18 @@ var addFacingTile = function(destination,id,sku){
         expected: sku.expFacings,
         actual: sku.facings
       }
+      meter:{
+        value: sku.facings,
+        full: sku.expFacings
+      }
 
 }));
 };
 
+/*
 var addPricingTile = function(destination,id,sku){
   let container = vpGetLabel(destination);
   const dataTable = ["size","classification","subclassification"];
-  //jQuery(container).append(htmlTile(sku.name,null,sku.upc,sku.supplier,sku.prices,sku.expPricing,dataTable,sku.upc));
   jQuery(container).empty();
   jQuery(container).html(htmlTile(
     {
@@ -171,27 +215,7 @@ var addPricingTile = function(destination,id,sku){
         actual: sku.prices
       }
 }));
-} 
-
-
-
-/*var addToMatrix = function(question,upcColumn,dmIDColumn,sku){
-  var nextSlot = vpGetResults(question+"."+upcColumn).length+1;
-  var placeID = vpGetTextResults("PlaceID");
-
-  vpSetResults(question+".A"+nextSlot+"."+upcColumn,sku.upc);
-  vpSetResults(question+".A"+nextSlot+"."+dmIDColumn,placeID+"_"+sku.upc);
-
-  const labelElm = jQuery(".aDivQId_"+question+" div#SKULabel"+nextSlot);
-
-  const dataTable = ["classification","subclassification","size"];
-
-  jQuery(labelElm).empty();
-  jQuery(labelElm).append(sku.htmlTile(sku.name,null,sku.upc,sku.supplier,sku.facings,sku.expFacings,dataTable,true));
-
-} 
-*/
-
+} */
 
 
 var createReport = function(){
