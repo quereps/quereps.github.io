@@ -292,8 +292,11 @@ var POG = function(category,destination){
       let meterHTML = "<div class='resultContainer'>"+valueHTML+gaugeHTML+fullHTML+"</div>"
     }
    
-
-    let barcodeHTML = object.upc ? "<img class='barcode' id='barcode"+object.upc+"' src='' />" : "";
+    if(barcode){
+         let barcodeHTML = "<img class='barcode' id='barcode"+barcode+"' src='' />";
+          barcodeGenerate(barcode);
+    }
+   
 
     let tableHTML = "<table>";
     let packshot = "<div class='packshot pshot"+number+"''></div>"
@@ -302,9 +305,8 @@ var POG = function(category,destination){
       for(let i in table){
           let item = table[i];
           tableHTML=tableHTML+"<tr><th>"+item+"</th><td>"+object[table[i]]+"</td></tr>";
-      }
 
-      //object.barcode();
+      }
 
     }
     
@@ -337,4 +339,28 @@ function toggleCheckbox(a){
   else{
       vpResetResults(a);
   }
+
+
+barcodeGenerate(code) {
+  let format;
+  if (code.length === 8) {
+    format = "EAN8";
+  } else if (code.length === 13) {
+    format = "EAN13";
+  } else {
+    console.warn(`UPC length ${code.length} isn’t EAN8/13—using Code128`);
+    format = "CODE128";
+  }
+
+  JsBarcode("#barcode" + code, code, {
+    format,
+    lineColor: "#000",
+    width: 1,
+    height: 10,
+    displayValue: true,
+    margin: 0,
+    background: "#fafafa",
+    fontSize: "0.8em"
+  });
 }
+
