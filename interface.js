@@ -373,5 +373,5 @@ function barcodeGenerate(code) {
     background: "#fafafa",
     fontSize: "0.8em"
   });
-}
+};
 
