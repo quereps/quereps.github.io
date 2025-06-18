@@ -7,7 +7,8 @@ let sections = {};
  let realogram = [];
 
 
- let ingest = "";
+  let ingest = "";
+  let placeID = "";
   let companyID = "";
   let missionID = "";
   let tokenV1 = "";
@@ -92,8 +93,6 @@ var oosMOLExtract = function(){
 
 
 var complianceCheck = function(){
-
-  var placeID = vpGetTextResults("PlaceID");
 
   let faceCompID = 1;
   let priceCompID = 1;
@@ -226,6 +225,8 @@ var createReport = function(){
 
   console.log("iniiiiit");
 
+
+
    companyID = settings.companyID;
    missionID = settings.missionID;
    tokenV1 = settings.tokenV1;
@@ -233,7 +234,7 @@ var createReport = function(){
    features = settings.features;
    report = settings.report;
    photoGrid = settings.photoGrid;
-   const placeID = vpGetTextResults("placeID");
+  placeID = vpGetTextResults("placeID");
 
 
    getPlaceData(placeID).then((placeData)=>{
