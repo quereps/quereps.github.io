@@ -273,6 +273,8 @@ var POG = function(category,destination){
         barcode = ""
       }){
 
+      let htmlContent = "";
+
       let low = 0;
       let high = 0;
       if (expected) {
@@ -285,27 +287,36 @@ var POG = function(category,destination){
     let coloredHTML = number ? "<div class='colored'>"+number+"</div>" : ""; 
     let descHTML = description ? "<p class='description'>"+description+"</p>" : ""; 
 
+    htmlContent = htmlContent+titleHTML+coloredHTML+packshot+subtitleHTML+descHTML;
+
+
+
     if(value && full){
       let valueHTML = value ? "<div class='value'>"+value+"</div>" : ""; 
       let fullHTML = full ? "<div class='full'>"+full+"</div>" : ""; 
       let gaugeHTML = (value && full) ? "<meter value="+value+" min='0' max="+full+" low="+low+" high="+high+" optimum="+full+"></meter>" : ""; 
       let meterHTML = "<div class='resultContainer'>"+valueHTML+gaugeHTML+fullHTML+"</div>"
+      htmlContent=htmlContent+meterHTML;
     }
    
     if(barcode){
          let barcodeHTML = "<img class='barcode' id='barcode"+barcode+"' src='' />";
-          barcodeGenerate(barcode);
+         htmlContent=htmlContent+barcodeHTML;
     }
    
 
     let tableHTML = "<table>";
-    let packshot = "<div class='packshot pshot"+number+"''></div>"
+
+    if(number){
+      let packshot = "<div class='packshot pshot"+number+"''></div>";
+      htmlContent=htmlContent+packshot;
+    }
 
     if(table){
       for(let i in table){
           let item = table[i];
           tableHTML=tableHTML+"<tr><th>"+item+"</th><td>"+object[table[i]]+"</td></tr>";
-
+          htmlContent=htmlContent+tableHTML;
       }
 
     }
@@ -313,7 +324,7 @@ var POG = function(category,destination){
 
     tableHTML = tableHTML+"</table>";
 
-    const HTMLOutput = "<div class='SKULabel' id='fc"+barcode+"'>"+titleHTML+coloredHTML+packshot+subtitleHTML+descHTML+barcodeHTML+meterHTML+tableHTML+"</div>";
+    const HTMLOutput = "<div class='SKULabel' id='fc"+barcode+"'>"+htmlContent+"</div>";
 
     console.log(HTMLOutput);
     return HTMLOutput;
