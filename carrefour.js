@@ -170,30 +170,12 @@ const pricingProfile = {
       }
 }
 
-var addFacingTile = function(destination,id,sku,profile){
+var addTile = function(destination,id,sku,profile){
 
   let container = vpGetLabel(destination);
   const dataTable = ["size","classification","subclassification"];
   jQuery(container).empty();
-  jQuery(container).html(htmlTile(
-    {
-      object:sku,
-      data:{
-        title: sku.name,
-        subtitle: sku.category,
-        description: sku.size,
-        number: sku.upc,
-      },
-      result:{
-        expected: sku.expFacings,
-        actual: sku.facings
-      }
-      meter:{
-        value: sku.facings,
-        full: sku.expFacings
-      }
-
-}));
+  jQuery(container).html(htmlTile(profile));
 };
 
 /*
