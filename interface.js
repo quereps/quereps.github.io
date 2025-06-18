@@ -284,18 +284,17 @@ var POG = function(category,destination){
 
     let titleHTML = title ? "<h1>"+title+"</h1>" : ""; 
     let subtitleHTML = subtitle ? "<h2>"+subtitle+"</h2>" : ""; 
+    let descHTML = description ? "<p class='description'>"+description+"</p>" : ""; 
     let coloredHTML = number ? "<div class='colored'>"+number+"</div>" : ""; 
 
-    htmlContent = htmlContent+titleHTML+subtitleHTML+coloredHTML;
+    htmlContent = htmlContent+titleHTML+subtitleHTML+descHTML+coloredHTML;
     
-
     if(number){
       let packshot = "<div class='packshot pshot"+number+"''></div>";
       htmlContent=htmlContent+packshot;
     }
 
-    let descHTML = description ? "<p class='description'>"+description+"</p>" : ""; 
-    htmlContent=htmlContent+descHTML;
+
 
     
 
