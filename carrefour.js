@@ -134,6 +134,7 @@ var addFacingTile = function(destination,id,sku){
 
   let container = vpGetLabel(destination);
   const dataTable = ["size","classification","subclassification"];
+  jQuery(container).empty();
   jQuery(container).html(htmlTile(
     {
       object:sku,
@@ -155,6 +156,7 @@ var addPricingTile = function(destination,id,sku){
   let container = vpGetLabel(destination);
   const dataTable = ["size","classification","subclassification"];
   //jQuery(container).append(htmlTile(sku.name,null,sku.upc,sku.supplier,sku.prices,sku.expPricing,dataTable,sku.upc));
+  jQuery(container).empty();
   jQuery(container).html(htmlTile(
     {
       object:sku,
