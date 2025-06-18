@@ -350,6 +350,7 @@ function toggleCheckbox(a){
   else{
       vpResetResults(a);
   }
+}
 
 
 function barcodeGenerate(code) {
