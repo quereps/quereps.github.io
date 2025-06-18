@@ -285,9 +285,19 @@ var POG = function(category,destination){
     let titleHTML = title ? "<h1>"+title+"</h1>" : ""; 
     let subtitleHTML = subtitle ? "<h2>"+subtitle+"</h2>" : ""; 
     let coloredHTML = number ? "<div class='colored'>"+number+"</div>" : ""; 
-    let descHTML = description ? "<p class='description'>"+description+"</p>" : ""; 
 
-    htmlContent = htmlContent+titleHTML+coloredHTML+packshot+subtitleHTML+descHTML;
+    htmlContent = htmlContent+titleHTML+subtitleHTML+coloredHTML;
+    
+
+    if(number){
+      let packshot = "<div class='packshot pshot"+number+"''></div>";
+      htmlContent=htmlContent+packshot;
+    }
+
+    let descHTML = description ? "<p class='description'>"+description+"</p>" : ""; 
+    htmlContent=htmlContent+descHTML;
+
+    
 
 
 
@@ -307,10 +317,7 @@ var POG = function(category,destination){
 
     let tableHTML = "<table>";
 
-    if(number){
-      let packshot = "<div class='packshot pshot"+number+"''></div>";
-      htmlContent=htmlContent+packshot;
-    }
+    
 
     if(table){
       for(let i in table){
