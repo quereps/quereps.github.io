@@ -373,11 +373,11 @@ function barcodeGenerate(code) {
     format,
     lineColor: "#000",
     width: 1,
-    height: 50,
+    height: 10,
     displayValue: true,
     margin: 0,
     background: "#fafafa",
-    fontSize: "0.8em"
+    fontSize: 10
   });
 };
 
