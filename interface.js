@@ -287,34 +287,42 @@ var POG = function(category,destination){
     let descHTML = description ? "<p class='description'>"+description+"</p>" : ""; 
     let coloredHTML = number ? "<div class='colored'>"+number+"</div>" : ""; 
 
-    htmlContent = htmlContent+titleHTML+subtitleHTML+descHTML+coloredHTML;
+
 
     if(barcode){
          let barcodeHTML = "<img class='barcode' id='barcode"+barcode+"' src='' />";
-         htmlContent=htmlContent+barcodeHTML;
     }
     
     if(barcode){
       let packshot = "<div class='packshot pshot"+barcode+"''></div>";
-      htmlContent=htmlContent+packshot;
     }
+
+    let titleGroupHTML = titleHTML+barcodeHTML+descHTML+coloredHTML;
+
+    let headerHTML = "<div class='header'>"+packshot+titleGroupHTML+"</div>"  
+    
+
+    let resultContainerHTML = "";
+    
+
+    
 
     if(value && full){
       let valueHTML = value ? "<div class='value'>"+value+"</div>" : ""; 
       let fullHTML = full ? "<div class='full'>"+full+"</div>" : ""; 
       let gaugeHTML = (value && full) ? "<meter value="+value+" min='0' max="+full+" low="+low+" high="+high+" optimum="+full+"></meter>" : ""; 
       let meterHTML = "<div class='resultContainer'>"+valueHTML+gaugeHTML+fullHTML+"</div>"
-      htmlContent=htmlContent+meterHTML;
+      resultContainerHTML=resultContainerHTML+meterHTML;
     }
 
     if(expected && actual){
       let expectationHTML = "<div class='expectationDiv'><div class='actual'>"+actual+"</div><div class='expected'>"+expected+"</div></div>"; 
-      htmlContent=htmlContent+expectationHTML;
+      resultContainerHTML=resultContainerHTML+expectationHTML;
     }
 
     if(expected && !actual){
       let expectedHTML = "<div class='expected'>"+expected+"</div>"; 
-      htmlContent=htmlContent+expectedHTML;
+      resultContainerHTML=resultContainerHTML+expectedHTML;
     }
    
     
@@ -336,6 +344,9 @@ var POG = function(category,destination){
 
     tableHTML = tableHTML+"</table>";
 
+
+    htmlContent = headerHTML+resultContainerHTML;
+  
     const HTMLOutput = "<div class='SKULabel' id='fc"+barcode+"'>"+htmlContent+"</div>";
 
     console.log(HTMLOutput);
