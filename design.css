@@ -130,6 +130,7 @@
     gap: 0.5em;
     align-items: anchor-center;
     flex-shrink: 0;
+    /* flex-grow: 1; */
 }
 
 .SKULabel .resultContainer .actual {
@@ -216,26 +217,27 @@ h1 {
     background-repeat:no-repeat;
     background-position:50%;
     flex-shrink: 0;
+    background-image: url(https://placehold.co/150x150?text=No+Image&font=roboto)
 }
 
 
 .expectationDiv {
     flex-shrink: 0;
-    width:50px;
+    /* width:50px; */
     display:flex;
     justify-content:stretch;
-      display: flex;
-      gap: 10px;
+    display: flex;
+    gap: 10px;
     font-size:0.8em;
     flex-wrap:wrap;
 }
 
 .actual, .expected {
-  padding: 0.25em 0.15em;
+  padding: 0.25em 0.5em;
   border-radius: 6px;
   color: white;
-    flex-grow:1;
-    text-align:center
+  flex-grow:1;
+  text-align:center
 }
 
 .actual {
@@ -251,12 +253,16 @@ h1 {
     .SKULabel {
         gap: 1em;
         flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .H2{
+        background:red !important;
     }
 
     .aDivtypeRankGrid .tblAnswer > tbody tr{
         display:flex;
         flex-wrap:wrap;
-        border-bottom:3px solid #10529c !important;
     }
 
     .aDivtypeRankGrid .tblAnswer > tbody tr .H4{
@@ -271,25 +277,36 @@ h1 {
         flex-grow:1;
     }
 
+
     .packshot{
         order:1;
+    }
+
+     .packshot{
+     
     }
 
     .SKULabel h1 {
         order:2;
         text-align: left;
-        width: calc(100% - 150px);
+        width: calc(100% - 150px - 70px);
     }
 
     .SKULabel .colored {
         text-align: center !important;
         padding: 0 !important;
-        order:2;
+        order:4;
     }
 
+    .SKULabel .expectationDiv,
+    .SKULabel .resultContainer{
+        order:5;
+    }
+    
     .SKULabel p {
         white-space: nowrap;
         margin: 0;
+         order:3;
     }
 }
 
