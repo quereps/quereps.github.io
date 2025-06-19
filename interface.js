@@ -289,7 +289,7 @@ var POG = function(category,destination){
     let barcodeHTML = barcode ? "<img class='barcode' id='barcode"+barcode+"' src='' />" : "";
     let packshot = barcode ? "<div class='packshot pshot"+barcode+"''></div>" : "";
 
-    let titleGroupHTML = titleHTML+barcodeHTML+descHTML+coloredHTML;
+    let titleGroupHTML = "<div class='titleGroupHTML'>"+titleHTML+barcodeHTML+descHTML+coloredHTML+"</div>";
 
     let headerHTML = "<div class='header'>"+packshot+titleGroupHTML+"</div>"  
     
