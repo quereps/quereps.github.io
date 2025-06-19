@@ -306,6 +306,11 @@ var POG = function(category,destination){
       let expectationHTML = "<div class='expectationDiv'><div class='actual'>"+actual+"</div><div class='expected'>"+expected+"</div></div>"; 
       htmlContent=htmlContent+expectationHTML;
     }
+
+    if(expected && !actual){
+      let expectedHTML = "<div class='expected'>"+expected+"</div>"; 
+      htmlContent=htmlContent+expectedHTML;
+    }
    
     if(barcode){
          let barcodeHTML = "<img class='barcode' id='barcode"+barcode+"' src='' />";
@@ -373,7 +378,7 @@ function barcodeGenerate(code) {
     format,
     lineColor: "#000",
     width: 1,
-    height: 10,
+    height: 15,
     displayValue: true,
     margin: 0,
     background: "#fafafa",
