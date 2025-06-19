@@ -65,7 +65,7 @@ var oosMOLExtract = function(){
     addTile("oos_restocked.A"+oosompID,oosompID,null,{
         data:{
           title: name[item][0].value,
-          number: upc[item][0].value,
+          //number: upc[item][0].value,
         },
         result:{
           expected: expected[item][0].value,
@@ -122,14 +122,16 @@ var complianceCheck = function(){
         title: sku.name,
         subtitle: sku.category,
         description: sku.size,
-        number: sku.upc,
+        //number: sku.upc,
       },
       meter:{
         value: sku.facings,
         full: sku.expFacings
-      }
+      },
+        barcode:sku.upc,
 });
       //addCheckbox("facingCompliance-container #fc"+skuList[theupc].upc,"fc_restocked",faceCompID);
+      barcodeGenerate(sku.upc);
       faceCompID++;
     }
 
@@ -146,15 +148,16 @@ var complianceCheck = function(){
         title: sku.name,
         subtitle: sku.category,
         description: sku.size,
-        number: sku.upc,
+        //number: sku.upc,
       },
       result:{
         expected: sku.expPricing,
         actual: sku.prices
       },
-      barcode: sku.upc,
+        barcode:sku.upc,
 });
       //addCheckbox("priceCompliance-container #fc"+skuList[theupc].upc,"fp_replaced",priceCompID);
+       barcodeGenerate(sku.upc);
       priceCompID++;
     }
 
