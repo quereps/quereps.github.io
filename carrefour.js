@@ -119,9 +119,9 @@ var complianceCheck = function(){
       addTile("fc_restocked.A"+faceCompID,faceCompID,skuList[theupc],{
       object:sku,
       data:{
-        title: sku.name,
+        title: sku.name+" "+sku.size,
         subtitle: sku.category,
-        description: sku.size,
+        //description: sku.size,
         //number: sku.upc,
       },
       meter:{
@@ -145,9 +145,9 @@ var complianceCheck = function(){
       addTile("pc_replaced.A"+priceCompID,priceCompID,skuList[theupc],{
       object:sku,
       data:{
-        title: sku.name,
+        title: sku.name+" "+sku.size,
         subtitle: sku.category,
-        description: sku.size,
+        //description: sku.size,
         //number: sku.upc,
       },
       result:{
