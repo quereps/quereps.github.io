@@ -303,7 +303,7 @@ var POG = function(category,destination){
     }
 
     if(expected && actual){
-      let expectationHTML = "<div class='expectationDiv'><div class='actual'>"+actual+"</div><div class='expected'>"+expected+"</div></div>" : ""; 
+      let expectationHTML = "<div class='expectationDiv'><div class='actual'>"+actual+"</div><div class='expected'>"+expected+"</div></div>"; 
       htmlContent=htmlContent+expectationHTML;
     }
    
