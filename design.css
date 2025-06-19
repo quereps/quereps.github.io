@@ -42,7 +42,7 @@
 }
 
 .aDivtypeRankGrid .tblAnswer thead th, .aDivtypeRankGrid .tblAnswer .HRG3D {
-    border: 0px;
+    /* border: 0px; */
 }
 
 .aDivtypeRankGrid .Column1, .aDivtypeRankGrid .Column2, .aDivtypeRankGrid .Column3, .aDivtypeRankGrid .Column4 {
