@@ -383,7 +383,7 @@ function barcodeGenerate(code) {
   JsBarcode("#barcode" + code, code, {
     format,
     lineColor: "#000",
-    width: 1,
+    width: 2,
     height: 15,
     displayValue: true,
     margin: 0,
