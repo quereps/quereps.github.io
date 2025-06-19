@@ -96,7 +96,7 @@
     line-height: 1.5em;
     text-align: center;
     font-weight: normal;
-    min-width: 150px;
+    width: 150px;
     flex-shrink: 0;
 }
 
@@ -104,8 +104,8 @@
     white-space: nowrap;
     width: 70px;
     margin: 0;
-    /* background:yellow; */
     flex-shrink: 0;
+    text-align: center;
 }
 
 .SKULabel table {
@@ -247,4 +247,32 @@ h1 {
     background-repeat:no-repeat;
     background-position:50%;
     flex-shrink: 0;
+}
+
+
+.expectationDiv {
+    flex-shrink: 0;
+    width:50px;
+    display:flex;
+    justify-content:stretch;
+      display: flex;
+      gap: 10px;
+    font-size:0.8em;
+    flex-wrap:wrap;
+}
+
+.actual, .expected {
+  padding: 0.25em 0.15em;
+  border-radius: 6px;
+  color: white;
+    flex-grow:1;
+    text-align:center
+}
+
+.actual {
+  background-color: #d9534f; /* red-ish for unexpected price */
+}
+
+.expected {
+  background-color: #5cb85c; /* green for expected */
 }
