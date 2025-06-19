@@ -46,7 +46,8 @@
 }
 
 .aDivtypeRankGrid .Column1, .aDivtypeRankGrid .Column2, .aDivtypeRankGrid .Column3, .aDivtypeRankGrid .Column4 {
-    width: 50px;
+    width: 1% !important;
+    min-width:100px;
     border-top: 1px solid #bebfc1;
 }
 
@@ -68,7 +69,7 @@
 .aDivtypeRankGrid .tblAnswer > tbody{
     container-type: inline-size;
     /* or size */
-    /* display: block; */
+    display: block;
 }
 
 .header{
@@ -86,7 +87,7 @@
 .SKULabel {
     display: flex;
     /* flex-wrap: wrap; */
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 1em;
 }
@@ -141,19 +142,21 @@
     display: flex;
     flex-wrap: wrap;
     grid-area: result;
-    gap: 0.5em;
-    align-items: anchor-center;
+    /* gap: 0.5em; */
+    align-items: center;
     flex-shrink: 0;
     /* flex-grow: 1; */
     margin: 0 0.5em;
+    text-align: end;
+    justify-content: end;
 }
 
 .SKULabel .resultContainer .actual {
     text-align: center;
     flex-grow: 1;
-    font-weight: bold;
+    /* font-weight: bold; */
     width: 100%;
-    display: none;
+    /* display: none; */
 }
 
 .SKULabel .resultContainer .target {
@@ -236,7 +239,7 @@ h1 {
     background-image: url(https://placehold.co/150x150?text=No+Image&font=roboto)
 }
 
-
+h4{margin:0;font-weight:normal;}
 .expectationDiv {
     flex-shrink: 0;
     /* width:50px; */
@@ -245,7 +248,7 @@ h1 {
     display: flex;
     gap: 10px;
     font-size:0.8em;
-    flex-wrap:wrap;
+    /* flex-wrap:wrap; */
 }
 
 .expectationDiv .actual, .expectationDiv .expected {
@@ -269,6 +272,18 @@ h1 {
   text-align:center
 }
 
+.H4{
+    /* height: unset; */
+}
+
+.tdBlankLeftColumn{display:none;}
+.Column1,
+.Column2,
+.Column3{
+        max-width:50px;
+        width:10%;
+    }
+
     .SKULabel .barcode{width: fit-content;}
 
 @media only screen and (max-width: 700px){
@@ -284,10 +299,11 @@ h1 {
 }
 
 /* Style the .card based on container's width */
-@container (max-width: 700px) {
+@container (max-width: 1200px) {
     .SKULabel {
+        padding:0.5em;
         gap: 0.5em;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         justify-content: space-between;
     }
     
@@ -310,8 +326,9 @@ h1 {
     .Column2,
     .Column3{
         background:linear-gradient(to bottom,white,var(--bkgrey-color));
-        /* flex-grow:1; */
+        flex-grow:1;
         border-top:0px !important;
+        max-width:initial;
     }
 
 
