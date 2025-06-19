@@ -320,6 +320,10 @@ h1 {
     .SKULabel .resultContainer{
         order:5;
     }
+
+    .SKULabel .barcode{
+        order:4;
+    }
     
     .SKULabel p {
         white-space: nowrap;
@@ -330,3 +334,69 @@ h1 {
 
 
 
+
+
+
+.typeRankGrid  .ui-button,
+.typeMatrix3D .ui-button{
+    height: 35px !important;
+    margin:2px !important;
+    border:0px !important;
+    background-size:25px !important;
+    background-repeat: no-repeat;
+    background-position:50%;
+    border-radius:5em;
+    background-color:#eee;
+}
+ 
+.typeRankGrid .ui-state-active,
+.typeMatrix3D .ui-state-active
+{
+    
+}
+ 
+.typeRankGrid  .ui-button-text,
+.typeMatrix3D .ui-button-text
+{
+    display:none !important;
+}
+
+
+//Hide the radio button
+.rbr .aDivtypeRankGrid .c_i,
+.rbr .typeMatrix3D .c_i{
+    display:none !important;
+}
+
+
+
+.typeRankGrid .Column1 .ui-button{
+    background-image: url("https://app.form.com/fs/v1/h/Js6Sr5vsXS6wCMNTnc6RUb9Wp66Uc9uNvd1DwZ1PZQ4/277054.png") !important;
+}
+
+.typeRankGrid .Column1 .ui-state-active{
+  background-color:green !important;
+background-image: url("https://app.form.com/fs/v1/h/L6VU56iKClMaWbOpRmLGdgAThFhjL1osFP_gZfTvWew/277053.png") !important;
+
+    
+}
+
+
+.typeRankGrid .Column2 .ui-button{
+    background-image: url("https://app.form.com/fs/v1/h/9zQuy4WkjZR4F_IN6J0p8ZsDUXvHC8ZvayxDizgSils/277050.png") !important;
+}
+
+.typeRankGrid .Column2 .ui-state-active{
+    background-image: url("https://app.form.com/fs/v1/h/gIMxzsywDjnUCd0c1yDC5UXhe99L_u6kuzO_gwp2xLg/277024.png") !important;
+    background-color:darkred !important;
+}
+
+
+.typeRankGrid .Column3 .ui-button{
+    background-image: url("https://app.form.com/fs/v1/h/m91N89S3mtf2X-fLLUT2jfcIGifJa8_Uy9YgvuwoTVE/277025.png") !important;
+}
+
+.typeRankGrid .Column3 .ui-state-active{
+    background-image: url("https://app.form.com/fs/v1/h/zJMdDIFlz1f4BJmnERMF3ORQFf3reQiC1MG0hCHNdX8/277060.png") !important;
+    background-color:#717070 !important;
+}
