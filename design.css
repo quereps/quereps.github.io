@@ -74,6 +74,8 @@
 
 .header{
     display:flex;
+    min-width: 300px;
+    width: calc(100% - 300px);
 }
 
 .titleGroupHTML{
@@ -86,7 +88,7 @@
 
 .SKULabel {
     display: flex;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
     align-items: flex-start;
     justify-content: space-between;
     gap: 1em;
@@ -303,7 +305,7 @@ h4{margin:0;font-weight:normal;}
     .SKULabel {
         padding:0.5em;
         gap: 0.5em;
-        flex-wrap: nowrap;
+        /* flex-wrap: nowrap; */
         justify-content: space-between;
     }
     
