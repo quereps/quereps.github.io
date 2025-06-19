@@ -84,6 +84,7 @@ var oosMOLExtract = function(){
         }
 
   }));*/
+    barcodeGenerate(upc[item][0].value);
 
     oosompID++;
   }
