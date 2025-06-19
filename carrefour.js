@@ -165,6 +165,8 @@ var complianceCheck = function(){
     console.log("Result Compliance: ",skuList[theupc].pricingCompliance);
 
   }
+
+  vpHideLoader();
 }
 
 var fillInData = function(question,nextSlot,data){
@@ -269,7 +271,7 @@ var createReport = function(){
 
   var update = async function (settings) {
 
-
+          vpShowLoader();
 
             missionID = settings.missionID;
             const placeID = settings.placeID;
