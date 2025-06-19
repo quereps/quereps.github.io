@@ -289,8 +289,8 @@ var POG = function(category,destination){
 
     htmlContent = htmlContent+titleHTML+subtitleHTML+descHTML+coloredHTML;
     
-    if(number){
-      let packshot = "<div class='packshot pshot"+number+"''></div>";
+    if(barcode){
+      let packshot = "<div class='packshot pshot"+barcode+"''></div>";
       htmlContent=htmlContent+packshot;
     }
 
