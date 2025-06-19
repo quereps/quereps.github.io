@@ -294,18 +294,17 @@ var POG = function(category,destination){
       htmlContent=htmlContent+packshot;
     }
 
-
-
-    
-
-
-
     if(value && full){
       let valueHTML = value ? "<div class='value'>"+value+"</div>" : ""; 
       let fullHTML = full ? "<div class='full'>"+full+"</div>" : ""; 
       let gaugeHTML = (value && full) ? "<meter value="+value+" min='0' max="+full+" low="+low+" high="+high+" optimum="+full+"></meter>" : ""; 
       let meterHTML = "<div class='resultContainer'>"+valueHTML+gaugeHTML+fullHTML+"</div>"
       htmlContent=htmlContent+meterHTML;
+    }
+
+    if(expected && actual){
+      let expectationHTML = "<div class='expectationDiv'><div class='actual'>"+actual+"</div><div class='expected'>"+expected+"</div></div>" : ""; 
+      htmlContent=htmlContent+expectationHTML;
     }
    
     if(barcode){
