@@ -261,6 +261,7 @@ h1 {
 
     .aDivtypeRankGrid .tblAnswer > tbody tr .H4{
         width:100%;
+        height: initial !important;
     }
     
     .Column1,
