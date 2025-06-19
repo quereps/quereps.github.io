@@ -71,6 +71,18 @@
     /* display: block; */
 }
 
+.header{
+    display:flex;
+}
+
+.titleGroupHTML{
+    flex-grow:1;
+    display:flex;
+    flex-direction:column;
+    justify-content: flex-start;
+    gap: 0.1em;
+}
+
 .SKULabel {
     display: flex;
     flex-wrap: wrap;
@@ -78,12 +90,12 @@
     gap: 1em;
 }
 
-.SKULabel h1 {
+.titleGroupHTML h1 {
     margin: 0;
-    flex-grow: 1;
-    text-align: right;
+    /* flex-grow: 1; */
     color: black;
     font-weight: normal;
+    /* gap: 0.5em; */
 }
 
 .SKULabel p {
@@ -256,6 +268,7 @@ h1 {
   text-align:center
 }
 
+    .SKULabel .barcode{width: fit-content;}
 
 @media only screen and (max-width: 700px){
     td.H2{
@@ -302,7 +315,7 @@ h1 {
 
 
     .packshot{
-        order:1;
+     
     }
 
      .packshot{
@@ -310,31 +323,26 @@ h1 {
     }
 
     .SKULabel h1 {
-        order:2;
-        text-align: left;
-        width: calc(100% - 150px - 70px);
+
     }
 
     .SKULabel .colored {
         text-align: center !important;
         padding: 0 !important;
-        order:4;
+
     }
 
     .SKULabel .expectationDiv,
     .SKULabel .resultContainer,
     .SKULabel .expected{
-        order:5;
+
     }
 
-    .SKULabel .barcode{
-        order:4;
-    }
+
     
     .SKULabel p {
         white-space: nowrap;
         margin: 0;
-         order:3;
     }
 }
 

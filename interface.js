@@ -294,8 +294,12 @@ var POG = function(category,destination){
     let headerHTML = "<div class='header'>"+packshot+titleGroupHTML+"</div>"  
     
 
+    let meterHTML="";
+    let expectationHTML="";
+    let expectedHTML = "";
+
     let resultContainerHTML = "";
-    
+ 
 
     
 
@@ -303,21 +307,18 @@ var POG = function(category,destination){
       let valueHTML = value ? "<div class='value'>"+value+"</div>" : ""; 
       let fullHTML = full ? "<div class='full'>"+full+"</div>" : ""; 
       let gaugeHTML = (value && full) ? "<meter value="+value+" min='0' max="+full+" low="+low+" high="+high+" optimum="+full+"></meter>" : ""; 
-      let meterHTML = "<div class='resultContainer'>"+valueHTML+gaugeHTML+fullHTML+"</div>"
-      resultContainerHTML=resultContainerHTML+meterHTML;
+      meterHTML = "<div class='resultContainer'>"+valueHTML+gaugeHTML+fullHTML+"</div>"
     }
 
     if(expected && actual){
-      let expectationHTML = "<div class='expectationDiv'><div class='actual'>"+actual+"</div><div class='expected'>"+expected+"</div></div>"; 
-      resultContainerHTML=resultContainerHTML+expectationHTML;
+      expectationHTML = "<div class='expectationDiv'><div class='actual'>"+actual+"</div><div class='expected'>"+expected+"</div></div>"; 
     }
 
     if(expected && !actual){
-      let expectedHTML = "<div class='expected'>"+expected+"</div>"; 
-      resultContainerHTML=resultContainerHTML+expectedHTML;
+      expectedHTML = "<div class='expected'>"+expected+"</div>"; 
     }
    
-    
+    resultContainerHTML = "<div class='resultContainer'><h4>Results :</h4>"+meterHTML+expectationHTML+expectedHTML"</div>" 
    
 
     let tableHTML = "<table>";
