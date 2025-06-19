@@ -64,7 +64,7 @@
 
 /* Mark a container */
 .SKULabel,
-.mobileFriendControl,
+.aDivtypeRankGrid .mobileFriendControl,
 .aDivtypeRankGrid .tblAnswer > tbody{
     container-type: inline-size;
     /* or size */
