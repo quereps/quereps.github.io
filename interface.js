@@ -288,6 +288,11 @@ var POG = function(category,destination){
     let coloredHTML = number ? "<div class='colored'>"+number+"</div>" : ""; 
 
     htmlContent = htmlContent+titleHTML+subtitleHTML+descHTML+coloredHTML;
+
+    if(barcode){
+         let barcodeHTML = "<img class='barcode' id='barcode"+barcode+"' src='' />";
+         htmlContent=htmlContent+barcodeHTML;
+    }
     
     if(barcode){
       let packshot = "<div class='packshot pshot"+barcode+"''></div>";
@@ -312,10 +317,7 @@ var POG = function(category,destination){
       htmlContent=htmlContent+expectedHTML;
     }
    
-    if(barcode){
-         let barcodeHTML = "<img class='barcode' id='barcode"+barcode+"' src='' />";
-         htmlContent=htmlContent+barcodeHTML;
-    }
+    
    
 
     let tableHTML = "<table>";

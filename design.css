@@ -46,7 +46,7 @@
 }
 
 .aDivtypeRankGrid .Column1, .aDivtypeRankGrid .Column2, .aDivtypeRankGrid .Column3, .aDivtypeRankGrid .Column4 {
-    /* width: 1%; */
+    width: 50px;
     border-top: 1px solid #bebfc1;
 }
 
@@ -68,12 +68,12 @@
 .aDivtypeRankGrid .tblAnswer > tbody{
     container-type: inline-size;
     /* or size */
-    display: block;
+    /* display: block; */
 }
 
 .SKULabel {
     display: flex;
-    flex-wrap: no-wrap;
+    flex-wrap: wrap;
     align-items: center;
     gap: 1em;
 }
@@ -235,7 +235,7 @@ h1 {
     flex-wrap:wrap;
 }
 
-.actual, .expected {
+.expectationDiv .actual, .expectationDiv .expected {
   padding: 0.25em 0.5em;
   border-radius: 6px;
   color: white;
@@ -249,6 +249,11 @@ h1 {
 
 .expected {
   background-color: #5cb85c; /* green for expected */
+  padding: 0.5em 2em;
+  border-radius: 6px;
+  color: white;
+  flex-grow:0;
+  text-align:center
 }
 
 
@@ -317,7 +322,8 @@ h1 {
     }
 
     .SKULabel .expectationDiv,
-    .SKULabel .resultContainer{
+    .SKULabel .resultContainer,
+    .SKULabel .expected{
         order:5;
     }
 
