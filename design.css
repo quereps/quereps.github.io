@@ -63,9 +63,12 @@
 }
 
 /* Mark a container */
-.SKULabel {
+.SKULabel,
+.mobileFriendControl,
+.aDivtypeRankGrid .tblAnswer > tbody{
     container-type: inline-size;
     /* or size */
+    display: block;
 }
 
 .SKULabel {
@@ -204,40 +207,6 @@ h1 {
     transition: all 1s;
 }
 
-/* Style the .card based on container's width */
-@container (max-width: 700px) {
-    .SKULabel {
-        gap: 0 1em;
-        flex-wrap: wrap;
-    }
-
-    .SKULabel h1 {
-        text-align: left;
-        width: calc(100% - 150px - 1em);
-    }
-
-    .SKULabel .colored {
-        text-align: left !important;
-        padding: 0 !important;
-    }
-
-    .SKULabel p {
-        white-space: nowrap;
-        margin: 0;
-    }
-}
-
-/* Style the .card based on container's width */
-@container (max-width: 400px) {
-    .SKULabel h1 {
-        width: 100%;
-    }
-
-    .SKULabel .resultContainer {
-        width: 100%;
-    }
-}
-
 
 
 .packshot{
@@ -276,3 +245,62 @@ h1 {
 .expected {
   background-color: #5cb85c; /* green for expected */
 }
+
+/* Style the .card based on container's width */
+@container (max-width: 700px) {
+    .SKULabel {
+        gap: 1em;
+        flex-wrap: wrap;
+    }
+
+    .aDivtypeRankGrid .tblAnswer > tbody tr{
+        display:flex;
+        flex-wrap:wrap;
+        border-bottom:3px solid #10529c !important;
+    }
+
+    .aDivtypeRankGrid .tblAnswer > tbody tr .H4{
+        width:100%;
+    }
+    
+    .Column1,
+    .Column2,
+    .Column3{
+        background:var(--bkgrey-color);
+        flex-grow:1;
+    }
+
+    .packshot{
+        order:1;
+    }
+
+    .SKULabel h1 {
+        order:2;
+        text-align: left;
+        width: calc(100% - 150px);
+    }
+
+    .SKULabel .colored {
+        text-align: center !important;
+        padding: 0 !important;
+        order:2;
+    }
+
+    .SKULabel p {
+        white-space: nowrap;
+        margin: 0;
+    }
+}
+
+/* Style the .card based on container's width */
+@container (max-width: 400px) {
+    .SKULabel h1 {
+        width: 100%;
+    }
+
+    .SKULabel .resultContainer {
+        width: 100%;
+    }
+}
+
+
