@@ -69,7 +69,8 @@ var oosMOLExtract = function(){
         },
         result:{
           expected: expected[item][0].value,
-        }
+        },
+        barcode:upc[item][0].value,
   });
 
    /* jQuery(container).append(htmlTile(
