@@ -373,7 +373,7 @@ function barcodeGenerate(code) {
     format,
     lineColor: "#000",
     width: 1,
-    height: 10,
+    height: 20,
     displayValue: true,
     margin: 0,
     background: "#fafafa",
