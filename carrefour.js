@@ -292,7 +292,7 @@ var createReport = function(){
         });
 
 
-        $('#table-container').append(tableElement);
+        $('#table-container-latestMission').append(tableElement);
 
         /*if(features.images){
           getImages(lastItem);
