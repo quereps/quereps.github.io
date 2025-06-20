@@ -67,6 +67,7 @@ var oosMOLExtract = function(){
           title: name[item][0].value,
           //number: upc[item][0].value,
         },
+        resultLabel:"Expected Facings",
         result:{
           expected: expected[item][0].value,
         },
@@ -124,6 +125,7 @@ var complianceCheck = function(){
         //description: sku.size,
         //number: sku.upc,
       },
+      resultLabel:"Availability",
       meter:{
         value: sku.facings,
         full: sku.expFacings
@@ -150,6 +152,7 @@ var complianceCheck = function(){
         //description: sku.size,
         //number: sku.upc,
       },
+      resultLabel:"Prices",
       result:{
         expected: sku.expPricing,
         actual: sku.prices

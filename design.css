@@ -49,6 +49,7 @@
     width: 1% !important;
     min-width:100px;
     border-top: 1px solid #bebfc1;
+    padding: 0;
 }
 
 .aDivtypeMatrix3D .Column3, .aDivtypeMatrix3D .Column4 {
@@ -92,6 +93,7 @@
     align-items: flex-start;
     justify-content: space-between;
     gap: 1em;
+    background: white;
 }
 
 .titleGroupHTML h1 {
@@ -151,14 +153,6 @@
     margin: 0 0.5em;
     text-align: end;
     justify-content: end;
-}
-
-.SKULabel .resultContainer .actual {
-    text-align: center;
-    flex-grow: 1;
-    /* font-weight: bold; */
-    width: 100%;
-    /* display: none; */
 }
 
 .SKULabel .resultContainer .target {
@@ -247,31 +241,34 @@ h4{margin:0;font-weight:normal;}
     /* width:50px; */
     display:flex;
     justify-content:stretch;
-    display: flex;
+    /* display: flex; */
     gap: 10px;
     font-size:0.8em;
     /* flex-wrap:wrap; */
 }
 
-.expectationDiv .actual, .expectationDiv .expected {
-  padding: 0.25em 0.5em;
+.expectationDiv .actual, 
+.expectationDiv .expected,
+.resultContainer .expected{
+
   border-radius: 6px;
   color: white;
   flex-grow:1;
-  text-align:center
+  text-align:center;
+  font-size: initial;
 }
 
 .actual {
   background-color: #d9534f; /* red-ish for unexpected price */
 }
 
-.expected {
+.resultContainer .expected{
+    background-color: var(--bkhighlight-color); /* green for expected */
+    color:black;
+}
+
+.expectationDiv .expected {
   background-color: #5cb85c; /* green for expected */
-  padding: 0.5em 2em;
-  border-radius: 6px;
-  color: white;
-  flex-grow:0;
-  text-align:center
 }
 
 .H4{
@@ -289,6 +286,11 @@ h4{margin:0;font-weight:normal;}
     .SKULabel .barcode{width: fit-content;}
 
 @media only screen and (max-width: 700px){
+
+    .aDivtypeRankGrid .tblAnswer{
+        background:#10529c29;
+    }
+    
     td.H2{
         background:var(--main-color) !important;
         color:white !important;
@@ -302,26 +304,34 @@ h4{margin:0;font-weight:normal;}
 
 /* Style the .card based on container's width */
 @container (max-width: 1200px) {
+    
     .SKULabel {
         padding:0.5em;
-        gap: 0.5em;
+        gap: 1em;
         /* flex-wrap: nowrap; */
         justify-content: space-between;
     }
-    
+    .SKULabel .resultContainer,
+    .SKULabel .header{
+        flex-grow:1;
+    }
 
     .aDivtypeRankGrid .tblAnswer > tbody tr{
         display:flex;
         flex-wrap:wrap;
         justify-content: space-between;
-        width: 100%;
-        margin: 0;
+        width: calc(100% - 1em);
+        margin: 1em 0.5em;
+        box-shadow: 2px 2px 5px #ccc;
+        border-radius: 0.5em;
+        overflow: hidden;
     }
 
     .aDivtypeRankGrid .tblAnswer > tbody tr .H4{
         width:100%;
         height: initial !important;
         padding: 0;
+        border: 0px;
     }
     
     .Column1,
@@ -331,11 +341,19 @@ h4{margin:0;font-weight:normal;}
         flex-grow:1;
         border-top:0px !important;
         max-width:initial;
+       
+    }
+    
+    .Column1 .ui-button,
+    .Column2 .ui-button,
+    .Column3 .ui-button{
+         border-radius:0 !important;
+        margin:0 !important;
     }
 
-
     .packshot{
-     
+     width:50px;
+        margin:0 0.25em
     }
 
      .packshot{
@@ -353,10 +371,8 @@ h4{margin:0;font-weight:normal;}
     }
 
     .SKULabel .expectationDiv,
-    .SKULabel .resultContainer,
-    .SKULabel .expected{
-
-    }
+    .SKULabel .expected,
+    .SKULabel .actual{flex-grow: 0;padding: 0.25em 0.5em;}
 
 
     
@@ -374,7 +390,7 @@ h4{margin:0;font-weight:normal;}
 .typeRankGrid  .ui-button,
 .typeMatrix3D .ui-button{
     height: 35px !important;
-    margin:2px !important;
+    /* margin:2px !important; */
     border:0px !important;
     background-size:25px !important;
     background-repeat: no-repeat;
