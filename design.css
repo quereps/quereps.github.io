@@ -79,6 +79,8 @@ span.ui-button-text.checkbox_mob {
     min-width:100px;
     border-top: 1px solid #bebfc1;
     padding: 0;
+    display: flex;
+    align-items: stretch;
 }
 
 .aDivtypeMatrix3D .Column3, .aDivtypeMatrix3D .Column4 {
@@ -99,7 +101,14 @@ span.ui-button-text.checkbox_mob {
 .aDivtypeRankGrid .tblAnswer > tbody{
     container-type: inline-size;
     /* or size */
-    display: block;
+    /* display: flex; */
+    /* flex-wrap: nowrap; */
+}
+
+.aDivtypeRankGrid .tblAnswer > tbody > .mobileFriendControl{
+    display:flex;
+    border-bottom: 1px solid #ccc;
+    flex-wrap: wrap;
 }
 
 .header{
@@ -301,7 +310,8 @@ h4{margin:0;font-weight:normal;font-size: 0.8em;}
 }
 
 .H4{
-    /* height: unset; */
+    height: unset;
+    flex-grow: 1;
 }
 
 .tdBlankLeftColumn{display:none;}
@@ -310,6 +320,7 @@ h4{margin:0;font-weight:normal;font-size: 0.8em;}
 .Column3{
         max-width:50px;
         width:10%;
+        display: flex;
     }
 
     .SKULabel .barcode{width: fit-content;}
@@ -361,6 +372,8 @@ h4{margin:0;font-weight:normal;font-size: 0.8em;}
         height: initial !important;
         padding: 0;
         border: 0px;
+        min-width: 350px;
+        flex-grow: 1;
     }
     
     .Column1,
@@ -418,14 +431,16 @@ h4{margin:0;font-weight:normal;font-size: 0.8em;}
 
 .typeRankGrid  .ui-button,
 .typeMatrix3D .ui-button{
-    height: 35px !important;
+    min-height: 35px !important;
     /* margin:2px !important; */
     border:0px !important;
     background-size:25px !important;
     background-repeat: no-repeat;
     background-position:50%;
-    border-radius:5em;
+    border-radius: 0;
     background-color:#eee;
+    height: 100%;
+    margin: 0;
 }
  
 .typeRankGrid .ui-state-active,
