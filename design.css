@@ -264,7 +264,7 @@ h1 {
     background-image: url(https://placehold.co/150x150?text=No+Image&font=roboto)
 }
 
-h4{margin:0;font-weight:normal;}
+h4{margin:0;font-weight:normal;font-size: 0.8em;}
 .expectationDiv {
     flex-shrink: 0;
     /* width:50px; */
