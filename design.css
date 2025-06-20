@@ -19,6 +19,35 @@
     --border-radius: 8px;
 }
 
+
+
+.aDivQId_category .ui-button{
+  background-repeat:no-repeat !important;
+  background-size:30px !important;
+  background-position:0.2em 50% !important;
+  padding:0em !important;
+  padding-left:2.5em !important;
+}
+
+.aDivQId_category tr.mobileFriendControl[class*="_A1"] .ui-button{
+  background-image:url(https://app.form.com/fs/v1/h/Vo9DzuNHewPLFYpOuR0tluY278ZRpLu4CUAB6gs493o/276949.png);
+}
+
+.aDivQId_category tr.mobileFriendControl[class*="_A2"] .ui-button{
+  background-image:url(https://app.form.com/fs/v1/h/xX1BBKjnHmZwTxk-cBpUELE0SDnE-lqEOGEySMrEDmc/276950.png);
+}
+
+.aDivQId_category .radio_mob{
+  background:none !important;
+  padding:0.25em !important;
+}
+              
+
+span.ui-button-text.checkbox_mob {
+    display:none;
+}
+
+
 .aDivtypeMatrix3D {
     width: 100%;
     border-collapse: collapse;
