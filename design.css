@@ -262,7 +262,7 @@ h4{margin:0;font-weight:normal;}
   background-color: #d9534f; /* red-ish for unexpected price */
 }
 
-.resultContainer .expected{
+.resultContainer > .expected{
     background-color: var(--bkhighlight-color); /* green for expected */
     color:black;
 }
