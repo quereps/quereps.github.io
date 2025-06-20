@@ -286,6 +286,8 @@ var createReport = function(){
 
          removeNotification();
 
+         vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
+
         let tableElement = createTable(lastItem,"Latest Mission", {
           "Completed":moment(lastItem.completed_at).fromNow(),
           "Completed By":lastItem.user.first_name+" "+lastItem.user.last_name
