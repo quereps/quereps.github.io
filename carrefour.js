@@ -300,6 +300,7 @@ var createReport = function(){
           getImages(lastItem);
         }*/
 
+        vpShowLoader();
 
         getGrid(lastItem.id).then(async (photo_grids)=>{
 
