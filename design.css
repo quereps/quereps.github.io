@@ -329,7 +329,8 @@ h4{margin:0;font-weight:normal;font-size: 0.8em;}
 
 @media only screen and (max-width: 700px){
 
-     .customTable{
+     .customTable td,
+     .customTable th{
         font-size:8px;
         padding: 0.5em;
     }
@@ -353,7 +354,8 @@ h4{margin:0;font-weight:normal;font-size: 0.8em;}
 @container (max-width: 1200px) {
 
 
-    .customTable{
+     .customTable td,
+     .customTable th{
         font-size:8px;
         padding: 0.5em;
     }
