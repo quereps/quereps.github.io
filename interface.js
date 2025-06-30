@@ -154,7 +154,7 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
 
 
     //https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels
-    ChartDataLabels ? Chart.register(ChartDataLabels);
+    ChartDataLabels && Chart.register(ChartDataLabels);
 
     // Create the chart
     window.currentChart = new Chart(canvas, {
