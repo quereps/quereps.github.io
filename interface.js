@@ -140,6 +140,8 @@ function JSONToGraph(jsonArray, title, type, destination, legend, colorMap) {
    //     window.currentChart.destroy();
    // }
 
+    Chart.register(ChartDataLabels);
+
     // Create the chart
     window.currentChart = new Chart(canvas, {
         type: type,
@@ -161,6 +163,14 @@ function JSONToGraph(jsonArray, title, type, destination, legend, colorMap) {
             },
             legend: {
                 display: legend
+            },
+            datalabels: {
+              formatter: (value, context) => context.chart.data.labels[context.dataIndex],
+              color: '#fff',
+              font: {
+                weight: 'bold',
+                size: 10
+              }
             }
         }
         }
