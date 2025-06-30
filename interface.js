@@ -50,7 +50,7 @@ var notification = function(type,message) {
 
 var createTable = function(data, title, structure) {
   // Create a table element with an optional border.
-  var $table = jQuery('<table border="1"></table>');
+  var $table = jQuery('<table class="customTable"></table>');
 
   // If a title is provided, add a caption to the table.
   if (title) {
