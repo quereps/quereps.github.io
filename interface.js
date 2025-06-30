@@ -168,7 +168,7 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
             }]
         },
         options: {
-            responsive: true,
+            responsive: false,
             maintainAspectRatio: false,
             plugins: {
               title: {
