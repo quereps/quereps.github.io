@@ -123,7 +123,7 @@ var createReport = function(){
       });
 
 
-      $('#table-container').append(tableElement);
+      $('#table-container-place').append(tableElement);
 
       getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
 
