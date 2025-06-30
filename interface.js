@@ -120,6 +120,9 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
 
     console.log("JSONToGraph Start");
     //let entries = Object.entries(jsonArray);
+
+    const excluding = settings.exclude || [];
+
     let entries = Object.entries(jsonArray).filter(([k, v]) => !settings.exclude?.includes(k));
     entries.sort((a, b) => b[1] - a[1]);
     const labels = entries.map(([k, v]) => k);
