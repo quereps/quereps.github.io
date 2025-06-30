@@ -79,7 +79,7 @@ var createReport = function(){
       }
  
       if(current.type=="skuList"){
-        JSONToHTMLTable(rankObjects(skuList, "facings", current.columns), containerID) 
+        JSONToHTMLTable(rankObjects(skuList, "facings", current.columns), containerID, current.settings) 
       }
 
       if(current.type=="pog"){
