@@ -1,19 +1,7 @@
 //this is a test there and there
 
 
-const colorMap = {
-  "Coca-Cola": "#FF668B",
-  "Red Bull": "#FFA033",
-  "Fanta": "#FFD65C",
-  "Monster": "#47C2C2",
-  "Lucozade": "#A66EFF",
-  "Pepsi": "#D1D1D1",
-  "7Up": "#35A8F4",
-  "Oasis": "#F05A7A",
-  "Dr Pepper": "#F39035",
-  "Ribena": "#F8CE5C",
-  "Glaceau": "#42B9BD"
-};
+
 
  const backgroundColors = labels.map(label => colorMap[label] || '#CCCCCC');
 
@@ -94,7 +82,7 @@ var createReport = function(){
       }
 
        if(current.type=="graph"){
-        JSONToGraph(graph(current.dimmension), current.dimmension ,current.graphType, containerID, current.legend);
+        JSONToGraph(graph(current.dimmension), current.dimmension ,current.graphType, containerID, current.legend,current.colorMap);
       }
  
       if(current.type=="skuList"){
