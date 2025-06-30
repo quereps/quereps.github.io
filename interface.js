@@ -146,6 +146,7 @@ function JSONToGraph(jsonArray, title, type, destination, legend) {
             datasets: [{
                 label: "Count",
                 data: data,
+                backgroundColor: backgroundColors,
             }]
         },
         options: {
@@ -250,9 +251,7 @@ var POG = function(category,destination){
 
 
 
-
-   //function htmlTile(title,subtitle,colored,description,result,target,dataTable,barcode){
-    function htmlTile(
+ function htmlTile(
       {
         object = {},
         data:{
