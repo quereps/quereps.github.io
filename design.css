@@ -502,3 +502,66 @@ background-image: url("https://app.form.com/fs/v1/h/L6VU56iKClMaWbOpRmLGdgAThFhj
     min-height:350px; 
     width:100%;
 }
+
+
+
+
+
+.canvasContainer {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1em 0;
+    overflow: scroll;
+}
+              
+
+div#table-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    align-items: stretch;
+}
+
+div#table-container > div {
+    box-shadow: 5px 5px 15px #ddd;
+    padding: 1em;
+    flex-grow: 1;
+    min-height: 70px;
+}
+              
+
+
+.pog .pog {
+    display: flex;
+    flex-direction: column-reverse;
+    /* border: 1px solid red; */
+    font-size: 1px;
+}
+
+.shelf {
+    display: flex;
+    min-height: 10px;
+    border-bottom: 5px solid #ccc;
+    justify-content: space-between;
+    /* flex-grow: 1; */
+    align-items: baseline;
+}
+
+
+.sku.unknown {
+    border: 2px solid orange !important;
+}
+
+.sku.sku {
+    border: 2px solid blue;
+}
+
+.sku.empty {
+    border: 2px solid grey;
+}
+
+div.container.pog {
+    flex-grow: 0 !important;
+}
