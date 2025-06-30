@@ -76,7 +76,7 @@ var createReport = function(){
       }
 
        if(current.type=="graph"){
-        JSONToGraph(graph(current.dimmension), current.dimmension ,current.graphType, containerID);
+        JSONToGraph(graph(current.dimmension), current.dimmension ,current.graphType, containerID, true);
       }
  
       if(current.type=="skuList"){

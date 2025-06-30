@@ -108,7 +108,7 @@ function JSONToHTMLTable(jsonArray, destination) {
 
 
 
-function JSONToGraph(jsonArray, title, type, destination) {
+function JSONToGraph(jsonArray, title, type, destination, legend) {
 
     console.log("JSONToGraph Start");
     let entries = Object.entries(jsonArray);
@@ -157,7 +157,7 @@ function JSONToGraph(jsonArray, title, type, destination) {
               text: title,
             },
             legend: {
-                display: false
+                display: legend
             }
         }
         }
