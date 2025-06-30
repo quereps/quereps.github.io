@@ -153,7 +153,7 @@ var createReport = function(){
             const placeID = settings.placeID;
 
 
-            console.log(placeID);
+            console.log("placeID: ",placeID);
 
             getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
 
