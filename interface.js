@@ -79,9 +79,14 @@ var createTable = function(data, title, structure) {
 
 
 
-function JSONToHTMLTable(jsonArray, destination) {
+function JSONToHTMLTable(jsonArray, destination, settings) {
+
+    const excludeList = settings.exclude;
+
+    const filteredArray = jsonArray.filter(row => !excludeList.includes(row[excludeKey]));
+
     const keys = Array.from(
-        jsonArray.reduce((set, obj) => {
+        filteredArray.reduce((set, obj) => {
             Object.keys(obj).forEach(key => set.add(key));
             return set;
         }, new Set())
@@ -91,7 +96,7 @@ function JSONToHTMLTable(jsonArray, destination) {
     html += keys.map(key => `<th>${key}</th>`).join("");
     html += "</tr></thead><tbody>";
 
-    jsonArray.forEach(obj => {
+    filteredArray.forEach(obj => {
         html += "<tr>";
         html += keys.map(key => `<td>${obj[key] !== undefined ? obj[key] : ""}</td>`).join("");
         html += "</tr>";
