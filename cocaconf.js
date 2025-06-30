@@ -88,6 +88,8 @@ var createReport = function(){
       }
 
     }
+
+    vpHideLoader();
 }
 
 
