@@ -329,8 +329,8 @@ h4{margin:0;font-weight:normal;font-size: 0.8em;}
 
 @media only screen and (max-width: 700px){
 
-     .customTable td,
-     .customTable th{
+     .IRDataTable td,
+     .IRDataTable th{
         font-size:8px  !important;
         padding: 0.5em  !important;
     }
@@ -354,8 +354,8 @@ h4{margin:0;font-weight:normal;font-size: 0.8em;}
 @container (max-width: 1200px) {
 
 
-     .customTable td,
-     .customTable th{
+     .IRDataTable td,
+     .IRDataTable th{
         font-size:8px  !important;
         padding: 0.5em  !important;
     }

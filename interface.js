@@ -95,7 +95,7 @@ function JSONToHTMLTable(jsonArray, destination, settings) {
         }, new Set())
     );
 
-    let html = "<table class='customTable'><thead><tr>";
+    let html = "<table class='customTable IRDataTable'><thead><tr>";
     html += keys.map(key => `<th>${key}</th>`).join("");
     html += "</tr></thead><tbody>";
 
