@@ -136,7 +136,7 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
     //    oldCanvas.remove();
     //}
 
-    const backgroundColors = labels.map(label => settings.colorMap[label] || '#CCCCCC');
+    const backgroundColors = labels.map(label => settings?.colorMap[label] || '#CCCCCC');
 
     // Create a new canvas and append it to a parent container
     let parent = jQuery("#"+destination+" .canvasContainer")[0] || document.body; // fallback to body
