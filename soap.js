@@ -21,9 +21,13 @@ const editModelObject = function(){
   <soapenv:Body>
    <mod:editModelObject>
     <modelObject>
-        <id>1411166031</id>
+        <id>1412565215</id>
         <keyFieldName>internal_id</keyFieldName>
         <properties>
+          <entry>
+            <key>internal_id</key>
+            <value>56276410_5900571000025</value>
+          </entry>
           <entry>
             <key>latest status</key>
             <value>Updated by script</value>
@@ -34,7 +38,7 @@ const editModelObject = function(){
           </entry>
         </properties>
       </modelObject>
-    <modelId>81622413</modelId>
+    <modelId>${modelId}</modelId>
   </mod:editModelObject>
   </soapenv:Body>
 </soapenv:Envelope>`;
@@ -126,6 +130,13 @@ const getFilteredObjects = function(a){
       <modelId>${modelId}</modelId>
       <filter>
         <id>${a}</id>
+        <name>test</name>
+        <logicalCondition>F1</logicalCondition>
+        <filter>
+          <fieldName>upc</fieldName>
+          <condition>LIKE</condition>
+          <values>${a}</values>
+        </filter>
       </filter>
     </mod:getFilteredObjects>
   </soapenv:Body>
@@ -233,6 +244,7 @@ function callSOAPAPI(body){
   headers: {
     "Content-Type": "text/xml;charset=UTF-8",
     "SOAPAction": "",
+    "Authorization":"Basic "+btoa(username+":"+password),
   },
   body: body
 })
@@ -247,6 +259,6 @@ function callSOAPAPI(body){
 //deleteFilter("81487818");
 //getFilters();
 //createFilter();
-//editModelObject();
-//getFilteredObjects("81487812");
-getItemsList();
+editModelObject();
+//getFilteredObjects("5201314145011");
+//getItemsList();
