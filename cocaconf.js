@@ -95,20 +95,14 @@ var createReport = function(){
 
  var init = async function (settings) {
 
+  placeID = vpGetTextResults("placeID");
 
   const link1 = document.createElement("link");
   link1.rel = "stylesheet";
   link1.href = "https://quereps.github.io/design.css";
   document.head.appendChild(link1);
 
-  const link2 = document.createElement("link");
-  link2.rel = "stylesheet";
-  link2.href = "https://quereps.github.io/pkshot.css";
-  document.head.appendChild(link2);
-
   console.log("iniiiiit");
-
-
 
    companyID = settings.companyID;
    missionID = settings.missionID;
@@ -117,7 +111,7 @@ var createReport = function(){
    features = settings.features;
    report = settings.report;
    photoGrid = settings.photoGrid;
-  placeID = vpGetTextResults("placeID");
+    
 
 
    getPlaceData(placeID).then((placeData)=>{
@@ -145,58 +139,6 @@ var createReport = function(){
 
 
 
-  var update = async function (settings) {
-
-          vpShowLoader();
-
-            missionID = settings.missionID;
-            const placeID = settings.placeID;
-
-
-            console.log("placeID: ",placeID);
-
-            getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
-
-         removeNotification();
-
-         //vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
-
-        let tableElement = createTable(lastItem,"Latest Mission", {
-          "Completed":moment(lastItem.completed_at).fromNow(),
-          "Completed By":lastItem.user.first_name+" "+lastItem.user.last_name
-        });
-
-
-        $('#table-container-latestMission').append(tableElement);
-
-        /*if(features.images){
-          getImages(lastItem);
-        }*/
-
-        vpShowLoader();
-
-        getGrid(lastItem.id).then(async (photo_grids)=>{
-
-          removeNotification();
-
-
-          // Create an array of promises from getTags
-          let tagPromises = photo_grids.map(async grid => {
-              const tags = await getTags(grid.id);
-              removeNotification();
-              //extractData(tags);
-              extractIRData(tags);
-          });
-
-          await Promise.all(tagPromises);
-
-          
-        });
-
-      });
-
-          
-  }
 
 
  return {
