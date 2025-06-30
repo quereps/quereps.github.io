@@ -499,5 +499,6 @@ background-image: url("https://app.form.com/fs/v1/h/L6VU56iKClMaWbOpRmLGdgAThFhj
 
 
 .canvasContainer {
-    min-height:150px; 
+    min-height:350px; 
+    width:100%;
 }
