@@ -124,7 +124,47 @@ var createReport = function(){
 
       $('#table-container').append(tableElement);
 
-      
+      getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
+
+         removeNotification();
+
+         vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
+
+        let tableElement = createTable(lastItem,"Latest Mission", {
+          "Completed":moment(lastItem.completed_at).fromNow(),
+          "Completed By":lastItem.user.first_name+" "+lastItem.user.last_name
+        });
+
+
+        $('#table-container-latestMission').append(tableElement);
+
+        /*if(features.images){
+          getImages(lastItem);
+        }*/
+
+        vpShowLoader();
+
+        getGrid(lastItem.id).then(async (photo_grids)=>{
+
+          removeNotification();
+
+
+          // Create an array of promises from getTags
+          let tagPromises = photo_grids.map(async grid => {
+              const tags = await getTags(grid.id);
+              removeNotification();
+              //extractData(tags);
+              extractIRData(tags);
+          });
+
+          await Promise.all(tagPromises);
+
+          
+
+          
+        });
+
+      });
 
 
 
