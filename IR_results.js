@@ -208,7 +208,7 @@ let createReport = function(){
 
     }
 
-
+    vpHideLoader();
 }
 
 
