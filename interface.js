@@ -170,7 +170,10 @@ function JSONToGraph(jsonArray, title, type, destination, legend, colorMap) {
               font: {
                 weight: 'bold',
                 size: 10
-              }
+              },
+              anchor: 'end',
+              align: 'start',
+              offset: 10
             }
         }
         }
