@@ -52,6 +52,8 @@ var getPlaceData = async function(placeID){
 
     return new Promise(async (resolve, reject) => {
 
+      console.log("placeID: ",placeID);
+
       url = "https://admin.gospotcheck.com/external/v1/places/"+placeID;
 
       try {
