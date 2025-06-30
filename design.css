@@ -21,6 +21,8 @@
 
 
 
+
+
 .aDivQId_category .ui-button{
   background-repeat:no-repeat !important;
   background-size:30px !important;
@@ -493,4 +495,9 @@ background-image: url("https://app.form.com/fs/v1/h/L6VU56iKClMaWbOpRmLGdgAThFhj
 .typeRankGrid .Column3 .ui-state-active{
     background-image: url("https://app.form.com/fs/v1/h/zJMdDIFlz1f4BJmnERMF3ORQFf3reQiC1MG0hCHNdX8/277060.png") !important;
     background-color:#717070 !important;
+}
+
+
+.canvasContainer {
+    min-height:300px; 
 }
