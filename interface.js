@@ -81,7 +81,7 @@ var createTable = function(data, title, structure) {
 
 function JSONToHTMLTable(jsonArray, destination, settings) {
 
-    const excludeList = settings.exclude;
+    const excludeList = settings.exclude || "";
 
     const filteredArray = jsonArray.filter(row => !excludeList.includes(row[excludeKey]));
 
