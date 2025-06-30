@@ -1,10 +1,3 @@
-//this is a test there and there
-
-
-
-
- const backgroundColors = labels.map(label => colorMap[label] || '#CCCCCC');
-
 
 let sections = {};
  let skuList = {};
