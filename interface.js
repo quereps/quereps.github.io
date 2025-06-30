@@ -108,10 +108,11 @@ function JSONToHTMLTable(jsonArray, destination) {
 
 
 
-function JSONToGraph(jsonArray, title, type, destination, legend, colorMap) {
+function JSONToGraph(jsonArray, title, type, destination, settings) {
 
     console.log("JSONToGraph Start");
-    let entries = Object.entries(jsonArray);
+    //let entries = Object.entries(jsonArray);
+    let entries = Object.entries(jsonArray).filter(([k, v]) => !settings.exclude?.includes(k));
     entries.sort((a, b) => b[1] - a[1]);
     const labels = entries.map(([k, v]) => k);
     const data = entries.map(([k, v]) => v);
@@ -124,7 +125,7 @@ function JSONToGraph(jsonArray, title, type, destination, legend, colorMap) {
     //    oldCanvas.remove();
     //}
 
-    const backgroundColors = labels.map(label => colorMap[label] || '#CCCCCC');
+    const backgroundColors = labels.map(label => settings.colorMap[label] || '#CCCCCC');
 
     // Create a new canvas and append it to a parent container
     let parent = jQuery("#"+destination+" .canvasContainer")[0] || document.body; // fallback to body
@@ -162,7 +163,7 @@ function JSONToGraph(jsonArray, title, type, destination, legend, colorMap) {
               text: title,
             },
             legend: {
-                display: legend
+                display: settings.legend
             },
             datalabels: {
               formatter: (value, context) => context.chart.data.labels[context.dataIndex],
