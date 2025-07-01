@@ -102,6 +102,8 @@ const getModelByID = `<?xml version="1.0" encoding="UTF-8"?>
 
 const getFilteredObjects = function(a){
 
+  console.log(username,password,modelId,a);
+
   return new Promise(async (resolve, reject) => {
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
