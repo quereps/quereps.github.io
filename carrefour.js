@@ -361,7 +361,10 @@ var updateOOSDM = function(a){
     },
     Update: function(settings){
       update(settings);
-    }
+    },
+    updateOOSDM:function(a){
+      updateOOSDM(a);
+    },
   }
 })(jQuery, ksAPI);
 
