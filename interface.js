@@ -159,11 +159,11 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
         options: {
             responsive: true,
             maintainAspectRatio: false,
+            indexAxis:settings.indexAxis || "",
             plugins: {
               title: {
               display: true,             // Show the title
               text: title,
-              indexAxis:settings.indexAxis || "",
             },
             legend: {
                 display: settings.legend
