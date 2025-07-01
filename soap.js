@@ -6,50 +6,6 @@ const modelId = 81622413;
 const valueToMatch = "test"; // or dynamic value
 
 
-const editModelObjectold = function(){
-
-  const body = `<?xml version="1.0" encoding="UTF-8"?>
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-                  xmlns:v81="http://www.keysurvey.com/API/v81"
-                  xmlns:mod="http://model.v81.api.keysurvey.com">
-    <soapenv:Header>
-    <v81:auth>
-      <login>${username}</login>
-      <password>${password}</password>
-    </v81:auth>
-  </soapenv:Header>
-  <soapenv:Body>
-   <mod:editModelObject>
-    <modelObject>
-        <id>1412565215</id>
-        <keyFieldName>internal_id</keyFieldName>
-        <properties>
-          <entry>
-            <key>internal_id</key>
-            <value>56276410_5900571000025</value>
-          </entry>
-          <entry>
-            <key>latest status</key>
-            <value>Updated by script</value>
-          </entry>
-          <entry>
-            <key>latest status timestamp</key>
-            <value>${new Date().toISOString()}</value>
-          </entry>
-        </properties>
-      </modelObject>
-    <modelId>${modelId}</modelId>
-  </mod:editModelObject>
-  </soapenv:Body>
-</soapenv:Envelope>`;
-
-  callSOAPAPI(body).then((a)=>{
-      console.log("my response: ",a);
-    });
-
-} ;
-
-
 
 const editModelObject = function(a,col,val){
 
@@ -57,16 +13,16 @@ const editModelObject = function(a,col,val){
   <s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <editModelObject xmlns="http://model.v81.api.keysurvey.com">
       <model xmlns="">
-        <id>${modelId}</id>
+        <id>${a}</id>
         <keyFieldName>internal_id</keyFieldName>
         <properties>
           <entry>
             <key>${col}</key>
-            <value>${val}13</value>
+            <value>${val}</value>
           </entry>
         </properties>
       </model>
-      <modelId xmlns="">81622413</modelId>
+      <modelId xmlns="">${modelId}</modelId>
     </editModelObject>
   </s:Body>
 </s:Envelope>`;
@@ -76,6 +32,8 @@ const editModelObject = function(a,col,val){
     });
 
 } ;
+
+
 
 
 const getDatamodelsList = `<?xml version="1.0" encoding="UTF-8"?>
@@ -157,14 +115,13 @@ const getFilteredObjects = function(a){
     <mod:getFilteredObjects>
       <modelId>${modelId}</modelId>
       <filter>
-        <id>${a}</id>
         <name>test</name>
         <logicalCondition>F1</logicalCondition>
-        <filter>
+        <filters>
           <fieldName>upc</fieldName>
           <condition>LIKE</condition>
           <values>${a}</values>
-        </filter>
+        </filters>
       </filter>
     </mod:getFilteredObjects>
   </soapenv:Body>
@@ -174,6 +131,40 @@ const getFilteredObjects = function(a){
     });
 }
 
+
+const gpt = function (value) {
+  const body = `<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:v81="http://www.keysurvey.com/API/v81"
+                  xmlns:mod="http://model.v81.api.keysurvey.com">
+  <soapenv:Header>
+    <v81:auth>
+      <login>${username}</login>
+      <password>${password}</password>
+    </v81:auth>
+  </soapenv:Header>
+  <soapenv:Body>
+    <mod:getFilteredObjects>
+      <modelId>${modelId}</modelId>
+      <filter>
+        <name>Temp Filter</name>
+        <logicalCondition>AND</logicalCondition>
+        <filters>
+          <filter>
+            <fieldName>upc</fieldName>
+            <condition>EQUAL</condition>
+            <values>${value}</values>
+          </filter>
+        </filters>
+      </filter>
+    </mod:getFilteredObjects>
+  </soapenv:Body>
+</soapenv:Envelope>`;
+
+  callSOAPAPI(body).then((a) => {
+    console.log("my response: ", a);
+  });
+};
 
 
 
@@ -287,6 +278,8 @@ function callSOAPAPI(body){
 //deleteFilter("81487818");
 //getFilters();
 //createFilter();
-editModelObject("1412565215","exp_price",1);
+//editModelObject(1412565215,"exp_price",1);
+//editModelObjectv1();
 //getFilteredObjects("5201314145011");
+gpt("5201314145011");
 //getItemsList();

@@ -222,6 +222,10 @@ var createReport = function(){
 
 
 
+var updateOOSDM = function(a){
+  console.log("updateOOSDM: ",a);
+}
+
 
  var init = async function (settings) {
 
