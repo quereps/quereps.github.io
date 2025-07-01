@@ -101,6 +101,8 @@ const getModelByID = `<?xml version="1.0" encoding="UTF-8"?>
 
 
 const getFilteredObjects = function(a){
+
+  return new Promise(async (resolve, reject) => {
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
                   xmlns:v81="http://www.keysurvey.com/API/v81"
@@ -119,7 +121,7 @@ const getFilteredObjects = function(a){
         <logicalCondition>F1</logicalCondition>
         <filters>
           <fieldName>upc</fieldName>
-          <condition>LIKE</condition>
+          <condition>EQUAL</condition>
           <values>${a}</values>
         </filters>
       </filter>
@@ -127,8 +129,10 @@ const getFilteredObjects = function(a){
   </soapenv:Body>
 </soapenv:Envelope>`;
   callSOAPAPI(body).then((a)=>{
-      console.log("my response: ",a);
+      console.log("getFilteredObjects response: ",a);
+      resolve(a);
     });
+});
 }
 
 
@@ -274,12 +278,27 @@ function callSOAPAPI(body){
 }
 
 
+function extractIdFromXML(xmlString) {
+  const parser = new DOMParser();
+  const xmlDoc = parser.parseFromString(xmlString, "text/xml");
+
+  // Look for the <return><id> element
+  const idElement = xmlDoc.querySelector("return > id");
+  if (idElement) {
+    return idElement.textContent;
+  } else {
+    console.error("ID not found in response.");
+    return null;
+  }
+}
+
+
 
 //deleteFilter("81487818");
 //getFilters();
 //createFilter();
 //editModelObject(1412565215,"exp_price",1);
 //editModelObjectv1();
-//getFilteredObjects("5201314145011");
-gpt("5201314145011");
+//getFilteredObjects("5201314145011").then((a)=>{console.log(extractIdFromXML(a))});
+//gpt("5201314145011");
 //getItemsList();
