@@ -366,8 +366,8 @@ var updateDM = function(upc,column,value){
     Update: function(settings){
       update(settings);
     },
-    updateOOSDM:function(a,b,c){
-      updateOOSDM(a,b,c);
+    updateDM:function(a,b,c){
+      updateDM(a,b,c);
     },
   }
 })(jQuery, ksAPI);
