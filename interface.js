@@ -126,8 +126,8 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
     let entries = Object.entries(jsonArray).filter(([k, v]) => !excluding?.includes(k));
     entries.sort((a, b) => b[1] - a[1]);
 
-    const labels = entries.map(([k, v]) => k);
-    const data = entries.map(([k, v]) => v);
+    let labels = entries.map(([k, v]) => k);
+    let data = entries.map(([k, v]) => v);
 
     const limit = settings?.limit || null;
 
