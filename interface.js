@@ -101,7 +101,7 @@ function JSONToHTMLTable(jsonArray, destination, settings) {
 
     filteredArray.forEach(obj => {
         html += "<tr>";
-        html += keys.map(key => `<td>${toTitleCase(obj[key]) !== undefined ? obj[key] : ""}</td>`).join("");
+        html += keys.map(key => `<td>${obj[key] !== undefined ? obj[key] : ""}</td>`).join("");
         html += "</tr>";
     });
 
