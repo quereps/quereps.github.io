@@ -132,8 +132,8 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
     const limit = settings?.limit || null;
 
     if(limit != null){
-      const labels = labels.slice(0, limit);
-      const data = data.slice(0, limit);
+      labels = labels.slice(0, limit);
+      data = data.slice(0, limit);
     }
     
 
