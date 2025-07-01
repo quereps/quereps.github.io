@@ -125,8 +125,19 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
 
     let entries = Object.entries(jsonArray).filter(([k, v]) => !excluding?.includes(k));
     entries.sort((a, b) => b[1] - a[1]);
+
     const labels = entries.map(([k, v]) => k);
     const data = entries.map(([k, v]) => v);
+
+    const limit = settings?.limit || null;
+
+    if(limit != null){
+      const labels = originalLabels.slice(0, limit);
+      const data = originalData.slice(0, limit);
+    }
+    
+
+    
 
     jQuery("#"+destination).append("<div class='canvasContainer'></div>");
 
