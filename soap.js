@@ -6,7 +6,7 @@ const modelId = 81622413;
 const valueToMatch = "test"; // or dynamic value
 
 
-const editModelObject = function(){
+const editModelObjectold = function(){
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
@@ -42,6 +42,34 @@ const editModelObject = function(){
   </mod:editModelObject>
   </soapenv:Body>
 </soapenv:Envelope>`;
+
+  callSOAPAPI(body).then((a)=>{
+      console.log("my response: ",a);
+    });
+
+} ;
+
+
+
+const editModelObject = function(a,col,val){
+
+  const body = `<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <editModelObject xmlns="http://model.v81.api.keysurvey.com">
+      <model xmlns="">
+        <id>${modelId}</id>
+        <keyFieldName>internal_id</keyFieldName>
+        <properties>
+          <entry>
+            <key>${col}</key>
+            <value>${val}13</value>
+          </entry>
+        </properties>
+      </model>
+      <modelId xmlns="">81622413</modelId>
+    </editModelObject>
+  </s:Body>
+</s:Envelope>`;
 
   callSOAPAPI(body).then((a)=>{
       console.log("my response: ",a);
@@ -259,6 +287,6 @@ function callSOAPAPI(body){
 //deleteFilter("81487818");
 //getFilters();
 //createFilter();
-editModelObject();
+editModelObject("1412565215","exp_price",1);
 //getFilteredObjects("5201314145011");
 //getItemsList();
