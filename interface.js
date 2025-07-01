@@ -54,7 +54,7 @@ var createTable = function(data, title, structure) {
 
   // If a title is provided, add a caption to the table.
   if (title) {
-    $table.append(jQuery('<caption></caption>').text(title));
+    $table.append(jQuery('<caption><h3></h3></caption>').text(title));
   }
 
   // Create the table body.
