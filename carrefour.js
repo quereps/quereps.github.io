@@ -222,9 +222,13 @@ var createReport = function(){
 
 
 
-var updateOOSDM = function(a){
-  console.log("updateOOSDM: ",a);
-}
+var updateOOSDM = function(upc){
+  console.log("updateOOSDM: ",upc);
+  getFilteredObjects(upc).then((record)=>{
+    const itemId = extractIdFromXML(record);
+    editModelObject(itemId,"stock status","Test");
+  })
+  };
 
 
  var init = async function (settings) {
