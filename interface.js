@@ -96,12 +96,12 @@ function JSONToHTMLTable(jsonArray, destination, settings) {
     );
 
     let html = "<table class='customTable IRDataTable'><thead><tr>";
-    html += keys.map(key => `<th>${key}</th>`).join("");
+    html += keys.map(key => `<th>${toTitleCase(key)}</th>`).join("");
     html += "</tr></thead><tbody>";
 
     filteredArray.forEach(obj => {
         html += "<tr>";
-        html += keys.map(key => `<td>${obj[key] !== undefined ? obj[key] : ""}</td>`).join("");
+        html += keys.map(key => `<td>${toTitleCase(obj[key]) !== undefined ? obj[key] : ""}</td>`).join("");
         html += "</tr>";
     });
 
@@ -130,12 +130,6 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
 
     jQuery("#"+destination).append("<div class='canvasContainer'></div>");
 
-    // Remove any previous canvas with this id (if re-rendering)
-    //let oldCanvas = document.getElementById(canvasID);
-    //if (oldCanvas) {
-    //    oldCanvas.remove();
-    //}
-
     const backgroundColors = labels.map(label => settings?.colorMap[label] || '#CCCCCC');
 
     // Create a new canvas and append it to a parent container
@@ -146,11 +140,6 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
     canvas.style.width = "100px";
     canvas.style.height = "100px";
     parent.appendChild(canvas);
-
-    // Destroy previous chart if needed
-    //if (window.currentChart) {
-   //     window.currentChart.destroy();
-   // }
 
 
     //https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels

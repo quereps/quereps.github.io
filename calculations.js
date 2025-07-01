@@ -1,4 +1,13 @@
 
+function toTitleCase(input) {
+  return input
+    .replace(/[_\-]+/g, ' ')                 // Replace underscores/hyphens with space
+    .replace(/([a-z])([A-Z])/g, '$1 $2')     // Add space between camelCase
+    .toLowerCase()                           // Convert entire string to lowercase
+    .replace(/\b\w/g, char => char.toUpperCase()); // Capitalize first letter of each word
+}
+
+
 
 let arrayToPipe = function(arr){
   return arr.join('|');
