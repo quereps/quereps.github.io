@@ -240,7 +240,7 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
         plugins: {
             title: {
                 display: true,
-                text: title,
+                text: toTitleCase(title),
             },
             legend: {
                 display: settings.legend
