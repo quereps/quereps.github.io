@@ -592,7 +592,7 @@ div#table-container > div {
 }
 
 div.container.pog {
-    flex-grow: 0 !important;
+    /* flex-grow: 0 !important; */
 }
 
 
