@@ -346,7 +346,7 @@ function createHTMLSection(id,name, imageURL,type, settings){
 
 
 
-function graph (category){
+/*function graph (category){
 
   var graphData = {};
 
@@ -367,9 +367,34 @@ function graph (category){
 
   return graphData;
 
+}*/
+
+
+function graph(category, asPercentage = false) {
+  const graphData = {};
+  let totalFacings = 0;
+
+  for (let sku in skuList) {
+    const current = skuList[sku];
+    const categoryValue = current[category];
+    const facings = Number(current.facings) || 0;
+
+    if (!graphData[categoryValue]) {
+      graphData[categoryValue] = 0;
+    }
+
+    graphData[categoryValue] += facings;
+    totalFacings += facings;
+  }
+
+  if (asPercentage && totalFacings > 0) {
+    for (let key in graphData) {
+      graphData[key] = +(graphData[key] / totalFacings * 100).toFixed(2);
+    }
+  }
+
+  return graphData;
 }
-
-
 
 
 

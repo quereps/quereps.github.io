@@ -111,7 +111,7 @@ var createReport = function(){
       }
 
        if(current.type=="graph"){
-        JSONToGraph(graph(current.dimmension), current.dimmension ,current.graphType, containerID, current.settings);
+        JSONToGraph(graph(current.dimmension,current?.settings?.asPercentage), current.dimmension ,current.graphType, containerID, current.settings);
       }
  
       if(current.type=="skuList"){
