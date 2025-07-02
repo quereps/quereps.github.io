@@ -515,7 +515,7 @@ const MissionResponseSection = function(missionData,destination){
 
 
         let tableElement = createTable(missionData, {
-          "Completed":moment(missionData.completed_at).fromNow(),
+          "Completed":missionData.completed_at+"("+moment(missionData.completed_at).fromNow()+")",
           "Completed By":missionData.user.first_name+" "+missionData.user.last_name,
           "Distance to place":missionData.distance_to_place,
         });
