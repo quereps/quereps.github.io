@@ -496,7 +496,7 @@ const placeSection = function(placeData,options,destination){
   let tableElement = createTable(placeData, "Place", {
         "Name":placeData.name,
         "City":placeData.city,
-        "Address":placeData.address
+        "Address":placeData.address,
       });
       jQuery('#'+destination).append(tableElement);
 
@@ -515,7 +515,8 @@ const MissionResponseSection = function(missionData,destination){
 
         let tableElement = createTable(missionData,"Latest Mission", {
           "Completed":moment(missionData.completed_at).fromNow(),
-          "Completed By":missionData.user.first_name+" "+missionData.user.last_name
+          "Completed By":missionData.user.first_name+" "+missionData.user.last_name,
+          "Distance to place":missionData.distance_to_place,
         });
         jQuery('#'+destination).append(tableElement);
 }
