@@ -503,7 +503,7 @@ const placeSection = function(placeData,options,destination){
 
       if(options.map==true){
 
-          jQuery('#'+destination+" .content").append('<div id="map" style="height: 250px;width:250px;"></div>');
+          jQuery('#'+destination+" .content").append('<div id="map" style="height: 250px;width:50%;"></div>');
           createMap(10,placeData.address+" "+placeData.postal_code+" "+placeData.city);
       }
 }
