@@ -124,6 +124,10 @@ var createReport = function(){
         "Address":placeData.address
       });
       $('#table-container-place').append(tableElement);
+
+      if(settings.header.map==true){
+          createMap(10,placeData.address+" "+placeData.postal_code+" "+placeData.city);
+      }
     }
       
 
@@ -138,9 +142,7 @@ var createReport = function(){
         $('#table-container-latestMission').append(tableElement);
       }
 
-      if(settings.header.map==true){
-          createMap(10,placeData.address+" "+placeData.postal_code+" "+placeData.city);
-      }
+      
 
       if(features.images){
           //getImages(lastItem);
