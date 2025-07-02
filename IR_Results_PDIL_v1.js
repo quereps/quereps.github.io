@@ -139,7 +139,7 @@ var createReport = function(){
       }
 
       if(settings.header.map==true){
-          createMap(10,placeData.,placeData.);
+          createMap(10,placeData.address+" "+placeData.postal_code+" "+placeData.city);
       }
 
       if(features.images){
