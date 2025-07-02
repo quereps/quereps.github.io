@@ -143,7 +143,7 @@ var createReport = function(){
       }
 
       if(features.images){
-          getImages(lastItem);
+          //getImages(lastItem);
       }
 
 
