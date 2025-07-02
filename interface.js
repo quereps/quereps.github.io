@@ -252,13 +252,13 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
 
     chartOptions.scales = {
       x: {
-        display: false, // completely hides the x-axis (ticks, grid, and line)
+        display: true, // completely hides the x-axis (ticks, grid, and line)
         grid: {
           display: false, // hides grid lines
           drawBorder: false
         },
         ticks: {
-          display: false // hides axis values (numbers/labels)
+          display: true // hides axis values (numbers/labels)
         }
       },
       y: {
@@ -272,7 +272,7 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
         }
       }
     };
-    
+
     
     // Add datalabels only if the plugin is available and enabled
     if (typeof ChartDataLabels !== 'undefined' && settings?.showLabels !== false) {
