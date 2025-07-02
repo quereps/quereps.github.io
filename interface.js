@@ -252,7 +252,12 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
     // Add datalabels only if the plugin is available and enabled
     if (typeof ChartDataLabels !== 'undefined' && settings?.showLabels !== false) {
         chartOptions.plugins.datalabels = {
-            formatter: (value, context) => context.chart.data.labels[context.dataIndex],
+            formatter: (value, context) => {
+                const type = settings?.labelType || "label"; // default to label
+                return type === "value"
+                    ? value
+                    : context.chart.data.labels[context.dataIndex];
+            },
             color: '#fff',
             font: {
                 weight: 'bold',
