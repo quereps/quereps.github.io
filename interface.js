@@ -205,11 +205,11 @@ function createHTMLSection(id,name, imageURL,type, settings){
         //name = title.replace(/\s+/g, "_"); // Replace spaces with underscores
         headerHTML = "";
 
-        if(title){
+        if (title) {
           headerHTML = '<h3>';
-          headerHTML = headerHTML + imageURL ? '<img height="40" src="'+imageURL+'"/>' : '';
-          headerHTML = headerHTML + title ? '<h3>'+title+'</h3>' : '';
-          headerHTML = headerHTML+'</h3>';
+          headerHTML += (imageURL ? '<img height="40" src="'+imageURL+'"/>' : '');
+          headerHTML += title ? title : '';
+          headerHTML += '</h3>';
         }
        
         
