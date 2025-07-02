@@ -552,8 +552,13 @@ div#table-container > div {
     display: flex;
     flex-wrap: wrap;
 }
+
+.content {
+    width: 100%;
+    display: flex;
+}
               
-.noWrap{
+.noWrap .content{
     flex-wrap: nowrap !important;
 }
 
