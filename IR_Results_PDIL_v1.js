@@ -13,6 +13,7 @@ let sections = {};
   let tokenV1 = "";
   let tokenV2 = "";
   let photoGrid = "";
+  let savedPlaceDate = {};
 
 var APIModule = (function ($, ksAPI) {
 
@@ -70,6 +71,15 @@ var createReport = function(){
 
       createHTMLSection(element,current.title,current.logo,current.type);
 
+      if(current.type=="place"){
+        placeSection(savedPlaceDate,current.options);
+      }
+
+      if(current.type=="response"){
+        showSections(containerID);
+      }
+
+
       if(current.type=="sections"){
         showSections(containerID);
       }
@@ -117,18 +127,9 @@ var createReport = function(){
 
    getPlaceData(placeID).then((placeData)=>{
 
-    if(settings.header.place==true){
-      let tableElement = createTable(placeData, "Place", {
-        "Name":placeData.name,
-        "City":placeData.city,
-        "Address":placeData.address
-      });
-      $('#table-container-place').append(tableElement);
+    savedPlaceDate = placeData;
 
-      if(settings.header.map==true){
-          createMap(10,placeData.address+" "+placeData.postal_code+" "+placeData.city);
-      }
-    }
+    
       
 
     getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
