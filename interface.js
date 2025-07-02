@@ -433,7 +433,7 @@ const link1 = document.createElement("link");
   document.head.appendChild(link1);
 
 
-  
+
 //https://unpkg.com/leaflet/dist/leaflet.js
   //<div id="map" style="height: 400px;"></div>
   const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
@@ -459,7 +459,17 @@ const link1 = document.createElement("link");
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors'
       }).addTo(map);
-      L.marker([lat, lon]).addTo(map);
+
+      const customIcon = L.icon({
+        iconUrl: 'https://png.pngtree.com/png-vector/20230413/ourmid/pngtree-3d-location-icon-clipart-in-transparent-background-vector-png-image_6704161.png', // your image URL
+        iconSize: [32, 32],     // size of the icon
+        iconAnchor: [16, 32],   // point of the icon which corresponds to marker's location
+        popupAnchor: [0, -32]   // point from which the popup should open
+      });
+
+      L.marker([lat, lon], { icon: customIcon }).addTo(map);
+
+      //L.marker([lat, lon]).addTo(map);
     }
   });
 
