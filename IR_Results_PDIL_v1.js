@@ -22,6 +22,8 @@ var APIModule = (function ($, ksAPI) {
 
     for(let item in data){
 
+         const y = data[item].values.shelf_index_y;
+    const x = data[item].values.shelf_index_x;
 
           if (!realogram[y]) {
               realogram[y] = [];
