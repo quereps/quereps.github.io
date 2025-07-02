@@ -249,29 +249,32 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
         }
     };
 
+    if(type=="bar"){
 
-    chartOptions.scales = {
-      x: {
-        display: false, // completely hides the x-axis (ticks, grid, and line)
-        grid: {
-          display: false, // hides grid lines
-          drawBorder: false
+      chartOptions.scales = {
+        x: {
+          display: false, // completely hides the x-axis (ticks, grid, and line)
+          grid: {
+            display: false, // hides grid lines
+            drawBorder: false
+          },
+          ticks: {
+            display: false // hides axis values (numbers/labels)
+          }
         },
-        ticks: {
-          display: false // hides axis values (numbers/labels)
+        y: {
+          display: true,
+          grid: {
+            display: false,
+            drawBorder: false
+          },
+          ticks: {
+            display: true
+          }
         }
-      },
-      y: {
-        display: true,
-        grid: {
-          display: false,
-          drawBorder: false
-        },
-        ticks: {
-          display: true
-        }
-      }
-    };
+      };
+    }
+    
 
     
     // Add datalabels only if the plugin is available and enabled
