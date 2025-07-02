@@ -360,6 +360,10 @@ h4{margin:0;font-weight:normal;font-size: 0.8em;}
 /* Style the .card based on container's width */
 @container (max-width: 1200px) {
 
+    .noWrap .content{
+    flex-wrap: wrap !important;
+    }
+
 
      .IRDataTable td,
      .IRDataTable th{
