@@ -207,7 +207,16 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
     }
     
     jQuery("#"+destination+" .content").append("<div class='canvasContainer'></div>");
-    const backgroundColors = labels.map(label => settings?.colorMap[label] || '#CCCCCC');
+      //const backgroundColors = labels.map(label => settings?.colorMap[label] || '#CCCCCC');
+      const backgroundColors = labels.map(label => {
+      // Check if any key in colorMap is contained in the label
+      for (const [key, color] of Object.entries(settings?.colorMap || {})) {
+          if (label.toLowerCase().includes(key.toLowerCase())) {
+              return color;
+          }
+      }
+      return '#CCCCCC'; // default color
+  });
     
     let parent = jQuery("#"+destination+" .canvasContainer")[0] || document.body;
     let canvas = document.createElement('canvas');
