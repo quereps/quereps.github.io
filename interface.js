@@ -234,6 +234,7 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
     
     // Build options object conditionally
     const chartOptions = {
+        color: '#ffffff',
         responsive: true,
         maintainAspectRatio: false,
         indexAxis: settings.indexAxis || "",
