@@ -485,7 +485,7 @@ const placeSection = function(placeData,options){
         "City":placeData.city,
         "Address":placeData.address
       });
-      $('#table-container-place').append(tableElement);
+      jQuery('#table-container-place').append(tableElement);
 
       if(options.map==true){
           createMap(10,placeData.address+" "+placeData.postal_code+" "+placeData.city);
