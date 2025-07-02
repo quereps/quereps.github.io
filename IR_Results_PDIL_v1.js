@@ -70,7 +70,7 @@ var createReport = function(){
       var current = report[element];
       var containerID = "Container"+element;
 
-      createHTMLSection(element,current?.title,current?.logo,current?.type);
+      createHTMLSection(element,current?.title,current?.logo,current?.type,current?.options);
 
       if(current.type=="place"){
         placeSection(savedPlaceData,current.options,containerID);

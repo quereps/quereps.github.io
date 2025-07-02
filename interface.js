@@ -196,9 +196,15 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
 }
 
 
-function createHTMLSection(id,name, imageURL,type, getData){
+function createHTMLSection(id,name, imageURL,type, settings){
 
         console.log("createHTMLSection: ",id,name);
+
+        let classToAdd="";
+
+        if(setting?.wrap==false){
+          classToAdd="noWrap";
+        }
 
         title = name || "";
         //name = title.replace(/\s+/g, "_"); // Replace spaces with underscores
@@ -213,13 +219,13 @@ function createHTMLSection(id,name, imageURL,type, getData){
        
         
         
-        var Container = jQuery('<div class="container '+type+'" id="Container'+id+'">'+headerHTML+'</div>');
+        var Container = jQuery('<div class="container '+classToAdd+' '+type+'" id="Container'+id+'">'+headerHTML+'</div>');
         //var Container = jQuery('<div class="container '+type+'" id="Container'+id+'"><h3><img height="40" src="'+imageURL+'"/>'+title+'</h3></div>');
         jQuery('#table-container').append(Container);
 
-        if (getData && typeof getData === "function") {
+       /* if (getData && typeof getData === "function") {
         getData();
-    }
+    }*/
 }
 
 
