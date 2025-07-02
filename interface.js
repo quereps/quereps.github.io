@@ -202,7 +202,7 @@ function createHTMLSection(id,name, imageURL,type, settings){
 
         let classToAdd="";
 
-        if(setting?.wrap==false){
+        if(settings?.wrap==false){
           classToAdd="noWrap";
         }
 
