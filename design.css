@@ -267,6 +267,7 @@ h3 {
     align-items: center;
     gap: 0.5em;
     margin: 0 0 0.5em 0;
+    width: 100% !important;
 }
 
 
@@ -548,9 +549,13 @@ div#table-container > div {
     padding: 1em;
     flex-grow: 1;
     min-height: 70px;
+    display: flex;
+    flex-wrap: wrap;
 }
               
-
+.noWrap{
+    flex-wrap: nowrap !important;
+}
 
 .pog .pog {
     display: flex;

@@ -103,7 +103,7 @@ function JSONToHTMLTable(jsonArray, destination, settings) {
     html += "</tbody></table>";
 
     if(destination){
-      jQuery("#"+destination).append(html);
+      jQuery("#"+destination+" .content").append(html);
     }
 
     return html;
@@ -134,7 +134,7 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
 
     
 
-    jQuery("#"+destination).append("<div class='canvasContainer'></div>");
+    jQuery("#"+destination+" .content").append("<div class='canvasContainer'></div>");
 
     const backgroundColors = labels.map(label => settings?.colorMap[label] || '#CCCCCC');
 
@@ -214,7 +214,7 @@ function createHTMLSection(id,name, imageURL,type, settings){
        
         
         
-        var Container = jQuery('<div class="container '+classToAdd+' '+type+'" id="Container'+id+'">'+headerHTML+'</div>');
+        var Container = jQuery('<div class="container '+classToAdd+' '+type+'" id="Container'+id+'">'+headerHTML+'<div class="content"></div></div>');
         //var Container = jQuery('<div class="container '+type+'" id="Container'+id+'"><h3><img height="40" src="'+imageURL+'"/>'+title+'</h3></div>');
         jQuery('#table-container').append(Container);
 
@@ -258,7 +258,7 @@ function graph (category){
 
       for(let filter in sections){
           var button = jQuery('<div id="filter'+filter+'" class="filter '+filter+'">'+filter+'</div>');
-          jQuery('#'+destination).append(button);
+          jQuery('#'+destination+" .content").append(button);
 
       }
 }
@@ -499,7 +499,7 @@ const placeSection = function(placeData,options,destination){
         "City":placeData.city,
         "Address":placeData.address,
       });
-      jQuery('#'+destination).append(tableElement);
+      jQuery('#'+destination+" .content").append(tableElement);
 
       if(options.map==true){
 
@@ -519,5 +519,5 @@ const MissionResponseSection = function(missionData,destination){
           "Completed By":missionData.user.first_name+" "+missionData.user.last_name,
           "Distance to place":missionData.distance_to_place,
         });
-        jQuery('#'+destination).append(tableElement);
+        jQuery('#'+destination+" .content").append(tableElement);
 }
