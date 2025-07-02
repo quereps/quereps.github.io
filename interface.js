@@ -505,9 +505,17 @@ const placeSection = function(placeData,options,destination){
           jQuery('#'+destination).append('<div id="map" style="height: 250px;width:250px;"></div>');
           createMap(10,placeData.address+" "+placeData.postal_code+" "+placeData.city);
       }
-
-
 }
-//if(settings.header.place==true){
-      
-//    }
+
+
+
+
+const MissionResponseSection = function(missionData,destination){
+
+
+        let tableElement = createTable(missionData,"Latest Mission", {
+          "Completed":moment(missionData.completed_at).fromNow(),
+          "Completed By":missionData.user.first_name+" "+missionData.user.last_name
+        });
+        jQuery('#'+destination).append(tableElement);
+}

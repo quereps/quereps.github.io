@@ -13,7 +13,8 @@ let sections = {};
   let tokenV1 = "";
   let tokenV2 = "";
   let photoGrid = "";
-  let savedPlaceDate = {};
+  let savedPlaceData = {};
+  let savedResponseData = {};
 
 var APIModule = (function ($, ksAPI) {
 
@@ -76,7 +77,7 @@ var createReport = function(){
       }
 
       if(current.type=="response"){
-        showSections(containerID);
+        MissionResponseSection(savedResponseDate,containerID);
       }
 
 
@@ -127,7 +128,7 @@ var createReport = function(){
 
    getPlaceData(placeID).then((placeData)=>{
 
-    savedPlaceDate = placeData;
+    savedPlaceData = placeData;
 
     
       
@@ -135,14 +136,8 @@ var createReport = function(){
     getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
       removeNotification();
       vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
-      if(settings.header.response==true){
-        let tableElement = createTable(lastItem,"Latest Mission", {
-          "Completed":moment(lastItem.completed_at).fromNow(),
-          "Completed By":lastItem.user.first_name+" "+lastItem.user.last_name
-        });
-        $('#table-container-latestMission').append(tableElement);
-      }
-
+      
+      savedResponseData = lastItem;
       
 
       if(features.images){
