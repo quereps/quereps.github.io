@@ -116,32 +116,38 @@ var createReport = function(){
 
 
    getPlaceData(placeID).then((placeData)=>{
-       let tableElement = createTable(placeData, "Place", {
+
+    if(settings.header.place==true){
+      let tableElement = createTable(placeData, "Place", {
         "Name":placeData.name,
         "City":placeData.city,
         "Address":placeData.address
       });
+      $('#table-container-place').append(tableElement);
+    }
+      
 
-
-      //$('#table-container-place').append(tableElement);
-
-      getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
-
-         removeNotification();
-
-         vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
-
+    getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
+      removeNotification();
+      vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
+      if(settings.header.response==true){
         let tableElement = createTable(lastItem,"Latest Mission", {
           "Completed":moment(lastItem.completed_at).fromNow(),
           "Completed By":lastItem.user.first_name+" "+lastItem.user.last_name
         });
-
-
         $('#table-container-latestMission').append(tableElement);
+      }
 
-        /*if(features.images){
+      if(settings.header.map==true){
+          createMap(10,placeData.,placeData.);
+      }
+
+      if(features.images){
           getImages(lastItem);
-        }*/
+      }
+
+
+
 
         vpShowLoader();
 

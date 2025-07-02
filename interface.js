@@ -424,10 +424,35 @@ function barcodeGenerate(code) {
 
 
 
-let createMap = function(){
+let createMap = function(z,address){
+//https://unpkg.com/leaflet/dist/leaflet.js
+  //<div id="map" style="height: 400px;"></div>
+  const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
 
   console.log("creating map...");
 
+  /*const map = L.map('map').setView([lat, long], z);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+  L.marker([lat, long]).addTo(map);*/
+
+  fetch(url)
+  .then(res => res.json())
+  .then(data => {
+    if (data.length > 0) {
+      const lat = data[0].lat;
+      const lon = data[0].lon;
+      console.log("Coordinates:", lat, lon);
+
+      // Now you can initialize your Leaflet map
+      const map = L.map('map').setView([lat, lon], 15);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map);
+      L.marker([lat, lon]).addTo(map);
+    }
+  });
 
 
 }
