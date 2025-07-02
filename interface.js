@@ -422,3 +422,12 @@ function barcodeGenerate(code) {
   });
 };
 
+
+
+let createMap = function(){
+
+  console.log("creating map...");
+
+
+
+}
