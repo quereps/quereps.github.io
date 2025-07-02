@@ -240,7 +240,7 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
         indexAxis: settings.indexAxis || "",
         plugins: {
             title: {
-                display: true,
+                display: false,
                 text: toTitleCase(title),
             },
             legend: {
