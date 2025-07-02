@@ -425,6 +425,15 @@ function barcodeGenerate(code) {
 
 
 let createMap = function(z,address){
+
+
+const link1 = document.createElement("link");
+  link1.rel = "stylesheet";
+  link1.href = "https://unpkg.com/leaflet/dist/leaflet.css";
+  document.head.appendChild(link1);
+
+
+  
 //https://unpkg.com/leaflet/dist/leaflet.js
   //<div id="map" style="height: 400px;"></div>
   const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
