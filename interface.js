@@ -48,14 +48,9 @@ var notification = function(type,message) {
 
 
 
-var createTable = function(data, title, structure) {
+var createTable = function(data, structure) {
   // Create a table element with an optional border.
   var $table = jQuery('<table class="customTable"></table>');
-
-  // If a title is provided, add a caption to the table.
-  if (title) {
-    $table.append(jQuery('<caption><h3></h3></caption>').text(title));
-  }
 
   // Create the table body.
   var $tbody = jQuery('<tbody></tbody>');
@@ -499,7 +494,7 @@ const link1 = document.createElement("link");
 
 const placeSection = function(placeData,options,destination){
 
-  let tableElement = createTable(placeData, "Place", {
+  let tableElement = createTable(placeData, {
         "Name":placeData.name,
         "City":placeData.city,
         "Address":placeData.address,
@@ -519,7 +514,7 @@ const placeSection = function(placeData,options,destination){
 const MissionResponseSection = function(missionData,destination){
 
 
-        let tableElement = createTable(missionData,"Latest Mission", {
+        let tableElement = createTable(missionData, {
           "Completed":moment(missionData.completed_at).fromNow(),
           "Completed By":missionData.user.first_name+" "+missionData.user.last_name,
           "Distance to place":missionData.distance_to_place,
