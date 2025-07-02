@@ -23,6 +23,28 @@ var APIModule = (function ($, ksAPI) {
     for(let item in data){
 
 
+          if (!realogram[y]) {
+              realogram[y] = [];
+            }
+
+            realogram[y][x] = data[item].values;
+
+            if (data[item].type == "coldbox_unrecognizable_product") {
+              realogram[y][x].type = "unknown"; // <-- Assignment!
+            }
+            else if (data[item].type == "empty_facing") {
+              realogram[y][x].type = "empty"; // <-- Assignment!
+            }
+            else if (data[item].type == "shelf_product" && data[item].values.upc) {
+              realogram[y][x].type = "sku"; // <-- Assignment!
+
+              console.log(data[item]);
+
+              //To move in its own function
+              const key = data[item].values.classification;
+              sections[key] = (sections[key] ?? 0) + 1;
+
+
         //console.log(data[item]);
 
         let upcTarget = data[item].values.upc;
