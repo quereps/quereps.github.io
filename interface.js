@@ -485,11 +485,11 @@ const placeSection = function(placeData,options,destination){
         "City":placeData.city,
         "Address":placeData.address
       });
-      jQuery('#'+containerID).append(tableElement);
+      jQuery('#'+destination).append(tableElement);
 
       if(options.map==true){
 
-          jQuery('#'+containerID).append('<div id="map" style="height: 250px;width:250px;"></div>');
+          jQuery('#'+destination).append('<div id="map" style="height: 250px;width:250px;"></div>');
           createMap(10,placeData.address+" "+placeData.postal_code+" "+placeData.city);
       }
 
