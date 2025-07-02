@@ -252,23 +252,23 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
 
     chartOptions.scales = {
       x: {
-        display: true, // completely hides the x-axis (ticks, grid, and line)
+        display: false, // completely hides the x-axis (ticks, grid, and line)
         grid: {
           display: false, // hides grid lines
           drawBorder: false
         },
         ticks: {
-          display: true // hides axis values (numbers/labels)
+          display: false // hides axis values (numbers/labels)
         }
       },
       y: {
-        display: false,
+        display: true,
         grid: {
           display: false,
           drawBorder: false
         },
         ticks: {
-          display: false
+          display: true
         }
       }
     };
