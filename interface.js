@@ -478,14 +478,14 @@ const link1 = document.createElement("link");
 
 
 
-const placeSection = function(placeData,options){
+const placeSection = function(placeData,options,destination){
 
   let tableElement = createTable(placeData, "Place", {
         "Name":placeData.name,
         "City":placeData.city,
         "Address":placeData.address
       });
-      jQuery('#table-container-place').append(tableElement);
+      jQuery('#'+containerID).append(tableElement);
 
       if(options.map==true){
           createMap(10,placeData.address+" "+placeData.postal_code+" "+placeData.city);

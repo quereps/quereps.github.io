@@ -72,7 +72,7 @@ var createReport = function(){
       createHTMLSection(element,current.title,current.logo,current.type);
 
       if(current.type=="place"){
-        placeSection(savedPlaceDate,current.options);
+        placeSection(savedPlaceDate,current.options,containerID);
       }
 
       if(current.type=="response"){
