@@ -39,6 +39,7 @@ var APIModule = (function ($, ksAPI) {
             }
             else if (data[item].type == "shelf_product" && data[item].values.upc) {
               realogram[y][x].type = "sku"; // <-- Assignment!
+            }
 
               console.log(data[item]);
 
