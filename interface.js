@@ -111,7 +111,9 @@ function JSONToHTMLTable(jsonArray, destination, settings) {
 
 
 
-function JSONToGraph(jsonArray, title, type, destination, settings) {
+
+
+/*function JSONToGraph(jsonArray, title, type, destination, settings) {
 
     console.log("JSONToGraph Start");
     //let entries = Object.entries(jsonArray);
@@ -187,6 +189,81 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
             }
         }
         }
+    });
+}*/
+
+
+function JSONToGraph(jsonArray, title, type, destination, settings) {
+    console.log("JSONToGraph Start");
+    const excluding = settings?.exclude || [];
+    let entries = Object.entries(jsonArray).filter(([k, v]) => !excluding?.includes(k));
+    entries.sort((a, b) => b[1] - a[1]);
+    let labels = entries.map(([k, v]) => k);
+    let data = entries.map(([k, v]) => v);
+    const limit = settings?.limit || null;
+    if(limit != null){
+      labels = labels.slice(0, limit);
+      data = data.slice(0, limit);
+    }
+    
+    jQuery("#"+destination+" .content").append("<div class='canvasContainer'></div>");
+    const backgroundColors = labels.map(label => settings?.colorMap[label] || '#CCCCCC');
+    
+    let parent = jQuery("#"+destination+" .canvasContainer")[0] || document.body;
+    let canvas = document.createElement('canvas');
+    canvas.width = 250;
+    canvas.height = 250;
+    canvas.style.width = "100px";
+    canvas.style.height = "100px";
+    parent.appendChild(canvas);
+    
+    // Conditionally register the plugin
+    if (typeof ChartDataLabels !== 'undefined') {
+        Chart.register(ChartDataLabels);
+    }
+    
+    // Build options object conditionally
+    const chartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        indexAxis: settings.indexAxis || "",
+        plugins: {
+            title: {
+                display: true,
+                text: title,
+            },
+            legend: {
+                display: settings.legend
+            }
+        }
+    };
+    
+    // Add datalabels only if the plugin is available and enabled
+    if (typeof ChartDataLabels !== 'undefined' && settings?.showLabels !== false) {
+        chartOptions.plugins.datalabels = {
+            formatter: (value, context) => context.chart.data.labels[context.dataIndex],
+            color: '#fff',
+            font: {
+                weight: 'bold',
+                size: 10
+            },
+            anchor: 'end',
+            align: 'start',
+            offset: 10
+        };
+    }
+    
+    window.currentChart = new Chart(canvas, {
+        type: type,
+        data: {
+            labels: labels,
+            datasets: [{
+                label: "Count",
+                data: data,
+                backgroundColor: backgroundColors,
+            }]
+        },
+        options: chartOptions
     });
 }
 
@@ -454,11 +531,6 @@ const link1 = document.createElement("link");
 
   console.log("creating map...");
 
-  /*const map = L.map('map').setView([lat, long], z);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(map);
-  L.marker([lat, long]).addTo(map);*/
 
   fetch(url)
   .then(res => res.json())
@@ -473,15 +545,6 @@ const link1 = document.createElement("link");
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors'
       }).addTo(map);
-
-    /*  const customIcon = L.icon({
-        iconUrl: 'https://png.pngtree.com/png-vector/20230413/ourmid/pngtree-3d-location-icon-clipart-in-transparent-background-vector-png-image_6704161.png', // your image URL
-        iconSize: [32, 32],     // size of the icon
-        iconAnchor: [16, 32],   // point of the icon which corresponds to marker's location
-        popupAnchor: [0, -32]   // point from which the popup should open
-      });
-
-      L.marker([lat, lon], { icon: customIcon }).addTo(map);*/
 
       L.marker([lat, lon]).addTo(map);
     }
