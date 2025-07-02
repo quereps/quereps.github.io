@@ -201,7 +201,7 @@ function createHTMLSection(id,name, imageURL,type, getData){
         console.log("createHTMLSection: ",id,name);
 
         title = name || "";
-        name = title.replace(/\s+/g, "_"); // Replace spaces with underscores
+        //name = title.replace(/\s+/g, "_"); // Replace spaces with underscores
         headerHTML = "";
 
         if(title){
