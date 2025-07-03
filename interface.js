@@ -195,9 +195,10 @@ function JSONToHTMLTable(jsonArray, destination, settings) {
 
 function numberTile(jsonArray,destination,settings){
 
-  console.log(jsonArray);
+  console.log(jsonArray[settings.filter]);
 
-  let html = "test"; 
+  let value = jsonArray[settings.filter]+"%";
+  let html = "<h3>"+value+"</h3>"; 
 
   if(destination){
       jQuery("#"+destination+" .content").append(html);
