@@ -401,6 +401,9 @@ function createHTMLSection(id,name, imageURL,type, settings){
 
 
 function graph(category, asPercentage = false) {
+
+  console.log("asPercentage: ",asPercentage);
+
   const graphData = {};
   let totalFacings = 0;
 
