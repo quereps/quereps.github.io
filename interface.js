@@ -193,7 +193,7 @@ function JSONToHTMLTable(jsonArray, destination, settings) {
 }*/
 
 
-function numberTile(jsonArray,settings){
+function numberTile(jsonArray,destination,settings){
 
   console.log(jsonArray);
 
