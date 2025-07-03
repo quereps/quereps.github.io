@@ -27,7 +27,7 @@ var APIModule = (function ($, ksAPI) {
       let upcTarget = "";
 
          const y = data[item].values.shelf_index_y;
-    const x = data[item].values.shelf_index_x;
+        const x = data[item].values.shelf_index_x;
 
           if (!realogram[y]) {
               realogram[y] = [];
@@ -45,7 +45,7 @@ var APIModule = (function ($, ksAPI) {
             }
             else if (data[item].type == "shelf_product" && data[item].values.upc) {
               realogram[y][x].type = "sku"; // <-- Assignment!
-              upcTarget = skuList[upcTarget];
+              upcTarget = data[item].values.upc;
             }
 
               console.log(data[item]);
