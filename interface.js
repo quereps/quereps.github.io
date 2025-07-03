@@ -220,7 +220,7 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
     
     jQuery("#"+destination+" .content").append("<div class='canvasContainer'></div>");
       
-      //const backgroundColors = labels.map(label => settings?.colorMap[label] || '#CCCCCC');
+  /*    //const backgroundColors = labels.map(label => settings?.colorMap[label] || '#CCCCCC');
       const backgroundColors = labels.map(label => {
       // Check if any key in colorMap is contained in the label
       for (const [key, color] of Object.entries(settings?.colorMap || {})) {
@@ -229,7 +229,25 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
           }
       }
       return '#CCCCCC'; // default color
-  });
+  });*/
+
+    const backgroundColors = labels.map(label => {
+      for (const [key, color] of Object.entries(settings?.colorMap || {})) {
+        if (label.toLowerCase().includes(key.toLowerCase())) {
+          return color;
+        }
+      }
+
+      // Use fallback palette if no match
+      const palette = settings?.fallbackPalette || [
+        '#e6194b', '#3cb44b', '#ffe119', '#4363d8', '#f58231',
+        '#911eb4', '#46f0f0', '#f032e6', '#bcf60c', '#fabebe',
+        '#008080', '#e6beff', '#9a6324', '#fffac8', '#800000',
+        '#aaffc3', '#808000', '#ffd8b1', '#000075', '#808080'
+      ];
+      const index = labels.indexOf(label) % palette.length;
+      return palette[index];
+    });
 
     let parent = jQuery("#"+destination+" .canvasContainer")[0] || document.body;
     let canvas = document.createElement('canvas');
