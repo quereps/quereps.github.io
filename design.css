@@ -626,3 +626,29 @@ table.customTable.IRDataTable th{
 table.customTable.IRDataTable th{
     font-weight:bold ;
 }
+
+
+
+
+.number{
+    border-radius:0.25em;
+    padding:0.5em !important;
+    justify-content: center !important;
+    align-items: center;
+}
+
+.number h3{
+    font-size: 1em !important;
+    font-weight:normal;
+    text-align: center !important;
+    width: 100% !important;
+    flex-grow: 1 !important;
+    margin:0;
+}
+
+.number .content h4{
+    font-size:2em;
+    flex-grow: 1;
+    /* background: green; */
+    text-align: center;
+}
