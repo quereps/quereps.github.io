@@ -107,7 +107,7 @@ var createReport = function(){
 
 
       if(current.type=="number"){
-        numberTile(graph(current.dimmension,current?.settings?.asPercentage),containerID,current.settings);
+        numberTile(graph(current.dimmension,current?.options?.asPercentage),containerID,current.settings);
       }
 
 
