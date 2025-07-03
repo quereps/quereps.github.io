@@ -348,6 +348,7 @@ function createHTMLSection(id,name, imageURL,type, settings){
         console.log("createHTMLSection: ",id,name);
 
         let classToAdd="";
+        let background = settings?.background || "";
 
         if(settings?.wrap==false){
           classToAdd="noWrap";
