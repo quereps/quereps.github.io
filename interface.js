@@ -198,7 +198,7 @@ function numberTile(jsonArray,destination,settings){
   console.log(jsonArray[settings.filter]);
 
   let value = jsonArray[settings.filter]+"%";
-  let html = "<h3>"+value+"</h3>"; 
+  let html = "<h4>"+value+"</h4>"; 
 
   if(destination){
       jQuery("#"+destination+" .content").append(html);
