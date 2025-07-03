@@ -426,6 +426,8 @@ function graph(category, asPercentage = false) {
     }
   }
 
+  console.log("graphData: ",graphData);
+
   return graphData;
 }
 
