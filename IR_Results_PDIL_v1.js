@@ -22,6 +22,9 @@ var APIModule = (function ($, ksAPI) {
 
     for(let item in data){
 
+
+      let upcTarget = data[item].values.upc;
+
          const y = data[item].values.shelf_index_y;
     const x = data[item].values.shelf_index_x;
 
@@ -33,12 +36,15 @@ var APIModule = (function ($, ksAPI) {
 
             if (data[item].type == "coldbox_unrecognizable_product") {
               realogram[y][x].type = "unknown"; // <-- Assignment!
+              skuListTarget = "Unrecognized";
             }
             else if (data[item].type == "empty_facing") {
               realogram[y][x].type = "empty"; // <-- Assignment!
+              skuListTarget = "Empty Facing";
             }
             else if (data[item].type == "shelf_product" && data[item].values.upc) {
               realogram[y][x].type = "sku"; // <-- Assignment!
+              skuListTarget = skuList[upcTarget];
             }
 
               console.log(data[item]);
@@ -50,8 +56,8 @@ var APIModule = (function ($, ksAPI) {
 
         //console.log(data[item]);
 
-        let upcTarget = data[item].values.upc;
-        let skuListTarget = skuList[upcTarget];
+        
+        //let skuListTarget = skuList[upcTarget];
         let IRData = data[item].values;
 
         if(!skuListTarget){
