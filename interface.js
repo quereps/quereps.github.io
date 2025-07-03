@@ -366,7 +366,7 @@ function createHTMLSection(id,name, imageURL,type, settings){
        
         
         
-        var Container = jQuery('<div class="container '+classToAdd+' '+type+'" id="Container'+id+'">'+headerHTML+'<div class="content"></div></div>');
+        var Container = jQuery('<div style="background:'+settings.background+'" class="container '+classToAdd+' '+type+'" id="Container'+id+'">'+headerHTML+'<div class="content"></div></div>');
         //var Container = jQuery('<div class="container '+type+'" id="Container'+id+'"><h3><img height="40" src="'+imageURL+'"/>'+title+'</h3></div>');
         jQuery('#table-container').append(Container);
 
