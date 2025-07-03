@@ -23,7 +23,7 @@ var APIModule = (function ($, ksAPI) {
     for(let item in data){
 
 
-      let skuListTarget = skuList[upcTarget];
+      
       let upcTarget = "";
 
          const y = data[item].values.shelf_index_y;
@@ -58,7 +58,7 @@ var APIModule = (function ($, ksAPI) {
         //console.log(data[item]);
 
         //let upcTarget = data[item].values.upc;
-        //let skuListTarget = skuList[upcTarget];
+        let skuListTarget = skuList[upcTarget];
 
         let IRData = data[item].values;
 
