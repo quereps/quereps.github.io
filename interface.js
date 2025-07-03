@@ -193,6 +193,18 @@ function JSONToHTMLTable(jsonArray, destination, settings) {
 }*/
 
 
+function numberTile(jsonArray,settings){
+
+  console.log(jsonArray);
+
+  let html = 
+
+  if(destination){
+      jQuery("#"+destination+" .content").append(html);
+    }
+}
+
+
 function JSONToGraph(jsonArray, title, type, destination, settings) {
     console.log("JSONToGraph Start");
     const excluding = settings?.exclude || [];

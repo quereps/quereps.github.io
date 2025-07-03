@@ -106,6 +106,11 @@ var createReport = function(){
       }
 
 
+      if(current.type=="number"){
+        numberTile(graph(current.dimmension,current?.settings?.asPercentage),current.settings);
+      }
+
+
       if(current.type=="sections"){
         showSections(containerID);
       }
