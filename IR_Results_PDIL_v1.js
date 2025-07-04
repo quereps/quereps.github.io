@@ -40,14 +40,17 @@ var APIModule = (function ($, ksAPI) {
             if (data[item].type == "coldbox_unrecognizable_product") {
               realogram[y][x].type = "unknown"; // <-- Assignment!
               upcTarget = "Unrecognized";
+              let type = "Unrecognized";
             }
             else if (data[item].type == "empty_facing") {
               realogram[y][x].type = "empty"; // <-- Assignment!
               upcTarget = "Empty Facing";
+              let type = "Empty Facing";
             }
             else if (data[item].type == "shelf_product" && data[item].values.upc) {
               realogram[y][x].type = "sku"; // <-- Assignment!
               upcTarget = data[item].values.upc;
+              let type = "SKU";
               
             }
 
@@ -66,7 +69,7 @@ var APIModule = (function ($, ksAPI) {
         
 
         if(!skuListTarget){
-          skuList[upcTarget] = new skuObj({type:data[item].type,upc:upcTarget, IRData: IRData});
+          skuList[upcTarget] = new skuObj({type:type.type,upc:upcTarget, IRData: IRData});
           skuList[upcTarget].addFacing(IRData);
         }
         else{
