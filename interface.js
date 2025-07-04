@@ -325,8 +325,9 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
         chartOptions.plugins.datalabels = {
             formatter: (value, context) => {
                 const type = settings?.labelType || "label"; // default to label
+                const formatedValue = settings?.asPercentage ? value+"%" : value;
                 return type === "value"
-                    ? value
+                    ? formatedValue
                     : context.chart.data.labels[context.dataIndex];
             },
             color: '#fff',
