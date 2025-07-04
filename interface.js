@@ -402,7 +402,7 @@ function createHTMLSection(id,name, imageURL,type, settings){
 }*/
 
 
-function graph(category, asPercentage = false) {
+function graphold(category, asPercentage = false) {
 
   console.log("asPercentage: ",asPercentage);
 
@@ -433,6 +433,42 @@ function graph(category, asPercentage = false) {
   return graphData;
 }
 
+
+function graph(category, asPercentage = false, filter = null) {
+  console.log("asPercentage: ", asPercentage);
+  console.log("filter: ", filter);
+  
+  const graphData = {};
+  let totalFacings = 0;
+  
+  for (let sku in skuList) {
+    const current = skuList[sku];
+    
+    // Apply filter if provided
+    if (filter && current[filter.property] !== filter.value) {
+      continue; // Skip this SKU if it doesn't match the filter
+    }
+    
+    const categoryValue = current[category];
+    const facings = Number(current.facings) || 0;
+    
+    if (!graphData[categoryValue]) {
+      graphData[categoryValue] = 0;
+    }
+    
+    graphData[categoryValue] += facings;
+    totalFacings += facings;
+  }
+  
+  if (asPercentage && totalFacings > 0) {
+    for (let key in graphData) {
+      graphData[key] = +(graphData[key] / totalFacings * 100).toFixed(2);
+    }
+  }
+  
+  console.log("graphData: ", graphData);
+  return graphData;
+}
 
 
     var showSections = function(destination){
