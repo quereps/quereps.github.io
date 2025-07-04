@@ -76,13 +76,16 @@ var createTable = function(data, structure) {
 
 function JSONToHTMLTable(jsonArray, destination, settings) {
 
-    const excludeList = settings.exclude  || [];
+    // Get the list of keys to exclude, defaulting to an empty array if not provided
+    const excludeList = settings.exclude || [];
 
+    // Filter the input array to exclude objects whose *first key* is in the exclude list
     const filteredArray = jsonArray.filter(obj => {
-        const key = Object.keys(obj)[0];
+        const key = Object.keys(obj)[0]; // Only checks the first key
         return !settings.exclude?.includes(key);
     });
 
+    // Extract all unique keys from the filtered array to use as table headers
     const keys = Array.from(
         filteredArray.reduce((set, obj) => {
             Object.keys(obj).forEach(key => set.add(key));
@@ -90,10 +93,14 @@ function JSONToHTMLTable(jsonArray, destination, settings) {
         }, new Set())
     );
 
+    // Begin building the HTML table string
     let html = "<table class='customTable IRDataTable'><thead><tr>";
+    
+    // Add table headers with title-cased key names
     html += keys.map(key => `<th>${toTitleCase(key)}</th>`).join("");
     html += "</tr></thead><tbody>";
 
+    // Add table rows and cells for each object in the filtered array
     filteredArray.forEach(obj => {
         html += "<tr>";
         html += keys.map(key => `<td>${obj[key] !== undefined ? obj[key] : ""}</td>`).join("");
@@ -102,10 +109,12 @@ function JSONToHTMLTable(jsonArray, destination, settings) {
 
     html += "</tbody></table>";
 
+    // If a destination is provided, inject the table HTML into the DOM
     if(destination){
-      jQuery("#"+destination+" .content").append(html);
+        jQuery("#" + destination + " .content").append(html);
     }
 
+    // Return the full HTML string (useful if needed elsewhere)
     return html;
 }
 
