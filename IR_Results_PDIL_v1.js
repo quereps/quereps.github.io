@@ -69,7 +69,7 @@ var APIModule = (function ($, ksAPI) {
         
 
         if(!skuListTarget){
-          skuList[upcTarget] = new skuObj({type:type.type,upc:upcTarget, IRData: IRData});
+          skuList[upcTarget] = new skuObj({type:type,upc:upcTarget, IRData: IRData});
           skuList[upcTarget].addFacing(IRData);
         }
         else{
