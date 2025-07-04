@@ -285,7 +285,9 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
             },
             legend: {
                 display: settings.legend,
-                color:"#000",
+                labels: {
+                  color: "#000",
+                }
             }
         }
     };
