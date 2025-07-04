@@ -50,7 +50,7 @@ function getAverage(arr) {
 }
 
 
-function rankObjects(obj, rankBy, attributes) {
+/*function rankObjects(obj, rankBy, attributes) {
   const items = Object.values(obj);
 
   items.sort((a, b) => b[rankBy] - a[rankBy]);
@@ -63,7 +63,7 @@ function rankObjects(obj, rankBy, attributes) {
   });
 
   return result;
-}
+}*/
 
 
 function rankObjects(obj, rankBy, attributes) {
