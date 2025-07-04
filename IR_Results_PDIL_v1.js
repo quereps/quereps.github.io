@@ -134,7 +134,7 @@ var createReport = function(){
 
         let data = graph(current.dimmension,current?.settings?.asPercentage,current?.settings?.filter);
        
-        if(data.length>0){
+        if(Object.keys(data).length>0){
           JSONToGraph(data, current.dimmension ,current.graphType, containerID, current.settings);
         } else{
           jQuery("#"+containerID).hide();
