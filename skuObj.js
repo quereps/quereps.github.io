@@ -3,6 +3,7 @@ class skuObj {
 
     console.log("Constructor",IRData);
 
+    this.type = type;
     this.heightArray = [];
     this.widthArray = [];
     this.shelf_index_xArray = [];
