@@ -1,5 +1,5 @@
 class skuObj {
-  constructor({type = "";upc = "", IRData = ""}){
+  constructor({type = "",upc = "", IRData = ""}){
 
     console.log("Constructor",IRData);
 
