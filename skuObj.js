@@ -1,5 +1,5 @@
 class skuObj {
-  constructor({upc = "", IRData = ""}){
+  constructor({type = "";upc = "", IRData = ""}){
 
     console.log("Constructor",IRData);
 
@@ -85,27 +85,6 @@ class skuObj {
       this.IRData = data;
   }
 
-barcode() {
-  let format;
-  if (this.upc.length === 8) {
-    format = "EAN8";
-  } else if (this.upc.length === 13) {
-    format = "EAN13";
-  } else {
-    console.warn(`UPC length ${this.upc.length} isn’t EAN8/13—using Code128`);
-    format = "CODE128";
-  }
 
-  JsBarcode("#barcode" + this.upc, this.upc, {
-    format,
-    lineColor: "#000",
-    width: 1,
-    height: 10,
-    displayValue: true,
-    margin: 0,
-    background: "#fafafa",
-    fontSize: "0.8em"
-  });
-}
 
 }
