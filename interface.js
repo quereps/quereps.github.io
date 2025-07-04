@@ -284,7 +284,8 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
                 text: toTitleCase(title),
             },
             legend: {
-                display: settings.legend
+                display: settings.legend,
+                color:"#000";
             }
         }
     };
@@ -326,7 +327,7 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
                     ? value
                     : context.chart.data.labels[context.dataIndex];
             },
-            color: '#000',
+            color: '#fff',
             font: {
                 weight: 'bold',
                 size: 10
