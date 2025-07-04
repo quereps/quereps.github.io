@@ -131,7 +131,15 @@ var createReport = function(){
       }
 
        if(current.type=="graph"){
-        JSONToGraph(graph(current.dimmension,current?.settings?.asPercentage,current?.settings?.filter), current.dimmension ,current.graphType, containerID, current.settings);
+
+        let data = graph(current.dimmension,current?.settings?.asPercentage,current?.settings?.filter);
+       
+        if(data.length>0){
+          JSONToGraph(data, current.dimmension ,current.graphType, containerID, current.settings);
+        } else{
+          jQuery("#"+containerID).hide();
+        }
+        
       }
  
       if(current.type=="skuList"){
