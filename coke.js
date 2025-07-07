@@ -52,8 +52,8 @@ cokeSpecial = function(){
 
                 const myTile = htmlTile({
                   data:{
-                    title:currentSKU,
-                    subtitle:name[sku],
+                    title:name[sku],
+                    number:currentSKU,
                   },
                   resultLabel:"Expected Facings",
                   result:{
