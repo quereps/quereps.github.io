@@ -476,7 +476,7 @@ function graph(category, asPercentage = false, filter = null) {
   
   if (asPercentage && totalFacings > 0) {
     for (let key in graphData) {
-      graphData[key] = +(graphData[key] / totalFacings * 100).toFixed(2);
+      graphData[key] = +(graphData[key] / totalFacings * 100).toFixed(0);
     }
   }
   
