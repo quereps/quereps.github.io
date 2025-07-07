@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 cokeSpecial = function(){
   setTimeout(()=>{
               selectAllMOL("mol").then((a)=>{
@@ -5,16 +14,23 @@ cokeSpecial = function(){
 
               const skuArray vpGetTextResults("mol.A1").split(',').map(s => s.trim());
               //complianceCheck();
+
+              for(let sku in skuArray){
+                const currentSKU = skuArray[sku];
+
                 const myTile = htmlTile({
                   data:{
-                    title:"Availability",
-                    subtitle:"Must have SKUs",
+                    title:skuList[currentSKU].name,
+                    subtitle:skuList[currentSKU].brand,
                     description:"",
-                    number:"",
+                    number:skuList[currentSKU].facings,
                   },
                 });
 
                 jQuery("#mustHaveAvailability").append(myTile);
+
+              }
+                
 
             });
             selectAllMOL("mol2").then((a)=>{
