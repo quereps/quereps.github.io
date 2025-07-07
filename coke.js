@@ -42,10 +42,7 @@ cokeSpecial = function(){
 
                 const myTile = htmlTile({
                   data:{
-                    title:skuList[currentSKU].name,
-                    subtitle:skuList[currentSKU].brand,
-                    description:"",
-                    number:skuList[currentSKU].facings,
+                    title:currentSKU,
                   },
                 });
 
@@ -53,7 +50,7 @@ cokeSpecial = function(){
 
               }
 
-              
+
             });
 
           }, 1000);
