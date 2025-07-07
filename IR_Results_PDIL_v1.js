@@ -221,12 +221,16 @@ var createReport = function(){
           vpSetResults("upcDetected",arrayToPipe(Object.keys(skuList)));
 
 
-          selectAllMOL("mol").then((a)=>{
+          setTimeout(()=>{
+              selectAllMOL("mol").then((a)=>{
               //complianceCheck();
             });
             selectAllMOL("mol2").then((a)=>{
               //oosMOLExtract();
             });
+
+          }, 5000);
+          
 
 
           /*Coke Demo specifics END*/
