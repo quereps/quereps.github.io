@@ -229,7 +229,7 @@ var createReport = function(){
               //oosMOLExtract();
             });
 
-          }, 5000);
+          }, 1000);
           
 
 
