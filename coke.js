@@ -13,18 +13,24 @@ cokeSpecial = function(){
 
 
               const skuArray = vpGetTextResults("mol.A1").split(',').map(s => s.trim());
+              const exp = vpGetTextResults("mol.A2").split(',').map(s => s.trim());
               //complianceCheck();
 
               for(let sku in skuArray){
                 const currentSKU = skuArray[sku];
+                const expFacings = exp[sku];
 
                 const myTile = htmlTile({
                   data:{
                     title:skuList[currentSKU].name,
                     subtitle:skuList[currentSKU].brand,
                     description:"",
-                    number:skuList[currentSKU].facings,
+                    //number:skuList[currentSKU].facings,
                   },
+                  meter: {
+                    value:skuList[currentSKU].facings,
+                    full:expFacings,
+                  }
                 });
 
                 jQuery("#mustHaveAvailability").append(myTile);
