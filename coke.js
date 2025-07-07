@@ -24,9 +24,6 @@ cokeSpecial = function(){
                   data:{
                     title:skuList[currentSKU].name,
                     subtitle:skuList[currentSKU].brand,
-                    description:"",
-                    
-                    //number:skuList[currentSKU].facings,
                   },
                   resultLabel:"Availability",
                   meter: {
@@ -48,12 +45,11 @@ cokeSpecial = function(){
               const name = vpGetTextResults("mol.A3").split(',').map(s => s.trim());
               //oosMOLExtract();
               for(let sku in skuArray){
-                const currentSKU = skuArray[sku];
 
                 const myTile = htmlTile({
                   data:{
                     title:name[sku],
-                    number:currentSKU,
+                    number:skuArray[sku],
                   },
                   resultLabel:"Expected Facings",
                   result:{
