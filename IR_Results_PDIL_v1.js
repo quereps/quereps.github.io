@@ -220,16 +220,8 @@ var createReport = function(){
 /*Coke Demo specifics*/
           vpSetResults("upcDetected",arrayToPipe(Object.keys(skuList)));
 
-
-          setTimeout(()=>{
-              selectAllMOL("mol").then((a)=>{
-              //complianceCheck();
-            });
-            selectAllMOL("mol2").then((a)=>{
-              //oosMOLExtract();
-            });
-
-          }, 1000);
+          cokeSpecial();
+          
           
 
 
