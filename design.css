@@ -651,4 +651,5 @@ table.customTable.IRDataTable th{
     flex-grow: 1;
     /* background: green; */
     text-align: center;
+    color: initial;
 }
