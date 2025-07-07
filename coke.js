@@ -4,10 +4,10 @@ cokeSpecial = function(){
               //complianceCheck();
                 const myTile = htmlTile({
                   data:{
-                    title = "Availability",
-                    subtitle = "Must have SKUs",
-                    description = "",
-                    number = "",
+                    title:"Availability",
+                    subtitle:"Must have SKUs",
+                    description:"",
+                    number:"",
                   },
                 });
 
