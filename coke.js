@@ -41,8 +41,8 @@ cokeSpecial = function(){
             selectAllMOL("mol2").then((a)=>{
 
               const skuArray = vpGetTextResults("mol2.A1").split(',').map(s => s.trim());
-              const exp = vpGetTextResults("mol.A2").split(',').map(s => s.trim());
-              const name = vpGetTextResults("mol.A3").split(',').map(s => s.trim());
+              const exp = vpGetTextResults("mol2.A2").split(',').map(s => s.trim());
+              const name = vpGetTextResults("mol2.A3").split(',').map(s => s.trim());
               //oosMOLExtract();
               for(let sku in skuArray){
 
