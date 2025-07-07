@@ -218,7 +218,7 @@ var createReport = function(){
 
 
 /*Coke Demo specifics*/
-          vpSetResults("upcs",arrayToPipe(Object.keys(skuList)));
+          vpSetResults("upcDetected",arrayToPipe(Object.keys(skuList)));
 
 
           /*Coke Demo specifics END*/
