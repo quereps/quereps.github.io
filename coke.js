@@ -43,6 +43,8 @@ cokeSpecial = function(){
             selectAllMOL("mol2").then((a)=>{
 
               const skuArray = vpGetTextResults("mol2.A1").split(',').map(s => s.trim());
+              const exp = vpGetTextResults("mol.A2").split(',').map(s => s.trim());
+              const name = vpGetTextResults("mol.A3").split(',').map(s => s.trim());
               //oosMOLExtract();
               for(let sku in skuArray){
                 const currentSKU = skuArray[sku];
@@ -50,6 +52,8 @@ cokeSpecial = function(){
                 const myTile = htmlTile({
                   data:{
                     title:currentSKU,
+                    subtitle:name[sku],
+                    number:exp[sku],
                   },
                 });
 
