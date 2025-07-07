@@ -25,9 +25,10 @@ cokeSpecial = function(){
                     title:skuList[currentSKU].name,
                     subtitle:skuList[currentSKU].brand,
                     description:"",
-                    resultLabel:"Availability",
+                    
                     //number:skuList[currentSKU].facings,
                   },
+                  resultLabel:"Availability",
                   meter: {
                     value:skuList[currentSKU].facings,
                     full:expFacings,
@@ -55,6 +56,7 @@ cokeSpecial = function(){
                     subtitle:name[sku],
                     number:exp[sku],
                   },
+                  resultLabel:"Expected Facings",
                 });
 
                 jQuery("#outOfStocks").append(myTile);
