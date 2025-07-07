@@ -216,6 +216,7 @@ function numberTile(jsonArray,destination,settings){
 
 
 function JSONToGraph(jsonArray, title, type, destination, settings) {
+
     console.log("JSONToGraph Start: ",jsonArray);
     const excluding = settings?.exclude || [];
     let entries = Object.entries(jsonArray).filter(([k, v]) => !excluding?.includes(k));
@@ -576,8 +577,6 @@ var POG = function(category,destination){
 
     let resultContainerHTML = "";
  
-
-    
 
     if(value && full){
       let valueHTML = value ? "<div class='value'>"+value+"</div>" : ""; 
