@@ -46,7 +46,7 @@ cokeSpecial = function(){
                   },
                 });
 
-                jQuery("#mustHaveAvailability").append(myTile);
+                jQuery("#outOfStocks").append(myTile);
 
               }
 
