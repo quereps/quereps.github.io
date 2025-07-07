@@ -37,6 +37,23 @@ cokeSpecial = function(){
 
               const skuArray = vpGetTextResults("mol2.A1").split(',').map(s => s.trim());
               //oosMOLExtract();
+              for(let sku in skuArray){
+                const currentSKU = skuArray[sku];
+
+                const myTile = htmlTile({
+                  data:{
+                    title:skuList[currentSKU].name,
+                    subtitle:skuList[currentSKU].brand,
+                    description:"",
+                    number:skuList[currentSKU].facings,
+                  },
+                });
+
+                jQuery("#mustHaveAvailability").append(myTile);
+
+              }
+
+              
             });
 
           }, 1000);
