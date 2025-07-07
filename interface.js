@@ -593,7 +593,7 @@ var POG = function(category,destination){
       expectedHTML = "<div class='expected'>"+expected+"</div>"; 
     }
    
-    resultContainerHTML = "<div class='resultContainer'><h4>"+resultLabel+" :</h4>"+meterHTML+expectationHTML+expectedHTML+"</div>" 
+    resultContainerHTML = "<div class='resultContainer'><h4>"+resultLabel+"</h4>"+meterHTML+expectationHTML+expectedHTML+"</div>" 
    
 
     let tableHTML = "<table>";
