@@ -25,6 +25,7 @@ cokeSpecial = function(){
                     title:skuList[currentSKU].name,
                     subtitle:skuList[currentSKU].brand,
                     description:"",
+                    resultLabel:"Availability",
                     //number:skuList[currentSKU].facings,
                   },
                   meter: {
