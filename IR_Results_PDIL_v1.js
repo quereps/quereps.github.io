@@ -216,6 +216,13 @@ var createReport = function(){
 
           await Promise.all(tagPromises);
 
+
+/*Coke Demo specifics*/
+          vpSetResults("upcs",arrayToPipe(Object.keys(skuList)));
+
+
+          /*Coke Demo specifics END*/
+
           createReport();
 
           
