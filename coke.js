@@ -12,7 +12,7 @@ cokeSpecial = function(){
               selectAllMOL("mol").then((a)=>{
 
 
-              const skuArray vpGetTextResults("mol.A1").split(',').map(s => s.trim());
+              const skuArray = vpGetTextResults("mol.A1").split(',').map(s => s.trim());
               //complianceCheck();
 
               for(let sku in skuArray){
@@ -35,7 +35,7 @@ cokeSpecial = function(){
             });
             selectAllMOL("mol2").then((a)=>{
 
-              const skuArray vpGetTextResults("mol2.A1").split(',').map(s => s.trim());
+              const skuArray = vpGetTextResults("mol2.A1").split(',').map(s => s.trim());
               //oosMOLExtract();
             });
 
