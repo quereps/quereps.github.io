@@ -71,7 +71,7 @@ var getPlaceData = async function(placeID){
 }
 
 
-var getLastMissionResponse = async function(placeID,campaingnID,timeFrame){
+var getLastMissionResponseold = async function(placeID,campaingnID,timeFrame){
 
     return new Promise(async (resolve, reject) => {
 
@@ -106,6 +106,39 @@ var getLastMissionResponse = async function(placeID,campaingnID,timeFrame){
     }
       });
 }
+
+
+var getLastMissionResponse = async function(placeID, campaingnID, timeFrame) {
+  return new Promise(async (resolve, reject) => {
+
+    const url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_id.eq=" + campaingnID + "&place_id.eq=" + placeID + "&completed_at.gt=" + getTimeStamps(timeFrame).back + "&include=user";
+
+    try {
+      const data = await APICall("GET", url, tokenV1);
+
+      console.log("Response Data received:", data);
+
+      if (data && data.data && data.data.length > 0) {
+        // Sort by completed_at (most recent last)
+        const sorted = data.data.sort((a, b) => new Date(a.completed_at) - new Date(b.completed_at));
+        
+        const lastItem = sorted[sorted.length - 1];
+        resolve(lastItem);
+
+      } else {
+        console.log("No mission responses found");
+        notification("error", "No mission responses found in the last " + timeFrame + " minute !! Checking again in 5 seconds.");
+        setTimeout(function() {
+          getLastMissionResponse(placeID, campaingnID, timeFrame);
+        }, 5000);
+      }
+
+    } catch (error) {
+      console.error("Failed to get last Mission response:", error);
+      reject(error);
+    }
+  });
+};
 
 
 
