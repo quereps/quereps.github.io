@@ -338,7 +338,7 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
             },
             anchor: 'end',
             align: 'start',
-            offset: 10
+            offset: 2
         };
     }
     
