@@ -8,6 +8,14 @@
 
 
 cokeSpecial = function(){
+
+
+  const link2 = document.createElement("link");
+  link2.rel = "stylesheet";
+  link2.href = "https://quereps.github.io/pkshot.css";
+  document.head.appendChild(link2);
+
+  
   setTimeout(()=>{
               selectAllMOL("mol").then((a)=>{
 
