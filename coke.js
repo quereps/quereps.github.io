@@ -60,6 +60,8 @@ cokeSpecial = function(){
 
                 jQuery("#outOfStocks").append(myTile);
 
+                barcodeGenerate(skuArray[sku]);
+
               }
 
 
