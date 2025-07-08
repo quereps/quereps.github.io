@@ -54,7 +54,8 @@ cokeSpecial = function(){
                   resultLabel:"Expected Facings",
                   result:{
                     expected:exp[sku],
-                  }
+                  },
+                  barcode:skuArray[sku],
                 });
 
                 jQuery("#outOfStocks").append(myTile);
