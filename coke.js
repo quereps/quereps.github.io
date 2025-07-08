@@ -15,7 +15,7 @@ cokeSpecial = function(){
   link2.href = "https://quereps.github.io/pkshot.css";
   document.head.appendChild(link2);
 
-  
+
   setTimeout(()=>{
               selectAllMOL("mol").then((a)=>{
 
@@ -37,10 +37,12 @@ cokeSpecial = function(){
                   meter: {
                     value:skuList[currentSKU].facings,
                     full:expFacings,
-                  }
+                  },
+                  barcode:skuArray[sku],
                 });
 
                 jQuery("#mustHaveAvailability").append(myTile);
+                barcodeGenerate(skuArray[sku]);
 
               }
                 
