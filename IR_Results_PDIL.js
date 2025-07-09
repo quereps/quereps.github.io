@@ -164,9 +164,9 @@ var getGrids = function({placeID = "",missionID = ""}){
 } 
 
 
- var init = async function (settings) {
+ var init = async function (a) {
 
-  settings = settings;
+  settings = a;
 
   //placeID = settings.placeIdRef ? vpGetTextResults(settings.placeIdRef) : "";
 
