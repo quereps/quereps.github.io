@@ -164,7 +164,7 @@ var createReport = function(){
 var getGrids = function({placeID = "",missionID = ""}){
 
 
-  let missionResponseID = settings.missionResponseID || getMissionResponses(placeID,missionID,600000);
+  let missionResponseID = settings.missionResponseID || getLastMissionResponse(placeID,missionID,600000);
 
   console.log("missionResponseID: ",missionResponseID);
 
