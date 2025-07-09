@@ -255,7 +255,7 @@ try {
  };
 
 
-var GetIRResults = function(settings, gridID){
+/*var GetIRResults = function(settings, gridID){
 
   vpShowLoader();
 
@@ -281,7 +281,7 @@ var GetIRResults = function(settings, gridID){
 
           
         });
-}
+}*/
 
 
 
