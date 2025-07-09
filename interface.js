@@ -721,7 +721,9 @@ const link1 = document.createElement("link");
 
 const placeSection = function(placeID,options,destination){
 
-  getPlaceData(placeID).then((placeData)=>{
+  getPlaceData(placeID).then((a)=>{
+
+    const placeData = a.data;
 
   let tableElement = createTable(placeData, {
         "Name":placeData.name,
