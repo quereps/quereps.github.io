@@ -163,6 +163,31 @@ var createReport = function(){
 
 var getGrids = function({placeID = "",missionID = ""}){
 
+
+
+  /* getGrid(lastItem.id).then(async (photo_grids)=>{
+
+          removeNotification();
+
+
+          // Create an array of promises from getTags
+          let tagPromises = photo_grids.map(async grid => {
+              const tags = await getTags(grid.id);
+              removeNotification();
+              extractIRData(tags);
+          });
+
+          await Promise.all(tagPromises);
+
+          if(settings.specificFunction){
+            settings.specificFunction();
+          }
+
+          createReport();
+
+          
+        });*/
+
   console.log("settings",settings);
 
   if(typeof settings.missionResponseID  === "undefined" ){
@@ -178,6 +203,21 @@ var getGrids = function({placeID = "",missionID = ""}){
 
       getGrid(settings.missionResponseID).then(async (photo_grids)=>{
         settings.photo_grids = photo_grids;
+
+        let tagPromises = photo_grids.map(async grid => {
+                      const tags = await getTags(grid.id);
+                      removeNotification();
+                      extractIRData(tags);
+                  });
+
+                  await Promise.all(tagPromises);
+
+                  if(settings.specificFunction){
+                    settings.specificFunction();
+                  }
+
+                  createReport();
+        
       });
     });
   }
