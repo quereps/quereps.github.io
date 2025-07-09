@@ -188,13 +188,13 @@ var getGrids({placeID = "",missionID = ""}){
     missionID: settings?.missionID,
    });
 
-   getPlaceData(placeID).then((placeData)=>{
+  // getPlaceData(placeID).then((placeData)=>{
 
-    savedPlaceData = placeData;
+  //  savedPlaceData = placeData;
 
     
       
-
+/*
     getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
       removeNotification();
       vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
@@ -206,7 +206,7 @@ var getGrids({placeID = "",missionID = ""}){
           //getImages(lastItem);
       }
 
-        
+      
 
        /* getGrid(lastItem.id).then(async (photo_grids)=>{
 
@@ -231,15 +231,15 @@ var getGrids({placeID = "",missionID = ""}){
           
         });*/
 
-      });
+     // });
 
 
 
 
 
-   });
+  // });
    
-
+createReport();
  };
 
 
