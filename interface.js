@@ -385,67 +385,9 @@ function createHTMLSection(id,name, imageURL,type, settings){
         //var Container = jQuery('<div class="container '+type+'" id="Container'+id+'"><h3><img height="40" src="'+imageURL+'"/>'+title+'</h3></div>');
         jQuery('#table-container').append(Container);
 
-       /* if (getData && typeof getData === "function") {
-        getData();
-    }*/
+
 }
 
-
-
-/*function graph (category){
-
-  var graphData = {};
-
-  for(let sku in skuList){
-    var current = skuList[sku];
-    var categoryValue = skuList[sku][category];
-
-     var facings = Number(current.facings) || 0;
-
-     if (!graphData[categoryValue]) {
-      graphData[categoryValue] = 0;
-    }
-
-
-    graphData[categoryValue] += facings;
-
-  }
-
-  return graphData;
-
-}*/
-
-
-function graphold(category, asPercentage = false) {
-
-  console.log("asPercentage: ",asPercentage);
-
-  const graphData = {};
-  let totalFacings = 0;
-
-  for (let sku in skuList) {
-    const current = skuList[sku];
-    const categoryValue = current[category];
-    const facings = Number(current.facings) || 0;
-
-    if (!graphData[categoryValue]) {
-      graphData[categoryValue] = 0;
-    }
-
-    graphData[categoryValue] += facings;
-    totalFacings += facings;
-  }
-
-  if (asPercentage && totalFacings > 0) {
-    for (let key in graphData) {
-      graphData[key] = +(graphData[key] / totalFacings * 100).toFixed(2);
-    }
-  }
-
-  console.log("graphData: ",graphData);
-
-  return graphData;
-}
 
 
 function graph(category, asPercentage = false, filter = null) {
