@@ -193,17 +193,14 @@ try {
 
                   await Promise.all(tagPromises);
 
-                  if(settings.specificFunction){
-                    settings.specificFunction();
-                  }
+                  resolve();
 
-            
 
       });
     });
   }
 
-        resolve();
+        
 
     } catch (error) {
       console.error("Failed to get last Mission response:", error);
@@ -247,6 +244,11 @@ try {
     placeId: settings?.placeId,
     missionID: settings?.missionID,
    }).then(()=>{
+
+       if(settings.specificFunction){
+                    settings.specificFunction();
+                  }
+
       createReport();
    });
 
