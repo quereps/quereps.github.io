@@ -166,6 +166,9 @@ var getGrids = function({placeID = "",missionID = ""}){
   console.log("settings",settings);
 
   if(typeof settings.missionResponseID  === "undefined" ){
+
+    console.log("Hey there");
+
     getLastMissionResponse(placeID,missionID,600000).then((a)=>{
       console.log("a: ",a)
       settings.missionResponseID = a;
