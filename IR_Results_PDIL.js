@@ -160,7 +160,7 @@ var createReport = function(){
 
  var init = async function (settings) {
 
-  placeID = vpGetTextResults("placeID");
+  placeID = settings.placeIdRef ? vpGetTextResults(settings.placeIdRef) : "";
 
   const link1 = document.createElement("link");
   link1.rel = "stylesheet";
@@ -216,19 +216,9 @@ var createReport = function(){
 
           await Promise.all(tagPromises);
 
-
-/*Coke Demo specifics*/
-          
-
-          //cokeSpecial();
           if(settings.specificFunction){
             settings.specificFunction();
           }
-          
-          
-
-
-          /*Coke Demo specifics END*/
 
           createReport();
 
@@ -243,8 +233,6 @@ var createReport = function(){
 
    });
    
-
-  //  $('#table-container').append(tableElement);
 
  };
 
