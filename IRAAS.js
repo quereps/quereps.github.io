@@ -177,25 +177,3 @@ let createReport = function(){
 })(jQuery, ksAPI);
 
 
-
-/*(function($, ksAPI){
-  ksAPI.runCustomCode(function () {
-    APIModule.Run(ukDemo);
-  });
-})(jQuery, ksAPI);
-*/
-/*
-var ukDemo = {
-      companyID:"5402",
-      missionID:"4219984",
-      tokenV1:"580c0c7f5d511ec2aceb2d9b4e7d9f22e5cb169fea02045c6353c8af0bd0e6e1",
-      tokenV2:"ce13e6d56a8e16e9e1c4eb39b73243183d5aebb304921da5d1b8b0b9ff802516",
-      inventoryDM:"inventory",
-      features:{
-        sections:true,
-        skuList:true,
-        images:true,
-      },
-     }
-*/
-   
