@@ -203,7 +203,7 @@ var getGrids = function({placeID = "",missionID = ""}){
 
 
    getGrids({
-    placeID: settings?.PlaceID,
+    placeId: settings?.placeId,
     missionID: settings?.missionID,
    });
 
