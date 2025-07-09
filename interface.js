@@ -721,6 +721,8 @@ const link1 = document.createElement("link");
 
 const placeSection = function(placeID,options,destination){
 
+  console.log("placeSection: ", placeID);
+
   getPlaceData(placeID).then((a)=>{
 
     console.log("Place Data: ", a);
