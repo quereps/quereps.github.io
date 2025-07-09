@@ -218,10 +218,10 @@ var createReport = function(){
 
 
 /*Coke Demo specifics*/
-          vpSetResults("upcDetected",arrayToPipe(Object.keys(skuList)));
-
-          cokeSpecial();
           
+
+          //cokeSpecial();
+          settings.specificFunction();
           
 
 
