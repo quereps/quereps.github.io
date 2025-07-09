@@ -719,7 +719,9 @@ const link1 = document.createElement("link");
 
 
 
-const placeSection = function(placeData,options,destination){
+const placeSection = function(placeID,options,destination){
+
+  getPlaceData(placeID).then((placeData)=>{
 
   let tableElement = createTable(placeData, {
         "Name":placeData.name,
@@ -733,12 +735,16 @@ const placeSection = function(placeData,options,destination){
           jQuery('#'+destination+" .content").append('<div id="map" style="height: 250px;width:50%;"></div>');
           createMap(10,placeData.address+" "+placeData.postal_code+" "+placeData.city);
       }
+
+    })
 }
 
 
 
 
 const MissionResponseSection = function(missionData,destination){
+
+
 
 
         let tableElement = createTable(missionData, {

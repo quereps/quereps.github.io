@@ -113,7 +113,7 @@ var createReport = function(){
       createHTMLSection(element,current?.title,current?.logo,current?.type,current?.options);
 
       if(current.type=="place"){
-        placeSection(savedPlaceData,current.options,containerID);
+        placeSection(placeID,current.options,containerID);
       }
 
       if(current.type=="response"){
@@ -157,10 +157,14 @@ var createReport = function(){
 
 
 
+var getGrids({placeID = "",missionID = ""}){
+
+} 
+
 
  var init = async function (settings) {
 
-  placeID = settings.placeIdRef ? vpGetTextResults(settings.placeIdRef) : "";
+  //placeID = settings.placeIdRef ? vpGetTextResults(settings.placeIdRef) : "";
 
   const link1 = document.createElement("link");
   link1.rel = "stylesheet";
@@ -178,6 +182,11 @@ var createReport = function(){
    photoGrid = settings.photoGrid;
     
 
+
+   getGrids({
+    placeID: settings?.PlaceID,
+    missionID: settings?.missionID,
+   });
 
    getPlaceData(placeID).then((placeData)=>{
 
@@ -197,12 +206,48 @@ var createReport = function(){
           //getImages(lastItem);
       }
 
+        
+
+       /* getGrid(lastItem.id).then(async (photo_grids)=>{
+
+          removeNotification();
+
+
+          // Create an array of promises from getTags
+          let tagPromises = photo_grids.map(async grid => {
+              const tags = await getTags(grid.id);
+              removeNotification();
+              extractIRData(tags);
+          });
+
+          await Promise.all(tagPromises);
+
+          if(settings.specificFunction){
+            settings.specificFunction();
+          }
+
+          createReport();
+
+          
+        });*/
+
+      });
 
 
 
-        vpShowLoader();
 
-        getGrid(lastItem.id).then(async (photo_grids)=>{
+
+   });
+   
+
+ };
+
+
+var GetIRResults = function(settings, gridID){
+
+  vpShowLoader();
+
+  getGrid(lastItem.id).then(async (photo_grids)=>{
 
           removeNotification();
 
@@ -224,19 +269,7 @@ var createReport = function(){
 
           
         });
-
-      });
-
-
-
-
-
-   });
-   
-
- };
-
-
+}
 
 
 
@@ -244,8 +277,8 @@ var createReport = function(){
     Run: function (settings) {
       init(settings);
     },
-    Update: function(settings){
-      update(settings);
+    GetIRResults: function(settings,gridID){
+      GetIRResults(settings);
     }
   }
 })(jQuery, ksAPI);
