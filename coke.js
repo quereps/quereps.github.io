@@ -16,6 +16,9 @@ cokeSpecial = function(){
   document.head.appendChild(link2);
 
 
+  vpSetResults("upcDetected",arrayToPipe(Object.keys(skuList)));
+
+
   setTimeout(()=>{
               selectAllMOL("mol").then((a)=>{
 
