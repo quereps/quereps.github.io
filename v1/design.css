@@ -20,7 +20,9 @@
 }
 
 
-
+.HBUTTONS{
+    display:none;
+}
 
 
 .aDivQId_category .ui-button{
@@ -556,6 +558,7 @@ div#table-container {
     flex-wrap: wrap;
     gap: 1em;
     align-items: stretch;
+    background: white;
 }
 
 div#table-container > div {
