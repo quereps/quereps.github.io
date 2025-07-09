@@ -77,7 +77,7 @@ var createTable = function(data, structure) {
 function JSONToHTMLTable(jsonArray, destination, settings) {
 
     // Get the list of keys to exclude, defaulting to an empty array if not provided
-    const excludeList = settings.exclude || [];
+    const excludeList = settings?.exclude || [];
 
     // Filter the input array to exclude objects whose *first key* is in the exclude list
     const filteredArray = jsonArray.filter(obj => {
