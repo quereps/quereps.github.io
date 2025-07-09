@@ -57,7 +57,7 @@ var APIModule = (function ($, ksAPI) {
               
             }
 
-              console.log(data[item]);
+              //console.log(data[item]);
 
               //To move in its own function
               const key = data[item].values.classification;
