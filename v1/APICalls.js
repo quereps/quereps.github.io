@@ -93,21 +93,12 @@ var getLastMissionResponse = async function(placeID, campaingnID, timeFrame) {
         resolve(lastItem);
 
       } else {
-        if(attemps<10){
 
-          console.log(attemps);
           notification("error","No mission responses found in the last "+timeFrame+" minute !! Checking again in 5 seconds.");
         
             setTimeout(function(){
               getLastMissionResponse(placeID,campaingnID)}, 5000);
 
-            attemps++;
-
-            }
-            else{
-              notification("error","No mission responses found in the last "+timeFrame+" minute !! Come back later.");
-        
-            }
       }
 
     } catch (error) {
