@@ -744,7 +744,7 @@ const placeSection = function(placeID,options,destination){
 
 
 
-const MissionResponseSection = function(missionData,destination){
+const MissionResponseSection = function(placeID,missionID,destination){
 
 
       getLastMissionResponse(placeID,missionID,600000).then((missionData)=>{

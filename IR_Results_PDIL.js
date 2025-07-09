@@ -117,11 +117,11 @@ var createReport = function(){
       createHTMLSection(element,current?.title,current?.logo,current?.type,current?.options);
 
       if(current.type=="place"){
-        placeSection(settings.placeId,current.options,containerID);
+        placeSection(settings.missionID,current.options,containerID);
       }
 
       if(current.type=="response"){
-        MissionResponseSection(savedResponseData,containerID);
+        MissionResponseSection(settings.placeId,settings.missionID,containerID);
       }
 
 
