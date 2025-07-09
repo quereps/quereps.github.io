@@ -1,0 +1,10 @@
+https://quereps.github.io/IRAAS.js
+https://quereps.github.io/calculations.js
+https://quereps.github.io/APICalls.js
+https://quereps.github.io/interface.js
+https://quereps.github.io/skuObj.js
+https://quereps.github.io/mol.js
+
+https://quereps.github.io/design.css
+
+https://cdn.jsdelivr.net/npm/chart.js
