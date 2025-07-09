@@ -157,7 +157,7 @@ var createReport = function(){
 
 
 
-var getGrids({placeID = "",missionID = ""}){
+var getGrids = function({placeID = "",missionID = ""}){
 
 } 
 
