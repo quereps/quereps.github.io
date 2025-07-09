@@ -558,7 +558,6 @@ div#table-container {
     flex-wrap: wrap;
     gap: 1em;
     align-items: stretch;
-    background: white;
 }
 
 div#table-container > div {
@@ -568,6 +567,7 @@ div#table-container > div {
     min-height: 70px;
     display: flex;
     flex-wrap: wrap;
+    background: white;
 }
 
 .content {
