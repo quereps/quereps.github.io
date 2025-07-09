@@ -82,7 +82,7 @@ function JSONToHTMLTable(jsonArray, destination, settings) {
     // Filter the input array to exclude objects whose *first key* is in the exclude list
     const filteredArray = jsonArray.filter(obj => {
         const key = Object.keys(obj)[0]; // Only checks the first key
-        return !settings.exclude?.includes(key);
+        return !settings?.exclude?.includes(key);
     });
 
     // Extract all unique keys from the filtered array to use as table headers
