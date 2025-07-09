@@ -163,7 +163,13 @@ var createReport = function(){
 
 var GetIRResults = function({placeID = "",missionID = ""}){
 
-  console.log("settings",settings);
+
+  return new Promise(async (resolve, reject) => {
+
+try {
+
+
+        console.log("settings",settings);
 
   if(typeof settings.missionResponseID  === "undefined" ){
 
@@ -191,11 +197,23 @@ var GetIRResults = function({placeID = "",missionID = ""}){
                     settings.specificFunction();
                   }
 
-                  createReport();
+            
 
       });
     });
   }
+
+        resolve();
+
+    } catch (error) {
+      console.error("Failed to get last Mission response:", error);
+      reject(error);
+    }
+
+});
+
+
+
 
 
  
@@ -228,60 +246,12 @@ var GetIRResults = function({placeID = "",missionID = ""}){
    GetIRResults({
     placeId: settings?.placeId,
     missionID: settings?.missionID,
+   }).then(()=>{
+      createReport();
    });
 
-  // getPlaceData(placeID).then((placeData)=>{
-
-  //  savedPlaceData = placeData;
-
-    
-      
-/*
-    getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
-      removeNotification();
-      vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
-      
-      savedResponseData = lastItem;
-      
-
-      if(features.images){
-          //getImages(lastItem);
-      }
-
-      
-
-       /* getGrid(lastItem.id).then(async (photo_grids)=>{
-
-          removeNotification();
-
-
-          // Create an array of promises from getTags
-          let tagPromises = photo_grids.map(async grid => {
-              const tags = await getTags(grid.id);
-              removeNotification();
-              extractIRData(tags);
-          });
-
-          await Promise.all(tagPromises);
-
-          if(settings.specificFunction){
-            settings.specificFunction();
-          }
-
-          createReport();
-
-          
-        });*/
-
-     // });
-
-
-
-
-
-  // });
    
-createReport();
+
  };
 
 
