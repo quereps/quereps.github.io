@@ -115,7 +115,7 @@ var createReport = function(){
       createHTMLSection(element,current?.title,current?.logo,current?.type,current?.options);
 
       if(current.type=="place"){
-        placeSection(settings.placeID,current.options,containerID);
+        placeSection(settings.placeId,current.options,containerID);
       }
 
       if(current.type=="response"){
