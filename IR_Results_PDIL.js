@@ -126,7 +126,7 @@ var createReport = function(){
 
 
       if(current.type=="number"){
-        numberTile(graph(current.dimmension,current?.options?.asPercentage),containerID,current.options);
+        numberTile(graph(current.dimension,current?.options?.asPercentage),containerID,current.options);
       }
 
 
@@ -136,10 +136,10 @@ var createReport = function(){
 
        if(current.type=="graph"){
 
-        let data = graph(current.dimmension,current?.settings?.asPercentage,current?.settings?.filter);
+        let data = graph(current.dimension,current?.settings?.asPercentage,current?.settings?.filter);
        
         if(Object.keys(data).length>0){
-          JSONToGraph(data, current.dimmension ,current.graphType, containerID, current.settings);
+          JSONToGraph(data, current.dimension ,current.graphType, containerID, current.settings);
         } else{
           jQuery("#"+containerID).hide();
         }
