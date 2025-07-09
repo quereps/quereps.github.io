@@ -723,6 +723,8 @@ const placeSection = function(placeID,options,destination){
 
   getPlaceData(placeID).then((a)=>{
 
+    console.log("Place Data: ", a);
+
     const placeData = a.data;
 
   let tableElement = createTable(placeData, {
