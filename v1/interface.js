@@ -125,7 +125,9 @@ function numberTile(jsonArray,destination,settings){
 
   console.log(jsonArray[settings.filter]);
 
-  let value = jsonArray[settings.filter]+"%";
+  let unit = settings?.asPercentage==true ? "%" : "";
+
+  let value = jsonArray[settings.filter]+unit;
   let html = "<h4>"+value+"</h4>"; 
 
   if(destination){
