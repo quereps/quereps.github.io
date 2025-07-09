@@ -202,7 +202,7 @@ var getGrids = function({placeID = "",missionID = ""}){
        console.log("missionResponseID: ",settings.missionResponseID);
 
       getGrid(settings.missionResponseID).then(async (photo_grids)=>{
-        settings.photo_grids = photo_grids;
+        //settings.photo_grids = photo_grids;
 
         let tagPromises = photo_grids.map(async grid => {
                       const tags = await getTags(grid.id);
@@ -217,7 +217,7 @@ var getGrids = function({placeID = "",missionID = ""}){
                   }
 
                   createReport();
-        
+
       });
     });
   }
