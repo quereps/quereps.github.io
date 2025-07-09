@@ -165,6 +165,7 @@ var getGrids = function({placeID = "",missionID = ""}){
 
   if(!settings.missionResponseID){
     getLastMissionResponse(placeID,missionID,600000).then((a)=>{
+      console.log("a: ",a)
       settings.missionResponseID = a;
     });
   }
