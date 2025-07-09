@@ -173,7 +173,7 @@ var getGrids = function({placeID = "",missionID = ""}){
   console.log("missionResponseID: ",settings.missionResponseID);
 
   getGrid(settings.missionResponseID).then(async (photo_grids)=>{
-    return photo_grids;
+    console.log("photo_grids: ",photo_grids);
   });
 } 
 
