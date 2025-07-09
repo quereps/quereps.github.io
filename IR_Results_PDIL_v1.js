@@ -221,7 +221,10 @@ var createReport = function(){
           
 
           //cokeSpecial();
-          settings.specificFunction();
+          if(settings.specificFunction){
+            settings.specificFunction();
+          }
+          
           
 
 
