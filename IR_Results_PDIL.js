@@ -166,7 +166,7 @@ var getGrids = function({placeID = "",missionID = ""}){
 
   let missionResponseID = settings.missionResponseID || getMissionResponses(placeID,missionID,600000);
 
-  console.log(missionResponseID);
+  console.log("missionResponseID: ",missionResponseID);
 
   getGrid(missionResponseID).then(async (photo_grids)=>{
     return photo_grids;
