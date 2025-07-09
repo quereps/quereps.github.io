@@ -121,87 +121,6 @@ function JSONToHTMLTable(jsonArray, destination, settings) {
 
 
 
-
-/*function JSONToGraph(jsonArray, title, type, destination, settings) {
-
-    console.log("JSONToGraph Start");
-    //let entries = Object.entries(jsonArray);
-
-    const excluding = settings?.exclude || [];
-
-    let entries = Object.entries(jsonArray).filter(([k, v]) => !excluding?.includes(k));
-    entries.sort((a, b) => b[1] - a[1]);
-
-    let labels = entries.map(([k, v]) => k);
-    let data = entries.map(([k, v]) => v);
-
-    const limit = settings?.limit || null;
-
-    if(limit != null){
-      labels = labels.slice(0, limit);
-      data = data.slice(0, limit);
-    }
-    
-
-    
-
-    jQuery("#"+destination+" .content").append("<div class='canvasContainer'></div>");
-
-    const backgroundColors = labels.map(label => settings?.colorMap[label] || '#CCCCCC');
-
-    // Create a new canvas and append it to a parent container
-    let parent = jQuery("#"+destination+" .canvasContainer")[0] || document.body; // fallback to body
-    let canvas = document.createElement('canvas');
-    canvas.width = 250;
-    canvas.height = 250;
-    canvas.style.width = "100px";
-    canvas.style.height = "100px";
-    parent.appendChild(canvas);
-
-
-    //https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels
-    ChartDataLabels && Chart.register(ChartDataLabels);
-
-    // Create the chart
-    window.currentChart = new Chart(canvas, {
-        type: type,
-        data: {
-            labels: labels,
-            datasets: [{
-                label: "Count",
-                data: data,
-                backgroundColor: backgroundColors,
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            indexAxis:settings.indexAxis || "",
-            plugins: {
-              title: {
-              display: true,             // Show the title
-              text: title,
-            },
-            legend: {
-                display: settings.legend
-            },
-            datalabels: {
-              formatter: (value, context) => context.chart.data.labels[context.dataIndex],
-              color: '#fff',
-              font: {
-                weight: 'bold',
-                size: 10
-              },
-              anchor: 'end',
-              align: 'start',
-              offset: 10
-            }
-        }
-        }
-    });
-}*/
-
-
 function numberTile(jsonArray,destination,settings){
 
   console.log(jsonArray[settings.filter]);
@@ -381,7 +300,7 @@ function createHTMLSection(id,name, imageURL,type, settings){
        
         
         
-        var Container = jQuery('<div style="background:'+settings?.background+'" class="container '+classToAdd+' '+type+'" id="Container'+id+'">'+headerHTML+'<div class="content"></div></div>');
+        var Container = jQuery('<div style="background:'+settings?.background+'"; color:'+settings?.color+'" class="container '+classToAdd+' '+type+'" id="Container'+id+'">'+headerHTML+'<div class="content"></div></div>');
         //var Container = jQuery('<div class="container '+type+'" id="Container'+id+'"><h3><img height="40" src="'+imageURL+'"/>'+title+'</h3></div>');
         jQuery('#table-container').append(Container);
 
@@ -392,60 +311,10 @@ function createHTMLSection(id,name, imageURL,type, settings){
 
 
 
-/*function graph (category){
-
-  var graphData = {};
-
-  for(let sku in skuList){
-    var current = skuList[sku];
-    var categoryValue = skuList[sku][category];
-
-     var facings = Number(current.facings) || 0;
-
-     if (!graphData[categoryValue]) {
-      graphData[categoryValue] = 0;
-    }
 
 
-    graphData[categoryValue] += facings;
-
-  }
-
-  return graphData;
-
-}*/
 
 
-function graphold(category, asPercentage = false) {
-
-  console.log("asPercentage: ",asPercentage);
-
-  const graphData = {};
-  let totalFacings = 0;
-
-  for (let sku in skuList) {
-    const current = skuList[sku];
-    const categoryValue = current[category];
-    const facings = Number(current.facings) || 0;
-
-    if (!graphData[categoryValue]) {
-      graphData[categoryValue] = 0;
-    }
-
-    graphData[categoryValue] += facings;
-    totalFacings += facings;
-  }
-
-  if (asPercentage && totalFacings > 0) {
-    for (let key in graphData) {
-      graphData[key] = +(graphData[key] / totalFacings * 100).toFixed(2);
-    }
-  }
-
-  console.log("graphData: ",graphData);
-
-  return graphData;
-}
 
 
 function graph(category, asPercentage = false, filter = null) {
