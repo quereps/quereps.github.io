@@ -163,6 +163,8 @@ var createReport = function(){
 
 var getGrids = function({placeID = "",missionID = ""}){
 
+  console.log("settings",settings);
+
   if(!settings.missionResponseID){
     getLastMissionResponse(placeID,missionID,600000).then((a)=>{
       console.log("a: ",a)
