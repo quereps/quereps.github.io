@@ -107,6 +107,8 @@ var createReport = function(){
 
   console.log(report);
 
+  console.log("settings: ",settings);
+
     for(var element in report){
 
       var current = report[element];
