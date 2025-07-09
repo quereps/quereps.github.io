@@ -71,7 +71,7 @@ var getPlaceData = async function(placeID){
 }
 
 
-var getLastMissionResponseold = async function(placeID,campaingnID,timeFrame){
+var getMissionResponses = async function(placeID,campaingnID,timeFrame, limit){
 
     return new Promise(async (resolve, reject) => {
 
@@ -86,9 +86,11 @@ var getLastMissionResponseold = async function(placeID,campaingnID,timeFrame){
 
       if(data && data.data){
 
-        var lastItem = data.data[data.data.length - 1];
-
-        resolve(lastItem);
+        //var lastItem = data.data[data.data.length - 1];
+        //resolve(lastItem);
+        const sorted = data.data.sort((a, b) => new Date(b.completed_at) - new Date(a.completed_at));
+        const latestItems = sorted.slice(0, limit);
+        resolve(latestItems);
 
       }
       else{
@@ -96,11 +98,12 @@ var getLastMissionResponseold = async function(placeID,campaingnID,timeFrame){
 
         notification("error","No mission responses found in the last "+timeFrame+" minute !! Checking again in 5 seconds.")
         
-        setTimeout(function(){
-          getLastMissionResponse(placeID,campaingnID)}, 5000);
-        }
+        setTimeout(function() {
+          getMissionResponses(placeID, campaingnID, timeFrame, limit).then(resolve).catch(reject);
+        }, 5000);
 
-    } catch (error) {
+    }
+  } catch (error) {
       console.error("Failed to get last Mission response:", error);
       reject(error); 
     }

@@ -162,7 +162,9 @@ var createReport = function(){
 
 
 var getGrids = function({placeID = "",missionID = ""}){
-
+  getGrid(lastItem.id).then(async (photo_grids)=>{
+    return photo_grids;
+  }
 } 
 
 
