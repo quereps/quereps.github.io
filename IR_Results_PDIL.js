@@ -169,18 +169,18 @@ var GetIRResults = async function({placeID = "",missionID = ""}){
 try {
 
 
-        console.log("settings",settings);
+   //     console.log("settings",settings);
 
   if(typeof settings.missionResponseID  === "undefined" ){
 
     console.log("Hey there");
 
     getLastMissionResponse(settings.placeId,settings.missionID,600000).then((a)=>{
-      console.log("a: ",a)
+     
       settings.missionResponseID = a.id;
 
 
-       console.log("missionResponseID: ",settings.missionResponseID);
+       //console.log("missionResponseID: ",settings.missionResponseID);
 
       getGrid(settings.missionResponseID).then(async (photo_grids)=>{
         //settings.photo_grids = photo_grids;
