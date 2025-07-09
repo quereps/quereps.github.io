@@ -112,6 +112,9 @@ var getMissionResponses = async function(placeID,campaignID,timeFrame, limit){
 
 
 var getLastMissionResponse = async function(placeID, campaignID, timeFrame) {
+
+  console.log(placeID,campaignID,timeFrame);
+
   return new Promise(async (resolve, reject) => {
 
     const url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_id.eq=" + campaignID + "&place_id.eq=" + placeID + "&completed_at.gt=" + getTimeStamps(timeFrame).back + "&include=user";
