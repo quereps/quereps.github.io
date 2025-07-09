@@ -169,7 +169,7 @@ var getGrids = function({placeID = "",missionID = ""}){
 
     console.log("Hey there");
 
-    getLastMissionResponse(settings.placeID,settings.missionID,600000).then((a)=>{
+    getLastMissionResponse(settings.placeId,settings.missionID,600000).then((a)=>{
       console.log("a: ",a)
       settings.missionResponseID = a;
     });
