@@ -71,12 +71,12 @@ var getPlaceData = async function(placeID){
 }
 
 
-var getMissionResponses = async function(placeID,campaingnID,timeFrame, limit){
+var getMissionResponses = async function(placeID,campaignID,timeFrame, limit){
 
     return new Promise(async (resolve, reject) => {
 
     //url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_id.eq="+campaingnID+"&place_id.eq="+placeID+"&completed_at.gt="+getTimeStamps(timeFrame).back+"&include=user,task_responses";
-    url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_id.eq="+campaingnID+"&place_id.eq="+placeID+"&completed_at.gt="+getTimeStamps(timeFrame).back+"&include=user";
+    url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_id.eq="+campaignID+"&place_id.eq="+placeID+"&completed_at.gt="+getTimeStamps(timeFrame).back+"&include=user";
 
 
     try {
@@ -99,7 +99,7 @@ var getMissionResponses = async function(placeID,campaingnID,timeFrame, limit){
         notification("error","No mission responses found in the last "+timeFrame+" minute !! Checking again in 5 seconds.")
         
         setTimeout(function() {
-          getMissionResponses(placeID, campaingnID, timeFrame, limit).then(resolve).catch(reject);
+          getMissionResponses(placeID, campaignID, timeFrame, limit).then(resolve).catch(reject);
         }, 5000);
 
     }
@@ -111,10 +111,10 @@ var getMissionResponses = async function(placeID,campaingnID,timeFrame, limit){
 }
 
 
-var getLastMissionResponse = async function(placeID, campaingnID, timeFrame) {
+var getLastMissionResponse = async function(placeID, campaignID, timeFrame) {
   return new Promise(async (resolve, reject) => {
 
-    const url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_id.eq=" + campaingnID + "&place_id.eq=" + placeID + "&completed_at.gt=" + getTimeStamps(timeFrame).back + "&include=user";
+    const url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_id.eq=" + campaignID + "&place_id.eq=" + placeID + "&completed_at.gt=" + getTimeStamps(timeFrame).back + "&include=user";
 
     try {
       const data = await APICall("GET", url, tokenV1);
@@ -132,7 +132,7 @@ var getLastMissionResponse = async function(placeID, campaingnID, timeFrame) {
         console.log("No mission responses found");
         notification("error", "No mission responses found in the last " + timeFrame + " minute !! Checking again in 5 seconds.");
         setTimeout(function() {
-          getLastMissionResponse(placeID, campaingnID, timeFrame);
+          getLastMissionResponse(placeID, campaignID, timeFrame);
         }, 5000);
       }
 
