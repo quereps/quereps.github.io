@@ -71,63 +71,14 @@ var getPlaceData = async function(placeID){
 }
 
 
-var getLastMissionResponseold = async function(placeID,campaingnID,timeFrame){
-
-    return new Promise(async (resolve, reject) => {
-
-    //url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_id.eq="+campaingnID+"&place_id.eq="+placeID+"&completed_at.gt="+getTimeStamps(timeFrame).back+"&include=user,task_responses";
-    url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_id.eq="+campaingnID+"&place_id.eq="+placeID+"&completed_at.gt="+getTimeStamps(timeFrame).back+"&include=user";
-
-    let attemps = 0;
-
-    try {
-      const data = await APICall("GET",url, tokenV1);
-
-      console.log("Response Data received:", data);
-
-      if(data && data.data){
-
-        var lastItem = data.data[data.data.length - 1];
-
-        resolve(lastItem);
-
-      }
-      else{
-        console.log("No mission responses found");
-
-        if(attemps<10){
-          notification("error","No mission responses found in the last "+timeFrame+" minute !! Checking again in 5 seconds.");
-        
-            setTimeout(function(){
-              getLastMissionResponse(placeID,campaingnID)}, 5000);
-
-            attemps++;
-
-            }
-            else{
-              notification("error","No mission responses found in the last "+timeFrame+" minute !! Come back later.");
-        
-            }
-        }
-
-        
-        
-        
-
-        
-
-    } catch (error) {
-      console.error("Failed to get last Mission response:", error);
-      reject(error); 
-    }
-      });
-}
-
 
 var getLastMissionResponse = async function(placeID, campaingnID, timeFrame) {
   return new Promise(async (resolve, reject) => {
 
     const url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_id.eq=" + campaingnID + "&place_id.eq=" + placeID + "&completed_at.gt=" + getTimeStamps(timeFrame).back + "&include=user";
+
+    let attemps = 0;
+
 
     try {
       const data = await APICall("GET", url, tokenV1);
@@ -142,11 +93,19 @@ var getLastMissionResponse = async function(placeID, campaingnID, timeFrame) {
         resolve(lastItem);
 
       } else {
-        console.log("No mission responses found");
-        notification("error", "No mission responses found in the last " + timeFrame + " minute !! Checking again in 5 seconds.");
-        setTimeout(function() {
-          getLastMissionResponse(placeID, campaingnID, timeFrame);
-        }, 5000);
+        if(attemps<10){
+          notification("error","No mission responses found in the last "+timeFrame+" minute !! Checking again in 5 seconds.");
+        
+            setTimeout(function(){
+              getLastMissionResponse(placeID,campaingnID)}, 5000);
+
+            attemps++;
+
+            }
+            else{
+              notification("error","No mission responses found in the last "+timeFrame+" minute !! Come back later.");
+        
+            }
       }
 
     } catch (error) {
