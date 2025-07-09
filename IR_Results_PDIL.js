@@ -161,32 +161,7 @@ var createReport = function(){
 
 
 
-var getGrids = function({placeID = "",missionID = ""}){
-
-
-
-  /* getGrid(lastItem.id).then(async (photo_grids)=>{
-
-          removeNotification();
-
-
-          // Create an array of promises from getTags
-          let tagPromises = photo_grids.map(async grid => {
-              const tags = await getTags(grid.id);
-              removeNotification();
-              extractIRData(tags);
-          });
-
-          await Promise.all(tagPromises);
-
-          if(settings.specificFunction){
-            settings.specificFunction();
-          }
-
-          createReport();
-
-          
-        });*/
+var GetIRResults = function({placeID = "",missionID = ""}){
 
   console.log("settings",settings);
 
@@ -250,7 +225,7 @@ var getGrids = function({placeID = "",missionID = ""}){
     
 
 
-   getGrids({
+   GetIRResults({
     placeId: settings?.placeId,
     missionID: settings?.missionID,
    });
