@@ -172,15 +172,18 @@ var getGrids = function({placeID = "",missionID = ""}){
     getLastMissionResponse(settings.placeId,settings.missionID,600000).then((a)=>{
       console.log("a: ",a)
       settings.missionResponseID = a.id;
+
+
+       console.log("missionResponseID: ",settings.missionResponseID);
+
+      getGrid(settings.missionResponseID).then(async (photo_grids)=>{
+        console.log("photo_grids: ",photo_grids);
+      });
     });
   }
 
 
-  console.log("missionResponseID: ",settings.missionResponseID);
-
-  getGrid(settings.missionResponseID).then(async (photo_grids)=>{
-    console.log("photo_grids: ",photo_grids);
-  });
+ 
 } 
 
 
