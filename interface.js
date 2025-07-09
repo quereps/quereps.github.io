@@ -747,7 +747,7 @@ const placeSection = function(placeID,options,destination){
 const MissionResponseSection = function(missionData,destination){
 
 
-
+      getLastMissionResponse(placeID,missionID,600000).then((missionData)=>{
 
         let tableElement = createTable(missionData, {
           "Completed":missionData.completed_at+" ("+moment(missionData.completed_at).fromNow()+")",
@@ -756,4 +756,6 @@ const MissionResponseSection = function(missionData,destination){
            "ID":missionData.id,
         });
         jQuery('#'+destination+" .content").append(tableElement);
+
+  });
 }
