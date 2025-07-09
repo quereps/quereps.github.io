@@ -163,12 +163,16 @@ var createReport = function(){
 
 var getGrids = function({placeID = "",missionID = ""}){
 
+  if(!settings.missionResponseID){
+    getLastMissionResponse(placeID,missionID,600000).then((a)=>{
+      settings.missionResponseID = a;
+    });
+  }
 
-  let missionResponseID = settings.missionResponseID || getLastMissionResponse(placeID,missionID,600000);
 
   console.log("missionResponseID: ",missionResponseID);
 
-  getGrid(missionResponseID).then(async (photo_grids)=>{
+  getGrid(settings.missionResponseID).then(async (photo_grids)=>{
     return photo_grids;
   });
 } 
