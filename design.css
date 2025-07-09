@@ -20,7 +20,9 @@
 }
 
 
-
+.HBUTTONS{
+    display:none;
+}
 
 
 .aDivQId_category .ui-button{
