@@ -78,6 +78,7 @@ var getLastMissionResponseold = async function(placeID,campaingnID,timeFrame){
     //url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_id.eq="+campaingnID+"&place_id.eq="+placeID+"&completed_at.gt="+getTimeStamps(timeFrame).back+"&include=user,task_responses";
     url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_id.eq="+campaingnID+"&place_id.eq="+placeID+"&completed_at.gt="+getTimeStamps(timeFrame).back+"&include=user";
 
+    let attemps = 0;
 
     try {
       const data = await APICall("GET",url, tokenV1);
@@ -94,11 +95,26 @@ var getLastMissionResponseold = async function(placeID,campaingnID,timeFrame){
       else{
         console.log("No mission responses found");
 
-        notification("error","No mission responses found in the last "+timeFrame+" minute !! Checking again in 5 seconds.")
+        if(attemps<10){
+          notification("error","No mission responses found in the last "+timeFrame+" minute !! Checking again in 5 seconds.");
         
-        setTimeout(function(){
-          getLastMissionResponse(placeID,campaingnID)}, 5000);
+            setTimeout(function(){
+              getLastMissionResponse(placeID,campaingnID)}, 5000);
+
+            attemps++;
+
+            }
+            else{
+              notification("error","No mission responses found in the last "+timeFrame+" minute !! Come back later.");
+        
+            }
         }
+
+        
+        
+        
+
+        
 
     } catch (error) {
       console.error("Failed to get last Mission response:", error);
