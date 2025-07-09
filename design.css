@@ -567,6 +567,7 @@ div#table-container > div {
     min-height: 70px;
     display: flex;
     flex-wrap: wrap;
+    background: white;
 }
 
 .content {
@@ -653,5 +654,5 @@ table.customTable.IRDataTable th{
     flex-grow: 1;
     /* background: green; */
     text-align: center;
-    /* color: initial; */
+    color: initial;
 }
