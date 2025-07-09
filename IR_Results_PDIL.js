@@ -161,7 +161,7 @@ var createReport = function(){
 
 
 
-var GetIRResults = function({placeID = "",missionID = ""}){
+var GetIRResults = async function({placeID = "",missionID = ""}){
 
 
   return new Promise(async (resolve, reject) => {
