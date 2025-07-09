@@ -5,6 +5,8 @@ let sections = {};
  let report = {};
  let realogram = [];
 
+ let settings = {};
+
 
   let ingest = "";
   let placeID = "";
@@ -163,6 +165,8 @@ var getGrids = function({placeID = "",missionID = ""}){
 
 
  var init = async function (settings) {
+
+  settings = settings;
 
   //placeID = settings.placeIdRef ? vpGetTextResults(settings.placeIdRef) : "";
 
