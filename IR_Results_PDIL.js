@@ -161,45 +161,27 @@ var createReport = function(){
 
 
 
-var GetIRResults = async function({placeID = "",missionID = ""}){
+var GetIRResults = async function(photo_grids){
 
 
   return new Promise(async (resolve, reject) => {
 
 try {
 
+          // Create an array of promises from getTags
+          let tagPromises = photo_grids.map(async grid => {
+              const tags = await getTags(grid.id);
+              removeNotification();
+              extractIRData(tags);
+          });
 
-   //     console.log("settings",settings);
+          await Promise.all(tagPromises);
 
-  if(typeof settings.missionResponseID  === "undefined" ){
+          if(settings.specificFunction){
+            settings.specificFunction();
+          }
 
-    console.log("Hey there");
-
-    getLastMissionResponse(settings.placeId,settings.missionID,600000).then((a)=>{
-     
-      settings.missionResponseID = a.id;
-
-
-       //console.log("missionResponseID: ",settings.missionResponseID);
-
-      getGrid(settings.missionResponseID).then(async (photo_grids)=>{
-        //settings.photo_grids = photo_grids;
-
-        let tagPromises = photo_grids.map(async grid => {
-                      const tags = await getTags(grid.id);
-                      removeNotification();
-                      extractIRData(tags);
-                  });
-
-                  await Promise.all(tagPromises);
-
-                  resolve();
-
-
-      });
-    });
-  }
-
+          createReport();
         
 
     } catch (error) {
@@ -208,20 +190,30 @@ try {
     }
 
 });
-
-
-
-
-
  
 } 
 
 
- var init = async function (a) {
 
-  settings = a;
 
-  //placeID = settings.placeIdRef ? vpGetTextResults(settings.placeIdRef) : "";
+
+ var init = async function (settings) {
+
+
+  if(settings.gridIdArray && settings.gridIdArray.length>0){
+
+    GetIRResults(settings.gridIdArray);
+
+  }
+
+  
+  else{
+
+  }
+
+
+
+  placeID = vpGetTextResults("placeID");
 
   const link1 = document.createElement("link");
   link1.rel = "stylesheet";
@@ -240,28 +232,30 @@ try {
     
 
 
-   GetIRResults({
-    placeId: settings?.placeId,
-    missionID: settings?.missionID,
-   }).then(()=>{
+   getPlaceData(placeID).then((placeData)=>{
 
-       if(settings.specificFunction){
-                    settings.specificFunction();
-                  }
+    savedPlaceData = placeData;
 
-      createReport();
-   });
+    
+      
 
-   
+    getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
+      removeNotification();
+      vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
+      
+      savedResponseData = lastItem;
+      
 
- };
+      if(features.images){
+          //getImages(lastItem);
+      }
 
 
-/*var GetIRResults = function(settings, gridID){
 
-  vpShowLoader();
 
-  getGrid(lastItem.id).then(async (photo_grids)=>{
+        vpShowLoader();
+
+        getGrid(lastItem.id).then(async (photo_grids)=>{
 
           removeNotification();
 
@@ -275,25 +269,44 @@ try {
 
           await Promise.all(tagPromises);
 
+
+/*Coke Demo specifics*/
+          
+
+          //cokeSpecial();
           if(settings.specificFunction){
             settings.specificFunction();
           }
+          
+          
+
+
+          /*Coke Demo specifics END*/
 
           createReport();
 
           
         });
-}*/
 
+      });
+
+
+
+
+
+   });
+   
+
+  //  $('#table-container').append(tableElement);
+
+ };
 
 
  return {
     Run: function (settings) {
       init(settings);
     },
-    GetIRResults: function(settings,gridID){
-      GetIRResults(settings);
-    }
+
   }
 })(jQuery, ksAPI);
 
