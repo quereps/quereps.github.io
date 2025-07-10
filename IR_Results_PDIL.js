@@ -201,7 +201,7 @@ try {
 
 
  var init = async function (settings) {
-
+  console.log("iniiiiit");
 
 placeID = settings.placeID;
      companyID = settings.companyID;
@@ -237,7 +237,7 @@ placeID = settings.placeID;
 
   
 
-  console.log("iniiiiit");
+
 
 
     
