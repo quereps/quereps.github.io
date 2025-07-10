@@ -203,6 +203,16 @@ try {
  var init = async function (settings) {
 
 
+placeID = settings.placeID;
+     companyID = settings.companyID;
+   missionID = settings.missionID;
+   tokenV1 = settings.tokenV1;
+   tokenV2 = settings.tokenV2;
+   features = settings.features;
+   report = settings.report;
+   photoGrid = settings.photoGrid;
+
+
   if(settings.gridIdArray && settings.gridIdArray.length>0){
 
     console.log("I got the grids");
@@ -217,7 +227,7 @@ try {
 
 
 
-  placeID = vpGetTextResults("placeID");
+  
 
   const link1 = document.createElement("link");
   link1.rel = "stylesheet";
@@ -226,13 +236,7 @@ try {
 
   console.log("iniiiiit");
 
-   companyID = settings.companyID;
-   missionID = settings.missionID;
-   tokenV1 = settings.tokenV1;
-   tokenV2 = settings.tokenV2;
-   features = settings.features;
-   report = settings.report;
-   photoGrid = settings.photoGrid;
+
     
 
 

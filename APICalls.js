@@ -186,7 +186,7 @@ var getGrid = async function(MRID){
      });
 }
 
-var getTags = async function(GridID,companyID){
+var getTags = async function(GridID){
 
   return new Promise((resolve, reject) => {
 
