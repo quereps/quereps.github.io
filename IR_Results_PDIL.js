@@ -213,6 +213,12 @@ placeID = settings.placeID;
    photoGrid = settings.photoGrid;
 
 
+   const link1 = document.createElement("link");
+  link1.rel = "stylesheet";
+  link1.href = "https://quereps.github.io/design.css";
+  document.head.appendChild(link1);
+
+
   if(settings.gridIdArray && settings.gridIdArray.length>0){
 
     console.log("I got the grids");
@@ -229,10 +235,7 @@ placeID = settings.placeID;
 
   
 
-  const link1 = document.createElement("link");
-  link1.rel = "stylesheet";
-  link1.href = "https://quereps.github.io/design.css";
-  document.head.appendChild(link1);
+  
 
   console.log("iniiiiit");
 
