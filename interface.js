@@ -692,7 +692,7 @@ const MissionResponseSection = function(placeID,missionID,destination){
       getLastMissionResponse(placeID,missionID,600000).then((missionData)=>{
 
         let tableElement = createTable(missionData, {
-          "Completed":missionData.completed_at+" ("+moment(missionData.completed_at).fromNow()+")",
+          "Completed":moment(missionData.completed_at).format('DD/MM/YYYY')+" ("+moment(missionData.completed_at).fromNow()+")",
           "Completed By":missionData.user.first_name+" "+missionData.user.last_name,
           "Distance to place": `${parseFloat(missionData?.distance_to_place).toFixed(2) || "0.00"} miles`,
            "ID":missionData.id,
