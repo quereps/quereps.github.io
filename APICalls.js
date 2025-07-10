@@ -186,11 +186,11 @@ var getGrid = async function(MRID){
      });
 }
 
-var getTags = async function(GridID){
+var getTags = async function(GridID,companyID){
 
   return new Promise((resolve, reject) => {
 
-    url = "https://api.gospotcheck.com/external/v2/companies/"+settings.companyID+"/image_rec/tags?photo_grid_id="+GridID+"&offset=0&limit=500";
+    url = "https://api.gospotcheck.com/external/v2/companies/"+companyID+"/image_rec/tags?photo_grid_id="+GridID+"&offset=0&limit=500";
     
     APICall("GET",url, tokenV2).then((data) => {
 

@@ -161,7 +161,7 @@ var createReport = function(){
 
 
 
-var GetIRResults = async function(photo_grids){
+var GetIRResults = async function(photo_grids, settings){
 
 
   return new Promise(async (resolve, reject) => {
@@ -173,7 +173,7 @@ try {
           let tagPromises = photo_grids.map(async grid => {
 
               console.log(grid);
-              const tags = await getTags(grid.id);
+              const tags = await getTags(grid.id,settings.companyID);
               removeNotification();
               extractIRData(tags);
           });
@@ -206,7 +206,7 @@ try {
   if(settings.gridIdArray && settings.gridIdArray.length>0){
 
     console.log("I got the grids");
-    GetIRResults(settings.gridIdArray);
+    GetIRResults(settings.gridIdArray, settings);
 
   }
 
