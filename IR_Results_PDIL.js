@@ -171,6 +171,8 @@ try {
           console.log("photo_grids: ",photo_grids);
           // Create an array of promises from getTags
           let tagPromises = photo_grids.map(async grid => {
+
+              console.log(grid);
               const tags = await getTags(grid.id);
               removeNotification();
               extractIRData(tags);
