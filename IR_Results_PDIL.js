@@ -202,6 +202,7 @@ try {
 
   if(settings.gridIdArray && settings.gridIdArray.length>0){
 
+    console.log("I got the grids");
     GetIRResults(settings.gridIdArray);
 
   }
