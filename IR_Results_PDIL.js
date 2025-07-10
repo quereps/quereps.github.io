@@ -209,7 +209,7 @@ try {
   
   else{
 
-  }
+
 
 
 
@@ -270,10 +270,6 @@ try {
           await Promise.all(tagPromises);
 
 
-/*Coke Demo specifics*/
-          
-
-          //cokeSpecial();
           if(settings.specificFunction){
             settings.specificFunction();
           }
@@ -296,7 +292,7 @@ try {
 
    });
    
-
+  }
   //  $('#table-container').append(tableElement);
 
  };
