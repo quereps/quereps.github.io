@@ -136,7 +136,7 @@ var complianceCheck = function(){
         barcode:sku.upc,
 });
       //addCheckbox("facingCompliance-container #fc"+skuList[theupc].upc,"fc_restocked",faceCompID);
-      barcodeGenerate(sku.upc);
+      interfaceModule.barcodeGenerate(sku.upc);
       faceCompID++;
     }
 
