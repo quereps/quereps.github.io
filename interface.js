@@ -716,5 +716,8 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
     barcodeGenerate: function (code) {
       barcodeGenerate(code);
     },
+    createHTMLSection: function (id,name, imageURL,type, settings) {
+      createHTMLSection(id,name, imageURL,type, settings);
+    },
   }
 })(jQuery, ksAPI);
