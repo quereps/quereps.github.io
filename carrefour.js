@@ -186,7 +186,7 @@ var addTile = function(destination,id,sku,profile){
   let container = vpGetLabel(destination);
   const dataTable = ["size","classification","subclassification"];
   jQuery(container).empty();
-  jQuery(container).html(htmlTile(profile));
+  jQuery(container).html(interfaceModule.htmlTile(profile));
 };
 
 
