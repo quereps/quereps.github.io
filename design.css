@@ -552,7 +552,19 @@ background-image: url("https://app.form.com/fs/v1/h/L6VU56iKClMaWbOpRmLGdgAThFhj
     margin: 1em 0;
     overflow: scroll;
 }
-              
+
+.buttons {
+    display: flex;
+    justify-content:space-between;
+    overflow:scroll;
+}
+
+.buttons div{
+    background:#0f52a3;
+    color:white;
+    padding:0.25em 1em;
+    border-radius:1em;
+}
 
 div#table-container {
     display: flex;
