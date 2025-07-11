@@ -561,7 +561,7 @@ div#table-container {
     align-items: stretch;
 }
 
-div#table-container > div {
+div.container {
     box-shadow: 5px 5px 15px #ddd;
     padding: 1em;
     flex-grow: 1;
