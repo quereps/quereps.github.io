@@ -203,7 +203,7 @@ try {
  var init = async function (settings) {
   console.log("iniiiiit");
 
-  let placeID = settings.placeId;
+  let placeID = settings.placeID;
    let  companyID = settings.companyID;
    let missionID = settings.missionID;
    let tokenV1 = settings.tokenV1;
@@ -252,7 +252,7 @@ try {
     
       
 
-    getLastMissionResponse(settings.placeId,settings.missionID,600000).then((lastItem)=>{
+    getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
       removeNotification();
       vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
       
