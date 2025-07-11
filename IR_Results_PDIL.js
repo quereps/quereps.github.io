@@ -1,22 +1,22 @@
 
 let sections = {};
  let skuList = {};
- let features = {};
- let report = {};
- let realogram = [];
+// let features = {};
+// let report = {};
+// let realogram = [];
 
  //let settings = {};
 
 
-  let ingest = "";
-  let placeID = "";
-  let companyID = "";
-  let missionID = "";
-  let tokenV1 = "";
-  let tokenV2 = "";
-  let photoGrid = "";
-  let savedPlaceData = {};
-  let savedResponseData = {};
+ // let ingest = "";
+ // let placeID = "";
+ // let companyID = "";
+ // let missionID = "";
+ // let tokenV1 = "";
+ // let tokenV2 = "";
+ // let photoGrid = "";
+ // let savedPlaceData = {};
+ // let savedResponseData = {};
 
 var APIModule = (function ($, ksAPI) {
 
@@ -203,14 +203,14 @@ try {
  var init = async function (settings) {
   console.log("iniiiiit");
 
-//placeID = settings.placeId;
-     companyID = settings.companyID;
-   missionID = settings.missionID;
-   tokenV1 = settings.tokenV1;
-   tokenV2 = settings.tokenV2;
-   features = settings.features;
-   report = settings.report;
-   photoGrid = settings.photoGrid;
+  let placeID = settings.placeId;
+   let  companyID = settings.companyID;
+   let missionID = settings.missionID;
+   let tokenV1 = settings.tokenV1;
+   let tokenV2 = settings.tokenV2;
+   let features = settings.features;
+   let report = settings.report;
+   let photoGrid = settings.photoGrid;
 
 
    const link1 = document.createElement("link");
@@ -252,7 +252,7 @@ try {
     
       
 
-    getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
+    getLastMissionResponse(settings.placeId,settings.missionID,600000).then((lastItem)=>{
       removeNotification();
       vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
       
