@@ -566,7 +566,8 @@ background-image: url("https://app.form.com/fs/v1/h/L6VU56iKClMaWbOpRmLGdgAThFhj
     border-radius:1em;
 }
 
-div#table-container {
+div#table-container,
+.sectionContainer{
     display: flex;
     flex-wrap: wrap;
     gap: 1em;
