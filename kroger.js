@@ -7,7 +7,7 @@
 
 
 
-kroger = function(){
+kroger = function(skuList){
 
 
   const link2 = document.createElement("link");

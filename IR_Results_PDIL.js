@@ -281,7 +281,7 @@ try {
 
 
           if(settings.specificFunction){
-            settings.specificFunction();
+            settings.specificFunction(skuList);
           }
           
           
