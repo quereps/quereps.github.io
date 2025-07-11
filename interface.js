@@ -665,7 +665,7 @@ const placeSection = function(placeID,options,destination){
 
   console.log("placeSection: ", placeID);
 
-  getPlaceData(placeID).then((placeData)=>{
+  APICallsModule.getPlaceData(placeID).then((placeData)=>{
 
   let tableElement = createTable(placeData, {
         "Name":placeData.name,
@@ -689,7 +689,7 @@ const placeSection = function(placeID,options,destination){
 const MissionResponseSection = function(placeID,missionID,destination){
 
 
-      getLastMissionResponse(placeID,missionID,600000).then((missionData)=>{
+      APICallsModule.getLastMissionResponse(placeID,missionID,600000).then((missionData)=>{
 
         let tableElement = createTable(missionData, {
           "Completed":moment(missionData.completed_at).format('DD/MM/YYYY')+" ("+moment(missionData.completed_at).fromNow()+")",
