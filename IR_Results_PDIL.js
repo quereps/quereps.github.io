@@ -30,7 +30,6 @@ var APIModule = (function ($, ksAPI) {
    let tokenV1 = "";
    let tokenV2 = "";
    let features = "";
-   let report = "";
    let photoGrid = "";
 
 
