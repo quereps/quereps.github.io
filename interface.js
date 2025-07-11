@@ -361,7 +361,7 @@ function graph(category, asPercentage = false, filter = null) {
 }
 
 
-    var showSections = function(sections, destination){
+    var showSections = function(sections, destination, settings){
 
       jQuery('#'+destination+" .content").addClass("buttons");
 
@@ -677,7 +677,7 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
 
 
       if(current.type=="sections"){
-        showSections(sections,containerID);
+        showSections(sections,containerID,current.options);
       }
 
        if(current.type=="graph"){
