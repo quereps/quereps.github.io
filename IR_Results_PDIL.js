@@ -250,7 +250,7 @@ try {
     
 
 
-   getPlaceData(placeID).then((placeData)=>{
+   APICallsModule.getPlaceData(placeID).then((placeData)=>{
 
 
 
