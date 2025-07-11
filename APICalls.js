@@ -57,24 +57,25 @@ var APICallsModule = (function ($, ksAPI) {
 
 var getPlaceData = async function(placeID){
 
-    return new Promise(async (resolve, reject) => {
+    //return new Promise(async (resolve, reject) => {
 
       console.log("placeID: ",placeID);
 
-      url = "https://admin.gospotcheck.com/external/v1/places/"+placeID;
+      
 
       try {
+        const url = "https://admin.gospotcheck.com/external/v1/places/"+placeID;
         const data = await APICall("GET",url, tokenV1);
 
         console.log("Place Data received:", data);
 
-        resolve(data.data);
+        return data.data;
 
       } catch (error) {
         console.error("Failed to get Tags:", error);
-        reject(error);
+        throw error;
       }
-  });
+  //});
 }
 
 
@@ -237,7 +238,7 @@ var initAPI = function(settings){
       initAPI(settings);
     },
     getPlaceData: function (placeID) {
-      getPlaceData(placeID);
+      return getPlaceData(placeID);
     },
 
     
