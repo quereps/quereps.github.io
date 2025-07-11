@@ -675,7 +675,7 @@ const link1 = document.createElement("link");
 
 
 
-const placeSection = function(options,destination){
+const placeSection = function(placeID,options,destination){
 
   console.log("placeSection: ", placeID);
 
@@ -700,7 +700,7 @@ const placeSection = function(options,destination){
 
 
 
-const MissionResponseSection = function(destination){
+const MissionResponseSection = function(placeID,missionID,destination){
 
 
       APICallsModule.getLastMissionResponse(placeID,missionID,600000).then((missionData)=>{
