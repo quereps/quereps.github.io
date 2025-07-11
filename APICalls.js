@@ -221,10 +221,10 @@ var getTags = async function(GridID){
 
       console.log("Tags Data received:", data);
 
-    }.catch ((error) => {
+    } catch (error) => {
       console.error("Failed to get Tags:", error);
       throw error;
-    })
+    }
 //})
 }
 
