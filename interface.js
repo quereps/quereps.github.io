@@ -709,7 +709,7 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
     notification: function (type,message) {
       notification();
     },
-    htmlTile: function (type,message) {
+    htmlTile: function (settings) {
       htmlTile(settings);
     },
   }
