@@ -147,7 +147,7 @@ var createReport = function(settings){
 
 
       if(current.type=="sections"){
-        showSections(containerID);
+        showSections(sections,containerID);
       }
 
        if(current.type=="graph"){

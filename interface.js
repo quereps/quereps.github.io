@@ -427,7 +427,7 @@ function graph(category, asPercentage = false, filter = null) {
 }
 
 
-    var showSections = function(destination){
+    var showSections = function(sections, destination){
 
       jQuery('#'+destination+" .content").addClass("buttons");
 
