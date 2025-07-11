@@ -287,8 +287,11 @@ function createHTMLSection(id,name, imageURL,type, settings){
         console.log("createHTMLSection: ",id,name);
 
         let classToAdd="";
-        let background = settings?.background || "";
-        let width = settings?.width || "";
+        let style="";
+        let background = settings?.background ? "background:"+settings?.background+";" || "";
+        style += background;
+        let width = settings?.width ? "width:"+settings?.width+";" || "";
+        style += width;
         let destination = settings?.destination || "table-container";
 
         if(settings?.wrap==false){
@@ -312,7 +315,7 @@ function createHTMLSection(id,name, imageURL,type, settings){
        
         
         
-        var Container = jQuery('<div style="background:'+settings?.background+';width:'+width+'" class="container '+classToAdd+' '+type+'" id="Container'+id+'">'+headerHTML+'<div class="content"></div></div>');
+        var Container = jQuery('<div style="'+style+'" class="container '+classToAdd+' '+type+'" id="Container'+id+'">'+headerHTML+'<div class="content"></div></div>');
         //var Container = jQuery('<div class="container '+type+'" id="Container'+id+'"><h3><img height="40" src="'+imageURL+'"/>'+title+'</h3></div>');
         jQuery('#'+destination).append(Container);
 
