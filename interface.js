@@ -789,10 +789,10 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
       return createReport(settings,skuList,sections);
     },
     removeNotification: function () {
-      return removeNotification();
+      removeNotification();
     },
     notification: function (type,message) {
-      return notification();
+      notification();
     },
   }
 })(jQuery, ksAPI);
