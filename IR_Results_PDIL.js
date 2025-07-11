@@ -5,7 +5,7 @@ let sections = {};
  let report = {};
  let realogram = [];
 
- let settings = {};
+ //let settings = {};
 
 
   let ingest = "";
