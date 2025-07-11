@@ -125,7 +125,7 @@ try {
             settings.specificFunction();
           }
 
-          createReport();
+          interfaceModule.createReport();
         
 
     } catch (error) {
