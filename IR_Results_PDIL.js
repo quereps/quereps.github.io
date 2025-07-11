@@ -13,7 +13,7 @@ var APIModule = (function ($, ksAPI) {
    let features = "";
    let photoGrid = "";
 
-
+   let realogram = [];
 
 
 
