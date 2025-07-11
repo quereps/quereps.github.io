@@ -6,6 +6,7 @@ var interfaceModule = (function ($, ksAPI) {
 
 
   let skuList = {};
+  let settings = {};
 
 var removeNotification = function() {
   // Get the container element
@@ -713,11 +714,12 @@ const MissionResponseSection = function(placeID,missionID,destination){
 
 
 
-var createReport = function(settings,skuListImport,sectionsImport){
+var createReport = function(settingsImport,skuListImport,sectionsImport){
 
   report = settings.report;
   skuList = skuListImport;
   sections = sectionsImport;
+  settings = settingsImport;
 
   //console.log("settings: ",settings);
 
