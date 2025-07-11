@@ -27,7 +27,9 @@ kroger = function(skuList){
               const exp = vpGetTextResults("mol.A2").split(',').map(s => s.trim());
               //complianceCheck();
 
-              interfaceModule.createHTMLSection("availability","Availability", "https://fonts.gstatic.com/s/e/notoemoji/latest/1f4da/emoji.svg",null, {});
+              interfaceModule.createHTMLSection("availability","Availability", "https://fonts.gstatic.com/s/e/notoemoji/latest/1f4da/emoji.svg",null, {
+                wrap:true,
+              });
               
 
               for(let sku in skuArray){
@@ -61,7 +63,9 @@ kroger = function(skuList){
               const name = vpGetTextResults("mol2.A3").split(',').map(s => s.trim());
 
 
-              interfaceModule.createHTMLSection("outOfStocksContainer","Out of Stocks", "https://fonts.gstatic.com/s/e/notoemoji/latest/1f4da/emoji.svg",null, {});
+              interfaceModule.createHTMLSection("outOfStocksContainer","Out of Stocks", "https://fonts.gstatic.com/s/e/notoemoji/latest/1f4da/emoji.svg",null, {
+                wrap:true,
+              });
               //oosMOLExtract();
               for(let sku in skuArray){
 
