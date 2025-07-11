@@ -285,6 +285,9 @@ var updateDM = function(upc,column,value){
 
   var update = async function (settings) {
 
+
+    APICallsModule.Run();
+
           vpShowLoader();
 
             missionID = settings.missionID;
@@ -293,7 +296,7 @@ var updateDM = function(upc,column,value){
 
             console.log(placeID);
 
-            getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
+            APICallsModule.getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
 
          removeNotification();
 
@@ -313,14 +316,14 @@ var updateDM = function(upc,column,value){
 
         vpShowLoader();
 
-        getGrid(lastItem.id).then(async (photo_grids)=>{
+        APICallsModule.getGrid(lastItem.id).then(async (photo_grids)=>{
 
           removeNotification();
 
 
           // Create an array of promises from getTags
           let tagPromises = photo_grids.map(async grid => {
-              const tags = await getTags(grid.id);
+              const tags = await APICallsModule.getTags(grid.id);
               removeNotification();
               //extractData(tags);
               extractIRData(tags);
