@@ -27,6 +27,9 @@ kroger = function(skuList){
               const exp = vpGetTextResults("mol.A2").split(',').map(s => s.trim());
               //complianceCheck();
 
+              interfaceModule.createHTMLSection("availability","Availability", "https://fonts.gstatic.com/s/e/notoemoji/latest/1f4da/emoji.svg",null, {});
+              
+
               for(let sku in skuArray){
                 const currentSKU = skuArray[sku];
                 const expFacings = exp[sku];
@@ -44,7 +47,7 @@ kroger = function(skuList){
                   barcode:skuArray[sku],
                 });
 
-                jQuery("#mustHaveAvailability").append(myTile);
+                jQuery("#Containeravailability").append(myTile);
                 interfaceModule.barcodeGenerate(skuArray[sku]);
 
               }
@@ -56,6 +59,9 @@ kroger = function(skuList){
               const skuArray = vpGetTextResults("mol2.A1").split(',').map(s => s.trim());
               const exp = vpGetTextResults("mol2.A2").split(',').map(s => s.trim());
               const name = vpGetTextResults("mol2.A3").split(',').map(s => s.trim());
+
+
+              interfaceModule.createHTMLSection("outOfStocksContainer","Out of Stocks", "https://fonts.gstatic.com/s/e/notoemoji/latest/1f4da/emoji.svg",null, {});
               //oosMOLExtract();
               for(let sku in skuArray){
 
@@ -72,7 +78,7 @@ kroger = function(skuList){
                 });
 
 
-                interfaceModule.createHTMLSection("outOfStocksContainer","Out of Stocks", "https://fonts.gstatic.com/s/e/notoemoji/latest/1f4da/emoji.svg",null, {});
+
                 jQuery("#ContaineroutOfStocksContainer").append(myTile);
 
                 interfaceModule.barcodeGenerate(skuArray[sku]);
