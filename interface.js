@@ -711,7 +711,7 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
       notification();
     },
     htmlTile: function (settings) {
-      htmlTile(settings);
+      return htmlTile(settings);
     },
     barcodeGenerate: function (code) {
       barcodeGenerate(code);
