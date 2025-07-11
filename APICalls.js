@@ -7,7 +7,7 @@ var APICallsModule = (function ($, ksAPI) {
   let tokenV2 = "";
   let companyID = "";
 
-  var APICall = function (method, url, token, body) {
+  var APICall = async function (method, url, token, body) {
     return fetch(url, {
       body: JSON.stringify(body),
       method: method,
@@ -202,7 +202,7 @@ var getTags = async function(GridID){
 
     const url = "https://api.gospotcheck.com/external/v2/companies/"+companyID+"/image_rec/tags?photo_grid_id="+GridID+"&offset=0&limit=500";
     
-    APICall("GET",url, tokenV2).then((data) => {
+    await APICall("GET",url, tokenV2).then((data) => {
 
        if(data &&  data.tags && data.tags.length>0){
 
