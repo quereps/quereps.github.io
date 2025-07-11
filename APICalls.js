@@ -205,6 +205,8 @@ var getTags = async function(GridID){
     try{
     const data = await APICall("GET",url, tokenV2);
 
+      console.log("tag response: ",data);
+
        if(data &&  data.tags && data.tags.length>0){
 
           console.log("We got data: ",data.tags);
