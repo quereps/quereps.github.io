@@ -114,7 +114,7 @@ try {
           let tagPromises = photo_grids.map(async grid => {
 
               console.log(grid);
-              const tags = await APICallsModule.getTags(grid.id,settings.companyID);
+              const tags = await APICallsModule.getTags(grid.id);
               interfaceModule.removeNotification();
               extractIRData(tags);
           });
