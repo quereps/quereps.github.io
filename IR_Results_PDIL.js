@@ -19,6 +19,8 @@ var APIModule = (function ($, ksAPI) {
 
   var extractIRData = async function(data){
 
+    console.log("Extracting Data: ", data)
+
     for(let item in data){
 
 
