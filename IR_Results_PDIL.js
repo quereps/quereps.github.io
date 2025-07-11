@@ -237,17 +237,6 @@ try {
 
 
 
-
-  
-
-  
-
-
-
-
-    
-
-
    APICallsModule.getPlaceData(placeID).then((placeData)=>{
 
 
@@ -279,6 +268,9 @@ try {
 
 
           // Create an array of promises from getTags
+
+          console.log("photo_grids: ",photo_grids);
+
           let tagPromises = photo_grids.map(async grid => {
               const tags = await APICallsModule.getTags(grid.id);
               interfaceModule.removeNotification();
