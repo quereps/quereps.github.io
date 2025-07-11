@@ -295,6 +295,10 @@ function createHTMLSection(id,name, imageURL,type, settings){
           classToAdd="noWrap";
         }
 
+        if(settings?.gap==true){
+          classToAdd+="gap";
+        }
+
         title = name || "";
         //name = title.replace(/\s+/g, "_"); // Replace spaces with underscores
         headerHTML = "";
