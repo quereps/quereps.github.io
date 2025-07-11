@@ -236,6 +236,11 @@ var initAPI = function(settings){
     Run: function (settings) {
       initAPI(settings);
     },
+    getPlaceData: function (placeID) {
+      getPlaceData(placeID);
+    },
+
+    
 
   }
 })(jQuery, ksAPI);
