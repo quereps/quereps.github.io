@@ -743,11 +743,11 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
       createHTMLSection(element,current?.title,current?.logo,current?.type,current?.options);
 
       if(current.type=="place"){
-        placeSection(settings.placeId,current.options,containerID);
+        placeSection(placeID,current.options,containerID);
       }
 
       if(current.type=="response"){
-        MissionResponseSection(settings.placeId,settings.missionID,containerID);
+        MissionResponseSection(placeID,missionID,containerID);
       }
 
 
