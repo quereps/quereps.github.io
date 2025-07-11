@@ -288,9 +288,9 @@ function createHTMLSection(id,name, imageURL,type, settings){
 
         let classToAdd="";
         let style="";
-        let background = settings?.background ? "background:"+settings?.background+";" || "";
+        let background = settings?.background ? "background:"+settings?.background+";" : "";
         style += background;
-        let width = settings?.width ? "width:"+settings?.width+";" || "";
+        let width = settings?.width ? "width:"+settings?.width+";" : "";
         style += width;
         let destination = settings?.destination || "table-container";
 
