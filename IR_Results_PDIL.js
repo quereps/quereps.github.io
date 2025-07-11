@@ -316,7 +316,7 @@ try {
 
           /*Coke Demo specifics END*/
 
-          interfaceModule.createReport(report);
+          interfaceModule.createReport(settings, skuList);
 
           
         });

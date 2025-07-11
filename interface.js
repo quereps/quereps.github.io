@@ -713,7 +713,10 @@ const MissionResponseSection = function(placeID,missionID,destination){
 
 
 
-var createReport = function(report){
+var createReport = function(settings,skuListImport){
+
+  report = settings.report;
+  skuList = skuListImport;
 
   //console.log("settings: ",settings);
 
@@ -770,19 +773,9 @@ var createReport = function(report){
 
 
 
-
-const initInterface = function(skuListImport){
-  skuList = skuListImport,
-}
-
-
-
  return {
-    Run: function (settings) {
-      initInterface(settings);
-    },
-    createReport: function (report) {
-      return createReport(report);
+    createReport: function (settings) {
+      return createReport(settings);
     },
   }
 })(jQuery, ksAPI);
