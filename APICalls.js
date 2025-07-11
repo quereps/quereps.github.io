@@ -81,7 +81,7 @@ var getPlaceData = async function(placeID){
 
 var getMissionResponses = async function(placeID,campaignID,timeFrame, limit){
 
-    return new Promise(async (resolve, reject) => {
+  //  return new Promise(async (resolve, reject) => {
 
     //url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_id.eq="+campaingnID+"&place_id.eq="+placeID+"&completed_at.gt="+getTimeStamps(timeFrame).back+"&include=user,task_responses";
     url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_id.eq="+campaignID+"&place_id.eq="+placeID+"&completed_at.gt="+getTimeStamps(timeFrame).back+"&include=user";
@@ -98,7 +98,7 @@ var getMissionResponses = async function(placeID,campaignID,timeFrame, limit){
         //resolve(lastItem);
         const sorted = data.data.sort((a, b) => new Date(b.completed_at) - new Date(a.completed_at));
         const latestItems = sorted.slice(0, limit);
-        resolve(latestItems);
+        return latestItems;
 
       }
       else{
@@ -113,9 +113,9 @@ var getMissionResponses = async function(placeID,campaignID,timeFrame, limit){
     }
   } catch (error) {
       console.error("Failed to get last Mission response:", error);
-      reject(error); 
+      throw error; 
     }
-      });
+    //  });
 }
 
 
@@ -123,7 +123,7 @@ var getLastMissionResponse = async function(placeID, campaignID, timeFrame) {
 
   console.log(placeID,campaignID,timeFrame);
 
-  return new Promise(async (resolve, reject) => {
+ // return new Promise(async (resolve, reject) => {
 
     const url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_id.eq=" + campaignID + "&place_id.eq=" + placeID + "&completed_at.gt=" + getTimeStamps(timeFrame).back + "&include=user";
 
@@ -137,7 +137,7 @@ var getLastMissionResponse = async function(placeID, campaignID, timeFrame) {
         const sorted = data.data.sort((a, b) => new Date(a.completed_at) - new Date(b.completed_at));
         
         const lastItem = sorted[sorted.length - 1];
-        resolve(lastItem);
+        return (lastItem);
 
       } else {
         console.log("No mission responses found");
@@ -149,9 +149,9 @@ var getLastMissionResponse = async function(placeID, campaignID, timeFrame) {
 
     } catch (error) {
       console.error("Failed to get last Mission response:", error);
-      reject(error);
+      throw error;
     }
-  });
+ // });
 };
 
 
@@ -159,7 +159,7 @@ var getLastMissionResponse = async function(placeID, campaignID, timeFrame) {
 
 var getGrid = async function(MRID){
 
-  return new Promise(async (resolve, reject) => {
+ // return new Promise(async (resolve, reject) => {
     url = "https://api.gospotcheck.com/external/v2/companies/"+companyID+"/image_rec/photo_grids?mission_response_id="+MRID;
     try {
       const data = await APICall("GET",url, tokenV2);
@@ -172,7 +172,7 @@ var getGrid = async function(MRID){
 
         
 
-        resolve(data.photo_grids);
+        return data.photo_grids;
 
       }
       else{
@@ -188,15 +188,15 @@ var getGrid = async function(MRID){
         
     } catch (error) {
       console.error("Failed to get Grids:", error);
-      reject(error);
+      throw error;
     }
 
-     });
+ //    });
 }
 
 var getTags = async function(GridID){
 
-  return new Promise((resolve, reject) => {
+//  return new Promise((resolve, reject) => {
 
     url = "https://api.gospotcheck.com/external/v2/companies/"+companyID+"/image_rec/tags?photo_grid_id="+GridID+"&offset=0&limit=500";
     
@@ -204,7 +204,7 @@ var getTags = async function(GridID){
 
        if(data &&  data.tags && data.tags.length>0){
           removeNotification();
-          resolve(data.tags);
+          return data.tags;
       }
       else{
         console.log("No Tags found");
@@ -220,9 +220,9 @@ var getTags = async function(GridID){
       //const data = await APICall("POST",url, tokenV2,{"photo_grid_id":GridID});
  .catch ((error) => {
       console.error("Failed to get Tags:", error);
-      reject(error);
+      throw error;
     })
-})
+//})
 }
 
 
@@ -243,8 +243,9 @@ var initAPI = function(settings){
     getLastMissionResponse: function (placeID, campaignID, timeFrame) {
       return getLastMissionResponse(placeID, campaignID, timeFrame);
     },
-
-    
+    getTags: function (GridID) {
+      return getTags(GridID);
+    },
 
   }
 })(jQuery, ksAPI);
