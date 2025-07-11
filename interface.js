@@ -713,10 +713,11 @@ const MissionResponseSection = function(placeID,missionID,destination){
 
 
 
-var createReport = function(settings,skuListImport){
+var createReport = function(settings,skuListImport,sectionsImport){
 
   report = settings.report;
   skuList = skuListImport;
+  sections = sectionsImport;
 
   //console.log("settings: ",settings);
 
@@ -774,8 +775,8 @@ var createReport = function(settings,skuListImport){
 
 
  return {
-    createReport: function (settings,skuList,interfaceModule) {
-      return createReport(settings,skuList,interfaceModule);
+    createReport: function (settings,skuList,sections) {
+      return createReport(settings,skuList,sections);
     },
     removeNotification: function () {
       return removeNotification();
