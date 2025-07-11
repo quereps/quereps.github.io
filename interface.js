@@ -732,7 +732,7 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
   placeID = settings.placeID;
   missionID = settings.missionID;
 
-  //console.log("settings: ",settings);
+  console.log("report: ",report);
 
     for(var element in report){
 
