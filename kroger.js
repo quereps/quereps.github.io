@@ -29,6 +29,7 @@ kroger = function(skuList){
 
               interfaceModule.createHTMLSection("availability","Availability", "https://fonts.gstatic.com/s/e/notoemoji/latest/1f4da/emoji.svg",null, {
                 wrap:true,
+                destination:"compliance",
               });
               
 
@@ -65,6 +66,7 @@ kroger = function(skuList){
 
               interfaceModule.createHTMLSection("outOfStocksContainer","Out of Stocks", "https://fonts.gstatic.com/s/e/notoemoji/latest/1f4da/emoji.svg",null, {
                 wrap:true,
+                destination:"compliance",
               });
               //oosMOLExtract();
               for(let sku in skuArray){
