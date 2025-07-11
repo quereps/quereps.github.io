@@ -203,7 +203,7 @@ try {
  var init = async function (settings) {
   console.log("iniiiiit");
 
-placeID = settings.placeID;
+placeID = settings.placeId;
      companyID = settings.companyID;
    missionID = settings.missionID;
    tokenV1 = settings.tokenV1;
@@ -244,6 +244,8 @@ placeID = settings.placeID;
 
 
    getPlaceData(placeID).then((placeData)=>{
+
+
 
     savedPlaceData = placeData;
 
