@@ -105,7 +105,7 @@ var addTile = function(destination,id,sku,profile){
 var GetIRResults = async function(photo_grids, settings){
 
 
-  return new Promise(async (resolve, reject) => {
+ // return new Promise(async (resolve, reject) => {
 
 try {
 
@@ -130,10 +130,10 @@ try {
 
     } catch (error) {
       console.error("Failed to get last Mission response:", error);
-      reject(error);
+      throw error;
     }
 
-});
+//});
  
 } 
 
