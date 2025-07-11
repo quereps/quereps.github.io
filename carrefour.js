@@ -233,7 +233,7 @@ var updateDM = function(upc,column,value){
 
  var init = async function (settings) {
 
-  APICallsModule.Run();
+  APICallsModule.Run(settings);
 
 
   const link1 = document.createElement("link");
