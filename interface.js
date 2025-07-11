@@ -713,11 +713,9 @@ const MissionResponseSection = function(placeID,missionID,destination){
 
 
 
-var createReport = function(settings){
+var createReport = function(report){
 
-  console.log(report);
-
-  console.log("settings: ",settings);
+  //console.log("settings: ",settings);
 
     for(var element in report){
 
