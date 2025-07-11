@@ -119,6 +119,7 @@ var addTile = function(destination,id,sku,profile){
 };
 
 
+/*
 var createReport = function(settings){
 
   console.log(report);
@@ -174,7 +175,7 @@ var createReport = function(settings){
 
     vpHideLoader();
 }
-
+*/
 
 
 var GetIRResults = async function(photo_grids, settings){
@@ -315,7 +316,7 @@ try {
 
           /*Coke Demo specifics END*/
 
-          createReport(settings);
+          interfaceModule.createReport(report);
 
           
         });

@@ -1,3 +1,12 @@
+
+
+
+
+var interfaceModule = (function ($, ksAPI) {
+
+
+  let skuList = {};
+
 var removeNotification = function() {
   // Get the container element
   var container = document.getElementById('table-container');
@@ -701,3 +710,81 @@ const MissionResponseSection = function(placeID,missionID,destination){
 
   });
 }
+
+
+
+var createReport = function(settings){
+
+  console.log(report);
+
+  console.log("settings: ",settings);
+
+    for(var element in report){
+
+      var current = report[element];
+      var containerID = "Container"+element;
+
+      createHTMLSection(element,current?.title,current?.logo,current?.type,current?.options);
+
+      if(current.type=="place"){
+        placeSection(settings.placeId,current.options,containerID);
+      }
+
+      if(current.type=="response"){
+        MissionResponseSection(settings.placeId,settings.missionID,containerID);
+      }
+
+
+      if(current.type=="number"){
+        numberTile(graph(current.dimension,current?.options?.asPercentage),containerID,current.options);
+      }
+
+
+      if(current.type=="sections"){
+        showSections(sections,containerID);
+      }
+
+       if(current.type=="graph"){
+
+        let data = graph(current.dimension,current?.settings?.asPercentage,current?.settings?.filter);
+       
+        if(Object.keys(data).length>0){
+          JSONToGraph(data, current.dimension ,current.graphType, containerID, current.settings);
+        } else{
+          jQuery("#"+containerID).hide();
+        }
+        
+      }
+ 
+      if(current.type=="skuList"){
+        JSONToHTMLTable(rankObjects(skuList, "facings", current.columns), containerID, current.settings) 
+      }
+
+      if(current.type=="pog"){
+        POG(current.category,containerID);
+      }
+
+    }
+
+    vpHideLoader();
+}
+
+
+
+
+
+const initInterface = function(skuListImport){
+  skuList = skuListImport,
+}
+
+
+
+ return {
+    Run: function (settings) {
+      initInterface(settings);
+    },
+    createReport: function (report) {
+      return createReport(report);
+    },
+  }
+})(jQuery, ksAPI);
