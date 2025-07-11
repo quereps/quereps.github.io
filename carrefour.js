@@ -88,7 +88,7 @@ var oosMOLExtract = function(){
         }
 
   }));*/
-    barcodeGenerate(upc[item][0].value);
+    interfaceModule.barcodeGenerate(upc[item][0].value);
 
     oosompID++;
   }
