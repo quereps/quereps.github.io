@@ -1,22 +1,3 @@
-
-
-// let features = {};
-// let report = {};
-// let realogram = [];
-
- //let settings = {};
-
-
- // let ingest = "";
- // let placeID = "";
- // let companyID = "";
- // let missionID = "";
- // let tokenV1 = "";
- // let tokenV2 = "";
- // let photoGrid = "";
- // let savedPlaceData = {};
- // let savedResponseData = {};
-
 var APIModule = (function ($, ksAPI) {
 
   let sections = {};
@@ -316,7 +297,7 @@ try {
 
           /*Coke Demo specifics END*/
 
-          interfaceModule.createReport(settings, skuList);
+          interfaceModule.createReport(settings, skuList, interfaceModule);
 
           
         });

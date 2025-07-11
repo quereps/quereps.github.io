@@ -774,8 +774,8 @@ var createReport = function(settings,skuListImport){
 
 
  return {
-    createReport: function (settings) {
-      return createReport(settings);
+    createReport: function (settings,skuList,interfaceModule) {
+      return createReport(settings,skuList,interfaceModule);
     },
     removeNotification: function () {
       return removeNotification();
