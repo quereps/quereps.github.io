@@ -720,6 +720,9 @@ const MissionResponseSection = function(placeID,missionID,destination){
 
 var createReport = function(settingsImport,skuListImport,sectionsImport){
 
+
+  console.log("Creating Report");
+
   report = settings.report;
   skuList = skuListImport;
   sections = sectionsImport;
