@@ -216,7 +216,7 @@ var getTags = async function(GridID){
 
         interfaceModule.notification("Loading","Getting the tags.");
 
-        setTimeout(() => getTags(GridID).then(resolve).catch(reject), 5000);
+        setTimeout(() => await getTags(GridID).then(resolve).catch(reject), 5000);
       }
 
       console.log("Tags Data received:", data);
