@@ -202,7 +202,8 @@ var getTags = async function(GridID){
 
     const url = "https://api.gospotcheck.com/external/v2/companies/"+companyID+"/image_rec/tags?photo_grid_id="+GridID+"&offset=0&limit=500";
     
-    await APICall("GET",url, tokenV2).then((data) => {
+    try{
+    const data = await APICall("GET",url, tokenV2);
 
        if(data &&  data.tags && data.tags.length>0){
 
@@ -220,7 +221,7 @@ var getTags = async function(GridID){
 
       console.log("Tags Data received:", data);
 
-    })
+    }
       //const data = await APICall("POST",url, tokenV2,{"photo_grid_id":GridID});
  .catch ((error) => {
       console.error("Failed to get Tags:", error);
