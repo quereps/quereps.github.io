@@ -261,7 +261,7 @@ var updateDM = function(upc,column,value){
 
 
    APICallsModule.getPlaceData(placeID).then((placeData)=>{
-       let tableElement = createTable(placeData, "Place", {
+       let tableElement = interfaceModule.createTable(placeData, "Place", {
         "Name":placeData.name,
         "City":placeData.city,
         "Address":placeData.address
@@ -304,7 +304,7 @@ var updateDM = function(upc,column,value){
 
          vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
 
-        let tableElement = createTable(lastItem,"Latest Mission", {
+        let tableElement = interfaceModule.createTable(lastItem,"Latest Mission", {
           "Completed":moment(lastItem.completed_at).fromNow(),
           "Completed By":lastItem.user.first_name+" "+lastItem.user.last_name
         });
