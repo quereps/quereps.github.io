@@ -50,21 +50,6 @@ function getAverage(arr) {
 }
 
 
-/*function rankObjects(obj, rankBy, attributes) {
-  const items = Object.values(obj);
-
-  items.sort((a, b) => b[rankBy] - a[rankBy]);
-
-  const result = items.map(item => {
-    return attributes.reduce((acc, attr) => {
-      acc[attr] = item[attr];
-      return acc;
-    }, {});
-  });
-
-  return result;
-}*/
-
 
 function rankObjects(obj, rankBy, attributes) {
   const items = Object.values(obj);

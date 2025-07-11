@@ -712,5 +712,8 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
     htmlTile: function (settings) {
       htmlTile(settings);
     },
+    barcodeGenerate: function (code) {
+      barcodeGenerate(code);
+    },
   }
 })(jQuery, ksAPI);
