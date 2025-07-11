@@ -252,7 +252,7 @@ try {
     
       
 
-    getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
+    getLastMissionResponse(placeID,missionID,600000,tokenV1).then((lastItem)=>{
       removeNotification();
       vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
       
@@ -268,14 +268,14 @@ try {
 
         vpShowLoader();
 
-        getGrid(lastItem.id).then(async (photo_grids)=>{
+        getGrid(lastItem.id, tokenV2).then(async (photo_grids)=>{
 
           removeNotification();
 
 
           // Create an array of promises from getTags
           let tagPromises = photo_grids.map(async grid => {
-              const tags = await getTags(grid.id);
+              const tags = await getTags(grid.id, tokenV2);
               removeNotification();
               extractIRData(tags);
           });
