@@ -289,7 +289,7 @@ try {
 
           /*Coke Demo specifics END*/
 
-          interfaceModule.createReport(settings, skuList, interfaceModule);
+          interfaceModule.createReport(settings, skuList, sections);
 
           
         });
