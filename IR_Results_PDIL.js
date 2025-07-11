@@ -243,7 +243,7 @@ try {
     
 
 
-   getPlaceData(placeID).then((placeData)=>{
+   getPlaceData(placeID, tokenV1).then((placeData)=>{
 
 
 

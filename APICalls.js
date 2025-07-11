@@ -48,7 +48,7 @@
   }
 
 
-var getPlaceData = async function(placeID){
+var getPlaceData = async function(placeID, tokenV1){
 
     return new Promise(async (resolve, reject) => {
 
