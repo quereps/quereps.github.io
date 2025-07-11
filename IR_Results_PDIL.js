@@ -213,6 +213,13 @@ try {
    let photoGrid = settings.photoGrid;
 
 
+   APICallsModule.Run({
+    companyID:companyID,
+    placeID:placeID,
+    tokenV1:tokenV1,
+    tokenV2:tokenV2
+   });
+
    const link1 = document.createElement("link");
   link1.rel = "stylesheet";
   link1.href = "https://quereps.github.io/design.css";
@@ -243,7 +250,7 @@ try {
     
 
 
-   getPlaceData(placeID, tokenV1).then((placeData)=>{
+   getPlaceData(placeID).then((placeData)=>{
 
 
 
@@ -252,7 +259,7 @@ try {
     
       
 
-    getLastMissionResponse(placeID,missionID,600000,tokenV1).then((lastItem)=>{
+    getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
       removeNotification();
       vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
       
@@ -268,14 +275,14 @@ try {
 
         vpShowLoader();
 
-        getGrid(lastItem.id, tokenV2).then(async (photo_grids)=>{
+        getGrid(lastItem.id).then(async (photo_grids)=>{
 
           removeNotification();
 
 
           // Create an array of promises from getTags
           let tagPromises = photo_grids.map(async grid => {
-              const tags = await getTags(grid.id, tokenV2);
+              const tags = await getTags(grid.id);
               removeNotification();
               extractIRData(tags);
           });
