@@ -592,6 +592,10 @@ div.container {
 .noWrap .content{
     flex-wrap: nowrap;
 }
+
+.gap .content{
+    gap:0.5em;
+}
               
 
 
