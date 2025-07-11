@@ -259,7 +259,7 @@ try {
     
       
 
-    getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
+    APICallsModule.getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
       removeNotification();
       vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
       

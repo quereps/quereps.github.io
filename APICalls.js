@@ -240,6 +240,9 @@ var initAPI = function(settings){
     getPlaceData: function (placeID) {
       return getPlaceData(placeID);
     },
+    getLastMissionResponse: function (placeID, campaignID, timeFrame) {
+      return getLastMissionResponse(placeID, campaignID, timeFrame);
+    },
 
     
 
