@@ -1,6 +1,5 @@
 
-let sections = {};
- let skuList = {};
+
 // let features = {};
 // let report = {};
 // let realogram = [];
@@ -19,6 +18,23 @@ let sections = {};
  // let savedResponseData = {};
 
 var APIModule = (function ($, ksAPI) {
+
+  let sections = {};
+ let skuList = {};
+
+
+  let placeID = settings.placeID;
+   let  companyID = settings.companyID;
+   let missionID = settings.missionID;
+   let tokenV1 = settings.tokenV1;
+   let tokenV2 = settings.tokenV2;
+   let features = settings.features;
+   let report = settings.report;
+   let photoGrid = settings.photoGrid;
+
+
+
+
 
   var extractIRData = async function(data){
 
@@ -203,14 +219,14 @@ try {
  var init = async function (settings) {
   console.log("iniiiiit");
 
-  let placeID = settings.placeID;
-   let  companyID = settings.companyID;
-   let missionID = settings.missionID;
-   let tokenV1 = settings.tokenV1;
-   let tokenV2 = settings.tokenV2;
-   let features = settings.features;
-   let report = settings.report;
-   let photoGrid = settings.photoGrid;
+   placeID = settings.placeID;
+     companyID = settings.companyID;
+    missionID = settings.missionID;
+    tokenV1 = settings.tokenV1;
+    tokenV2 = settings.tokenV2;
+    features = settings.features;
+    report = settings.report;
+    photoGrid = settings.photoGrid;
 
 
    APICallsModule.Run({
