@@ -163,7 +163,7 @@ var complianceCheck = function(){
         barcode:sku.upc,
 });
       //addCheckbox("priceCompliance-container #fc"+skuList[theupc].upc,"fp_replaced",priceCompID);
-       barcodeGenerate(sku.upc);
+       interfaceModule.barcodeGenerate(sku.upc);
       priceCompID++;
     }
 
