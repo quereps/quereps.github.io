@@ -71,7 +71,7 @@ var getPlaceData = async function(placeID, tokenV1){
 }
 
 
-var getMissionResponses = async function(placeID,campaignID,timeFrame, limit){
+var getMissionResponses = async function(placeID,campaignID,timeFrame, limit, tokenV1){
 
     return new Promise(async (resolve, reject) => {
 
@@ -111,7 +111,7 @@ var getMissionResponses = async function(placeID,campaignID,timeFrame, limit){
 }
 
 
-var getLastMissionResponse = async function(placeID, campaignID, timeFrame) {
+var getLastMissionResponse = async function(placeID, campaignID, timeFrame, tokenV1) {
 
   console.log(placeID,campaignID,timeFrame);
 
@@ -149,7 +149,7 @@ var getLastMissionResponse = async function(placeID, campaignID, timeFrame) {
 
 
 
-var getGrid = async function(MRID){
+var getGrid = async function(MRID, tokenV2){
 
   return new Promise(async (resolve, reject) => {
     url = "https://api.gospotcheck.com/external/v2/companies/"+companyID+"/image_rec/photo_grids?mission_response_id="+MRID;
@@ -186,7 +186,7 @@ var getGrid = async function(MRID){
      });
 }
 
-var getTags = async function(GridID){
+var getTags = async function(GridID, tokenV2){
 
   return new Promise((resolve, reject) => {
 
