@@ -300,7 +300,7 @@ var updateDM = function(upc,column,value){
 
             APICallsModule.getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
 
-         removeNotification();
+         interfaceModule.removeNotification();
 
          vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
 
@@ -320,13 +320,13 @@ var updateDM = function(upc,column,value){
 
         APICallsModule.getGrid(lastItem.id).then(async (photo_grids)=>{
 
-          removeNotification();
+          interfaceModule.removeNotification();
 
 
           // Create an array of promises from getTags
           let tagPromises = photo_grids.map(async grid => {
               const tags = await APICallsModule.getTags(grid.id);
-              removeNotification();
+              interfaceModule.removeNotification();
               //extractData(tags);
               extractIRData(tags);
           });
