@@ -21,16 +21,17 @@ var APIModule = (function ($, ksAPI) {
 
   let sections = {};
  let skuList = {};
+ let report = {};
 
 
-  let placeID = settings.placeID;
-   let  companyID = settings.companyID;
-   let missionID = settings.missionID;
-   let tokenV1 = settings.tokenV1;
-   let tokenV2 = settings.tokenV2;
-   let features = settings.features;
-   let report = settings.report;
-   let photoGrid = settings.photoGrid;
+  let placeID = "";
+   let  companyID = "";
+   let missionID = "";
+   let tokenV1 = "";
+   let tokenV2 = "";
+   let features = "";
+   let report = "";
+   let photoGrid = "";
 
 
 
