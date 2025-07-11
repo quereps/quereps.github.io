@@ -247,7 +247,7 @@ var initAPI = function(settings){
       return getTags(GridID);
     },
     getGrid: function (MRID) {
-      return getTags(MRID);
+      return getGrid(MRID);
     },
   }
 })(jQuery, ksAPI);
