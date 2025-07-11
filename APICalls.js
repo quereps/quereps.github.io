@@ -234,7 +234,7 @@ var initAPI = function(settings){
 
  return {
     Run: function (settings) {
-      init(settings);
+      initAPI(settings);
     },
 
   }
