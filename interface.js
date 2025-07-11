@@ -136,85 +136,6 @@ function JSONToHTMLTable(jsonArray, destination, settings) {
 
 
 
-/*function JSONToGraph(jsonArray, title, type, destination, settings) {
-
-    console.log("JSONToGraph Start");
-    //let entries = Object.entries(jsonArray);
-
-    const excluding = settings?.exclude || [];
-
-    let entries = Object.entries(jsonArray).filter(([k, v]) => !excluding?.includes(k));
-    entries.sort((a, b) => b[1] - a[1]);
-
-    let labels = entries.map(([k, v]) => k);
-    let data = entries.map(([k, v]) => v);
-
-    const limit = settings?.limit || null;
-
-    if(limit != null){
-      labels = labels.slice(0, limit);
-      data = data.slice(0, limit);
-    }
-    
-
-    
-
-    jQuery("#"+destination+" .content").append("<div class='canvasContainer'></div>");
-
-    const backgroundColors = labels.map(label => settings?.colorMap[label] || '#CCCCCC');
-
-    // Create a new canvas and append it to a parent container
-    let parent = jQuery("#"+destination+" .canvasContainer")[0] || document.body; // fallback to body
-    let canvas = document.createElement('canvas');
-    canvas.width = 250;
-    canvas.height = 250;
-    canvas.style.width = "100px";
-    canvas.style.height = "100px";
-    parent.appendChild(canvas);
-
-
-    //https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels
-    ChartDataLabels && Chart.register(ChartDataLabels);
-
-    // Create the chart
-    window.currentChart = new Chart(canvas, {
-        type: type,
-        data: {
-            labels: labels,
-            datasets: [{
-                label: "Count",
-                data: data,
-                backgroundColor: backgroundColors,
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            indexAxis:settings.indexAxis || "",
-            plugins: {
-              title: {
-              display: true,             // Show the title
-              text: title,
-            },
-            legend: {
-                display: settings.legend
-            },
-            datalabels: {
-              formatter: (value, context) => context.chart.data.labels[context.dataIndex],
-              color: '#fff',
-              font: {
-                weight: 'bold',
-                size: 10
-              },
-              anchor: 'end',
-              align: 'start',
-              offset: 10
-            }
-        }
-        }
-    });
-}*/
-
 
 function numberTile(jsonArray,destination,settings){
 
@@ -245,16 +166,6 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
     
     jQuery("#"+destination+" .content").append("<div class='canvasContainer'></div>");
       
-  /*    //const backgroundColors = labels.map(label => settings?.colorMap[label] || '#CCCCCC');
-      const backgroundColors = labels.map(label => {
-      // Check if any key in colorMap is contained in the label
-      for (const [key, color] of Object.entries(settings?.colorMap || {})) {
-          if (label.toLowerCase().includes(key.toLowerCase())) {
-              return color;
-          }
-      }
-      return '#CCCCCC'; // default color
-  });*/
 
     const backgroundColors = labels.map(label => {
       for (const [key, color] of Object.entries(settings?.colorMap || {})) {
