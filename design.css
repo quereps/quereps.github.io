@@ -136,6 +136,7 @@ span.ui-button-text.checkbox_mob {
     justify-content: space-between;
     gap: 1em;
     background: white;
+    width: 100%;
 }
 
 .titleGroupHTML h1 {
@@ -573,6 +574,11 @@ div#table-container > div {
 .content {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
+}
+
+.noWrap .content{
+    flex-wrap: nowrap;
 }
               
 
