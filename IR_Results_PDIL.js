@@ -191,7 +191,7 @@ try {
 
               console.log(grid);
               const tags = await APICallsModule.getTags(grid.id,settings.companyID);
-              removeNotification();
+              interfaceModule.removeNotification();
               extractIRData(tags);
           });
 
@@ -277,7 +277,7 @@ try {
       
 
     APICallsModule.getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
-      removeNotification();
+      interfaceModule.removeNotification();
       vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
       
       savedResponseData = lastItem;
@@ -294,13 +294,13 @@ try {
 
         APICallsModule.getGrid(lastItem.id).then(async (photo_grids)=>{
 
-          removeNotification();
+          interfaceModule.removeNotification();
 
 
           // Create an array of promises from getTags
           let tagPromises = photo_grids.map(async grid => {
               const tags = await APICallsModule.getTags(grid.id);
-              removeNotification();
+              interfaceModule.removeNotification();
               extractIRData(tags);
           });
 
