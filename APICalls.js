@@ -203,13 +203,13 @@ var getTags = async function(GridID){
     APICall("GET",url, tokenV2).then((data) => {
 
        if(data &&  data.tags && data.tags.length>0){
-          removeNotification();
+          interfaceModule.removeNotification();
           return data.tags;
       }
       else{
         console.log("No Tags found");
 
-        notification("Loading","Getting the tags.");
+        interfaceModule.notification("Loading","Getting the tags.");
 
         setTimeout(() => getTags(GridID).then(resolve).catch(reject), 5000);
       }
