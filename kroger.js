@@ -47,7 +47,7 @@ kroger = function(skuList){
                   barcode:skuArray[sku],
                 });
 
-                jQuery("#Containeravailability").append(myTile);
+                jQuery("#Containeravailability .content").append(myTile);
                 interfaceModule.barcodeGenerate(skuArray[sku]);
 
               }
@@ -79,7 +79,7 @@ kroger = function(skuList){
 
 
 
-                jQuery("#ContaineroutOfStocksContainer").append(myTile);
+                jQuery("#ContaineroutOfStocksContainer .content").append(myTile);
 
                 interfaceModule.barcodeGenerate(skuArray[sku]);
 
