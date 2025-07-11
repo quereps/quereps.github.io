@@ -103,7 +103,7 @@ var addTile = function(destination,id,sku,profile){
 };
 
 
-var createReport = function(){
+var createReport = function(settings){
 
   console.log(report);
 
@@ -203,7 +203,7 @@ try {
  var init = async function (settings) {
   console.log("iniiiiit");
 
-placeID = settings.placeId;
+//placeID = settings.placeId;
      companyID = settings.companyID;
    missionID = settings.missionID;
    tokenV1 = settings.tokenV1;
@@ -292,7 +292,7 @@ placeID = settings.placeId;
 
           /*Coke Demo specifics END*/
 
-          createReport();
+          createReport(settings);
 
           
         });
