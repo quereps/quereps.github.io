@@ -282,7 +282,7 @@ try {
 
           // Create an array of promises from getTags
           let tagPromises = photo_grids.map(async grid => {
-              const tags = await getTags(grid.id);
+              const tags = await APICallsModule.getTags(grid.id);
               removeNotification();
               extractIRData(tags);
           });
