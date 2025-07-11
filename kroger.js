@@ -31,6 +31,7 @@ kroger = function(skuList){
                 wrap:true,
                 destination:"compliance",
                 gap:true,
+                width:"100%",
               });
               
 
@@ -69,6 +70,7 @@ kroger = function(skuList){
                 wrap:true,
                 destination:"compliance",
                 gap:true,
+                width:"100%",
               });
               //oosMOLExtract();
               for(let sku in skuArray){
