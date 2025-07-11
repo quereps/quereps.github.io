@@ -732,7 +732,7 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
       createHTMLSection(id,name, imageURL,type, settings);
     },
     createTable: function (data, structure) {
-      createTable(id,name, imageURL,type, settings);
+      createTable(data, structure);
     },
   }
 })(jQuery, ksAPI);
