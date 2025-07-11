@@ -233,6 +233,8 @@ var updateDM = function(upc,column,value){
 
  var init = async function (settings) {
 
+  APICallsModule.Run();
+
 
   const link1 = document.createElement("link");
   link1.rel = "stylesheet";
@@ -258,7 +260,7 @@ var updateDM = function(upc,column,value){
   placeID = vpGetTextResults("placeID");
 
 
-   getPlaceData(placeID).then((placeData)=>{
+   APICallsModule.getPlaceData(placeID).then((placeData)=>{
        let tableElement = createTable(placeData, "Place", {
         "Name":placeData.name,
         "City":placeData.city,
@@ -286,7 +288,7 @@ var updateDM = function(upc,column,value){
   var update = async function (settings) {
 
 
-    APICallsModule.Run();
+
 
           vpShowLoader();
 
