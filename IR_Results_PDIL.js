@@ -23,8 +23,6 @@ var APIModule = (function ($, ksAPI) {
 
     for(let item in data){
 
-
-      
       let upcTarget = "";
 
          const y = data[item].values.shelf_index_y;
@@ -288,7 +286,7 @@ try {
           
           
 
-
+          console.log(skuList);
           /*Coke Demo specifics END*/
 
           interfaceModule.createReport(settings, skuList, sections);
