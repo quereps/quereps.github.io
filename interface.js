@@ -8,6 +8,10 @@ var interfaceModule = (function ($, ksAPI) {
   let skuList = {};
   let settings = {};
 
+   let placeID = "";
+   let  companyID = "";
+   let missionID = "";
+
 var removeNotification = function() {
   // Get the container element
   var container = document.getElementById('table-container');
@@ -720,6 +724,10 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
   skuList = skuListImport;
   sections = sectionsImport;
   settings = settingsImport;
+
+  companyID = settings.companyID;
+  placeID = settings.placeID;
+  missionID = settings.missionID;
 
   //console.log("settings: ",settings);
 
