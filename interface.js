@@ -245,7 +245,7 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
     }
     
 
-    
+    //https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels
     // Add datalabels only if the plugin is available and enabled
     if (typeof ChartDataLabels !== 'undefined' && settings?.showLabels !== false) {
         chartOptions.plugins.datalabels = {
@@ -369,7 +369,7 @@ function graph(category, asPercentage = false, filter = null) {
 
           // Skip if this filter is in settings.exclude
         if (settings.exclude && settings.exclude.includes(filter)) continue;
-        
+
           var button = jQuery('<div id="filter'+filter+'" class="filter '+filter+'">'+filter+'</div>');
           jQuery('#'+destination+" .content").append(button);
 
