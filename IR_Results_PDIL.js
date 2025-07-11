@@ -16,7 +16,7 @@ var APIModule = (function ($, ksAPI) {
    let realogram = [];
 
 
-
+ 
   var extractIRData = async function(data){
 
     console.log("Extracting Data: ", data)
