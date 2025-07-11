@@ -31,7 +31,7 @@ kroger = function(skuList){
                 const currentSKU = skuArray[sku];
                 const expFacings = exp[sku];
 
-                const myTile = htmlTile({
+                const myTile = interfaceModule.htmlTile({
                   data:{
                     title:skuList[currentSKU].name,
                     subtitle:skuList[currentSKU].brand,
@@ -59,7 +59,7 @@ kroger = function(skuList){
               //oosMOLExtract();
               for(let sku in skuArray){
 
-                const myTile = htmlTile({
+                const myTile = interfaceModule.htmlTile({
                   data:{
                     title:name[sku],
                     //number:skuArray[sku],
