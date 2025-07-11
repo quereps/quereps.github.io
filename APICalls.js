@@ -206,7 +206,7 @@ var getTags = async function(GridID){
 
        if(data &&  data.tags && data.tags.length>0){
 
-          console.log("We got data");
+          console.log("We got data: ",data.tags);
 
           interfaceModule.removeNotification();
           return data.tags;
