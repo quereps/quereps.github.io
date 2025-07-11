@@ -366,6 +366,10 @@ function graph(category, asPercentage = false, filter = null) {
       jQuery('#'+destination+" .content").addClass("buttons");
 
       for(let filter in sections){
+
+          // Skip if this filter is in settings.exclude
+        if (settings.exclude && settings.exclude.includes(filter)) continue;
+        
           var button = jQuery('<div id="filter'+filter+'" class="filter '+filter+'">'+filter+'</div>');
           jQuery('#'+destination+" .content").append(button);
 
