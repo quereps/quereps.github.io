@@ -675,7 +675,7 @@ const link1 = document.createElement("link");
 
 
 
-const placeSection = function(placeID,options,destination){
+const placeSection = function(options,destination){
 
   console.log("placeSection: ", placeID);
 
