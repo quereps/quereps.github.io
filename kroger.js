@@ -73,7 +73,7 @@ kroger = function(skuList){
 
 
                 interfaceModule.createHTMLSection("outOfStocksContainer","Out of Stocks", "https://fonts.gstatic.com/s/e/notoemoji/latest/1f4da/emoji.svg",null, {});
-                jQuery("#outOfStocks").append(myTile);
+                jQuery("#ContaineroutOfStocksContainer").append(myTile);
 
                 interfaceModule.barcodeGenerate(skuArray[sku]);
 
