@@ -777,5 +777,11 @@ var createReport = function(settings,skuListImport){
     createReport: function (settings) {
       return createReport(settings);
     },
+    removeNotification: function () {
+      return removeNotification();
+    },
+    notification: function (type,message) {
+      return notification();
+    },
   }
 })(jQuery, ksAPI);
