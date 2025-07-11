@@ -723,7 +723,7 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
 
   console.log("Creating Report");
 
-  report = settings.report;
+  
   skuList = skuListImport;
   sections = sectionsImport;
   settings = settingsImport;
@@ -731,6 +731,7 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
   companyID = settings.companyID;
   placeID = settings.placeID;
   missionID = settings.missionID;
+  report = settings.report;
 
   console.log("report: ",report);
 
