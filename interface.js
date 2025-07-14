@@ -652,7 +652,7 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
   sections = sectionsImport;
   settings = settingsImport;
 
-  companyID = settings.companyID || "";
+  companyID = settings.companyID;
   placeID = settings.placeID;
   missionID = settings.missionID;
   report = settings.report;
