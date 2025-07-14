@@ -368,7 +368,7 @@ function graph(category, asPercentage = false, filter = null) {
       for(let filter in sections){
 
           // Skip if this filter is in settings.exclude
-        if (settings.exclude && settings.exclude.includes(filter)) continue;
+        if (settings?.exclude && settings?.exclude.includes(filter)) continue;
 
           var button = jQuery('<div id="filter'+filter+'" class="filter '+filter+'">'+filter+'</div>');
           jQuery('#'+destination+" .content").append(button);
@@ -717,7 +717,7 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
 
 
  return {
-    createReport: function (settings,skuList,sections) {
+    createReport: function (settings,skuList,sections) {  
       return createReport(settings,skuList,sections);
     },
     removeNotification: function () {
