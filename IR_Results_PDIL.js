@@ -129,7 +129,7 @@ try {
         
 
     } catch (error) {
-      console.error("Failed to get last Mission response:", error);
+      console.error("Failed to get IR Results:", error);
       throw error;
     }
 
