@@ -645,6 +645,8 @@ const MissionResponseSection = function(placeID,missionID,destination){
 var createReport = function(settingsImport,skuListImport,sectionsImport){
 
 
+
+
   console.log("Creating Report");
 
   
@@ -658,6 +660,8 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
   report = settings.report;
 
   console.log("report: ",report);
+
+  console.log("skuList: ",skuList);
 
     for(var element in report){
 
