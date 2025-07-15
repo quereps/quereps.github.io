@@ -161,7 +161,7 @@ function numberTile(jsonArray,destination,settings){
   let value = (jsonArray[settings.filter] != null && jsonArray[settings.filter] !== "") 
       ? jsonArray[settings.filter] + unit 
       : "0" + unit;
-      
+
   let html = "<h4>"+value+"</h4>"; 
 
   if(destination){
@@ -311,6 +311,8 @@ function createHTMLSection(id,name, imageURL,type, settings){
         style += background;
         let width = settings?.width ? "width:"+settings?.width+";" : "";
         style += width;
+        let color = settings?.color ? "color:"+settings?.color+";" : "";
+        style += color;
         let destination = settings?.destination || "table-container";
 
         if(settings?.wrap==false){
