@@ -557,6 +557,9 @@ background-image: url("https://app.form.com/fs/v1/h/L6VU56iKClMaWbOpRmLGdgAThFhj
     display: flex;
     justify-content:space-between;
     overflow:scroll;
+    font-size: 0.8em;
+    font-weight: normal;
+    gap: 0.5em;
 }
 
 .buttons div{
