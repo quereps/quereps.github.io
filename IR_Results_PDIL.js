@@ -107,6 +107,8 @@ var GetIRResults = async function(photo_grids, settings){
 vpShowLoader();
  // return new Promise(async (resolve, reject) => {
 
+interfaceModule.Notification("Loading","Getting Tags");
+
 try {
 
           console.log("photo_grids: ",photo_grids);
