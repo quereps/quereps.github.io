@@ -585,6 +585,7 @@ div.container {
     display: flex;
     flex-wrap: wrap;
     background: white;
+    min-width: 300px;
 }
 
 .content {
