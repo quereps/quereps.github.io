@@ -657,6 +657,9 @@ table.customTable.IRDataTable th{
 }
 
 
+.H1{
+    display:none;
+}
 
 
 .number{

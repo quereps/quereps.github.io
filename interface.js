@@ -137,19 +137,6 @@ function JSONToHTMLTable(jsonArray, destination, settings) {
 
 
 
-/*function numberTile(jsonArray,destination,settings){
-
-  console.log(jsonArray[settings.filter]);
-
-  let value = jsonArray[settings.filter]+"%";
-  let html = "<h4>"+value+"</h4>"; 
-
-  if(destination){
-      jQuery("#"+destination+" .content").append(html);
-    }
-}*/
-
-
 function numberTile(jsonArray,destination,settings){
 
   console.log(jsonArray[settings.filter]);
@@ -654,7 +641,6 @@ const MissionResponseSection = function(placeID,missionID,destination){
           "Completed":moment(missionData.completed_at).format('DD/MM/YYYY')+" ("+moment(missionData.completed_at).fromNow()+")",
           "Completed By":missionData.user.first_name+" "+missionData.user.last_name,
           "Distance to place": `${parseFloat(missionData?.distance_to_place).toFixed(2) || "0.00"} miles`,
-           "ID":missionData.id,
         });
         jQuery('#'+destination+" .content").append(tableElement);
 
