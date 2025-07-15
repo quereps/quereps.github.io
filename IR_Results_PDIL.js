@@ -104,7 +104,7 @@ var addTile = function(destination,id,sku,profile){
 
 var GetIRResults = async function(photo_grids, settings){
 
-
+vpShowLoader();
  // return new Promise(async (resolve, reject) => {
 
 try {
