@@ -104,7 +104,7 @@ var addTile = function(destination,id,sku,profile){
 
 var GetIRResults = async function(photo_grids, settings){
 
-vpShowLoader();
+//vpShowLoader();
  // return new Promise(async (resolve, reject) => {
 
 interfaceModule.notification("Loading","Getting Tags");
