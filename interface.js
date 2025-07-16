@@ -443,8 +443,8 @@ var POG = function(category,destination){
       let low = 0;
       let high = 0;
       if (full) {
-        low  = Math.round(full * 0.2);
-        high = Math.round(full * 0.8);
+        low  = Math.round(full * 0.3);
+        high = Math.round(full * 0.7);
       }
 
     let titleHTML = title ? "<h1>"+title+"</h1>" : ""; 
