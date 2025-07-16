@@ -721,4 +721,5 @@ table.customTable.IRDataTable th{
     border-radius: 0.25em;
     font-weight: normal;
     text-align:center;
+    margin:auto;
 }
