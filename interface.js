@@ -731,7 +731,7 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
       removeNotification();
     },
     notification: function (type,message) {
-      notification();
+      notification(type,message);
     },
     htmlTile: function (settings) {
       return htmlTile(settings);
