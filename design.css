@@ -686,3 +686,40 @@ table.customTable.IRDataTable th{
     text-align: center;
     /* color: initial; */
 }
+
+
+
+
+
+.notification.error {
+    background: #ff000020;
+  color:#ed1c24;
+    padding: 0.5em;
+    margin: 1em 0;
+    border-radius: 0.25em;
+    font-weight: normal;
+  text-align:center;
+}
+
+.notification.message {
+    background-color: #135bac20;
+    color:#135bac;
+    padding: 0.5em;
+    margin: 1em 0;
+    border-radius: 0.25em;
+    font-weight: normal;
+    text-align:center;
+}
+
+.notification.Loading {
+    background:url(https://app.form.com/fs/v1/h/HsFIjl7WzqrR8GsV_vAWpmYrjfYo1XzqgGu7GfOJj6c/275078.gif) !important;
+    background-size:60px !important;
+    background-repeat:no-repeat !important;
+    background-position:50% 100% !important;
+    color:#666;
+    padding: 1rem 0 60px 0.5em;
+    margin: 1em 0;
+    border-radius: 0.25em;
+    font-weight: normal;
+    text-align:center;
+}
