@@ -99,9 +99,9 @@ var getMissionResponse = async function(missionResponseID){
 
         //var lastItem = data.data[data.data.length - 1];
         //resolve(lastItem);
-        const sorted = data.data.sort((a, b) => new Date(b.completed_at) - new Date(a.completed_at));
-        const latestItems = sorted.slice(0, limit);
-        return latestItems;
+        //const sorted = data.data.sort((a, b) => new Date(b.completed_at) - new Date(a.completed_at));
+        //const latestItems = sorted.slice(0, limit);
+        return data.data;
 
       }
       else{
