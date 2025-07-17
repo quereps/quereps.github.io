@@ -197,8 +197,8 @@ try {
  //   APICallsModule.getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
 
 
-      let lastItem = lastItems[lastItems.length];
-      console.log(lastItems);
+      let lastItem = lastItems[lastItems.length-1];
+      console.log(lastItem);
 
       interfaceModule.removeNotification();
       vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
