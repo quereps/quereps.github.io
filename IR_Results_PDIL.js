@@ -163,19 +163,7 @@ const clearResults = function(){
       return;
     }
 
-    if(currentMissionResponses+1==missionResponses.length){
-      jQuery('#nextMRID').prop('disabled', true);
-    }
-    else{
-      jQuery('#nextMRID').prop('disabled', false);
-    }
-
-    if(currentMissionResponses==0){
-      jQuery('#prevMRID').prop('disabled', true);
-    }
-    else{
-      jQuery('#prevMRID').prop('disabled', false);
-    }
+    
 
 
     
@@ -240,6 +228,22 @@ const clearResults = function(){
           /*Coke Demo specifics END*/
 
           interfaceModule.createReport(settings, skuList, sections);
+
+
+
+          if(currentMissionResponses+1==missionResponses.length){
+              jQuery('#nextMRID').prop('disabled', true);
+            }
+            else{
+              jQuery('#nextMRID').prop('disabled', false);
+            }
+
+            if(currentMissionResponses==0){
+              jQuery('#prevMRID').prop('disabled', true);
+            }
+            else{
+              jQuery('#prevMRID').prop('disabled', false);
+            }
 
           
         });
