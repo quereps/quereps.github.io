@@ -156,6 +156,10 @@ const clearResults = function(){
       currentMissionResponses=0;
       return;
     }
+
+    if(currentMissionResponses>missionResponses.length){
+      return;
+    }
     
     console.log("ChangeMissionResponse: ",amount);
 
