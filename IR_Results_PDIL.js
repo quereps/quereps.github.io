@@ -197,7 +197,7 @@ try {
  //   APICallsModule.getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
 
 
-      lastItem = lastItems[lastItems.length]
+      let lastItem = lastItems[lastItems.length];
 
 
       interfaceModule.removeNotification();
