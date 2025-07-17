@@ -644,6 +644,11 @@ const MissionResponseSection = function(placeID,missionID,destination){
         });
         jQuery('#'+destination+" .content").append(tableElement);
 
+        let buttons = `
+          <button onclick="updatePage('prev')">Previous</button>
+          <button onclick="updatePage('next')">Next</button>
+        `;
+        jQuery('#' + destination + " .content").append(buttons);
   });
 }
 
