@@ -162,6 +162,23 @@ const clearResults = function(){
       return;
     }
 
+    if(currentMissionResponses==missionResponses.length){
+      jQuery('#nextMRID').prop('disabled', true);
+    }
+    else(currentMissionResponses==missionResponses.length){
+      jQuery('#nextMRID').prop('disabled', false);
+    }
+
+    if(currentMissionResponses==0){
+      jQuery('#prevMRID').prop('disabled', true);
+    }
+    else(currentMissionResponses==missionResponses.length){
+      jQuery('#prevMRID').prop('disabled', false);
+    }
+
+
+    
+
     if(currentMissionResponses>missionResponses.length){
       return;
     }
