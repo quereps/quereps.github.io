@@ -144,6 +144,13 @@ try {
 
 
 
+const clearResults = function(){
+  jQuery("#table-container").empty();
+}
+
+ const ChangeMissionResponse = function(amount){
+    clearResults();
+ }
 
 
  var init = async function (settings) {
@@ -264,9 +271,14 @@ try {
  };
 
 
+
+
  return {
     Run: function (settings) {
       init(settings);
+    },
+    ChangeMissionResponse: function (amount) {
+      ChangeMissionResponse(amount);
     },
 
   }
