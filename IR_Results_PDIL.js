@@ -19,6 +19,8 @@ var APIModule = (function ($, ksAPI) {
    let missionResponses = [];
    let currentMissionResponses = 0;
 
+   let settings = {};
+
  
   var extractIRData = async function(data){
 
@@ -224,7 +226,10 @@ const clearResults = function(){
  }
 
 
- var init = async function (settings) {
+ var init = async function (settingsImport) {
+
+  settings=settingsImport;
+
   console.log("iniiiiit");
 
    placeID = settings.placeID;
