@@ -153,6 +153,8 @@ const clearResults = function(){
 
  const ChangeMissionResponse = function(amount){
 
+  console.log("previous MissionResponses: ",currentMissionResponses);
+
     currentMissionResponses = currentMissionResponses+amount;
 
     if(currentMissionResponses<0){
