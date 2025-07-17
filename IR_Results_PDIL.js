@@ -18,12 +18,12 @@ var APIModule = (function ($, ksAPI) {
 
    //let missionResponses = [];
 
-   settings.missionResponses = [];
+   
    //let currentMissionResponses = 0;
 
    let settings = {};
    settings.currentMissionResponses = 0;
-
+   settings.missionResponses = [];
  
   var extractIRData = async function(data){
 
