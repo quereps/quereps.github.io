@@ -8,6 +8,28 @@ function toTitleCase(input) {
 }
 
 
+let mostSeenBrandFamily = function(skuList){
+  const brandCounts = {};
+  Object.values(skuList).forEach(item => {
+    const brand = item.brand_family;
+    if (brandCounts[brand]) {
+      brandCounts[brand]++;
+    } else {
+      brandCounts[brand] = 1;
+    }
+  });
+
+  let mostCommonBrand = null;
+  let maxCount = 0;
+  for (const brand in brandCounts) {
+    if (brandCounts[brand] > maxCount) {
+      mostCommonBrand = brand;
+      maxCount = brandCounts[brand];
+    }
+  }
+  return mostCommonBrand;
+}
+
 
 let arrayToPipe = function(arr){
   return arr.join('|');

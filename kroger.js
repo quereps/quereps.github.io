@@ -9,6 +9,8 @@ kroger = function(skuList){
 
   vpSetResults("upcDetected",arrayToPipe(Object.keys(skuList)));
 
+  vpSetResults("mainBrandDetected",mostSeenBrandFamily(skuList));
+
 
   setTimeout(()=>{
               selectAllMOL("mol").then((a)=>{
