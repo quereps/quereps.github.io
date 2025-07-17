@@ -645,8 +645,8 @@ const MissionResponseSection = function(placeID,missionID,destination){
         jQuery('#'+destination+" .content").append(tableElement);
 
         let buttons = `
-          <button type="button" onclick="APIModule.ChangeMissionResponse(-1)">Previous</button>
-          <button type="button" onclick="APIModule.ChangeMissionResponse(1)">Next</button>
+          <button id="prevMRID" type="button" onclick="APIModule.ChangeMissionResponse(-1)">Previous</button>
+          <button id="nextMRID" type="button" onclick="APIModule.ChangeMissionResponse(1)">Next</button>
         `;
         jQuery('#' + destination + " .content").append(buttons);
   });
