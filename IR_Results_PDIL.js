@@ -191,7 +191,7 @@ try {
     
      APICallsModule.getMissionResponses(placeID,missionID,600000,10).then((lastItems)=>{
         console.log("lastItems: ",lastItems);
-     }
+     });
       
 
     APICallsModule.getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
