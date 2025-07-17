@@ -148,7 +148,7 @@ try {
 
 const clearResults = function(){
   jQuery("#table-container").empty();
-  jQuery(".sectionContainer").remove();
+  jQuery(".sectionContainer").empty();
 }
 
  const ChangeMissionResponse = function(amount){
