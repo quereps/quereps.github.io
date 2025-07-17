@@ -16,6 +16,9 @@ var APIModule = (function ($, ksAPI) {
    let realogram = [];
 
 
+   let missionResponses = [];
+
+
  
   var extractIRData = async function(data){
 
@@ -195,9 +198,9 @@ try {
       
 
  //   APICallsModule.getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
+      missionResponses = lastItems;
 
-
-      let lastItem = lastItems[lastItems.length-1];
+      let lastItem = lastItems[0];
       console.log(lastItem);
 
       interfaceModule.removeNotification();
