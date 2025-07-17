@@ -650,6 +650,21 @@ const MissionResponseSection = function(placeID,missionID,destination){
         `;
         jQuery('#' + destination + " .content").append(buttons);
         jQuery('#prevMRID').prop('disabled', true);
+
+
+        if(settings.currentMissionResponses+1==settings.missionResponses.length){
+              jQuery('#nextMRID').prop('disabled', true);
+            }
+            else{
+              jQuery('#nextMRID').prop('disabled', false);
+            }
+
+            if(settings.currentMissionResponses==0){
+              jQuery('#prevMRID').prop('disabled', true);
+            }
+            else{
+              jQuery('#prevMRID').prop('disabled', false);
+            }
   });
 }
 

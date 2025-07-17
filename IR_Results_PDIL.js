@@ -16,10 +16,13 @@ var APIModule = (function ($, ksAPI) {
    let realogram = [];
 
 
-   let missionResponses = [];
-   let currentMissionResponses = 0;
+   //let missionResponses = [];
+
+   settings.missionResponses = [];
+   //let currentMissionResponses = 0;
 
    let settings = {};
+   settings.currentMissionResponses = 0;
 
  
   var extractIRData = async function(data){
@@ -154,12 +157,12 @@ const clearResults = function(){
 
  const ChangeMissionResponse = function(amount){
 
-  console.log("previous MissionResponses: ",currentMissionResponses);
+  console.log("previous MissionResponses: ",settings.currentMissionResponses);
 
-    currentMissionResponses = currentMissionResponses+amount;
+    settings.currentMissionResponses = settings.currentMissionResponses+amount;
 
-    if(currentMissionResponses<0){
-      currentMissionResponses=0;
+    if(settings.currentMissionResponses<0){
+      settings.currentMissionResponses=0;
       return;
     }
 
@@ -168,19 +171,19 @@ const clearResults = function(){
 
     
 
-    if(currentMissionResponses>missionResponses.length){
+    if(settings.currentMissionResponses>settings.missionResponses.length){
       return;
     }
     
-    console.log("currentMissionResponses: ",currentMissionResponses);
+    console.log("currentMissionResponses: ",settings.currentMissionResponses);
     console.log("ChangeMissionResponse: ",amount);
 
     clearResults();
 
-    console.log("Mission Responses: ",missionResponses);
-    console.log("new Mission Response: ",missionResponses[currentMissionResponses]);
+    console.log("Mission Responses: ",settings.missionResponses);
+    console.log("new Mission Response: ",settings.missionResponses[settings.currentMissionResponses]);
 
-         APICallsModule.getMissionResponse(missionResponses[currentMissionResponses].id).then((lastItem)=>{
+         APICallsModule.getMissionResponse(settings.missionResponses[settings.currentMissionResponses].id).then((lastItem)=>{
 
       //let lastItem = lastItems[0];
       console.log(lastItem);
@@ -229,23 +232,6 @@ const clearResults = function(){
 
           interfaceModule.createReport(settings, skuList, sections);
 
-
-
-          if(currentMissionResponses+1==missionResponses.length){
-              jQuery('#nextMRID').prop('disabled', true);
-            }
-            else{
-              jQuery('#nextMRID').prop('disabled', false);
-            }
-
-            if(currentMissionResponses==0){
-              jQuery('#prevMRID').prop('disabled', true);
-            }
-            else{
-              jQuery('#prevMRID').prop('disabled', false);
-            }
-
-          
         });
 
       });
@@ -307,7 +293,7 @@ const clearResults = function(){
       
 
  //   APICallsModule.getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
-      missionResponses = lastItems;
+      settings.missionResponses = lastItems;
 
       let lastItem = lastItems[0];
       console.log(lastItem);
