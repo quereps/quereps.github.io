@@ -112,7 +112,7 @@ var getMissionResponses = async function(placeID,campaignID,timeFrame, limit){
 
     }
   } catch (error) {
-      console.error("Failed to get last Mission response:", error);
+      console.error("Failed to get Mission responses:", error);
       throw error; 
     }
     //  });
