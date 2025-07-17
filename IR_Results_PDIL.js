@@ -17,7 +17,7 @@ var APIModule = (function ($, ksAPI) {
 
 
    let missionResponses = [];
-
+   let currentMissionResponses = 0;
 
  
   var extractIRData = async function(data){
@@ -149,10 +149,73 @@ const clearResults = function(){
 }
 
  const ChangeMissionResponse = function(amount){
+
+    currentMissionResponses = currentMissionResponses+amount;
+
+    if(currentMissionResponses<0){
+      currentMissionResponses=0;
+      return;
+    }
     
     console.log("ChangeMissionResponse: ",amount);
 
     clearResults();
+
+
+
+         APICallsModule.getMissionResponse(missionResponses[currentMissionResponses]).then((lastItem)=>{
+
+      let lastItem = lastItems[0];
+      console.log(lastItem);
+
+      interfaceModule.removeNotification();
+      vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
+      
+      savedResponseData = lastItem;
+      
+
+      if(features.images){
+          //getImages(lastItem);
+      }
+
+
+
+
+        vpShowLoader();
+
+        APICallsModule.getGrid(lastItem.id).then(async (photo_grids)=>{
+
+          interfaceModule.removeNotification();
+
+
+          // Create an array of promises from getTags
+
+          console.log("photo_grids: ",photo_grids);
+
+          let tagPromises = photo_grids.map(async grid => {
+              const tags = await APICallsModule.getTags(grid.id);
+              interfaceModule.removeNotification();
+              extractIRData(tags);
+          });
+
+          await Promise.all(tagPromises);
+
+
+          if(settings.specificFunction){
+            settings.specificFunction(skuList);
+          }
+          
+          
+
+          console.log(skuList);
+          /*Coke Demo specifics END*/
+
+          interfaceModule.createReport(settings, skuList, sections);
+
+          
+        });
+
+      });
  }
 
 
