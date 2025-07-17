@@ -354,8 +354,8 @@ h4{margin:0;font-weight:normal;font-size: 0.8em;}
     }
     
     td.H2{
-        background:var(--main-color) !important;
-        color:white !important;
+        /*background:var(--main-color) !important;
+        color:white !important;*/
     }
     
     td.H2 h3{
