@@ -1,12 +1,3 @@
-
-
-
-
-
-
-
-
-
 kroger = function(skuList){
 
 
@@ -44,7 +35,7 @@ kroger = function(skuList){
                     title:skuList[currentSKU].name,
                     subtitle:skuList[currentSKU].brand,
                   },
-                  resultLabel:"Availability",
+                  //resultLabel:"Availability",
                   meter: {
                     value:skuList[currentSKU].facings,
                     full:expFacings,
