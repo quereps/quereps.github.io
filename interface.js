@@ -649,6 +649,7 @@ const MissionResponseSection = function(placeID,missionID,destination){
           <button id="nextMRID" type="button" onclick="APIModule.ChangeMissionResponse(1)">Next</button>
         `;
         jQuery('#' + destination + " .content").append(buttons);
+        jQuery('#prevMRID').prop('disabled', true);
   });
 }
 
