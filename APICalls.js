@@ -248,6 +248,9 @@ var initAPI = function(settings){
     getLastMissionResponse: function (placeID, campaignID, timeFrame) {
       return getLastMissionResponse(placeID, campaignID, timeFrame);
     },
+    getMissionResponses: function (placeID, campaignID, timeFrame,limit) {
+      return getMissionResponses(placeID, campaignID, timeFrame,limit);
+    },
     getTags: function (GridID) {
       return getTags(GridID);
     },
