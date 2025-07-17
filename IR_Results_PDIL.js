@@ -168,7 +168,7 @@ const clearResults = function(){
     console.log("Mission Responses: ",missionResponses);
     console.log("new Mission Response: ",missionResponses[currentMissionResponses]);
 
-         APICallsModule.getMissionResponse(missionResponses[currentMissionResponses]).then((lastItem)=>{
+         APICallsModule.getMissionResponse(missionResponses[currentMissionResponses].id).then((lastItem)=>{
 
       //let lastItem = lastItems[0];
       console.log(lastItem);
