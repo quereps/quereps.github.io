@@ -198,7 +198,7 @@ try {
 
 
       let lastItem = lastItems[lastItems.length];
-
+      console.log(lastItems);
 
       interfaceModule.removeNotification();
       vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
