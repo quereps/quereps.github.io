@@ -164,6 +164,7 @@ const clearResults = function(){
       return;
     }
     
+    console.log("currentMissionResponses: ",currentMissionResponses);
     console.log("ChangeMissionResponse: ",amount);
 
     clearResults();
