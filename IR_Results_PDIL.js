@@ -149,6 +149,9 @@ const clearResults = function(){
 }
 
  const ChangeMissionResponse = function(amount){
+    
+    console.log("ChangeMissionResponse: ",amount);
+
     clearResults();
  }
 
