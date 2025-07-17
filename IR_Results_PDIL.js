@@ -147,6 +147,7 @@ try {
 
 
 const clearResults = function(){
+  skuList = {};
   jQuery("#table-container").empty();
   jQuery(".sectionContainer").empty();
 }
