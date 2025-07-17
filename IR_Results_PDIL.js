@@ -165,7 +165,7 @@ const clearResults = function(){
 
          APICallsModule.getMissionResponse(missionResponses[currentMissionResponses]).then((lastItem)=>{
 
-      let lastItem = lastItems[0];
+      //let lastItem = lastItems[0];
       console.log(lastItem);
 
       interfaceModule.removeNotification();
