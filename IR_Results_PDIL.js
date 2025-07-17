@@ -166,14 +166,14 @@ const clearResults = function(){
     if(currentMissionResponses==missionResponses.length){
       jQuery('#nextMRID').prop('disabled', true);
     }
-    else(currentMissionResponses==missionResponses.length){
+    else{
       jQuery('#nextMRID').prop('disabled', false);
     }
 
     if(currentMissionResponses==0){
       jQuery('#prevMRID').prop('disabled', true);
     }
-    else(currentMissionResponses==missionResponses.length){
+    else{
       jQuery('#prevMRID').prop('disabled', false);
     }
 
