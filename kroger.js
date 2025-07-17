@@ -91,5 +91,5 @@ kroger = function(skuList){
 
             });
 
-          }, 1000);
+          }, 2000);
 }
