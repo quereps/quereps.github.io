@@ -163,7 +163,7 @@ const clearResults = function(){
       return;
     }
 
-    if(currentMissionResponses==missionResponses.length){
+    if(currentMissionResponses+1==missionResponses.length){
       jQuery('#nextMRID').prop('disabled', true);
     }
     else{
