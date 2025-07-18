@@ -5,7 +5,7 @@ carrefourSpecial = function(skuList,settings){
 
 
   const deepLinkSettings = {
-    actionMissionID:"4269551",
+    actionMissionID:"4269552",
     callBack:"https://app.form.com/f/41790533/1676/?LQID=1&PlaceID="+settings.placeID
   };
 
