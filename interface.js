@@ -439,7 +439,7 @@ var POG = function(category,destination){
         action: {
           target = "",
           icon = "",
-        }
+        } = {},
       }){
 
       let htmlContent = "";
