@@ -1,4 +1,4 @@
-carrefour = function(skuList){
+carrefourSpecial = function(skuList){
 
   console.log("Carrefour Special Start");
 
