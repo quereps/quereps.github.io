@@ -435,7 +435,11 @@ var POG = function(category,destination){
           value = 0,
           full   = 0
         } = {},
-        barcode = ""
+        barcode = "",
+        action: {
+          target = "",
+          icon = "",
+        }
       }){
 
       let htmlContent = "";
@@ -499,6 +503,12 @@ var POG = function(category,destination){
     
 
     tableHTML = tableHTML+"</table>";
+
+
+    if(target && icon){
+      let actionHTML = "<a class='action' href='"+target+"'><img width='40' src='"+icon+"'/></a>"
+    }
+
 
 
     htmlContent = headerHTML+resultContainerHTML;
