@@ -468,6 +468,7 @@ var POG = function(category,destination){
     let expectedHTML = "";
 
     let resultContainerHTML = "";
+    let actionContainer = "";
  
 
     if(value && full){
@@ -506,12 +507,13 @@ var POG = function(category,destination){
 
 
     if(target && icon){
-      let actionHTML = "<a class='action' href='"+target+"'><img width='40' src='"+icon+"'/></a>"
+      let actionHTML = "<a class='action' href='"+target+"'><img width='40' src='"+icon+"'/></a>";
+      actionContainer = actionContainer+actionHTML;
     }
 
 
 
-    htmlContent = headerHTML+resultContainerHTML;
+    htmlContent = headerHTML+resultContainerHTML+actionContainer;
   
     const HTMLOutput = "<div class='SKULabel' id='fc"+barcode+"'>"+htmlContent+"</div>";
 
