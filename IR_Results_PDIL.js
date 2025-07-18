@@ -335,7 +335,7 @@ const clearResults = function(){
 
           if(settings.specificFunction){
             console.log("Specific Function Detected");
-            settings.specificFunction(skuList);
+            settings.specificFunction(skuList,settings);
           }
           
           
