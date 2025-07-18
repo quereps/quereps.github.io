@@ -1,5 +1,7 @@
 carrefour = function(skuList){
 
+  console.log("Carrefour Special Start");
+
 
   const link2 = document.createElement("link");
   link2.rel = "stylesheet";
