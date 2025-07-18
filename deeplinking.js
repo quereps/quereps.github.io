@@ -2,7 +2,7 @@
 
 
 
-var interfaceModule = (function ($, ksAPI) {
+var deeplinkModule = (function ($, ksAPI) {
 
 const init = function(settings){
   console.log("init");
