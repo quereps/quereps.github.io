@@ -64,7 +64,7 @@ carrefourSpecial = function(skuList,settings){
                   action: {
                     target:deeplinkModule.Run(deepLinkSettings,deepLinkparams),
                     icon:"https://app.form.com/fs/v1/h/o2Hec5ANCkdseEnpn-lMSfjWJg5I4VTFnGY4yVyEDR4/277586.png",
-                  };
+                  }
                 });
 
                 jQuery("#Containeravailability .content").append(myTile);
