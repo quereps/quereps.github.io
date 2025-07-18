@@ -63,7 +63,7 @@ carrefourSpecial = function(skuList,settings){
                   barcode:skuArray[sku],
                   action: {
                     target:deeplinkModule.Run(deepLinkSettings,deepLinkparams),
-                    icon:"https://app.form.com/fs/v1/h/o2Hec5ANCkdseEnpn-lMSfjWJg5I4VTFnGY4yVyEDR4/277586.png",
+                    icon:"https://app.form.com/fs/v1/h/PCwNudvw8L-hmK9oC33Zf0gy91O2iB7hwhtfMcJzOLQ/278054.png",
                   }
                 });
 
