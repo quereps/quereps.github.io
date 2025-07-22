@@ -139,6 +139,8 @@ function JSONToHTMLTable(jsonArray, destination, settings) {
 
 function numberTile(jsonArray,destination,settings){
 
+  console.log("Creating Number Tile");
+
   console.log(jsonArray[settings.filter]);
 
   let unit = settings?.asPercentage==true ? "%" : "";
