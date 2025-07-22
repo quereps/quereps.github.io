@@ -354,6 +354,8 @@ const clearResults = function(){
 
 
 
+   }).catch(()=>{
+    console.log("Hey there !!! Issue");
    });
    
   }
