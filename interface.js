@@ -347,6 +347,7 @@ function graph(category, asPercentage = false, filter = null) {
     
     // Apply filter if provided
     if (filter && current[filter.property] !== filter.value) {
+      console.log("checking filter");
       continue; // Skip this SKU if it doesn't match the filter
     }
     
