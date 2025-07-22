@@ -349,7 +349,7 @@ const clearResults = function(){
         });
 
       }).catch(()=>{
-    console.log("Hey there !!! No mission reponse");
+    interfaceModule.notification("error","No mission responses found.");
    });;
 
 
@@ -357,7 +357,7 @@ const clearResults = function(){
 
 
    }).catch(()=>{
-    console.log("Hey there !!! No places");
+    interfaceModule.notification("error","No places found.");
    });
    
   }
