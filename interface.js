@@ -356,7 +356,21 @@ function graph(category, asPercentage = false, filter = null) {
       continue; // Skip this SKU if it doesn't match the filter
     }
     
-    const categoryValue = current[category];
+   // const categoryValue = current[category];
+    if (!category) {
+        console.warn("Missing 'category' parameter in graph() call.");
+        return {};
+      }
+
+      const categoryValue = current[category];
+      if (!categoryValue) {
+        console.warn("Missing expected category key:", category, "in SKU:", current);
+      }
+
+
+
+
+
     const facings = Number(current.facings) || 0;
     
     if (!graphData[categoryValue]) {
