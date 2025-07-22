@@ -729,6 +729,10 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
 
 
       if(current.type=="number"){
+
+        console.log("graph dimension: ", current.dimension);
+        console.log("first SKU keys: ", Object.keys(Object.values(skuList)[0]));
+
         numberTile(graph(current.dimension,current?.options?.asPercentage),containerID,current.options);
       }
 
