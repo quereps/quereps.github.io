@@ -340,6 +340,7 @@ function graph(category, asPercentage = false, filter = null) {
   let totalFacings = 0;
   
   console.log("SKU List: ", skuList);
+  console.log("category: ",category);
 
 
   for (let sku in skuList) {
