@@ -346,11 +346,13 @@ const clearResults = function(){
           interfaceModule.createReport(settings, skuList, sections);
 
           
-        });
+        }).catch(()=>{
+    interfaceModule.notification("error","No Photo Grid found.");
+   });
 
       }).catch(()=>{
     interfaceModule.notification("error","No mission responses found.");
-   });;
+   });
 
 
 
