@@ -344,6 +344,8 @@ function graph(category, asPercentage = false, filter = null) {
 
   for (let sku in skuList) {
     const current = skuList[sku];
+
+    console.log("current: ", current);
     
     // Apply filter if provided
     if (filter && current[filter.property] !== filter.value) {
