@@ -359,7 +359,7 @@ const clearResults = function(){
 
 
    }).catch(()=>{
-    interfaceModule.notification("error","No places found.");
+    interfaceModule.notification("error","Place not found.");
    });
    
   }
