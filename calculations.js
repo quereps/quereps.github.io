@@ -1,10 +1,14 @@
 
 function toTitleCase(input) {
+  if (input && input.length>0){
   return input
     .replace(/[_\-]+/g, ' ')                 // Replace underscores/hyphens with space
     .replace(/([a-z])([A-Z])/g, '$1 $2')     // Add space between camelCase
     .toLowerCase()                           // Convert entire string to lowercase
     .replace(/\b\w/g, char => char.toUpperCase()); // Capitalize first letter of each word
+  }else{
+    return input;
+  }
 }
 
 
@@ -70,7 +74,6 @@ function getAverage(arr) {
   const sum = arr.reduce((acc, val) => acc + val, 0);
   return sum / arr.length;
 }
-
 
 
 function rankObjects(obj, rankBy, attributes) {
