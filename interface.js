@@ -339,6 +339,9 @@ function graph(category, asPercentage = false, filter = null) {
   const graphData = {};
   let totalFacings = 0;
   
+  console.log("SKU List: ", skuList);
+
+
   for (let sku in skuList) {
     const current = skuList[sku];
     
