@@ -348,14 +348,16 @@ const clearResults = function(){
           
         });
 
-      });
+      }).catch(()=>{
+    console.log("Hey there !!! No mission reponse");
+   });;
 
 
 
 
 
    }).catch(()=>{
-    console.log("Hey there !!! Issue");
+    console.log("Hey there !!! No places");
    });
    
   }
