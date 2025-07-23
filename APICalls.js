@@ -72,7 +72,7 @@ var getPlaceData = async function(placeId){
         return data.data;
 
       } catch (error) {
-        console.error("Failed to get Tags:", error);
+        console.error("Failed to get place:", error);
         throw error;
       }
   //});
