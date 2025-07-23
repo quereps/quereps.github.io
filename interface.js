@@ -796,7 +796,7 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
 
 function loadReportTemplates(){
   return reportTemplates;
-}
+} 
 
  return {
     createReport: function (settings,skuList,sections) {  
