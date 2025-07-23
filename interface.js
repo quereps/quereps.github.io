@@ -27,6 +27,40 @@ const reportTemplates = {
             legend:false,
           exclude:["undefined","Unrecognized","Empty Facing"]
         } 
+      },
+      supplierShare:{
+        type:"graph",
+        title:"Suppliers",
+        logo:"https://app.form.com/fs/v1/h/ayYV9BfGgRa2acx899yrpYD2EChBtrQoXiMwKcEy504/277594.png",
+        dimension:"supplier",
+        graphType:"pie",
+        settings:{
+            legend:true,
+          exclude:["undefined","Unrecognized","Empty Facing"],
+          colorMap:legendColors || [],
+          fallbackPalette:fallbackPalette || [],
+          showLabels:true,
+          labelType:"label",
+          asPercentage:true
+        }    
+      },
+        brandShare:{
+        type:"graph",
+        title:"Share of Shelf per Brand",
+        logo:"https://app.form.com/fs/v1/h/o2Hec5ANCkdseEnpn-lMSfjWJg5I4VTFnGY4yVyEDR4/277586.png",
+        dimension:"brand",
+        graphType:"bar",
+        settings:{
+            legend:false,
+          exclude:["undefined","Unrecognized","Empty Facing"],
+          colorMap:legendColors || [],
+            fallbackPalette:fallbackPalette || [],
+            indexAxis: 'y',
+            limit:10,
+            showLabels:true,
+            labelType:"value",
+            asPercentage:true,
+        }    
       }
 }
 
