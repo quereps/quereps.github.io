@@ -318,17 +318,17 @@ const clearResults = function(){
 
         vpShowLoader();
 
-        APICallsModule.getGrId(lastItem.Id).then(async (photo_grIds)=>{
+        APICallsModule.getGrid(lastItem.Id).then(async (photo_grids)=>{
 
           interfaceModule.removeNotification();
 
 
           // Create an array of promises from getTags
 
-          console.log("photo_grIds: ",photo_grIds);
+          console.log("photo_grids: ",photo_grids);
 
-          let tagPromises = photo_grIds.map(async grId => {
-              const tags = await APICallsModule.getTags(grId.Id);
+          let tagPromises = photo_grids.map(async grid => {
+              const tags = await APICallsModule.getTags(grid.id);
               interfaceModule.removeNotification();
               extractIRData(tags);
           });
@@ -350,7 +350,7 @@ const clearResults = function(){
 
           
         }).catch(()=>{
-    interfaceModule.notification("error","No Photo GrId found.");
+    interfaceModule.notification("error","No Photo Grid found.");
    });
 
       }).catch(()=>{
