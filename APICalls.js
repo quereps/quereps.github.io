@@ -30,13 +30,13 @@ var APICallsModule = (function ($, ksAPI) {
 
 
 
-  var sendIRPhoto = async function(imageURL, companyId, photogrId){
+  var sendIRPhoto = async function(imageURL, companyId, photogrid){
     return new Promise(async (resolve, reject) => {
     
-      url = "https://api.gospotcheck.com/external/v2/companies/"+companyId+"/image_rec/photo_grIds";
+      url = "https://api.gospotcheck.com/external/v2/companies/"+companyId+"/image_rec/photo_grids";
       var body = {
           "image_url": imageURL, 
-          "photo_type_Id": photogrId
+          "photo_type_Id": photogrid
       }
 
       try {
@@ -202,50 +202,50 @@ var getLastMissionResponse = async function(placeId, campaignId, timeFrame) {
 
 
 
-var getGrId = async function(MRId){
+var getgrid = async function(MRId){
 
  // return new Promise(async (resolve, reject) => {
-    url = "https://api.gospotcheck.com/external/v2/companies/"+companyId+"/image_rec/photo_grIds?mission_response_Id="+MRId;
+    url = "https://api.gospotcheck.com/external/v2/companies/"+companyId+"/image_rec/photo_grids?mission_response_Id="+MRId;
     try {
       const data = await APICall("GET",url, tokenV2);
-      //const data = await APICall("POST",url, tokenV2,{"photo_grId_Id":GrIdId});
-      console.log("GrId Data received:", data);
+      //const data = await APICall("POST",url, tokenV2,{"photo_grid_Id":gridId});
+      console.log("grid Data received:", data);
 
-      if(data && data.photo_grIds && data.photo_grIds.length>0){
-
-        
+      if(data && data.photo_grids && data.photo_grids.length>0){
 
         
 
-        return data.photo_grIds;
+        
+
+        return data.photo_grids;
 
       }
       else{
-        console.log("No GrId found");
+        console.log("No grid found");
 
         notification("Loading","IR Processing.");
 
         setTimeout(function(){
-          getGrId(MRId)}, 5000);
+          getgrid(MRId)}, 5000);
         }
 
         
         
     } catch (error) {
-      console.error("Failed to get GrIds:", error);
+      console.error("Failed to get grids:", error);
       throw error;
     }
 
  //    });
 }
 
-var getTags = async function(GrIdId){
+var getTags = async function(gridId){
 
 //  return new Promise((resolve, reject) => {
 
-  console.log("Getting Tags:", companyId, GrIdId, tokenV2);
+  console.log("Getting Tags:", companyId, gridId, tokenV2);
 
-    const url = "https://api.gospotcheck.com/external/v2/companies/"+companyId+"/image_rec/tags?photo_grId_Id="+GrIdId+"&offset=0&limit=500";
+    const url = "https://api.gospotcheck.com/external/v2/companies/"+companyId+"/image_rec/tags?photo_grid_Id="+gridId+"&offset=0&limit=500";
     
     try{
     const data = await APICall("GET",url, tokenV2);
@@ -263,7 +263,7 @@ var getTags = async function(GrIdId){
         console.log("No Tags found");
         interfaceModule.notification("Loading", "Getting the tags.");
         await new Promise(res => setTimeout(res, 5000));
-        return await getTags(GrIdId);
+        return await getTags(gridId);
       }
 
       console.log("Tags Data received:", data);
@@ -299,11 +299,11 @@ var initAPI = function(settings){
     getMissionResponse: function (missionResponseId) {
       return getMissionResponse(missionResponseId);
     },
-    getTags: function (GrIdId) {
-      return getTags(GrIdId);
+    getTags: function (gridId) {
+      return getTags(gridId);
     },
-    getGrId: function (MRId) {
-      return getGrId(MRId);
+    getgrid: function (MRId) {
+      return getgrid(MRId);
     },
   }
 })(jQuery, ksAPI);
