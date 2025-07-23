@@ -8,9 +8,9 @@ var interfaceModule = (function ($, ksAPI) {
   let skuList = {};
   let settings = {};
 
-   let placeID = "";
-   let  companyID = "";
-   let missionID = "";
+   let placeId = "";
+   let  companyId = "";
+   let missionId = "";
 
 var removeNotification = function() {
   // Get the container element
@@ -49,10 +49,10 @@ var notification = function(type,message) {
   // Create a new div element for the error message
   var errorDiv = document.createElement('div');
   
-  // Assign a class for styling and identification
+  // Assign a class for styling and Identification
   errorDiv.className = 'notification '+type;
   
-  // Set the text content to the provided message
+  // Set the text content to the provIded message
   errorDiv.textContent = message;
   
   // Append the new error message to the container
@@ -90,7 +90,7 @@ var createTable = function(data, structure) {
 
 function JSONToHTMLTable(jsonArray, destination, settings) {
 
-    // Get the list of keys to exclude, defaulting to an empty array if not provided
+    // Get the list of keys to exclude, defaulting to an empty array if not provIded
     const excludeList = settings?.exclude || [];
 
     // Filter the input array to exclude objects whose *first key* is in the exclude list
@@ -123,7 +123,7 @@ function JSONToHTMLTable(jsonArray, destination, settings) {
 
     html += "</tbody></table>";
 
-    // If a destination is provided, inject the table HTML into the DOM
+    // If a destination is provIded, inject the table HTML into the DOM
     if(destination){
         jQuery("#" + destination + " .content").append(html);
     }
@@ -195,9 +195,9 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
 
     let parent = jQuery("#"+destination+" .canvasContainer")[0] || document.body;
     let canvas = document.createElement('canvas');
-    canvas.width = 250;
+    canvas.wIdth = 250;
     canvas.height = 250;
-    canvas.style.width = "100px";
+    canvas.style.wIdth = "100px";
     canvas.style.height = "100px";
     parent.appendChild(canvas);
     
@@ -230,18 +230,18 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
 
       chartOptions.scales = {
         x: {
-          display: false, // completely hides the x-axis (ticks, grid, and line)
-          grid: {
-            display: false, // hides grid lines
+          display: false, // completely hIdes the x-axis (ticks, grId, and line)
+          grId: {
+            display: false, // hIdes grId lines
             drawBorder: false
           },
           ticks: {
-            display: false // hides axis values (numbers/labels)
+            display: false // hIdes axis values (numbers/labels)
           }
         },
         y: {
           display: true,
-          grid: {
+          grId: {
             display: false,
             drawBorder: false
           },
@@ -290,16 +290,16 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
 }
 
 
-function createHTMLSection(id,name, imageURL,type, settings){
+function createHTMLSection(Id,name, imageURL,type, settings){
 
-        console.log("createHTMLSection: ",id,name);
+        console.log("createHTMLSection: ",Id,name);
 
         let classToAdd="";
         let style="";
         let background = settings?.background ? "background:"+settings?.background+";" : "";
         style += background;
-        let width = settings?.width ? "width:"+settings?.width+";" : "";
-        style += width;
+        let wIdth = settings?.wIdth ? "wIdth:"+settings?.wIdth+";" : "";
+        style += wIdth;
         let color = settings?.color ? "color:"+settings?.color+";" : "";
         style += color;
         let destination = settings?.destination || "table-container";
@@ -325,8 +325,8 @@ function createHTMLSection(id,name, imageURL,type, settings){
        
         
         
-        var Container = jQuery('<div style="'+style+'" class="container '+classToAdd+' '+type+'" id="Container'+id+'">'+headerHTML+'<div class="content"></div></div>');
-        //var Container = jQuery('<div class="container '+type+'" id="Container'+id+'"><h3><img height="40" src="'+imageURL+'"/>'+title+'</h3></div>');
+        var Container = jQuery('<div style="'+style+'" class="container '+classToAdd+' '+type+'" Id="Container'+Id+'">'+headerHTML+'<div class="content"></div></div>');
+        //var Container = jQuery('<div class="container '+type+'" Id="Container'+Id+'"><h3><img height="40" src="'+imageURL+'"/>'+title+'</h3></div>');
         jQuery('#'+destination).append(Container);
 
 
@@ -350,7 +350,7 @@ function graph(category, asPercentage = false, filter = null) {
 
     //console.log("current: ", current);
     
-    // Apply filter if provided
+    // Apply filter if provIded
     if (filter && current[filter.property] !== filter.value) {
       console.log("checking filter");
       continue; // Skip this SKU if it doesn't match the filter
@@ -401,7 +401,7 @@ function graph(category, asPercentage = false, filter = null) {
           // Skip if this filter is in settings.exclude
         if (settings?.exclude && settings?.exclude.includes(filter)) continue;
 
-          var button = jQuery('<div id="filter'+filter+'" class="filter '+filter+'">'+filter+'</div>');
+          var button = jQuery('<div Id="filter'+filter+'" class="filter '+filter+'">'+filter+'</div>');
           jQuery('#'+destination+" .content").append(button);
 
       }
@@ -426,7 +426,7 @@ var POG = function(category,destination){
 
         console.log(currentSKU);
 
-        var SKUElement = jQuery('<div style="width:'+Math.round(currentSKU.width)+'em;height:'+Math.round(currentSKU.height)+'em;" class="sku '+currentSKU.type+' '+currentSKU[destination]+' sku_'+sku+'"></div>');
+        var SKUElement = jQuery('<div style="wIdth:'+Math.round(currentSKU.wIdth)+'em;height:'+Math.round(currentSKU.height)+'em;" class="sku '+currentSKU.type+' '+currentSKU[destination]+' sku_'+sku+'"></div>');
         jQuery('#'+destination+" .pog .shelf_"+shelf).append(SKUElement);
 
       }
@@ -478,7 +478,7 @@ var POG = function(category,destination){
     let subtitleHTML = subtitle ? "<h2>"+subtitle+"</h2>" : ""; 
     let descHTML = description ? "<p class='description'>"+description+"</p>" : ""; 
     let coloredHTML = number ? "<div class='colored'>"+number+"</div>" : ""; 
-    let barcodeHTML = barcode ? "<img class='barcode' id='barcode"+barcode+"' src='' />" : "";
+    let barcodeHTML = barcode ? "<img class='barcode' Id='barcode"+barcode+"' src='' />" : "";
     let packshot = barcode ? "<div class='packshot pshot"+barcode+"''></div>" : "";
 
     let titleGroupHTML = "<div class='titleGroupHTML'>"+titleHTML+barcodeHTML+descHTML+coloredHTML+"</div>";
@@ -530,7 +530,7 @@ var POG = function(category,destination){
 
 
     if(target && icon){
-      let actionHTML = "<a class='action' href='"+target+"'><img width='40' src='"+icon+"'/></a>";
+      let actionHTML = "<a class='action' href='"+target+"'><img wIdth='40' src='"+icon+"'/></a>";
       actionContainer = actionContainer+actionHTML;
     }
 
@@ -538,7 +538,7 @@ var POG = function(category,destination){
 
     htmlContent = headerHTML+resultContainerHTML+actionContainer;
   
-    const HTMLOutput = "<div class='SKULabel' id='fc"+barcode+"'>"+htmlContent+"</div>";
+    const HTMLOutput = "<div class='SKULabel' Id='fc"+barcode+"'>"+htmlContent+"</div>";
 
     console.log(HTMLOutput);
     return HTMLOutput;
@@ -581,7 +581,7 @@ function barcodeGenerate(code) {
   JsBarcode("#barcode" + code, code, {
     format,
     lineColor: "#000",
-    width: 1,
+    wIdth: 1,
     height: 15,
     displayValue: true,
     margin: 0,
@@ -603,7 +603,7 @@ const link1 = document.createElement("link");
 
 
 //https://unpkg.com/leaflet/dist/leaflet.js
-  //<div id="map" style="height: 400px;"></div>
+  //<div Id="map" style="height: 400px;"></div>
   const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
 
   console.log("creating map...");
@@ -642,11 +642,11 @@ const link1 = document.createElement("link");
 
 
 
-const placeSection = function(placeID,options,destination){
+const placeSection = function(placeId,options,destination){
 
-  console.log("placeSection: ", placeID);
+  console.log("placeSection: ", placeId);
 
-  APICallsModule.getPlaceData(placeID).then((placeData)=>{
+  APICallsModule.getPlaceData(placeId).then((placeData)=>{
 
   let tableElement = createTable(placeData, {
         "Name":placeData.name,
@@ -657,7 +657,7 @@ const placeSection = function(placeID,options,destination){
 
       if(options?.map==true){
 
-          jQuery('#'+destination+" .content").append('<div id="map" style="height: 250px;width:50%;"></div>');
+          jQuery('#'+destination+" .content").append('<div Id="map" style="height: 250px;wIdth:50%;"></div>');
           createMap(10,placeData.address+" "+placeData.postal_code+" "+placeData.city);
       }
 
@@ -667,10 +667,10 @@ const placeSection = function(placeID,options,destination){
 
 
 
-const MissionResponseSection = function(placeID,missionID,destination){
+const MissionResponseSection = function(placeId,missionId,destination){
 
 
-      APICallsModule.getLastMissionResponse(placeID,missionID,600000).then((missionData)=>{
+      APICallsModule.getLastMissionResponse(placeId,missionId,600000).then((missionData)=>{
 
         let tableElement = createTable(missionData, {
           "Completed":moment(missionData.completed_at).format('DD/MM/YYYY')+" ("+moment(missionData.completed_at).fromNow()+")",
@@ -680,25 +680,25 @@ const MissionResponseSection = function(placeID,missionID,destination){
         jQuery('#'+destination+" .content").append(tableElement);
 
         let buttons = `
-          <button id="prevMRID" type="button" onclick="APIModule.ChangeMissionResponse(-1)">Previous</button>
-          <button id="nextMRID" type="button" onclick="APIModule.ChangeMissionResponse(1)">Next</button>
+          <button Id="prevMRId" type="button" onclick="APIModule.ChangeMissionResponse(-1)">Previous</button>
+          <button Id="nextMRId" type="button" onclick="APIModule.ChangeMissionResponse(1)">Next</button>
         `;
         jQuery('#' + destination + " .content").append(buttons);
-        jQuery('#prevMRID').prop('disabled', true);
+        jQuery('#prevMRId').prop('disabled', true);
 
 
         if(settings.currentMissionResponses+1==settings.missionResponses.length){
-              jQuery('#nextMRID').prop('disabled', true);
+              jQuery('#nextMRId').prop('disabled', true);
             }
             else{
-              jQuery('#nextMRID').prop('disabled', false);
+              jQuery('#nextMRId').prop('disabled', false);
             }
 
             if(settings.currentMissionResponses==0){
-              jQuery('#prevMRID').prop('disabled', true);
+              jQuery('#prevMRId').prop('disabled', true);
             }
             else{
-              jQuery('#prevMRID').prop('disabled', false);
+              jQuery('#prevMRId').prop('disabled', false);
             }
   });
 }
@@ -717,9 +717,9 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
   sections = sectionsImport;
   settings = settingsImport;
 
-  companyID = settings.companyID;
-  placeID = settings.placeID;
-  missionID = settings.missionID;
+  companyId = settings.companyId;
+  placeId = settings.placeId;
+  missionId = settings.missionId;
   report = settings.report;
 
   console.log("report: ",report);
@@ -729,16 +729,16 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
     for(var element in report){
 
       var current = report[element];
-      var containerID = "Container"+element;
+      var containerId = "Container"+element;
 
       createHTMLSection(element,current?.title,current?.logo,current?.type,current?.options);
 
       if(current.type=="place"){
-        placeSection(placeID,current.options,containerID);
+        placeSection(placeId,current.options,containerId);
       }
 
       if(current.type=="response"){
-        MissionResponseSection(placeID,missionID,containerID);
+        MissionResponseSection(placeId,missionId,containerId);
       }
 
 
@@ -747,12 +747,12 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
         console.log("graph dimension: ", current.dimension);
         console.log("first SKU keys: ", Object.keys(Object.values(skuList)[0]));
 
-        numberTile(graph(current.dimension,current?.options?.asPercentage),containerID,current.options);
+        numberTile(graph(current.dimension,current?.options?.asPercentage),containerId,current.options);
       }
 
 
       if(current.type=="sections"){
-        showSections(sections,containerID,current.options);
+        showSections(sections,containerId,current.options);
       }
 
        if(current.type=="graph"){
@@ -760,24 +760,24 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
         let data = graph(current.dimension,current?.settings?.asPercentage,current?.settings?.filter);
        
         if(Object.keys(data).length>0){
-          JSONToGraph(data, current.dimension ,current.graphType, containerID, current.settings);
+          JSONToGraph(data, current.dimension ,current.graphType, containerId, current.settings);
         } else{
-          jQuery("#"+containerID).hide();
+          jQuery("#"+containerId).hIde();
         }
         
       }
  
       if(current.type=="skuList"){
-        JSONToHTMLTable(rankObjects(skuList, "facings", current.columns), containerID, current.settings) 
+        JSONToHTMLTable(rankObjects(skuList, "facings", current.columns), containerId, current.settings) 
       }
 
       if(current.type=="pog"){
-        POG(current.category,containerID);
+        POG(current.category,containerId);
       }
 
     }
 
-    vpHideLoader();
+    vpHIdeLoader();
 }
 
 
@@ -799,8 +799,8 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
     barcodeGenerate: function (code) {
       barcodeGenerate(code);
     },
-    createHTMLSection: function (id,name, imageURL,type, settings) {
-      createHTMLSection(id,name, imageURL,type, settings);
+    createHTMLSection: function (Id,name, imageURL,type, settings) {
+      createHTMLSection(Id,name, imageURL,type, settings);
     },
     createTable: function (data, structure) {
       createTable(data, structure);
