@@ -191,12 +191,6 @@ const clearResults = function(){
       vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
       
       savedResponseData = lastItem;
-      
-
-      if(features.images){
-          //getImages(lastItem);
-      }
-
 
 
 
@@ -308,11 +302,6 @@ const clearResults = function(){
       
       savedResponseData = lastItem;
       
-
-      if(features.images){
-          //getImages(lastItem);
-      }
-
 
 
 
