@@ -5,7 +5,7 @@ var APICallsModule = (function ($, ksAPI) {
 
   let tokenV1 = "";
   let tokenV2 = "";
-  let companyId = "";
+  let companyID = "";
 
   var APICall = async function (method, url, token, body) {
     return fetch(url, {
@@ -30,13 +30,13 @@ var APICallsModule = (function ($, ksAPI) {
 
 
 
-  var sendIRPhoto = async function(imageURL, companyId, photogrid){
+  var sendIRPhoto = async function(imageURL, companyID, photogrid){
     return new Promise(async (resolve, reject) => {
     
-      url = "https://api.gospotcheck.com/external/v2/companies/"+companyId+"/image_rec/photo_grids";
+      url = "https://api.gospotcheck.com/external/v2/companies/"+companyID+"/image_rec/photo_grids";
       var body = {
           "image_url": imageURL, 
-          "photo_type_Id": photogrid
+          "photo_type_id": photogrid
       }
 
       try {
@@ -55,16 +55,16 @@ var APICallsModule = (function ($, ksAPI) {
   }
 
 
-var getPlaceData = async function(placeId){
+var getPlaceData = async function(placeID){
 
     //return new Promise(async (resolve, reject) => {
 
-      console.log("placeId: ",placeId);
+      console.log("placeID: ",placeID);
 
       
 
       try {
-        const url = "https://admin.gospotcheck.com/external/v1/places/"+placeId;
+        const url = "https://admin.gospotcheck.com/external/v1/places/"+placeID;
         const data = await APICall("GET",url, tokenV1);
 
         console.log("Place Data received:", data);
@@ -82,12 +82,12 @@ var getPlaceData = async function(placeId){
 
 
 
-var getMissionResponse = async function(missionResponseId){
+var getMissionResponse = async function(missionResponseID){
 
   //  return new Promise(async (resolve, reject) => {
 
-    //url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_Id.eq="+campaingnId+"&place_Id.eq="+placeId+"&completed_at.gt="+getTimeStamps(timeFrame).back+"&include=user,task_responses";
-    url = "https://admin.gospotcheck.com//external/v1/mission_responses/"+missionResponseId+"&include=user";
+    //url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_id.eq="+campaingnID+"&place_id.eq="+placeID+"&completed_at.gt="+getTimeStamps(timeFrame).back+"&include=user,task_responses";
+    url = "https://admin.gospotcheck.com//external/v1/mission_responses/"+missionResponseID+"&include=user";
 
 
     try { 
@@ -110,7 +110,7 @@ var getMissionResponse = async function(missionResponseId){
         notification("error","No mission responses found in the last "+timeFrame+" minute !! Checking again in 5 seconds.")
         
         setTimeout(function() {
-          getMissionResponses(placeId, campaignId, timeFrame, limit).then(resolve).catch(reject);
+          getMissionResponses(placeID, campaignID, timeFrame, limit).then(resolve).catch(reject);
         }, 5000);
 
     }
@@ -124,12 +124,12 @@ var getMissionResponse = async function(missionResponseId){
 
 
 
-var getMissionResponses = async function(placeId,campaignId,timeFrame, limit){
+var getMissionResponses = async function(placeID,campaignID,timeFrame, limit){
 
   //  return new Promise(async (resolve, reject) => {
 
-    //url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_Id.eq="+campaingnId+"&place_Id.eq="+placeId+"&completed_at.gt="+getTimeStamps(timeFrame).back+"&include=user,task_responses";
-    url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_Id.eq="+campaignId+"&place_Id.eq="+placeId+"&completed_at.gt="+getTimeStamps(timeFrame).back+"&include=user";
+    //url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_id.eq="+campaingnID+"&place_id.eq="+placeID+"&completed_at.gt="+getTimeStamps(timeFrame).back+"&include=user,task_responses";
+    url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_id.eq="+campaignID+"&place_id.eq="+placeID+"&completed_at.gt="+getTimeStamps(timeFrame).back+"&include=user";
 
 
     try {
@@ -152,7 +152,7 @@ var getMissionResponses = async function(placeId,campaignId,timeFrame, limit){
         notification("error","No mission responses found in the last "+timeFrame+" minute !! Checking again in 5 seconds.")
         
         setTimeout(function() {
-          getMissionResponses(placeId, campaignId, timeFrame, limit).then(resolve).catch(reject);
+          getMissionResponses(placeID, campaignID, timeFrame, limit).then(resolve).catch(reject);
         }, 5000);
 
     }
@@ -164,13 +164,13 @@ var getMissionResponses = async function(placeId,campaignId,timeFrame, limit){
 }
 
 
-var getLastMissionResponse = async function(placeId, campaignId, timeFrame) {
+var getLastMissionResponse = async function(placeID, campaignID, timeFrame) {
 
-  console.log(placeId,campaignId,timeFrame);
+  console.log(placeID,campaignID,timeFrame);
 
  // return new Promise(async (resolve, reject) => {
 
-    const url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_Id.eq=" + campaignId + "&place_Id.eq=" + placeId + "&completed_at.gt=" + getTimeStamps(timeFrame).back + "&include=user";
+    const url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_id.eq=" + campaignID + "&place_id.eq=" + placeID + "&completed_at.gt=" + getTimeStamps(timeFrame).back + "&include=user";
 
     try {
       const data = await APICall("GET", url, tokenV1);
@@ -188,7 +188,7 @@ var getLastMissionResponse = async function(placeId, campaignId, timeFrame) {
         console.log("No mission responses found");
         notification("error", "No mission responses found in the last " + timeFrame + " minute !! Checking again in 5 seconds.");
         setTimeout(function() {
-          getLastMissionResponse(placeId, campaignId, timeFrame);
+          getLastMissionResponse(placeID, campaignID, timeFrame);
         }, 5000);
       }
 
@@ -202,14 +202,14 @@ var getLastMissionResponse = async function(placeId, campaignId, timeFrame) {
 
 
 
-var getgrid = async function(MRId){
+var getGrid = async function(MRID){
 
  // return new Promise(async (resolve, reject) => {
-    url = "https://api.gospotcheck.com/external/v2/companies/"+companyId+"/image_rec/photo_grids?mission_response_Id="+MRId;
+    url = "https://api.gospotcheck.com/external/v2/companies/"+companyID+"/image_rec/photo_grids?mission_response_id="+MRID;
     try {
       const data = await APICall("GET",url, tokenV2);
-      //const data = await APICall("POST",url, tokenV2,{"photo_grid_Id":gridId});
-      console.log("grid Data received:", data);
+      //const data = await APICall("POST",url, tokenV2,{"photo_grid_id":GridID});
+      console.log("Grid Data received:", data);
 
       if(data && data.photo_grids && data.photo_grids.length>0){
 
@@ -221,31 +221,31 @@ var getgrid = async function(MRId){
 
       }
       else{
-        console.log("No grid found");
+        console.log("No Grid found");
 
         notification("Loading","IR Processing.");
 
         setTimeout(function(){
-          getgrid(MRId)}, 5000);
+          getGrid(MRID)}, 5000);
         }
 
         
         
     } catch (error) {
-      console.error("Failed to get grids:", error);
+      console.error("Failed to get Grids:", error);
       throw error;
     }
 
  //    });
 }
 
-var getTags = async function(gridId){
+var getTags = async function(GridID){
 
 //  return new Promise((resolve, reject) => {
 
-  console.log("Getting Tags:", companyId, gridId, tokenV2);
+  console.log("Getting Tags:", companyID, GridID, tokenV2);
 
-    const url = "https://api.gospotcheck.com/external/v2/companies/"+companyId+"/image_rec/tags?photo_grid_Id="+gridId+"&offset=0&limit=500";
+    const url = "https://api.gospotcheck.com/external/v2/companies/"+companyID+"/image_rec/tags?photo_grid_id="+GridID+"&offset=0&limit=500";
     
     try{
     const data = await APICall("GET",url, tokenV2);
@@ -263,7 +263,7 @@ var getTags = async function(gridId){
         console.log("No Tags found");
         interfaceModule.notification("Loading", "Getting the tags.");
         await new Promise(res => setTimeout(res, 5000));
-        return await getTags(gridId);
+        return await getTags(GridID);
       }
 
       console.log("Tags Data received:", data);
@@ -279,7 +279,7 @@ var getTags = async function(gridId){
 var initAPI = function(settings){
   tokenV1 = settings.tokenV1;
   tokenV2 = settings.tokenV2;
-  companyId = settings.companyId;
+  companyID = settings.companyID;
 }
 
 
@@ -287,23 +287,23 @@ var initAPI = function(settings){
     Run: function (settings) {
       initAPI(settings);
     },
-    getPlaceData: function (placeId) {
-      return getPlaceData(placeId);
+    getPlaceData: function (placeID) {
+      return getPlaceData(placeID);
     },
-    getLastMissionResponse: function (placeId, campaignId, timeFrame) {
-      return getLastMissionResponse(placeId, campaignId, timeFrame);
+    getLastMissionResponse: function (placeID, campaignID, timeFrame) {
+      return getLastMissionResponse(placeID, campaignID, timeFrame);
     },
-    getMissionResponses: function (placeId, campaignId, timeFrame,limit) {
-      return getMissionResponses(placeId, campaignId, timeFrame,limit);
+    getMissionResponses: function (placeID, campaignID, timeFrame,limit) {
+      return getMissionResponses(placeID, campaignID, timeFrame,limit);
     },
-    getMissionResponse: function (missionResponseId) {
-      return getMissionResponse(missionResponseId);
+    getMissionResponse: function (missionResponseID) {
+      return getMissionResponse(missionResponseID);
     },
-    getTags: function (gridId) {
-      return getTags(gridId);
+    getTags: function (GridID) {
+      return getTags(GridID);
     },
-    getgrid: function (MRId) {
-      return getgrid(MRId);
+    getGrid: function (MRID) {
+      return getGrid(MRID);
     },
   }
 })(jQuery, ksAPI);
