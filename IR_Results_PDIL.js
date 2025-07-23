@@ -280,7 +280,7 @@ const clearResults = function(){
   else{
 
 
-
+    console.log("placeID: ",placeID);
 
    APICallsModule.getPlaceData(placeID).then((placeData)=>{
 
