@@ -344,8 +344,9 @@ const clearResults = function(){
           interfaceModule.createReport(settings, skuList, sections);
 
           
-        }).catch(()=>{
+        }).catch((err)=>{
     interfaceModule.notification("error","No Photo Grid found.");
+    console.error(err);
    });
 
       }).catch((err)=>{
@@ -357,8 +358,9 @@ const clearResults = function(){
 
 
 
-   }).catch(()=>{
+   }).catch((err)=>{
     interfaceModule.notification("error","Place not found.");
+    console.error(err);
    });
    
   }
