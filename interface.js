@@ -25,7 +25,7 @@ const reportTemplates = {
         columns:["upc", "brand","name", "facings"],
         settings:{
             legend:false,
-          exclude:["undefined","Unrecognized","Empty Facing"]
+          exclude:["undefined","Unrecognized","Empty Facing"],
         } 
       },
       supplierShare:{
@@ -41,7 +41,7 @@ const reportTemplates = {
           fallbackPalette:fallbackPalette || [],
           showLabels:true,
           labelType:"label",
-          asPercentage:true
+          asPercentage:true,
         }    
       },
         brandShare:{
@@ -62,7 +62,7 @@ const reportTemplates = {
             asPercentage:true,
         }    
       }
-}
+};
 
 
 var interfaceModule = (function ($, ksAPI) {
