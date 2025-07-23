@@ -290,7 +290,7 @@ const clearResults = function(){
 
 
     savedPlaceData = placeData;
-
+    console.log("savedPlaceData: ",savedPlaceData);
     
      APICallsModule.getMissionResponses(placeId,missionId,600000000,10).then((lastItems)=>{
   //      console.log("lastItems: ",lastItems);
