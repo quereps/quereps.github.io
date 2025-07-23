@@ -98,7 +98,7 @@ var molToMatrix = function(mapping){
       }
 
     }
-    vpHideLoader();
+    vpHIdeLoader();
     jQuery(".HBUTTONS").show();
   } , 1500); 
 }
