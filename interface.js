@@ -777,7 +777,7 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
 
     }
 
-    vpHIdeLoader();
+    vpHideLoader();
 }
 
 
