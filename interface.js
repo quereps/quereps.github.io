@@ -1,5 +1,15 @@
 
-
+const reportTemplates = {
+  placeData: {
+        type:"place",
+        title:"Place",
+        logo:"https://app.form.com/fs/v1/h/XPpqtoQBS7264PDKTZLfkykHxNDvIZMcjR5D4recFyk/277606.png",
+          options:{
+            width:"40%",
+            destination:"intro",
+          }
+      }
+}
 
 
 var interfaceModule = (function ($, ksAPI) {
@@ -784,7 +794,9 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
 }
 
 
-
+function loadReportTemplates(){
+  return reportTemplates;
+}
 
  return {
     createReport: function (settings,skuList,sections) {  
@@ -808,5 +820,8 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
     createTable: function (data, structure) {
       createTable(data, structure);
     },
+    loadReportTemplates: function(){
+      return loadReportTemplates();
+    }
   }
 })(jQuery, ksAPI);
