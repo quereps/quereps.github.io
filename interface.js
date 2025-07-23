@@ -8,6 +8,15 @@ const reportTemplates = {
             width:"40%",
             destination:"intro",
           }
+      },
+      responseData: {
+        type:"response",
+        title:"Response",
+        logo:"https://app.form.com/fs/v1/h/ikwVdohQfA6RF1rXRaZ_5cb94aHsGa9pocnQjSALzbc/277592.png",
+          options:{
+            width:"40%",
+            destination:"intro",
+        }
       }
 }
 
