@@ -61,7 +61,7 @@ var getPlaceData = async function(placeId){
 
       console.log("placeId: ",placeId);
 
-      
+      console.log("v1",tokenV1);
 
       try {
         const url = "https://admin.gospotcheck.com/external/v1/places/"+placeId;
