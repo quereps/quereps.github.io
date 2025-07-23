@@ -260,7 +260,7 @@ const clearResults = function(){
 
    APICallsModule.Run({
     companyID:companyID,
-    placeID:placeID,
+    //placeID:placeID,
     tokenV1:tokenV1,
     tokenV2:tokenV2
    });
