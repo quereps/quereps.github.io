@@ -350,7 +350,7 @@ const clearResults = function(){
 
       }).catch((err)=>{
     interfaceModule.notification("error","No mission responses found.");
-    error.log(err);
+    console.error(err);
    });
 
 
