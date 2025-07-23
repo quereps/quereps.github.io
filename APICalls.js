@@ -5,7 +5,7 @@ var APICallsModule = (function ($, ksAPI) {
 
   let tokenV1 = "";
   let tokenV2 = "";
-  let companyID = "";
+  let companyId = "";
 
   var APICall = async function (method, url, token, body) {
     return fetch(url, {
@@ -30,10 +30,10 @@ var APICallsModule = (function ($, ksAPI) {
 
 
 
-  var sendIRPhoto = async function(imageURL, companyID, photogrid){
+  var sendIRPhoto = async function(imageURL, companyId, photogrid){
     return new Promise(async (resolve, reject) => {
     
-      url = "https://api.gospotcheck.com/external/v2/companies/"+companyID+"/image_rec/photo_grids";
+      url = "https://api.gospotcheck.com/external/v2/companies/"+companyId+"/image_rec/photo_grids";
       var body = {
           "image_url": imageURL, 
           "photo_type_id": photogrid
@@ -205,7 +205,7 @@ var getLastMissionResponse = async function(placeId, campaignId, timeFrame) {
 var getGrid = async function(MRID){
 
  // return new Promise(async (resolve, reject) => {
-    url = "https://api.gospotcheck.com/external/v2/companies/"+companyID+"/image_rec/photo_grids?mission_response_id="+MRID;
+    url = "https://api.gospotcheck.com/external/v2/companies/"+companyId+"/image_rec/photo_grids?mission_response_id="+MRID;
     try {
       const data = await APICall("GET",url, tokenV2);
       //const data = await APICall("POST",url, tokenV2,{"photo_grid_id":GridId});
@@ -243,9 +243,9 @@ var getTags = async function(GridId){
 
 //  return new Promise((resolve, reject) => {
 
-  console.log("Getting Tags:", companyID, GridId, tokenV2);
+  console.log("Getting Tags:", companyId, GridId, tokenV2);
 
-    const url = "https://api.gospotcheck.com/external/v2/companies/"+companyID+"/image_rec/tags?photo_grid_id="+GridId+"&offset=0&limit=500";
+    const url = "https://api.gospotcheck.com/external/v2/companies/"+companyId+"/image_rec/tags?photo_grid_id="+GridId+"&offset=0&limit=500";
     
     try{
     const data = await APICall("GET",url, tokenV2);
@@ -279,7 +279,7 @@ var getTags = async function(GridId){
 var initAPI = function(settings){
   tokenV1 = settings.tokenV1;
   tokenV2 = settings.tokenV2;
-  companyID = settings.companyID;
+  companyId = settings.companyId;
 }
 
 
