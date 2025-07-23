@@ -340,11 +340,6 @@ const clearResults = function(){
             console.log("Specific Function Detected");
             settings.specificFunction(skuList,settings);
           }
-          
-          
-
-          console.log(skuList);
-          /*Coke Demo specifics END*/
 
           interfaceModule.createReport(settings, skuList, sections);
 
