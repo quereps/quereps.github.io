@@ -212,7 +212,7 @@ const clearResults = function(){
           console.log("photo_grids: ",photo_grids);
 
           let tagPromises = photo_grids.map(async grid => {
-              const tags = await APICallsModule.getTags(grId.Id);
+              const tags = await APICallsModule.getTags(grid.id);
               interfaceModule.removeNotification();
               extractIRData(tags);
           });
