@@ -1,4 +1,45 @@
 
+const legendColors = {
+  "Coca": "#e7151e",
+  "Red Bull": "#009ede",
+  "Fanta": "#f87f00",
+  "Monster": "#9ac435",
+  "Lucozade": "#A66EFF",
+  "Pepsi": "#0e0f94",
+  "7Up": "#35A8F4",
+  "Oasis": "#F05A7A",
+  "Dr Pepper": "#920528",
+  "Ribena": "#F8CE5C",
+  "Glaceau": "#42B9BD",
+  "Unrecognized":"#cccccc",
+  "Empty":"#cccccc",
+};
+
+const fallbackPalette = [
+  '#007dc6', // Kroger Blue (Primary)
+  '#4ca0e1', // Light Blue
+  '#002f6c', // Dark Blue (Kroger corporate palette)
+  '#7ec4f7', // Pastel Blue
+  '#52565e', // Kroger Grey (neutral for contrast)
+  '#e3e9ef', // Very Light Blue-Grey
+  '#49b28b', // Fresh Green (for positive/OK status)
+  '#f7d354', // Soft Yellow (for warning/neutral)
+  '#f78c40', // Muted Orange (for secondary highlight)
+  '#cfcfcf', // Light Grey (for background or filler)
+  '#7356a6', // Soft Violet (gentle accent, not too prominent)
+  '#d46a6a', // Soft Red (for negative/error)
+  '#8fbcbb', // Gentle Teal (adds variety, still cool palette)
+  '#ffd8b1', // Peach (subtle, low priority)
+  '#7e8f7c', // Muted Olive (for very low emphasis)
+  '#b0c4de', // Pale Blue (soft for large data sets)
+  '#dee5ee', // Lightest Blue-Grey (almost white)
+  '#f3e7f3', // Very Light Lilac (soft filler)
+  '#808080', // Medium Grey (classic, good for "other" or nulls)
+  '#444444'  // Dark Grey (for outlines/contrast)
+];
+
+
+
 const reportTemplates = {
   placeData: {
         type:"place",
