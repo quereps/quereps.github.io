@@ -195,9 +195,9 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
 
     let parent = jQuery("#"+destination+" .canvasContainer")[0] || document.body;
     let canvas = document.createElement('canvas');
-    canvas.wIdth = 250;
+    canvas.width = 250;
     canvas.height = 250;
-    canvas.style.wIdth = "100px";
+    canvas.style.width = "100px";
     canvas.style.height = "100px";
     parent.appendChild(canvas);
     
@@ -231,7 +231,7 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
       chartOptions.scales = {
         x: {
           display: false, // completely hIdes the x-axis (ticks, grId, and line)
-          grId: {
+          grid: {
             display: false, // hIdes grId lines
             drawBorder: false
           },
@@ -241,7 +241,7 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
         },
         y: {
           display: true,
-          grId: {
+          grid: {
             display: false,
             drawBorder: false
           },
@@ -290,16 +290,16 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
 }
 
 
-function createHTMLSection(Id,name, imageURL,type, settings){
+function createHTMLSection(id,name, imageURL,type, settings){
 
-        console.log("createHTMLSection: ",Id,name);
+        console.log("createHTMLSection: ",id,name);
 
         let classToAdd="";
         let style="";
         let background = settings?.background ? "background:"+settings?.background+";" : "";
         style += background;
-        let wIdth = settings?.wIdth ? "wIdth:"+settings?.wIdth+";" : "";
-        style += wIdth;
+        let width = settings?.width ? "wIdth:"+settings?.width+";" : "";
+        style += width;
         let color = settings?.color ? "color:"+settings?.color+";" : "";
         style += color;
         let destination = settings?.destination || "table-container";
@@ -325,7 +325,7 @@ function createHTMLSection(Id,name, imageURL,type, settings){
        
         
         
-        var Container = jQuery('<div style="'+style+'" class="container '+classToAdd+' '+type+'" Id="Container'+Id+'">'+headerHTML+'<div class="content"></div></div>');
+        var Container = jQuery('<div style="'+style+'" class="container '+classToAdd+' '+type+'" id="Container'+id+'">'+headerHTML+'<div class="content"></div></div>');
         //var Container = jQuery('<div class="container '+type+'" Id="Container'+Id+'"><h3><img height="40" src="'+imageURL+'"/>'+title+'</h3></div>');
         jQuery('#'+destination).append(Container);
 
@@ -401,7 +401,7 @@ function graph(category, asPercentage = false, filter = null) {
           // Skip if this filter is in settings.exclude
         if (settings?.exclude && settings?.exclude.includes(filter)) continue;
 
-          var button = jQuery('<div Id="filter'+filter+'" class="filter '+filter+'">'+filter+'</div>');
+          var button = jQuery('<div id="filter'+filter+'" class="filter '+filter+'">'+filter+'</div>');
           jQuery('#'+destination+" .content").append(button);
 
       }
@@ -426,7 +426,7 @@ var POG = function(category,destination){
 
         console.log(currentSKU);
 
-        var SKUElement = jQuery('<div style="wIdth:'+Math.round(currentSKU.wIdth)+'em;height:'+Math.round(currentSKU.height)+'em;" class="sku '+currentSKU.type+' '+currentSKU[destination]+' sku_'+sku+'"></div>');
+        var SKUElement = jQuery('<div style="width:'+Math.round(currentSKU.width)+'em;height:'+Math.round(currentSKU.height)+'em;" class="sku '+currentSKU.type+' '+currentSKU[destination]+' sku_'+sku+'"></div>');
         jQuery('#'+destination+" .pog .shelf_"+shelf).append(SKUElement);
 
       }
@@ -478,7 +478,7 @@ var POG = function(category,destination){
     let subtitleHTML = subtitle ? "<h2>"+subtitle+"</h2>" : ""; 
     let descHTML = description ? "<p class='description'>"+description+"</p>" : ""; 
     let coloredHTML = number ? "<div class='colored'>"+number+"</div>" : ""; 
-    let barcodeHTML = barcode ? "<img class='barcode' Id='barcode"+barcode+"' src='' />" : "";
+    let barcodeHTML = barcode ? "<img class='barcode' id='barcode"+barcode+"' src='' />" : "";
     let packshot = barcode ? "<div class='packshot pshot"+barcode+"''></div>" : "";
 
     let titleGroupHTML = "<div class='titleGroupHTML'>"+titleHTML+barcodeHTML+descHTML+coloredHTML+"</div>";
@@ -530,7 +530,7 @@ var POG = function(category,destination){
 
 
     if(target && icon){
-      let actionHTML = "<a class='action' href='"+target+"'><img wIdth='40' src='"+icon+"'/></a>";
+      let actionHTML = "<a class='action' href='"+target+"'><img width='40' src='"+icon+"'/></a>";
       actionContainer = actionContainer+actionHTML;
     }
 
@@ -538,7 +538,7 @@ var POG = function(category,destination){
 
     htmlContent = headerHTML+resultContainerHTML+actionContainer;
   
-    const HTMLOutput = "<div class='SKULabel' Id='fc"+barcode+"'>"+htmlContent+"</div>";
+    const HTMLOutput = "<div class='SKULabel' id='fc"+barcode+"'>"+htmlContent+"</div>";
 
     console.log(HTMLOutput);
     return HTMLOutput;
@@ -581,7 +581,7 @@ function barcodeGenerate(code) {
   JsBarcode("#barcode" + code, code, {
     format,
     lineColor: "#000",
-    wIdth: 1,
+    width: 1,
     height: 15,
     displayValue: true,
     margin: 0,
@@ -657,7 +657,7 @@ const placeSection = function(placeId,options,destination){
 
       if(options?.map==true){
 
-          jQuery('#'+destination+" .content").append('<div Id="map" style="height: 250px;wIdth:50%;"></div>');
+          jQuery('#'+destination+" .content").append('<div id="map" style="height: 250px;width:50%;"></div>');
           createMap(10,placeData.address+" "+placeData.postal_code+" "+placeData.city);
       }
 
@@ -680,8 +680,8 @@ const MissionResponseSection = function(placeId,missionId,destination){
         jQuery('#'+destination+" .content").append(tableElement);
 
         let buttons = `
-          <button Id="prevMRID" type="button" onclick="APIModule.ChangeMissionResponse(-1)">Previous</button>
-          <button Id="nextMRID" type="button" onclick="APIModule.ChangeMissionResponse(1)">Next</button>
+          <button id="prevMRID" type="button" onclick="APIModule.ChangeMissionResponse(-1)">Previous</button>
+          <button id="nextMRID" type="button" onclick="APIModule.ChangeMissionResponse(1)">Next</button>
         `;
         jQuery('#' + destination + " .content").append(buttons);
         jQuery('#prevMRID').prop('disabled', true);
@@ -762,7 +762,7 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
         if(Object.keys(data).length>0){
           JSONToGraph(data, current.dimension ,current.graphType, containerId, current.settings);
         } else{
-          jQuery("#"+containerId).hIde();
+          jQuery("#"+containerId).hide();
         }
         
       }
@@ -799,8 +799,8 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
     barcodeGenerate: function (code) {
       barcodeGenerate(code);
     },
-    createHTMLSection: function (Id,name, imageURL,type, settings) {
-      createHTMLSection(Id,name, imageURL,type, settings);
+    createHTMLSection: function (id,name, imageURL,type, settings) {
+      createHTMLSection(id,name, imageURL,type, settings);
     },
     createTable: function (data, structure) {
       createTable(data, structure);
