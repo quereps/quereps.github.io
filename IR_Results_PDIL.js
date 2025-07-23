@@ -5,13 +5,13 @@ var APIModule = (function ($, ksAPI) {
  let report = {};
 
 
-  let placeID = "";
-   let  companyID = "";
-   let missionID = "";
+  let placeId = "";
+   let  companyId = "";
+   let missionId = "";
    let tokenV1 = "";
    let tokenV2 = "";
    let features = "";
-   let photoGrid = "";
+   let photoGrId = "";
 
    let realogram = [];
 
@@ -99,7 +99,7 @@ var APIModule = (function ($, ksAPI) {
 
 
 
-var addTile = function(destination,id,sku,profile){
+var addTile = function(destination,Id,sku,profile){
   let container = vpGetLabel(destination);
   const dataTable = ["size","classification","subclassification"];
   jQuery(container).empty();
@@ -109,7 +109,7 @@ var addTile = function(destination,id,sku,profile){
 
 
 
-var GetIRResults = async function(photo_grids, settings){
+var GetIRResults = async function(photo_grIds, settings){
 
 //vpShowLoader();
  // return new Promise(async (resolve, reject) => {
@@ -118,12 +118,12 @@ interfaceModule.notification("Loading","Getting Tags");
 
 try {
 
-          console.log("photo_grids: ",photo_grids);
+          console.log("photo_grIds: ",photo_grIds);
           // Create an array of promises from getTags
-          let tagPromises = photo_grids.map(async grid => {
+          let tagPromises = photo_grIds.map(async grId => {
 
-              console.log(grid);
-              const tags = await APICallsModule.getTags(grid.id);
+              console.log(grId);
+              const tags = await APICallsModule.getTags(grId.Id);
               interfaceModule.removeNotification();
               extractIRData(tags);
           });
@@ -182,7 +182,7 @@ const clearResults = function(){
     console.log("Mission Responses: ",settings.missionResponses);
     console.log("new Mission Response: ",settings.missionResponses[settings.currentMissionResponses]);
 
-         APICallsModule.getMissionResponse(settings.missionResponses[settings.currentMissionResponses].id).then((lastItem)=>{
+         APICallsModule.getMissionResponse(settings.missionResponses[settings.currentMissionResponses].Id).then((lastItem)=>{
 
       //let lastItem = lastItems[0];
       console.log(lastItem);
@@ -202,17 +202,17 @@ const clearResults = function(){
 
         vpShowLoader();
 
-        APICallsModule.getGrid(lastItem.id).then(async (photo_grids)=>{
+        APICallsModule.getGrId(lastItem.Id).then(async (photo_grIds)=>{
 
           interfaceModule.removeNotification();
 
 
           // Create an array of promises from getTags
 
-          console.log("photo_grids: ",photo_grids);
+          console.log("photo_grIds: ",photo_grIds);
 
-          let tagPromises = photo_grids.map(async grid => {
-              const tags = await APICallsModule.getTags(grid.id);
+          let tagPromises = photo_grIds.map(async grId => {
+              const tags = await APICallsModule.getTags(grId.Id);
               interfaceModule.removeNotification();
               extractIRData(tags);
           });
@@ -248,21 +248,20 @@ const clearResults = function(){
 
   console.log("iniiiiit:", settings);
 
-    placeID = settings.placeID;
-    companyID = settings.companyID;
-    missionID = settings.missionID;
+    placeId = settings.placeId;
+    companyId = settings.companyId;
+    missionId = settings.missionId;
     tokenV1 = settings.tokenV1;
     tokenV2 = settings.tokenV2;
     features = settings.features;
     report = settings.report;
-    photoGrid = settings.photoGrid;
+    photoGrId = settings.photoGrId;
 
-    console.log("placeID:",placeID);
+    console.log("placeId:",placeId);
 
 
    APICallsModule.Run({
-    companyID:companyID,
-    //placeID:placeID,
+    companyId:companyId,
     tokenV1:tokenV1,
     tokenV2:tokenV2
    });
@@ -273,10 +272,10 @@ const clearResults = function(){
   document.head.appendChild(link1);
 
 
-  if(settings.gridIdArray && settings.gridIdArray.length>0){
+  if(settings.grIdIdArray && settings.grIdIdArray.length>0){
 
-    console.log("I got the grids");
-    GetIRResults(settings.gridIdArray, settings);
+    console.log("I got the grIds");
+    GetIRResults(settings.grIdIdArray, settings);
 
   }
 
@@ -284,21 +283,21 @@ const clearResults = function(){
   else{
 
 
-    console.log("placeID: ",placeID);
+    console.log("placeId: ",placeId);
 
-   APICallsModule.getPlaceData(placeID).then((placeData)=>{
+   APICallsModule.getPlaceData(placeId).then((placeData)=>{
 
 
 
     savedPlaceData = placeData;
 
     
-     APICallsModule.getMissionResponses(placeID,missionID,600000000,10).then((lastItems)=>{
+     APICallsModule.getMissionResponses(placeId,missionId,600000000,10).then((lastItems)=>{
   //      console.log("lastItems: ",lastItems);
  //    });
       
 
- //   APICallsModule.getLastMissionResponse(placeID,missionID,600000).then((lastItem)=>{
+ //   APICallsModule.getLastMissionResponse(placeId,missionId,600000).then((lastItem)=>{
       settings.missionResponses = lastItems;
 
       let lastItem = lastItems[0];
@@ -319,17 +318,17 @@ const clearResults = function(){
 
         vpShowLoader();
 
-        APICallsModule.getGrid(lastItem.id).then(async (photo_grids)=>{
+        APICallsModule.getGrId(lastItem.Id).then(async (photo_grIds)=>{
 
           interfaceModule.removeNotification();
 
 
           // Create an array of promises from getTags
 
-          console.log("photo_grids: ",photo_grids);
+          console.log("photo_grIds: ",photo_grIds);
 
-          let tagPromises = photo_grids.map(async grid => {
-              const tags = await APICallsModule.getTags(grid.id);
+          let tagPromises = photo_grIds.map(async grId => {
+              const tags = await APICallsModule.getTags(grId.Id);
               interfaceModule.removeNotification();
               extractIRData(tags);
           });
@@ -351,7 +350,7 @@ const clearResults = function(){
 
           
         }).catch(()=>{
-    interfaceModule.notification("error","No Photo Grid found.");
+    interfaceModule.notification("error","No Photo GrId found.");
    });
 
       }).catch(()=>{
