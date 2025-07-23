@@ -348,8 +348,9 @@ const clearResults = function(){
     interfaceModule.notification("error","No Photo Grid found.");
    });
 
-      }).catch(()=>{
+      }).catch((err)=>{
     interfaceModule.notification("error","No mission responses found.");
+    error.log(err);
    });
 
 
