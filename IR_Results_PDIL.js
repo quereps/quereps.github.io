@@ -272,10 +272,10 @@ const clearResults = function(){
   document.head.appendChild(link1);
 
 
-  if(settings.grIdIdArray && settings.grIdIdArray.length>0){
+  if(settings.gridIdArray && settings.gridIdArray.length>0){
 
     console.log("I got the grIds");
-    GetIRResults(settings.grIdIdArray, settings);
+    GetIRResults(settings.gridIdArray, settings);
 
   }
 
