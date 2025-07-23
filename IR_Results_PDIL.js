@@ -255,6 +255,8 @@ const clearResults = function(){
     report = settings.report;
     photoGrid = settings.photoGrid;
 
+    console.log("placeID:",placeID);
+
 
    APICallsModule.Run({
     companyID:companyID,
