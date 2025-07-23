@@ -182,7 +182,7 @@ const clearResults = function(){
     console.log("Mission Responses: ",settings.missionResponses);
     console.log("new Mission Response: ",settings.missionResponses[settings.currentMissionResponses]);
 
-         APICallsModule.getMissionResponse(settings.missionResponses[settings.currentMissionResponses].Id).then((lastItem)=>{
+         APICallsModule.getMissionResponse(settings.missionResponses[settings.currentMissionResponses].id).then((lastItem)=>{
 
       //let lastItem = lastItems[0];
       console.log(lastItem);
@@ -202,16 +202,16 @@ const clearResults = function(){
 
         vpShowLoader();
 
-        APICallsModule.getGrId(lastItem.Id).then(async (photo_grIds)=>{
+        APICallsModule.getGrid(lastItem.id).then(async (photo_grids)=>{
 
           interfaceModule.removeNotification();
 
 
           // Create an array of promises from getTags
 
-          console.log("photo_grIds: ",photo_grIds);
+          console.log("photo_grIds: ",photo_grids);
 
-          let tagPromises = photo_grIds.map(async grId => {
+          let tagPromises = photo_grIds.map(async grid => {
               const tags = await APICallsModule.getTags(grId.Id);
               interfaceModule.removeNotification();
               extractIRData(tags);
