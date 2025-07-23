@@ -680,25 +680,25 @@ const MissionResponseSection = function(placeId,missionId,destination){
         jQuery('#'+destination+" .content").append(tableElement);
 
         let buttons = `
-          <button Id="prevMRId" type="button" onclick="APIModule.ChangeMissionResponse(-1)">Previous</button>
-          <button Id="nextMRId" type="button" onclick="APIModule.ChangeMissionResponse(1)">Next</button>
+          <button Id="prevMRID" type="button" onclick="APIModule.ChangeMissionResponse(-1)">Previous</button>
+          <button Id="nextMRID" type="button" onclick="APIModule.ChangeMissionResponse(1)">Next</button>
         `;
         jQuery('#' + destination + " .content").append(buttons);
-        jQuery('#prevMRId').prop('disabled', true);
+        jQuery('#prevMRID').prop('disabled', true);
 
 
         if(settings.currentMissionResponses+1==settings.missionResponses.length){
-              jQuery('#nextMRId').prop('disabled', true);
+              jQuery('#nextMRID').prop('disabled', true);
             }
             else{
-              jQuery('#nextMRId').prop('disabled', false);
+              jQuery('#nextMRID').prop('disabled', false);
             }
 
             if(settings.currentMissionResponses==0){
-              jQuery('#prevMRId').prop('disabled', true);
+              jQuery('#prevMRID').prop('disabled', true);
             }
             else{
-              jQuery('#prevMRId').prop('disabled', false);
+              jQuery('#prevMRID').prop('disabled', false);
             }
   });
 }
