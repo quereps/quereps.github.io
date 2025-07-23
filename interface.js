@@ -707,20 +707,19 @@ const MissionResponseSection = function(placeId,missionId,destination){
 
 var createReport = function(settingsImport,skuListImport,sectionsImport){
 
-
-
-
   console.log("Creating Report");
 
   
   skuList = skuListImport;
   sections = sectionsImport;
-  settings = settingsImport;
+  //settings = settingsImport;
+  config = settingsImport.config;
+  report = settingsImport.report;
 
-  companyId = settings.companyId;
-  placeId = settings.placeId;
-  missionId = settings.missionId;
-  report = settings.report;
+  companyId = config.companyId;
+  placeId = config.placeId;
+  missionId = config.missionId;
+  
 
   console.log("report: ",report);
 
@@ -773,6 +772,10 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
 
       if(current.type=="pog"){
         POG(current.category,containerId);
+      }
+
+      if(current.type=="photo"){
+        photo(containerId);
       }
 
     }
