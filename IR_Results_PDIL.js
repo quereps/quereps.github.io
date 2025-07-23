@@ -318,7 +318,7 @@ const clearResults = function(){
 
         vpShowLoader();
 
-        APICallsModule.getGrid(lastItem.Id).then(async (photo_grids)=>{
+        APICallsModule.getGrid(lastItem.id).then(async (photo_grids)=>{
 
           interfaceModule.removeNotification();
 
