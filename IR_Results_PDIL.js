@@ -248,11 +248,11 @@ const clearResults = function(){
 
   console.log("iniiiiit:", settings);
 
-    placeId = settings.placeId;
-    companyId = settings.companyId;
-    missionId = settings.missionId;
-    tokenV1 = settings.tokenV1;
-    tokenV2 = settings.tokenV2;
+    placeId = settings.config.placeId;
+    companyId = settings.config.companyId;
+    missionId = settings.config.missionId;
+    tokenV1 = settings.config.tokenV1;
+    tokenV2 = settings.config.tokenV2;
     features = settings.features;
     report = settings.report;
     photoGrId = settings.photoGrId;

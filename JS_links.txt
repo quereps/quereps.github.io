@@ -1,11 +1,185 @@
+
+
+https://quereps.github.io/IR_Results_PDIL.js
+https://quereps.github.io/APICalls.js
+
+
+
 https://quereps.github.io/IRAAS.js
 https://quereps.github.io/calculations.js
-https://quereps.github.io/APICalls.js
+
 https://quereps.github.io/interface.js
 https://quereps.github.io/skuObj.js
 https://quereps.github.io/mol.js
-https://quereps.github.io/IR_Results_PDIL.js
+
+
+https://quereps.github.io/deeplinking.js
 
 https://quereps.github.io/design.css
 
 https://cdn.jsdelivr.net/npm/chart.js
+https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels
+
+
+
+
+const legendColors = {
+  "Coca": "#e7151e",
+  "Red Bull": "#009ede",
+  "Fanta": "#f87f00",
+  "Monster": "#9ac435",
+  "Lucozade": "#A66EFF",
+  "Pepsi": "#0e0f94",
+  "7Up": "#35A8F4",
+  "Oasis": "#F05A7A",
+  "Dr Pepper": "#920528",
+  "Ribena": "#F8CE5C",
+  "Glaceau": "#42B9BD",
+  "Unrecognized":"#cccccc",
+  "Empty":"#cccccc",
+};
+
+const fallbackPalette = [
+  '#007dc6', // Kroger Blue (Primary)
+  '#4ca0e1', // Light Blue
+  '#002f6c', // Dark Blue (Kroger corporate palette)
+  '#7ec4f7', // Pastel Blue
+  '#52565e', // Kroger Grey (neutral for contrast)
+  '#e3e9ef', // Very Light Blue-Grey
+  '#49b28b', // Fresh Green (for positive/OK status)
+  '#f7d354', // Soft Yellow (for warning/neutral)
+  '#f78c40', // Muted Orange (for secondary highlight)
+  '#cfcfcf', // Light Grey (for background or filler)
+  '#7356a6', // Soft Violet (gentle accent, not too prominent)
+  '#d46a6a', // Soft Red (for negative/error)
+  '#8fbcbb', // Gentle Teal (adds variety, still cool palette)
+  '#ffd8b1', // Peach (subtle, low priority)
+  '#7e8f7c', // Muted Olive (for very low emphasis)
+  '#b0c4de', // Pale Blue (soft for large data sets)
+  '#dee5ee', // Lightest Blue-Grey (almost white)
+  '#f3e7f3', // Very Light Lilac (soft filler)
+  '#808080', // Medium Grey (classic, good for "other" or nulls)
+  '#444444'  // Dark Grey (for outlines/contrast)
+];
+
+
+
+
+(function($, ksAPI){
+  ksAPI.runCustomCode(function () {
+    
+    console.log("hello");
+    
+    var ukDemo = {
+      companyId:"5565",
+      missionId:"4266537",
+      tokenV1:"50059eb78d5d1f870dfeef2424f11949bb304916890b585c1b38406340358411",
+      tokenV2:"222232ff671fc2ba770be9cc8d4eaef7f7f20c5b926db76d28b3217f027a80b4",
+      inventoryDM:"inventory",
+      specificFunction:kroger,
+      placeId:vpGetTextResults("PlaceId"),
+      features:{
+        images:true,
+      },
+      report:[
+        {
+        type:"place",
+        title:"Place",
+        logo:"https://app.form.com/fs/v1/h/XPpqtoQBS7264PDKTZLfkykHxNDvIZMcjR5D4recFyk/277606.png",
+          options:{
+            width:"40%",
+            destination:"intro",
+        }
+     	},
+        {
+        type:"response",
+        title:"Response",
+        logo:"https://app.form.com/fs/v1/h/ikwVdohQfA6RF1rXRaZ_5cb94aHsGa9pocnQjSALzbc/277592.png",
+          options:{
+            width:"40%",
+            destination:"intro",
+        }
+     	},
+      	{
+        type:"sections",
+        title:"Categories",
+        logo:"https://app.form.com/fs/v1/h/MymMXe4h5OZS3zXUfgfr0vU3epPUwlaGlid1Dt4dONk/277848.png",
+        options:{
+            width:"100%",
+          exclude:["undefined"],
+        }
+     	},
+        {
+          type:"number", 
+          title:"Shelf Occupancy",
+          dimension:"type",
+          options:{
+            	filter:"SKU",
+            asPercentage:true,
+            background:"#0f52a2",
+            width:"40%",
+            color:"white",
+          }
+        },
+        {
+          type:"number", 
+          title:"Empty Facings",
+          dimension:"type",
+          options:{
+          	background:"#d2eafa",
+            	filter:"Empty Facing",
+            asPercentage:false,
+            width:"40%",
+          }
+        },
+      {
+        type:"graph",
+        title:"Suppliers",
+        logo:"https://app.form.com/fs/v1/h/ayYV9BfGgRa2acx899yrpYD2EChBtrQoXiMwKcEy504/277594.png",
+        dimension:"supplier",
+        graphType:"pie",
+        settings:{
+          	legend:true,
+        	exclude:["undefined","Unrecognized","Empty Facing"],
+        	colorMap:legendColors || [],
+          fallbackPalette:fallbackPalette || [],
+          showLabels:true,
+          labelType:"label",
+          asPercentage:true
+        }    
+      },
+        {
+        type:"graph",
+        title:"Share of Shelf per Brand",
+        logo:"https://app.form.com/fs/v1/h/o2Hec5ANCkdseEnpn-lMSfjWJg5I4VTFnGY4yVyEDR4/277586.png",
+        dimension:"brand",
+        graphType:"bar",
+        settings:{
+          	legend:false,
+        	exclude:["undefined","Unrecognized","Empty Facing"],
+        	colorMap:legendColors || [],
+          	fallbackPalette:fallbackPalette || [],
+          	indexAxis: 'y',
+          	limit:10,
+          	showLabels:true,
+          	labelType:"value",
+          	asPercentage:true,
+        }    
+      },
+      {
+        type:"skuList",
+        title:"SKU List",
+        logo:"https://app.form.com/fs/v1/h/aMdkGmN080RYiT1L7rDWkrKEKuFd-b76KN8Wt-djYao/277611.png",
+     	columns:["upc", "brand","name", "facings"],
+        settings:{
+          	legend:false,
+        	exclude:["undefined","Unrecognized","Empty Facing"]
+        } 
+      }
+      ]};
+    
+    console.log("Toto")
+    APIModule.Run(ukDemo);
+    console.log(APIModule);
+  });
+})(jQuery, ksAPI);
