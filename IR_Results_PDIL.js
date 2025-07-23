@@ -246,8 +246,8 @@ const clearResults = function(){
 
   console.log("iniiiiit");
 
-   placeID = settings.placeID;
-     companyID = settings.companyID;
+    placeID = settings.placeID;
+    companyID = settings.companyID;
     missionID = settings.missionID;
     tokenV1 = settings.tokenV1;
     tokenV2 = settings.tokenV2;
@@ -289,7 +289,7 @@ const clearResults = function(){
     savedPlaceData = placeData;
 
     
-     APICallsModule.getMissionResponses(placeID,missionID,600000,10).then((lastItems)=>{
+     APICallsModule.getMissionResponses(placeID,missionID,600000000,10).then((lastItems)=>{
   //      console.log("lastItems: ",lastItems);
  //    });
       
