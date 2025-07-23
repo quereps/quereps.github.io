@@ -712,7 +712,7 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
   
   skuList = skuListImport;
   sections = sectionsImport;
-  //settings = settingsImport;
+  settings = settingsImport;
   config = settingsImport.config;
   report = settingsImport.report;
 
