@@ -17,6 +17,16 @@ const reportTemplates = {
             width:"40%",
             destination:"intro",
         }
+      },
+      skuList:{
+        type:"skuList",
+        title:"SKU List",
+        logo:"https://app.form.com/fs/v1/h/aMdkGmN080RYiT1L7rDWkrKEKuFd-b76KN8Wt-djYao/277611.png",
+        columns:["upc", "brand","name", "facings"],
+        settings:{
+            legend:false,
+          exclude:["undefined","Unrecognized","Empty Facing"]
+        } 
       }
 }
 
