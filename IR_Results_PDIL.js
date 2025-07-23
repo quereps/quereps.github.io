@@ -241,10 +241,12 @@ const clearResults = function(){
 
   settings=settingsImport;
 
+
+
   settings.currentMissionResponses = 0;
    settings.missionResponses = [];
 
-  console.log("iniiiiit");
+  console.log("iniiiiit:", settings);
 
     placeID = settings.placeID;
     companyID = settings.companyID;
