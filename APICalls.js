@@ -31,7 +31,7 @@ var APICallsModule = (function ($, ksAPI) {
   var getMissionVersions = async function(campaignId){
     return new Promise(async (resolve, reject) => {
     
-      url = "https://api.gospotcheck.com//external/v1/missions/campaignId";
+      url = "https://api.gospotcheck.com//external/v1/missions/"+campaignId;
       var body = {
           "image_url": imageURL, 
           "photo_type_id": photogrid
