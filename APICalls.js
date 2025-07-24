@@ -243,7 +243,7 @@ var getTags = async function(GridId){
 
 //  return new Promise((resolve, reject) => {
 
-  console.log("Getting Tags:", companyId, GridId, tokenV2);
+  //console.log("Getting Tags:", companyId, GridId, tokenV2);
 
     const url = "https://api.gospotcheck.com/external/v2/companies/"+companyId+"/image_rec/tags?photo_grid_id="+GridId+"&offset=0&limit=500";
     
