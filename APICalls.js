@@ -28,6 +28,29 @@ var APICallsModule = (function ($, ksAPI) {
       });
   };
 
+  var getMissionVersions = async function(campaignId){
+    return new Promise(async (resolve, reject) => {
+    
+      url = "https://api.gospotcheck.com//external/v1/missions/campaignId";
+      var body = {
+          "image_url": imageURL, 
+          "photo_type_id": photogrid
+      }
+
+      try {
+        const data = await APICall("POST",url, tokenV2, body);
+
+        console.log("Mission Data received:", data);
+
+        resolve(data);
+
+      } catch (error) {
+        console.error("Failed to get Mission:", error);
+        reject(error);
+      }
+
+      });
+  }
 
 
   var sendIRPhoto = async function(imageURL, companyId, photogrid){
