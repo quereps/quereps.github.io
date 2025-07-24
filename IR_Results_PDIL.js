@@ -248,13 +248,7 @@ const clearResults = function(){
     tokenV1 = settings.config.tokenV1;
     tokenV2 = settings.config.tokenV2;
     features = settings.features;
-    report = settings.report || [
-      reportTemplates.placeData,
-      reportTemplates.responseData,
-      reportTemplates.supplierShare,
-      reportTemplates.brandShare,
-      reportTemplates.skuList,
-    ];
+    report = settings.report;
     photoGrId = settings.photoGrId;
 
     console.log("placeId:",placeId);
