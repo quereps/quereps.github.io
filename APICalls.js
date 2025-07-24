@@ -328,5 +328,8 @@ var initAPI = function(settings){
     getGrid: function (MRID) {
       return getGrid(MRID);
     },
+    getMissionVersions: function (campaignId) {
+      return getMissionVersions(campaignId);
+    },
   }
 })(jQuery, ksAPI);
