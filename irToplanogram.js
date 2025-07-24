@@ -1,6 +1,10 @@
 var irToplanogramModule = (function ($, ksAPI) {
   
   function createPlanogram(skuList, options = {}) {
+
+
+    console.log("hey there");
+
     // Default options
     const config = {
       fixtureHeight: options.fixtureHeight || 40, // Height per shelf level in pixels
