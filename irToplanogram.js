@@ -61,7 +61,7 @@ var irToplanogramModule = (function ($, ksAPI) {
     const shelfSKUs = [];
     
     Object.entries(this.skuList).forEach(([upc, sku]) => {
-      if (sku.type === 'SKU' && sku.shelf_index_yArray && sku.shelf_index_xArray) {
+      if (/*sku.type === 'SKU' && */sku.shelf_index_yArray && sku.shelf_index_xArray) {
         sku.shelf_index_yArray.forEach((shelfY, index) => {
           if (shelfY === shelfLevel) {
             const shelfX = sku.shelf_index_xArray[index];
