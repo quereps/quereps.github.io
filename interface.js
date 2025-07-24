@@ -111,7 +111,7 @@ var interfaceModule = (function ($, ksAPI) {
 
   let skuList = {};
   let settings = {};
-
+  let realogram = [];
    let placeId = "";
    let  companyId = "";
    let missionId = "";
