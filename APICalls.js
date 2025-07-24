@@ -38,7 +38,7 @@ var APICallsModule = (function ($, ksAPI) {
     //  }
 
       try {
-        const data = await APICall("POST",url, tokenV2);
+        const data = await APICall("POST",url, tokenV1);
 
         console.log("Mission Data received:", data);
 
