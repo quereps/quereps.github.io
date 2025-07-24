@@ -32,10 +32,10 @@ var APICallsModule = (function ($, ksAPI) {
     return new Promise(async (resolve, reject) => {
     
       url = "https://api.gospotcheck.com//external/v1/missions/"+campaignId;
-      var body = {
-          "image_url": imageURL, 
-          "photo_type_id": photogrid
-      }
+    //  var body = {
+         // "image_url": imageURL, 
+         // "photo_type_id": photogrid
+    //  }
 
       try {
         const data = await APICall("POST",url, tokenV2, body);
