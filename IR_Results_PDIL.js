@@ -367,6 +367,9 @@ const clearResults = function(){
     ChangeMissionResponse: function (amount) {
       ChangeMissionResponse(amount);
     },
+    getSKUList : function(){
+      return skuList;
+    }
 
   }
 })(jQuery, ksAPI);
