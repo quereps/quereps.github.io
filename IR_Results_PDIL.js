@@ -277,6 +277,20 @@ const clearResults = function(){
   else{
 
 
+
+
+    /*Tests*/
+
+
+
+
+    getMissionVersions(missionId).then((data)=>{
+      console.log(data);
+    });
+
+    /*Tests*/
+
+
     console.log("placeId: ",placeId);
 
    APICallsModule.getPlaceData(placeId).then((placeData)=>{
