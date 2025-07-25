@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planogram Visualizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        
+        .controls {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .input-group {
+            display: inline-block;
+            margin-right: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .input-group input {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 200px;
+        }
+        
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        button:hover {
+            background: #0056b3;
+        }
+        
+        button.export {
+            background: #28a745;
+        }
+        
+        button.export:hover {
+            background: #1e7e34;
+        }
+        
+        #table-container {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: auto;
+        }
+        
+        .planogram-container {
+            position: relative;
+            border: 2px solid #333;
+            background: #fff;
+            margin: 20px 0;
+        }
+        
+        .shelf {
+            position: absolute;
+            background: #e9ecef;
+            border: 1px solid #adb5bd;
+            opacity: 0.3;
+        }
+        
+        .position {
+            position: absolute;
+            border: 2px solid #007bff;
+            cursor: move;
+            background: rgba(0, 123, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            text-align: center;
+            padding: 2px;
+            box-sizing: border-box;
+            user-select: none;
+        }
+        
+        .position:hover {
+            border-color: #0056b3;
+            background: rgba(0, 123, 255, 0.2);
+        }
+        
+        .position.selected {
+            border-color: #dc3545;
+            background: rgba(220, 53, 69, 0.1);
+        }
+        
+        .position.empty {
+            border-style: dashed;
+            border-color: #6c757d;
+            background: rgba(108, 117, 125, 0.1);
+        }
+        
+        .position.unknown {
+            border-color: #ffc107;
+            background: rgba(255, 193, 7, 0.1);
+        }
+        
+        .resize-handle {
+            position: absolute;
+            right: -3px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 20px;
+            background: #007bff;
+            cursor: ew-resize;
+            opacity: 0;
+        }
+        
+        .position:hover .resize-handle,
+        .position.selected .resize-handle {
+            opacity: 1;
+        }
+        
+        .position-info {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        
+        .position-info h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        
+        .position-info p {
+            margin: 5px 0;
+        }
+        
+        .actions {
+            margin-top: 15px;
+        }
+        
+        .error {
+            color: #dc3545;
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <div class="input-group">
+            <label for="companyID">Company ID:</label>
+            <input type="text" id="companyID" placeholder="Enter Company ID">
+        </div>
+        <div class="input-group">
+            <label for="gridID">Grid ID:</label>
+            <input type="text" id="gridID" placeholder="Enter Grid ID">
+        </div>
+        <button onclick="loadPlanogram()">Load Planogram</button>
+        <button class="export" onclick="exportToCSV()">Export to CSV</button>
+    </div>
+    
+    <div id="table-container">
+        <p>Enter Company ID and Grid ID, then click "Load Planogram" to visualize the planogram.</p>
+    </div>
+
+    <script>
+        class PlanogramVisualizer {
+            constructor() {
+                this.planogramData = null;
+                this.selectedPosition = null;
+                this.isDragging = false;
+                this.isResizing = false;
+                this.dragStartX = 0;
+                this.dragStartY = 0;
+                this.originalX = 0;
+                this.originalWidth = 0;
+                this.scale = 2; // Scale factor for visualization
+            }
+
+            loadPlanogram(data) {
+                this.planogramData = data;
+                this.render();
+            }
+
+            render() {
+                const container = document.getElementById('table-container');
+                if (!this.planogramData) {
+                    container.innerHTML = '<p>No planogram data loaded.</p>';
+                    return;
+                }
+
+                const planogram = this.planogramData.planogram;
+                const scaledWidth = planogram.width * this.scale;
+                const scaledHeight = planogram.height * this.scale;
+
+                container.innerHTML = `
+                    <h2>${planogram.name}</h2>
+                    <p>Traffic Flow: ${planogram.trafficFlow} | Dimensions: ${planogram.width} x ${planogram.height}</p>
+                    <div class="planogram-container" style="width: ${scaledWidth}px; height: ${scaledHeight}px;">
+                        ${this.renderShelves()}
+                        ${this.renderPositions()}
+                    </div>
+                    <div id="position-info" class="position-info" style="display: none;">
+                        <h3>Position Details</h3>
+                        <div id="position-details"></div>
+                        <div class="actions">
+                            <button onclick="planogramViz.removePosition()">Remove Position</button>
+                        </div>
+                    </div>
+                `;
+
+                this.attachEventListeners();
+            }
+
+            renderShelves() {
+                return this.planogramData.planogram.fixtures
+                    .map(shelf => `
+                        <div class="shelf" style="
+                            left: ${shelf.x * this.scale}px;
+                            top: ${shelf.y * this.scale}px;
+                            width: ${shelf.width * this.scale}px;
+                            height: ${shelf.height * this.scale}px;
+                        "></div>
+                    `).join('');
+            }
+
+            renderPositions() {
+                return this.planogramData.planogram.positions
+                    .map(position => {
+                        const product = this.planogramData.planogram.products.find(p => p.upc === position.upc);
+                        const productName = product ? product.name : 'Unknown Product';
+                        
+                        let cssClass = 'position';
+                        if (position.excluded) cssClass += ' excluded';
+                        if (position.upc.startsWith('EMPTY')) cssClass += ' empty';
+                        if (position.upc.startsWith('UNKNOWN')) cssClass += ' unknown';
+
+                        return `
+                            <div class="${cssClass}" 
+                                 data-location-id="${position.locationId}"
+                                 data-upc="${position.upc}"
+                                 style="
+                                     left: ${position.x * this.scale}px;
+                                     top: ${position.y * this.scale}px;
+                                     width: ${position.width * this.scale}px;
+                                     height: ${position.height * this.scale}px;
+                                 ">
+                                <span>${productName}</span>
+                                <div class="resize-handle"></div>
+                            </div>
+                        `;
+                    }).join('');
+            }
+
+            attachEventListeners() {
+                const positions = document.querySelectorAll('.position');
+                positions.forEach(position => {
+                    position.addEventListener('click', (e) => this.selectPosition(e));
+                    position.addEventListener('mousedown', (e) => this.startDrag(e));
+                    
+                    const resizeHandle = position.querySelector('.resize-handle');
+                    resizeHandle.addEventListener('mousedown', (e) => this.startResize(e));
+                });
+
+                document.addEventListener('mousemove', (e) => this.onMouseMove(e));
+                document.addEventListener('mouseup', (e) => this.onMouseUp(e));
+            }
+
+            selectPosition(e) {
+                e.stopPropagation();
+                
+                // Remove previous selection
+                document.querySelectorAll('.position.selected').forEach(p => p.classList.remove('selected'));
+                
+                // Select current position
+                e.currentTarget.classList.add('selected');
+                this.selectedPosition = e.currentTarget;
+                
+                this.showPositionInfo(e.currentTarget);
+            }
+
+            showPositionInfo(positionElement) {
+                const locationId = positionElement.dataset.locationId;
+                const upc = positionElement.dataset.upc;
+                
+                const position = this.planogramData.planogram.positions.find(p => p.locationId === locationId);
+                const product = this.planogramData.planogram.products.find(p => p.upc === upc);
+                
+                const infoDiv = document.getElementById('position-info');
+                const detailsDiv = document.getElementById('position-details');
+                
+                detailsDiv.innerHTML = `
+                    <p><strong>Location ID:</strong> ${position.locationId}</p>
+                    <p><strong>Product:</strong> ${product ? product.name : 'Unknown'}</p>
+                    <p><strong>Brand:</strong> ${product ? product.brand : 'N/A'}</p>
+                    <p><strong>UPC:</strong> ${position.upc}</p>
+                    <p><strong>Position:</strong> X: ${position.x}, Y: ${position.y}</p>
+                    <p><strong>Size:</strong> ${position.width} x ${position.height}</p>
+                    <p><strong>Facings:</strong> H: ${position.hFacings}, V: ${position.vFacings}</p>
+                    <p><strong>Orientation:</strong> ${position.orientation}</p>
+                    <p><strong>Price:</strong> ${product && product.price ? '$' + product.price : 'N/A'}</p>
+                `;
+                
+                infoDiv.style.display = 'block';
+            }
+
+            startDrag(e) {
+                if (e.target.classList.contains('resize-handle')) return;
+                
+                this.isDragging = true;
+                e.currentTarget.classList.add('selected');
+                this.selectedPosition = e.currentTarget;
+                
+                this.dragStartX = e.clientX;
+                this.dragStartY = e.clientY;
+                this.originalX = parseInt(e.currentTarget.style.left);
+                
+                e.preventDefault();
+            }
+
+            startResize(e) {
+                e.stopPropagation();
+                this.isResizing = true;
+                this.selectedPosition = e.currentTarget.parentElement;
+                
+                this.dragStartX = e.clientX;
+                this.originalWidth = parseInt(this.selectedPosition.style.width);
+                
+                e.preventDefault();
+            }
+
+            onMouseMove(e) {
+                if (this.isDragging && this.selectedPosition) {
+                    const deltaX = e.clientX - this.dragStartX;
+                    const newX = this.originalX + deltaX;
+                    
+                    // Check boundaries and collision
+                    if (this.canMoveToPosition(newX)) {
+                        this.selectedPosition.style.left = newX + 'px';
+                    }
+                } else if (this.isResizing && this.selectedPosition) {
+                    const deltaX = e.clientX - this.dragStartX;
+                    const newWidth = this.originalWidth + deltaX;
+                    
+                    if (this.canResizeToWidth(newWidth)) {
+                        this.selectedPosition.style.width = newWidth + 'px';
+                    }
+                }
+            }
+
+            onMouseUp(e) {
+                if (this.isDragging && this.selectedPosition) {
+                    this.updatePositionData();
+                    this.showPositionInfo(this.selectedPosition);
+                }
+                
+                this.isDragging = false;
+                this.isResizing = false;
+            }
+
+            canMoveToPosition(newX) {
+                if (!this.selectedPosition) return false;
+                
+                const locationId = this.selectedPosition.dataset.locationId;
+                const position = this.planogramData.planogram.positions.find(p => p.locationId === locationId);
+                const currentY = position.y;
+                const width = parseInt(this.selectedPosition.style.width) / this.scale;
+                
+                // Check if within planogram bounds
+                if (newX < 0 || (newX / this.scale + width) > this.planogramData.planogram.width) {
+                    return false;
+                }
+                
+                // Check collision with other positions on same shelf
+                const sameShelfPositions = this.planogramData.planogram.positions.filter(p => 
+                    p.locationId !== locationId && 
+                    Math.abs(p.y - currentY) < 5 // Same shelf tolerance
+                );
+                
+                const newXScaled = newX / this.scale;
+                
+                for (let otherPos of sameShelfPositions) {
+                    const otherLeft = otherPos.x;
+                    const otherRight = otherPos.x + otherPos.width;
+                    const newRight = newXScaled + width;
+                    
+                    // Check overlap
+                    if (!(newXScaled >= otherRight || newRight <= otherLeft)) {
+                        return false;
+                    }
+                }
+                
+                return true;
+            }
+
+            canResizeToWidth(newWidth) {
+                if (!this.selectedPosition || newWidth < 20) return false; // Minimum width
+                
+                const locationId = this.selectedPosition.dataset.locationId;
+                const position = this.planogramData.planogram.positions.find(p => p.locationId === locationId);
+                const currentX = position.x;
+                const currentY = position.y;
+                const newWidthScaled = newWidth / this.scale;
+                
+                // Check if within planogram bounds
+                if (currentX + newWidthScaled > this.planogramData.planogram.width) {
+                    return false;
+                }
+                
+                // Check collision with other positions
+                const sameShelfPositions = this.planogramData.planogram.positions.filter(p => 
+                    p.locationId !== locationId && 
+                    Math.abs(p.y - currentY) < 5
+                );
+                
+                for (let otherPos of sameShelfPositions) {
+                    const otherLeft = otherPos.x;
+                    const otherRight = otherPos.x + otherPos.width;
+                    const newRight = currentX + newWidthScaled;
+                    
+                    if (!(currentX >= otherRight || newRight <= otherLeft)) {
+                        return false;
+                    }
+                }
+                
+                return true;
+            }
+
+            updatePositionData() {
+                if (!this.selectedPosition) return;
+                
+                const locationId = this.selectedPosition.dataset.locationId;
+                const position = this.planogramData.planogram.positions.find(p => p.locationId === locationId);
+                
+                if (position) {
+                    position.x = parseInt(this.selectedPosition.style.left) / this.scale;
+                    position.width = parseInt(this.selectedPosition.style.width) / this.scale;
+                }
+            }
+
+            removePosition() {
+                if (!this.selectedPosition) return;
+                
+                const locationId = this.selectedPosition.dataset.locationId;
+                const positionIndex = this.planogramData.planogram.positions.findIndex(p => p.locationId === locationId);
+                
+                if (positionIndex !== -1) {
+                    this.planogramData.planogram.positions.splice(positionIndex, 1);
+                    this.selectedPosition = null;
+                    document.getElementById('position-info').style.display = 'none';
+                    this.render();
+                }
+            }
+
+            exportToCSV() {
+                if (!this.planogramData) {
+                    alert('No planogram data to export');
+                    return;
+                }
+
+                const planogram = this.planogramData.planogram;
+                let csv = 'layer,name,x,y,z,width,height,depth,planogram_units,planogram_traffic_flow,fixture_type,position_h_facings,position_v_facings,position_capacity,position_excluded,product_gsc_id,product_ean,product_upc,product_id,product_name,position_orientation,product_price\n';
+                
+                // Planogram header
+                csv += `Planogram,${planogram.name},,,,${planogram.width},${planogram.height},${planogram.depth},${planogram.metric ? 'Metric' : 'Imperial'},${planogram.trafficFlow}\n`;
+                
+                // Segment
+                if (planogram.segments && planogram.segments.length > 0) {
+                    const segment = planogram.segments[0];
+                    csv += `Segment,,${segment.x},${segment.y},,${segment.width},${segment.height}\n`;
+                }
+                
+                // Fixtures
+                planogram.fixtures.forEach((fixture, index) => {
+                    csv += `Fixture,${fixture.name || index + 1},${fixture.x},${fixture.y},${fixture.z || 0},${fixture.width},${fixture.height},${fixture.depth || 0},,,${fixture.type}\n`;
+                });
+                
+                // Positions
+                planogram.positions.forEach(position => {
+                    const product = planogram.products.find(p => p.upc === position.upc);
+                    const capacity = position.hFacings * position.vFacings * position.dFacings;
+                    
+                    csv += `Position,${position.locationId},${position.x},${position.y},${position.z},${position.width},${position.height},${position.depth},,,,${position.hFacings},${position.vFacings},${capacity},${position.excluded},${product ? product.brandbankGuid : ''},,${position.upc},,${product ? product.name : ''},${position.orientation},${product ? product.price : ''}\n`;
+                });
+                
+                // Download CSV
+                const blob = new Blob([csv], { type: 'text/csv' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${planogram.name || 'planogram'}.csv`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+            }
+        }
+
+        // Global instance
+        const planogramViz = new PlanogramVisualizer();
+
+        // API simulation function (replace with actual API call)
+        function loadPlanogram() {
+            const companyID = document.getElementById('companyID').value;
+            const gridID = document.getElementById('gridID').value;
+            
+            if (!companyID || !gridID) {
+                document.getElementById('table-container').innerHTML = '<div class="error">Please enter both Company ID and Grid ID</div>';
+                return;
+            }
+
+            // For demo purposes, using the provided JSON data
+            // Replace this with actual API call: planogramAPIModule.Run(companyID, gridID);
+            const demoData = {
+                "planogram": {
+                    "name": "planogram_preview_5402_26759005",
+                    "metric": false,
+                    "depth": 18,
+                    "width": 50.63,
+                    "height": 79.74,
+                    "category": "",
+                    "subCategory": "",
+                    "trafficFlow": "RightToLeft",
+                    "fixtures": [
+                        {
+                            "type": "Shelf",
+                            "name": "Shelf 1",
+                            "key": "0",
+                            "x": 0,
+                            "width": 50.63,
+                            "y": 0,
+                            "height": 1,
+                            "z": 0,
+                            "depth": 18
+                        },
+                        {
+                            "type": "Shelf",
+                            "name": "Shelf 2",
+                            "key": "1",
+                            "x": 0,
+                            "width": 50.63,
+                            "y": 27.17,
+                            "height": 1,
+                            "z": 0,
+                            "depth": 18
+                        },
+                        {
+                            "type": "Shelf",
+                            "name": "Shelf 3",
+                            "key": "2",
+                            "x": 0,
+                            "width": 50.63,
+                            "y": 49.17,
+                            "height": 1,
+                            "z": 0,
+                            "depth": 18
+                        }
+                    ],
+                    "products": [
+                        {
+                            "upc": "5449000227409",
+                            "name": "Appletiser Sparkling Apple Juice",
+                            "key": "",
+                            "brand": " Appletiser Sparkling Apple Juice",
+                            "category": "Soft Drinks",
+                            "subCategory": " Appletiser",
+                            "price": "",
+                            "brandbankGuid": "9d7804ae-27d9-4609-87b4-3394a8167c1f",
+                            "ean": "",
+                            "externalId": ""
+                        },
+                        {
+                            "upc": "5449000276018",
+                            "name": "Costa Coffee Latte Caramel",
+                            "key": "",
+                            "brand": "Costa Coffee",
+                            "category": "Coffee",
+                            "subCategory": "Costa Coffee",
+                            "price": "",
+                            "brandbankGuid": "7fd11668-3161-4104-9f70-44d6d2d3996f",
+                            "ean": "",
+                            "externalId": ""
+                        },
+                        {
+                            "upc": "5449000276025",
+                            "name": "Costa Coffee Latte",
+                            "key": "",
+                            "brand": "Costa Coffee",
+                            "category": "Coffee",
+                            "subCategory": "Costa Coffee",
+                            "price": "",
+                            "brandbankGuid": "8581182b-a709-4812-be53-b68c8994a668",
+                            "ean": "",
+                            "externalId": ""
+                        },
+                        {
+                            "upc": "54491076",
+                            "name": "Diet Coke",
+                            "key": "",
+                            "brand": "Diet Coke",
+                            "category": "Soft Drinks",
+                            "subCategory": "Coca-Cola",
+                            "price": "2.3",
+                            "brandbankGuid": "e9f72cdf-ed88-4106-8d68-0d9e454b0b93",
+                            "ean": "",
+                            "externalId": ""
+                        },
+                        {
+                            "upc": "54492578",
+                            "name": "Fanta Orange",
+                            "key": "",
+                            "brand": "Fanta",
+                            "category": "Soft Drinks",
+                            "subCategory": "Fanta",
+                            "price": "",
+                            "brandbankGuid": "b093facf-aead-432c-ae46-08fe5d5dbdab",
+                            "ean": "",
+                            "externalId": ""
+                        },
+                        {
+                            "upc": "5711953145315",
+                            "name": "Starbucks Doubleshot Espresso",
+                            "key": "",
+                            "brand": "Starbucks Doubleshot",
+                            "category": "Coffee",
+                            "subCategory": "Starbucks",
+                            "price": "",
+                            "brandbankGuid": "f0b8be8a-ea54-4820-a6be-babfcd53db7b",
+                            "ean": "",
+                            "externalId": ""
+                        },
+                        {
+                            "upc": "5711953179594",
+                            "name": "Starbucks Skinny Latte",
+                            "key": "",
+                            "brand": "Starbucks",
+                            "category": "Coffee",
+                            "subCategory": "Starbucks",
+                            "price": "2.2",
+                            "brandbankGuid": "5f025e7c-8a6e-41e1-b70c-c24ca94494ea",
+                            "ean": "",
+                            "externalId": ""
+                        },
+                        {
+                            "upc": "5760466920490",
+                            "name": "Starbucks Caramel Macchiato",
+                            "key": "",
+                            "brand": "Starbucks",
+                            "category": "Coffee",
+                            "subCategory": "Starbucks",
+                            "price": "2.2",
+                            "brandbankGuid": "e35997f6-d897-4f47-a676-ff2efc9d9fc4",
+                            "ean": "",
+                            "externalId": ""
+                        },
+                        {
+                            "upc": "87170146",
+                            "name": "Pepsi Max No Sugar Cola",
+                            "key": "",
+                            "brand": "Pepsi Max",
+                            "category": "Soft Drinks",
+                            "subCategory": "Pepsi",
+                            "price": "2.3",
+                            "brandbankGuid": "21caf4d3-0192-4672-8d63-3d9c8517354b",
+                            "ean": "",
+                            "externalId": ""
+                        },
+                        {
+                            "upc": "90162602",
+                            "name": "Red Bull Energy Drink",
+                            "key": "",
+                            "brand": "Red Bull",
+                            "category": "Energy",
+                            "subCategory": "Red Bull",
+                            "price": "",
+                            "brandbankGuid": "874f14de-0bf3-46a7-b596-d50de75280ee",
+                            "ean": "",
+                            "externalId": ""
+                        },
+                        {
+                            "upc": "90357473",
+                            "name": "Coca-Cola Zero Sugar",
+                            "key": "",
+                            "brand": "Coca-Cola Zero",
+                            "category": "Soft Drinks",
+                            "subCategory": "Coca-Cola",
+                            "price": "2.2",
+                            "brandbankGuid": "89c15138-503c-45e9-a154-5cece5052291",
+                            "ean": "",
+                            "externalId": ""
+                        },
+                        {
+                            "upc": "EMPTY-1",
+                            "name": "",
+                            "key": "",
+                            "brand": "",
+                            "category": "",
+                            "subCategory": "",
+                            "price": "",
+                            "brandbankGuid": "",
+                            "ean": "",
+                            "externalId": ""
+                        },
+                        {
+                            "upc": "UNKNOWN-2",
+                            "name": "Unrecognized Product, Tag #2223052168",
+                            "key": "",
+                            "brand": "",
+                            "category": "",
+                            "subCategory": "",
+                            "price": "",
+                            "brandbankGuid": "",
+                            "ean": "",
+                            "externalId": ""
+                        },
+                        {
+                            "upc": "UNKNOWN-3",
+                            "name": "Unrecognized Product, Tag #2223052176",
+                            "key": "",
+                            "brand": "",
+                            "category": "",
+                            "subCategory": "",
+                            "price": "",
+                            "brandbankGuid": "",
+                            "ean": "",
+                            "externalId": ""
+                        }
+                    ],
+                    "segments": [
+                        {
+                            "name": "Segment 1",
+                            "key": "0",
+                            "x": 0,
+                            "width": 50.63,
+                            "y": 0,
+                            "height": 79.74,
+                            "z": 0,
+                            "depth": 18,
+                            "offsetX": 0,
+                            "offsetY": 0
+                        }
+                    ],
+                    "positions": [
+                        {
+                            "upc": "5449000276025",
+                            "x": 6.77,
+                            "width": 9.41,
+                            "y": 1,
+                            "height": 24.92,
+                            "z": 0,
+                            "depth": 18,
+                            "hFacings": 1,
+                            "vFacings": 1,
+                            "dFacings": 1,
+                            "locationId": "12",
+                            "orientation": "Front",
+                            "shelfIndexX": 0,
+                            "shelfIndexY": 0,
+                            "segmentIndex": 0,
+                            "excluded": false,
+                            "matchRuleset": null
+                        },
+                        {
+                            "upc": "5449000276018",
+                            "x": 16.69,
+                            "width": 9.33,
+                            "y": 1,
+                            "height": 24.76,
+                            "z": 0,
+                            "depth": 18,
+                            "hFacings": 1,
+                            "vFacings":
