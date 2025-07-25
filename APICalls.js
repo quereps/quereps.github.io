@@ -302,6 +302,8 @@ var getPlanogram = async function(companyId,GridId){
       "photo_grid_id": GridId
     }
 
+    console.log("tokenV2",tokenV2);
+
     try{
     const data = await APICall("POST",url, tokenV2,body);
 
