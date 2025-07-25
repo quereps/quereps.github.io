@@ -1,9 +1,9 @@
 var planogramAPIModule = (function ($, ksAPI) {
 
  
- var init = async function (settingsImport) {
+ var init = async function (gridId) {
 
-  APICallsModule.getPlanogram(gridID).then((data)=>{
+  APICallsModule.getPlanogram(gridId).then((data)=>{
     console.log("POG Data",data)
   })
 
@@ -12,8 +12,8 @@ var planogramAPIModule = (function ($, ksAPI) {
 
 
  return {
-    Run: function (settings) {
-      init(settings);
+    Run: function (gridId) {
+      init(gridId);
     },
   }
 })(jQuery, ksAPI);
