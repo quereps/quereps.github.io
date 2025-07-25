@@ -3,7 +3,7 @@ var planogramAPIModule = (function ($, ksAPI) {
  
  var init = async function (settingsImport) {
 
-  getPlanogram(gridID).then((data)=>{
+  APICallsModule.getPlanogram(gridID).then((data)=>{
     console.log("POG Data",data)
   })
 
