@@ -296,10 +296,10 @@ var getTags = async function(GridId){
 
 var getPlanogram = async function(companyId,GridId){
 
-    const url = "https://api.gospotcheck.com/external/v2/companies/"+companyId+"/generate_planogram_preview/";
+    const url = "https://api.gospotcheck.com/external/v2/companies/"+companyId+"/generate_planogram_preview";
 
     const body = {
-      "photo_grid_id": GridId
+      "photo_grid_id": parseInt(GridId, 10)
     }
 
     console.log("tokenV2",tokenV2);
