@@ -296,7 +296,7 @@ var getTags = async function(GridId){
 
 var getPlanogram = async function(companyId,GridId){
 
-    const url = "https://api.gospotcheck.com/external/v2/companies/"+companyId+"/generate_planogram_preview";
+    const url = "https://api.gospotcheck.com/external/v2/companies/"+companyId+"/generate_planogram_preview/";
 
     const body = {
       "photo_grid_id": GridId
@@ -307,7 +307,7 @@ var getPlanogram = async function(companyId,GridId){
     try{
     const data = await APICall("POST",url, tokenV2,body);
 
-      console.log("tag response: ",data);
+      console.log("planogram response: ",data);
 
        if(data &&  data.tags && data.tags.length>0){
 
