@@ -1,7 +1,7 @@
 var planogramAPIModule = (function ($, ksAPI) {
 
  
-const init = function(){
+const init = function(settings){
   console.log("hey:",settings);
 }
 
