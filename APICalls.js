@@ -294,7 +294,7 @@ var getTags = async function(GridId){
 
 
 
-var getPlanogram = async function(GridId){
+var getPlanogram = async function(companyId,GridId){
 
     const url = "https://api.gospotcheck.com/external/v2/companies/"+companyId+"/generate_planogram_preview";
 
