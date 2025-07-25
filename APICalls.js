@@ -358,6 +358,9 @@ var initAPI = function(settings){
     getTags: function (GridId) {
       return getTags(GridId);
     },
+    getPlanogram: function (GridId) {
+      return getPlanogram(GridId);
+    },
     getGrid: function (MRID) {
       return getGrid(MRID);
     },
