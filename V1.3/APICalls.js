@@ -29,6 +29,8 @@ var APICallsModule = (function ($, ksAPI) {
   };
 
   var getMissionVersions = async function(campaignId){
+    return new Promise(async (resolve, reject) => {
+    
       url = "https://api.gospotcheck.com//external/v1/missions/"+campaignId;
     //  var body = {
          // "image_url": imageURL, 
@@ -40,12 +42,14 @@ var APICallsModule = (function ($, ksAPI) {
 
         console.log("Mission Data received:", data);
 
-        return data;
+        resolve(data);
 
       } catch (error) {
         console.error("Failed to get Mission:", error);
-        throw error;
+        reject(error);
       }
+
+      });
   }
 
 
@@ -76,6 +80,8 @@ var APICallsModule = (function ($, ksAPI) {
 
 var getPlaceData = async function(placeId){
 
+    //return new Promise(async (resolve, reject) => {
+
       console.log("placeId: ",placeId);
 
       console.log("v1",tokenV1);
@@ -92,7 +98,7 @@ var getPlaceData = async function(placeId){
         console.error("Failed to get place:", error);
         throw error;
       }
-
+  //});
 }
 
 
@@ -291,45 +297,6 @@ var getTags = async function(GridId){
     }
 //})
 }
-
-
-
-var getPlanogram = async function(GridId){
-
-    const url = "https://api.gospotcheck.com/external/v2/companies/"+companyId+"/generate_planogram_preview";
-
-    const body = {
-      "photo_grid_id": GridId
-    }
-
-    try{
-    const data = await APICall("GET",url, tokenV2,body);
-
-      console.log("tag response: ",data);
-
-       if(data &&  data.tags && data.tags.length>0){
-
-          console.log("We got data: ",data.tags);
-
-          interfaceModule.removeNotification();
-          return data.tags;
-      }
-      else{
-        console.log("No Tags found");
-        interfaceModule.notification("Loading", "Getting the tags.");
-        await new Promise(res => setTimeout(res, 5000));
-        return await getTags(GridId);
-      }
-
-      console.log("Tags Data received:", data);
-
-    } catch (error){
-      console.error("Failed to get Tags:", error);
-      throw error;
-    }
-
-}
-
 
 
 var initAPI = function(settings){
