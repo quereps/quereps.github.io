@@ -2,14 +2,18 @@
 
 https://quereps.github.io/IR_Results_PDIL.js
 https://quereps.github.io/APICalls.js
-
-
+https://quereps.github.io/interface.js
+https://quereps.github.io/calculations.js
+https://quereps.github.io/skuObj.js
+https://cdn.jsdelivr.net/npm/chart.js
+https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels
+<div id="table-container" class="sectionContainer"></div>
 
 https://quereps.github.io/IRAAS.js
-https://quereps.github.io/calculations.js
 
-https://quereps.github.io/interface.js
-https://quereps.github.io/skuObj.js
+
+
+
 https://quereps.github.io/mol.js
 
 
@@ -17,9 +21,8 @@ https://quereps.github.io/deeplinking.js
 
 https://quereps.github.io/design.css
 
-https://cdn.jsdelivr.net/npm/chart.js
-https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels
 
+https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js
 
 
 
