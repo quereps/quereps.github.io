@@ -58,18 +58,7 @@ const tileTemplates = {
                 const currentSKU = skuArray[sku];
                 const expFacings = exp[sku];
 
-                const myTile = interfaceModule.htmlTile({
-                  data:{
-                    title:skuList[currentSKU].name,
-                    subtitle:skuList[currentSKU].brand,
-                  },
-                  resultLabel:"Availability",
-                  meter: {
-                    value:skuList[currentSKU].facings,
-                    full:expFacings,
-                  },
-                  barcode:skuArray[sku],
-                });
+                const myTile = interfaceModule.htmlTile(currentComplianceReport.tileTemplate);
 
                 jQuery("#mustHaveAvailability").append(myTile);
                 interfaceModule.barcodeGenerate(skuArray[sku]);
