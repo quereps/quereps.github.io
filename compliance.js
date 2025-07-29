@@ -50,7 +50,7 @@ const tileTemplates = {
               selectAllMOL(mol).then((a)=>{
 
 
-              const skuArray = vpGetTextResults(mol+".A"+skuColumn).split(',').map(s => s.trim());
+              const skuArray = vpGetTextResults(mol+".A"+currentComplianceReport.skuColumn).split(',').map(s => s.trim());
               const exp = vpGetTextResults("onShelf.A2").split(',').map(s => s.trim());
               //complianceCheck();
 
