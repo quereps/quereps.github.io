@@ -383,7 +383,8 @@ const clearResults = function(){
     },
     getSKUList : function(){
       return skuList;
-    }
+    },
+    skuList,
 
   }
 })(jQuery, ksAPI);
