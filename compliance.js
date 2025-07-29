@@ -58,6 +58,8 @@ const tileTemplates = {
                 const currentSKU = skuArray[sku];
                 const expFacings = exp[sku];
 
+
+                console.log(currentComplianceReport.tileTemplate);
                 const myTile = interfaceModule.htmlTile(currentComplianceReport.tileTemplate);
 
                 jQuery("#mustHaveAvailability").append(myTile);
