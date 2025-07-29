@@ -51,7 +51,7 @@ const tileTemplates = {
 
 
               const skuArray = vpGetTextResults(mol+".A"+currentComplianceReport.skuColumn).split(',').map(s => s.trim());
-              const exp = vpGetTextResults("onShelf.A2").split(',').map(s => s.trim());
+              const exp = vpGetTextResults(mol+".A2").split(',').map(s => s.trim());
               //complianceCheck();
 
               console.log("skuArray: ",skuArray);
