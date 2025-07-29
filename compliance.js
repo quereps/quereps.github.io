@@ -54,6 +54,9 @@ const tileTemplates = {
               const exp = vpGetTextResults("onShelf.A2").split(',').map(s => s.trim());
               //complianceCheck();
 
+              console.log("skuArray: ",skuArray);
+
+
               for(let sku in skuArray){
                 const currentSKU = skuArray[sku];
                 const expFacings = exp[sku];
