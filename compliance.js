@@ -36,16 +36,22 @@ const tileTemplates = {
     skuList = APIModule.skuList;
 
     let upcDetectedQRef = settings.upcDetectedQRef;
+    let sections = settings.sections;
 
     vpSetResults(upcDetectedQRef,arrayToPipe(Object.keys(skuList)));
 
+    for(let complianceReport in sections){
+
+        currentComplianceReport = sections[complianceReport];
+
+        let mol=currentComplianceReport.mol;
 
       setTimeout(()=>{
-              selectAllMOL("mol").then((a)=>{
+              selectAllMOL(mol).then((a)=>{
 
 
-              const skuArray = vpGetTextResults("mol.A1").split(',').map(s => s.trim());
-              const exp = vpGetTextResults("mol.A2").split(',').map(s => s.trim());
+              const skuArray = vpGetTextResults(mol+".A"+skuColumn).split(',').map(s => s.trim());
+              const exp = vpGetTextResults("onShelf.A2").split(',').map(s => s.trim());
               //complianceCheck();
 
               for(let sku in skuArray){
@@ -72,38 +78,10 @@ const tileTemplates = {
                 
 
             });
-            selectAllMOL("mol2").then((a)=>{
-
-              const skuArray = vpGetTextResults("mol2.A1").split(',').map(s => s.trim());
-              const exp = vpGetTextResults("mol2.A2").split(',').map(s => s.trim());
-              const name = vpGetTextResults("mol2.A3").split(',').map(s => s.trim());
-              //oosMOLExtract();
-              for(let sku in skuArray){
-
-                const myTile = htmlTile({
-                  data:{
-                    title:name[sku],
-                    //number:skuArray[sku],
-                  },
-                  resultLabel:"Expected Facings",
-                  result:{
-                    expected:exp[sku],
-                  },
-                  barcode:skuArray[sku],
-                });
-
-                jQuery("#outOfStocks").append(myTile);
-
-                barcodeGenerate(skuArray[sku]);
-
-              }
-
-
-            });
 
           }, 1000);
 
-
+}
   }
 
 
