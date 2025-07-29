@@ -72,7 +72,7 @@ const tileTemplates = {
                 });
 
                 jQuery("#mustHaveAvailability").append(myTile);
-                barcodeGenerate(skuArray[sku]);
+                interfaceModule.barcodeGenerate(skuArray[sku]);
 
               }
                 
