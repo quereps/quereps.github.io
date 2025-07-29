@@ -60,7 +60,7 @@ const tileTemplates = {
 
 
                 console.log(currentComplianceReport.tileTemplate);
-                const myTile = interfaceModule.htmlTile(currentComplianceReport.tileTemplate);
+                const myTile = interfaceModule.htmlTile(currentComplianceReport.tileTemplate(currentSKU,skuList,skuArray,exp));
 
                 jQuery("#mustHaveAvailability").append(myTile);
                 interfaceModule.barcodeGenerate(skuArray[sku]);
