@@ -57,16 +57,14 @@ const tileTemplates = {
               console.log("skuArray: ",skuArray);
 
 
-              for(let sku in skuArray){
-                const currentSKU = skuArray[sku];
-                const expFacings = exp[sku];
-
-
-                console.log(currentComplianceReport.tileTemplate);
-                const myTile = interfaceModule.htmlTile(currentComplianceReport.tileTemplate(currentSKU,skuList,skuArray,exp));
+              for(let currentSKU of skuArray){
+                const expFacings = exp[skuArray.indexOf(currentSKU)];
+                const myTile = interfaceModule.htmlTile(
+                  currentComplianceReport.tileTemplate(currentSKU, skuList, skuArray, exp)
+                );
 
                 jQuery("#mustHaveAvailability").append(myTile);
-                interfaceModule.barcodeGenerate(skuArray[sku]);
+                interfaceModule.barcodeGenerate(currentSKU);
 
               }
                 
