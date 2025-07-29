@@ -1,6 +1,8 @@
 
 const complianceModule = (function($, ksAPI){
 
+  let skuList = {};
+
   const tileTemplates = {
     presence:{
                   data:{
@@ -28,6 +30,16 @@ const complianceModule = (function($, ksAPI){
   }
 
 
+  function init(settings){
+
+    skuList = APIModule.skuList;
+
+    let upcDetectedQRef = settings.upcDetectedQRef;
+
+    vpSetResults(upcDetectedQRef,arrayToPipe(Object.keys(skuList)));
+
+
+  }
 
 
 
