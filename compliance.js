@@ -58,7 +58,7 @@ const tileTemplates = {
                 const currentSKU = skuArray[sku];
                 const expFacings = exp[sku];
 
-                const myTile = htmlTile({
+                const myTile = interfaceModule.htmlTile({
                   data:{
                     title:skuList[currentSKU].name,
                     subtitle:skuList[currentSKU].brand,
