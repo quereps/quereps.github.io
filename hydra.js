@@ -1,4 +1,4 @@
 
 hydraSpecial = function(skuList,settings){
-  complianceModule.Run(settings);
+  complianceModule.Run(settings.compliance);
 }
