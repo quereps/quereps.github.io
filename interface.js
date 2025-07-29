@@ -903,6 +903,7 @@ function loadReportTemplates(){
       notification(type,message);
     },
     htmlTile: function (settings) {
+      console.log(settings);
       return htmlTile(settings);
     },
     barcodeGenerate: function (code) {
