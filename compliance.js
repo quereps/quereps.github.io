@@ -90,6 +90,7 @@ const tileTemplates = {
     Run: function (settings) {
       init(settings);
     },
+    tileTemplates,
   }
 
 })(jQuery, ksAPI);
