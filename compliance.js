@@ -17,14 +17,14 @@ const tileTemplates = {
     barcode: skuArray[currentSKU],
   }),
 
-  oos: (sku, name, skuArray, exp) => ({
+  oos: (sku, name, skuArray, expFacings) => ({
     data: {
       title: name[sku],
       // number: skuArray[sku],
     },
     resultLabel: "Expected Facings",
     result: {
-      expected: exp[sku],
+      expected: expFacings,
     },
     barcode: skuArray[sku],
   }),
