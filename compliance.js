@@ -4,7 +4,7 @@ const complianceModule = (function($, ksAPI){
   let skuList = {};
 
 const tileTemplates = {
-  presence: (currentSKU, skuList, skuArray, expFacings) => ({
+  presence: (SKUindex,currentSKU, skuList, skuArray, expFacings) => ({
     data: {
       title: skuList[currentSKU].name,
       subtitle: skuList[currentSKU].brand,
@@ -17,16 +17,16 @@ const tileTemplates = {
     barcode: skuList[currentSKU].upc,
   }),
 
-  oos: (sku, name, skuArray, expFacings) => ({
+  oos: (SKUindex,currentSKU, skuList, skuArray, expFacings) => ({
     data: {
-      title: name[sku],
+      title: name[SKUindex],
       // number: skuArray[sku],
     },
     resultLabel: "Expected Facings",
     result: {
       expected: expFacings,
     },
-    barcode: skuArray[sku],
+    barcode: skuArray[SKUindex],
   }),
 };
 
@@ -60,10 +60,10 @@ const tileTemplates = {
               for(let currentSKU of skuArray){
                 const expFacings = exp[skuArray.indexOf(currentSKU)];
                 console.log("currentSKU: ",currentSKU);
-                //currentSKUindex = skuArray.indexOf(currentSKU)
+                SKUindex = skuArray.indexOf(currentSKU);
 
                 const myTile = interfaceModule.htmlTile(
-                  currentComplianceReport.tileTemplate(currentSKU, skuList, skuArray, expFacings)
+                  currentComplianceReport.tileTemplate(SKUindex,currentSKU, skuList, skuArray, expFacings)
                 );
 
                 jQuery("#mustHaveAvailability").append(myTile);
