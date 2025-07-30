@@ -14,7 +14,7 @@ const tileTemplates = {
       value: skuList[currentSKU].facings,
       full: expFacings,
     },
-    barcode: skuArray[currentSKU],
+    barcode: skuList[currentSKU],
   }),
 
   oos: (sku, name, skuArray, expFacings) => ({
