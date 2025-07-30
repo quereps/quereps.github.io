@@ -59,6 +59,8 @@ const tileTemplates = {
 
               for(let currentSKU of skuArray){
                 const expFacings = exp[skuArray.indexOf(currentSKU)];
+                console.log("currentSKU: ",currentSKU);
+
                 const myTile = interfaceModule.htmlTile(
                   currentComplianceReport.tileTemplate(currentSKU, skuList, skuArray, expFacings)
                 );
