@@ -344,7 +344,9 @@ const clearResults = function(){
             settings.specificFunction(skuList,settings);
           }
 
+          if(settings.report){
           interfaceModule.createReport(settings, skuList, sections);
+        }
 
           
         }).catch((err)=>{
