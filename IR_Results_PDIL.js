@@ -339,14 +339,18 @@ const clearResults = function(){
           await Promise.all(tagPromises);
 
 
-          if(settings.specificFunction){
-            console.log("Specific Function Detected");
-            settings.specificFunction(skuList,settings);
-          }
+          
 
           if(settings.report){
           interfaceModule.createReport(settings, skuList, sections);
+        }else{
+          vpHideLoader();
         }
+
+        if(settings.specificFunction){
+            console.log("Specific Function Detected");
+            settings.specificFunction(skuList,settings);
+          }
 
           
         }).catch((err)=>{
