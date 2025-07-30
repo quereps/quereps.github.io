@@ -14,7 +14,7 @@ const tileTemplates = {
       value: skuList[currentSKU].facings,
       full: expFacings,
     },
-    barcode: skuList[currentSKU],
+    barcode: skuList[currentSKU].upc,
   }),
 
   oos: (sku, name, skuArray, expFacings) => ({
@@ -60,6 +60,7 @@ const tileTemplates = {
               for(let currentSKU of skuArray){
                 const expFacings = exp[skuArray.indexOf(currentSKU)];
                 console.log("currentSKU: ",currentSKU);
+                //currentSKUindex = skuArray.indexOf(currentSKU)
 
                 const myTile = interfaceModule.htmlTile(
                   currentComplianceReport.tileTemplate(currentSKU, skuList, skuArray, expFacings)
