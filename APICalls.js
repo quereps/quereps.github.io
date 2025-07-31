@@ -140,6 +140,41 @@ var getMissionResponse = async function(missionResponseID){
 
 
 
+var getTaskResponse = async function(taskResponseId){
+
+  //  return new Promise(async (resolve, reject) => {
+
+    //url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_id.eq="+campaingnID+"&place_id.eq="+placeId+"&completed_at.gt="+getTimeStamps(timeFrame).back+"&include=user,task_responses";
+    url = "https://admin.gospotcheck.com//external/v1/mission_responses/"+taskResponseId;
+
+
+    try { 
+      const data = await APICall("GET",url, tokenV1);
+
+      console.log("Task Response Data received:", data);
+
+      if(data && data.data){
+
+        //var lastItem = data.data[data.data.length - 1];
+        //resolve(lastItem);
+        //const sorted = data.data.sort((a, b) => new Date(b.completed_at) - new Date(a.completed_at));
+        //const latestItems = sorted.slice(0, limit);
+        return data.data;
+
+      }
+      else{
+        console.log("No Task responses found");
+
+    }
+  } catch (error) {
+      console.error("Failed to get Mission responses:", error);
+      throw error; 
+    }
+    //  });
+}
+
+
+
 
 var getMissionResponses = async function(placeId,campaignId,timeFrame, limit){
 
