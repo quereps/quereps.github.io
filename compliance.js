@@ -3,7 +3,7 @@ const complianceModule = (function($, ksAPI){
 
   let skuList = {};
 
-const tileTemplates = {
+const displayTemplates = {
   presence: (SKUindex,currentSKU, skuList, skuArray, expFacings) => ({
     data: {
       title: skuList[currentSKU].name,
@@ -97,7 +97,7 @@ const tileTemplates = {
     Run: function (settings) {
       init(settings);
     },
-    tileTemplates,
+    displayTemplates,
   }
 
 })(jQuery, ksAPI);
