@@ -565,6 +565,7 @@ var POG = function(category,destination){
         check = "",
         barcode = false,
         packshot = false,
+        cssClass = "",
         upc="",
         action: {
           target = "",
@@ -645,7 +646,7 @@ var POG = function(category,destination){
 
     htmlContent = headerHTML+resultContainerHTML+actionContainer;
   
-    const HTMLOutput = "<div class='SKULabel' id='fc"+upc+"' class='check_"+check+"'>"+htmlContent+"</div>";
+    const HTMLOutput = "<div class='SKULabel' id='fc"+upc+"' class='check_"+check+" "+cssClass+"'>"+htmlContent+"</div>";
 
     console.log(HTMLOutput);
     return HTMLOutput;
