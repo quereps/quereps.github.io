@@ -102,23 +102,23 @@ const displayTemplates = {
 
     skuList = APIModule.skuList;
 
-    let upcDetectedQRef = settings.upcDetectedQRef;
+    let upcDetectedQRef = APIModule.settings.upcDetectedQRef;
     let sections = settings.sections;
 
     vpSetResults(upcDetectedQRef,arrayToPipe(Object.keys(skuList)));
 
-    for(let complianceReport in sections){
+    //for(let complianceReport in sections){
 
-      currentComplianceReport = sections[complianceReport];
-      interfaceModule.createHTMLSection("comp_"+complianceReport,currentComplianceReport?.title,currentComplianceReport?.logo,currentComplianceReport?.type,currentComplianceReport?.options);
+     // currentComplianceReport = sections[complianceReport];
+     // interfaceModule.createHTMLSection("comp_"+complianceReport,currentComplianceReport?.title,currentComplianceReport?.logo,currentComplianceReport?.type,currentComplianceReport?.options);
 
 
-      complianceReportCreation(currentComplianceReport, complianceReport);
+      //complianceModule.complianceReportCreation(currentComplianceReport, complianceReport);
 
 
         
 
-}
+//}
   }
 
 
