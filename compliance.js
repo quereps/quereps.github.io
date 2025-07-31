@@ -21,6 +21,7 @@ const displayTemplates = {
     data: {
       title: skuList[currentSKU].name,
       subtitle: skuList[currentSKU].brand,
+      number: skuList[currentSKU].upc,
     },
     check:skuList[currentSKU].presence,
     packshot:true,
