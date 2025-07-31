@@ -824,7 +824,7 @@ const MissionResponseSection = function(placeId,missionId,destination){
 
 
 var photo = function(containerId){ 
-  let photoDiv = "<img src=''></img>"
+  let photoDiv = "<img src=''></img>";
   jQuery('#'+containerId+" .content").append(photoDiv);
 }
 
