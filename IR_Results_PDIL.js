@@ -336,7 +336,7 @@ const clearResults = function(){
             APICallsModule.getTaskResponse(grid.metadata.task_response.id).then((data)=>{
               let image = data.value[0].s3;
               console.log(image);
-              photoURLs.push();
+              photoURLs.push(image);
             });
               
             };
