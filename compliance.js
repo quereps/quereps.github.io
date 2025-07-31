@@ -93,7 +93,7 @@ const displayTemplates = {
 
             });
 
-          }, 1500);
+          }, 2500);
 
   }
 
