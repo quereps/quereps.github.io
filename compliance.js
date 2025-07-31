@@ -23,6 +23,7 @@ const displayTemplates = {
       subtitle: skuList[currentSKU].brand,
     },
     check:skuList[currentSKU].presence,
+    packshot:true,
     //resultLabel: "Availability",
     //meter: {
     //  value: skuList[currentSKU].facings,
