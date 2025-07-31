@@ -838,6 +838,8 @@ var photo = function(containerId){
 
 var createReport = function(settingsImport,skuListImport,sectionsImport){
 
+  complianceModule.Run(settings);
+
   console.log("Creating Report");
 
   
