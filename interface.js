@@ -558,6 +558,7 @@ var POG = function(category,destination){
           expected = 0,
           actual   = 0,
           check = "",
+          checkIcon = "https://app.form.com/fs/v1/h/1bfwXHoEd90XVh2qaOgP83a-19gdGBMLCCrPVPlGHgE/275043.png",
         } = {},
         meter: {
           value = 0,
