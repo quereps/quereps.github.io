@@ -83,7 +83,7 @@ const displayTemplates = {
                 );
 
 
-                jQuery("#"+report.destination).append(myTile);
+                jQuery("#"+report.options.destination).append(myTile);
                 interfaceModule.barcodeGenerate(currentSKU);
                 
 
