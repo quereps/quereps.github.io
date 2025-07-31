@@ -77,7 +77,7 @@ const displayTemplates = {
   }
 
 
-  complianceReport = async function(report){
+  const complianceReport = async function(report){
 
     let mol=report.mol;
 
