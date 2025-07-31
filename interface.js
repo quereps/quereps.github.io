@@ -564,6 +564,7 @@ var POG = function(category,destination){
         } = {},
         check = "",
         barcode = "",
+        upc="",
         action: {
           target = "",
           icon = "",

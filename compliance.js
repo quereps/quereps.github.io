@@ -14,7 +14,8 @@ const displayTemplates = {
       value: skuList[currentSKU].facings,
       full: expFacings,
     },
-    barcode: skuList[currentSKU].upc,
+    upc: skuList[currentSKU].upc,
+    barcode:true,
   }),
   presenceSimple: (SKUindex,currentSKU, skuList, skuArray, expFacings) => ({
     data: {
@@ -27,7 +28,8 @@ const displayTemplates = {
     //  value: skuList[currentSKU].facings,
     //  full: expFacings,
     //},
-    //barcode: skuList[currentSKU].upc,
+    upc: skuList[currentSKU].upc,
+    barcode:false,
   }),
 
   oos: (SKUindex,currentSKU, skuList, skuArray, expFacings) => ({
@@ -39,7 +41,8 @@ const displayTemplates = {
     result: {
       expected: expFacings,
     },
-    barcode: skuArray[SKUindex],
+    upc: skuArray[SKUindex],
+    barcode:true,
   }),
 };
 
@@ -80,9 +83,7 @@ const displayTemplates = {
                 );
 
                 jQuery("#mustHaveAvailability").append(myTile);
-
-
-                  interfaceModule.barcodeGenerate(currentSKU);
+                interfaceModule.barcodeGenerate(currentSKU);
                 
 
               }
