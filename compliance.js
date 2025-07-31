@@ -69,7 +69,7 @@ const displayTemplates = {
 
         let mol=currentComplianceReport.mol;
 
-      //setTimeout(()=>{
+      setTimeout(()=>{
               selectAllMOL(mol).then((a)=>{
 
 
@@ -100,7 +100,7 @@ const displayTemplates = {
 
             });
 
-          //}, 1000);
+          }, 1000);
 
 }
   }
