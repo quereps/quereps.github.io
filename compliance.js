@@ -113,7 +113,7 @@ const displayTemplates = {
       interfaceModule.createHTMLSection(complianceReport,currentComplianceReport?.title,currentComplianceReport?.logo,currentComplianceReport?.type,currentComplianceReport?.options);
 
 
-      complianceReportCreation(currentComplianceReport, containerNum);
+      complianceReportCreation(currentComplianceReport, complianceReport);
 
 
         
