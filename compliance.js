@@ -23,7 +23,9 @@ const displayTemplates = {
       subtitle: skuList[currentSKU].brand,
       number: skuList[currentSKU].upc,
     },
-    check:skuList[currentSKU].presence,
+    result:{
+      check:skuList[currentSKU].presence,
+    }
     packshot:true,
     cssClass:"dirRow",
     //resultLabel: "Availability",
