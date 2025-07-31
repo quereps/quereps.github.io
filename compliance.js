@@ -84,7 +84,7 @@ const displayTemplates = {
                   currentComplianceReport.displayTemplate(SKUindex,currentSKU, skuList, skuArray, expFacings)
                 );
 
-                jQuery("#mustHaveAvailability").append(myTile);
+                jQuery("#"+currentComplianceReport.destination).append(myTile);
                 interfaceModule.barcodeGenerate(currentSKU);
                 
 
