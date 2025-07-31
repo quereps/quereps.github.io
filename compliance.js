@@ -25,6 +25,7 @@ const displayTemplates = {
     },
     result:{
       check:skuList[currentSKU].presence,
+      checkIcon:"https://app.form.com/fs/v1/h/1bfwXHoEd90XVh2qaOgP83a-19gdGBMLCCrPVPlGHgE/275043.png",
     },
     packshot:true,
     cssClass:"dirRow",
