@@ -339,7 +339,16 @@ const clearResults = function(){
           await Promise.all(tagPromises);
 
 
-          
+/*Testing Planogram*/
+          let pogPromises = photo_grids.map(async grid => {
+              const pogs = await APICallsModule.getPlanogram(companyId,grid.id);
+              //interfaceModule.removeNotification();
+              //extractIRData(tags);
+              console.log("pogs",pogs);
+          });
+
+          await Promise.all(pogPromises);
+/*Testing Planogram*/
 
           if(settings.report){
           interfaceModule.createReport(settings, skuList, sections);
