@@ -3,6 +3,9 @@ const complianceModule = (function($, ksAPI){
 
   let skuList = {};
 
+
+
+
 const displayTemplates = {
   presence: (SKUindex,currentSKU, skuList, skuArray, expFacings) => ({
     data: {
@@ -53,29 +56,6 @@ const displayTemplates = {
 };
 
 
-  function init(settings){
-
-    skuList = APIModule.skuList;
-
-    let upcDetectedQRef = settings.upcDetectedQRef;
-    let sections = settings.sections;
-
-    vpSetResults(upcDetectedQRef,arrayToPipe(Object.keys(skuList)));
-
-    for(let complianceReport in sections){
-
-      currentComplianceReport = sections[complianceReport];
-      interfaceModule.createHTMLSection(complianceReport,currentComplianceReport?.title,currentComplianceReport?.logo,currentComplianceReport?.type,currentComplianceReport?.options);
-
-
-      complianceReport(currentComplianceReport);
-
-
-        
-
-}
-  }
-
 
   const complianceReport = async function(report){
 
@@ -115,6 +95,33 @@ const displayTemplates = {
           }, 1000);
 
   }
+
+
+  function init(settings){
+
+    skuList = APIModule.skuList;
+
+    let upcDetectedQRef = settings.upcDetectedQRef;
+    let sections = settings.sections;
+
+    vpSetResults(upcDetectedQRef,arrayToPipe(Object.keys(skuList)));
+
+    for(let complianceReport in sections){
+
+      currentComplianceReport = sections[complianceReport];
+      interfaceModule.createHTMLSection(complianceReport,currentComplianceReport?.title,currentComplianceReport?.logo,currentComplianceReport?.type,currentComplianceReport?.options);
+
+
+      complianceReport(currentComplianceReport);
+
+
+        
+
+}
+  }
+
+
+
 
 
 
