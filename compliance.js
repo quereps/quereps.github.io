@@ -57,7 +57,7 @@ const displayTemplates = {
 
 
 
-  const complianceReport = async function(report){
+  const complianceReportCreation = async function(report){
 
     let mol=report.mol;
 
@@ -112,7 +112,7 @@ const displayTemplates = {
       interfaceModule.createHTMLSection(complianceReport,currentComplianceReport?.title,currentComplianceReport?.logo,currentComplianceReport?.type,currentComplianceReport?.options);
 
 
-      complianceReport(currentComplianceReport);
+      complianceReportCreation(currentComplianceReport);
 
 
         
