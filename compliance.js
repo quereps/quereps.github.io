@@ -57,9 +57,10 @@ const displayTemplates = {
 
 
 
-  const complianceReportCreation = async function(report){
+  const complianceReportCreation = async function(report, containerNum){
 
     let mol=report.mol;
+    console.log("containerNum: ",containerNum);
 
       setTimeout(()=>{
               selectAllMOL(mol).then((a)=>{
@@ -83,7 +84,7 @@ const displayTemplates = {
                 );
 
 
-                jQuery("#"+report.options.destination).append(myTile);
+                jQuery("#"+report.options.destination+" #Container"+containerNum).append(myTile);
                 interfaceModule.barcodeGenerate(currentSKU);
                 
 
@@ -112,7 +113,7 @@ const displayTemplates = {
       interfaceModule.createHTMLSection(complianceReport,currentComplianceReport?.title,currentComplianceReport?.logo,currentComplianceReport?.type,currentComplianceReport?.options);
 
 
-      complianceReportCreation(currentComplianceReport);
+      complianceReportCreation(currentComplianceReport, containerNum);
 
 
         
