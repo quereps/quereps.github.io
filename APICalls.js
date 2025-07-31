@@ -154,13 +154,7 @@ var getTaskResponse = async function(taskResponseId){
       console.log("Task Response Data received:", data);
 
       if(data && data.data){
-
-        //var lastItem = data.data[data.data.length - 1];
-        //resolve(lastItem);
-        //const sorted = data.data.sort((a, b) => new Date(b.completed_at) - new Date(a.completed_at));
-        //const latestItems = sorted.slice(0, limit);
         return data.data;
-
       }
       else{
         console.log("No Task responses found");
