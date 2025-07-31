@@ -563,7 +563,8 @@ var POG = function(category,destination){
           full   = 0
         } = {},
         check = "",
-        barcode = "",
+        barcode = false,
+        packshot = false,
         upc="",
         action: {
           target = "",
@@ -585,11 +586,11 @@ var POG = function(category,destination){
     let descHTML = description ? "<p class='description'>"+description+"</p>" : ""; 
     let coloredHTML = number ? "<div class='colored'>"+number+"</div>" : ""; 
     let barcodeHTML = barcode ? "<img class='barcode' id='barcode"+barcode+"' src='' />" : "";
-    let packshot = barcode ? "<div class='packshot pshot"+barcode+"''></div>" : "";
+    let packshotHTML = packshot ? "<div class='packshot pshot"+upc+"''></div>" : "";
 
     let titleGroupHTML = "<div class='titleGroupHTML'>"+titleHTML+barcodeHTML+descHTML+coloredHTML+"</div>";
 
-    let headerHTML = "<div class='header'>"+packshot+titleGroupHTML+"</div>"  
+    let headerHTML = "<div class='header'>"+packshotHTML+titleGroupHTML+"</div>"  
     
 
     let meterHTML="";
@@ -644,7 +645,7 @@ var POG = function(category,destination){
 
     htmlContent = headerHTML+resultContainerHTML+actionContainer;
   
-    const HTMLOutput = "<div class='SKULabel' id='fc"+barcode+"' class='check_"+check+"'>"+htmlContent+"</div>";
+    const HTMLOutput = "<div class='SKULabel' id='fc"+upc+"' class='check_"+check+"'>"+htmlContent+"</div>";
 
     console.log(HTMLOutput);
     return HTMLOutput;
