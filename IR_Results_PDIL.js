@@ -332,6 +332,7 @@ const clearResults = function(){
 
           let tagPromises = photo_grids.map(async grid => {
 
+            console.log("grid:",grid);
              APICallsModule. getTaskResponse(grid.metadata.task_response.id);
 
               const tags = await APICallsModule.getTags(grid.id);
