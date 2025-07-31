@@ -103,7 +103,7 @@ const displayTemplates = {
     skuList = APIModule.skuList;
 
     let upcDetectedQRef = APIModule.getSettings().config.upcDetectedQRef;
-    let sections = settings.sections;
+    //let sections = settings.sections;
 
     vpSetResults(upcDetectedQRef,arrayToPipe(Object.keys(skuList)));
 
