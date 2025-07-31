@@ -673,7 +673,7 @@ function toggleCheckbox(a){
 
 function barcodeGenerate(code) {
 
-  if(code && code.length>0 && jQuery("#barcode" + code)){
+  if(code && code.length>0 && jQuery("#barcode" + code) && jQuery("#barcode" + code).length>0){
     let format;
     if (code.length === 8) {
       format = "EAN8";
