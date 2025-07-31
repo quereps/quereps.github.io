@@ -824,8 +824,14 @@ const MissionResponseSection = function(placeId,missionId,destination){
 
 
 var photo = function(containerId){ 
-  let photoDiv = "<img src=''></img>";
-  jQuery('#'+containerId+" .content").append(photoDiv);
+
+  let photosArray = APIModule.photoURLs;
+
+  for(let photo of photosArray){
+    let photoDiv = "<img src='"+photo+"'></img>";
+    jQuery('#'+containerId+" .content").append(photoDiv);
+  }
+  
 }
 
 
