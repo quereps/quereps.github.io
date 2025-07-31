@@ -25,6 +25,7 @@ const displayTemplates = {
     },
     check:skuList[currentSKU].presence,
     packshot:true,
+    cssClass:"noWrap",
     //resultLabel: "Availability",
     //meter: {
     //  value: skuList[currentSKU].facings,
