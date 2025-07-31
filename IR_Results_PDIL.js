@@ -419,8 +419,8 @@ const clearResults = function(){
     },
     skuList,
     companyId,
-    photoURLs
-
+    photoURLs,
+    settings
   }
 })(jQuery, ksAPI);
 
