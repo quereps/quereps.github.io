@@ -391,6 +391,7 @@ const clearResults = function(){
       return skuList;
     },
     skuList,
+    companyId
 
   }
 })(jQuery, ksAPI);
