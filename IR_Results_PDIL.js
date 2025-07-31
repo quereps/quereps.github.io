@@ -235,7 +235,7 @@ const clearResults = function(){
  var init = async function (settingsImport) {
 
   settings=settingsImport;
-  
+
 
 
   settings.currentMissionResponses = 0;
@@ -417,10 +417,12 @@ const clearResults = function(){
     getSKUList : function(){
       return skuList;
     },
+    getSettings: function () {
+    return settings;
+  },
     skuList,
     companyId,
     photoURLs,
-    settings
   }
 })(jQuery, ksAPI);
 
