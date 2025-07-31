@@ -60,8 +60,9 @@ const displayTemplates = {
 
     for(let complianceReport in sections){
 
-        currentComplianceReport = sections[complianceReport];
-
+      currentComplianceReport = sections[complianceReport];
+      createHTMLSection(complianceReport,currentComplianceReport?.title,currentComplianceReport?.logo,currentComplianceReport?.type,currentComplianceReport?.options);
+      
         let mol=currentComplianceReport.mol;
 
       setTimeout(()=>{
@@ -83,6 +84,7 @@ const displayTemplates = {
                 const myTile = interfaceModule.htmlTile(
                   currentComplianceReport.displayTemplate(SKUindex,currentSKU, skuList, skuArray, expFacings)
                 );
+
 
                 jQuery("#"+currentComplianceReport.destination).append(myTile);
                 interfaceModule.barcodeGenerate(currentSKU);
