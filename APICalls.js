@@ -404,5 +404,8 @@ var initAPI = function(settings){
     getMissionVersions: function (campaignId) {
       return getMissionVersions(campaignId);
     },
+    getTaskResponse: function (taskResponseId) {
+      return getTaskResponse(taskResponseId);
+    }
   }
 })(jQuery, ksAPI);
