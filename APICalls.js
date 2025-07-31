@@ -167,7 +167,7 @@ var getTaskResponse = async function(taskResponseId){
 
     }
   } catch (error) {
-      console.error("Failed to get Mission responses:", error);
+      console.error("Failed to get Task responses:", error);
       throw error; 
     }
     //  });
