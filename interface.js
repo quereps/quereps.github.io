@@ -646,7 +646,7 @@ var POG = function(category,destination){
 
     htmlContent = headerHTML+resultContainerHTML+actionContainer;
   
-    const HTMLOutput = "<div class='SKULabel' id='fc"+upc+"' class='check_"+check+" "+cssClass+"'>"+htmlContent+"</div>";
+    const HTMLOutput = "<div class='SKULabel check_"+check+" "+cssClass+"' id='fc"+upc+"'>"+htmlContent+"</div>";
 
     console.log(HTMLOutput);
     return HTMLOutput;
