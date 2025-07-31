@@ -12,6 +12,7 @@ var APIModule = (function ($, ksAPI) {
    let tokenV2 = "";
    let features = "";
    let photoGrId = "";
+   let photoURLs = [];
 
    let realogram = [];
 
