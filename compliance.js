@@ -63,7 +63,7 @@ const tileTemplates = {
                 SKUindex = skuArray.indexOf(currentSKU);
 
                 const myTile = interfaceModule.htmlTile(
-                  currentComplianceReport.tileTemplate(SKUindex,currentSKU, skuList, skuArray, expFacings)
+                  currentComplianceReport.displayTemplate(SKUindex,currentSKU, skuList, skuArray, expFacings)
                 );
 
                 jQuery("#mustHaveAvailability").append(myTile);
