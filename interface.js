@@ -823,6 +823,12 @@ const MissionResponseSection = function(placeId,missionId,destination){
 }
 
 
+var photo = function(containerId){
+  let photoDiv = "<img src=''></img>"
+  jQuery('#'+destination+" .content").append(photoDiv);
+}
+
+
 
 var createReport = function(settingsImport,skuListImport,sectionsImport){
 
