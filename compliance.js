@@ -25,7 +25,7 @@ const displayTemplates = {
     },
     result:{
       check:skuList[currentSKU].presence,
-    }
+    },
     packshot:true,
     cssClass:"dirRow",
     //resultLabel: "Availability",
