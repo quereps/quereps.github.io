@@ -187,7 +187,7 @@ var getLastMissionResponse = async function(placeId, campaignId, timeFrame) {
 
  // return new Promise(async (resolve, reject) => {
 
-    const url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_id.eq=" + campaignId + "&place_id.eq=" + placeId + "&completed_at.gt=" + getTimeStamps(timeFrame).back + "&include=user,task_responses";
+    const url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_id.eq=" + campaignId + "&place_id.eq=" + placeId + "&completed_at.gt=" + getTimeStamps(timeFrame).back + "&include=task_responses,user";
 
     try {
       const data = await APICall("GET", url, tokenV1);
