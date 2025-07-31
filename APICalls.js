@@ -145,7 +145,7 @@ var getTaskResponse = async function(taskResponseId){
 
   console.log("getTaskResponse starting: ",taskResponseId);
 
-   url = "https://admin.gospotcheck.com/external/v1/mission_responses/"+taskResponseId;
+   url = "https://admin.gospotcheck.com/external/v1/task_responses/"+taskResponseId;
 
 
     try { 
