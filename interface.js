@@ -617,7 +617,7 @@ var POG = function(category,destination){
       expectedHTML = "<div class='expected'>"+expected+"</div>"; 
     }
    
-    let checkHTML = result.check ? "<div class='check check_"+check+"''>hey</div>" : "";
+    let checkHTML = check ? "<div class='check check_"+check+"''>hey</div>" : "";
     
 
     resultContainerHTML = "<div class='resultContainer'><h4>"+resultLabel+"</h4>"+checkHTML+meterHTML+expectationHTML+expectedHTML+"</div>" 
