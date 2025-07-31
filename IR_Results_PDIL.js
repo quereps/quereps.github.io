@@ -235,7 +235,7 @@ const clearResults = function(){
  var init = async function (settingsImport) {
 
   settings=settingsImport;
-
+  
 
 
   settings.currentMissionResponses = 0;
