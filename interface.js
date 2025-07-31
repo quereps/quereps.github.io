@@ -672,26 +672,32 @@ function toggleCheckbox(a){
 
 
 function barcodeGenerate(code) {
-  let format;
-  if (code.length === 8) {
-    format = "EAN8";
-  } else if (code.length === 13) {
-    format = "EAN13";
-  } else {
-    console.warn(`UPC length ${code.length} isn’t EAN8/13—using Code128`);
-    format = "CODE128";
-  }
 
-  JsBarcode("#barcode" + code, code, {
-    format,
-    lineColor: "#000",
-    width: 1,
-    height: 15,
-    displayValue: true,
-    margin: 0,
-    background: "#fafafa",
-    fontSize: 10
-  });
+  if(code && code.length>0 && jQuery("#barcode" + code)){
+    let format;
+    if (code.length === 8) {
+      format = "EAN8";
+    } else if (code.length === 13) {
+      format = "EAN13";
+    } else {
+      console.warn(`UPC length ${code.length} isn’t EAN8/13—using Code128`);
+      format = "CODE128";
+    }
+
+    JsBarcode("#barcode" + code, code, {
+      format,
+      lineColor: "#000",
+      width: 1,
+      height: 15,
+      displayValue: true,
+      margin: 0,
+      background: "#fafafa",
+      fontSize: 10
+    });
+  }else{
+    console.log("No barcode to render");
+  }
+  
 };
 
 
