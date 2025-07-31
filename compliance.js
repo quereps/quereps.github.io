@@ -61,8 +61,8 @@ const displayTemplates = {
     for(let complianceReport in sections){
 
       currentComplianceReport = sections[complianceReport];
-      createHTMLSection(complianceReport,currentComplianceReport?.title,currentComplianceReport?.logo,currentComplianceReport?.type,currentComplianceReport?.options);
-      
+      interfaceModule.createHTMLSection(complianceReport,currentComplianceReport?.title,currentComplianceReport?.logo,currentComplianceReport?.type,currentComplianceReport?.options);
+
         let mol=currentComplianceReport.mol;
 
       setTimeout(()=>{
