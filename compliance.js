@@ -16,6 +16,18 @@ const tileTemplates = {
     },
     barcode: skuList[currentSKU].upc,
   }),
+  presenceSimple: (SKUindex,currentSKU, skuList, skuArray, expFacings) => ({
+    data: {
+      title: skuList[currentSKU].name,
+      subtitle: skuList[currentSKU].brand,
+    },
+    //resultLabel: "Availability",
+    //meter: {
+    //  value: skuList[currentSKU].facings,
+    //  full: expFacings,
+    //},
+    //barcode: skuList[currentSKU].upc,
+  }),
 
   oos: (SKUindex,currentSKU, skuList, skuArray, expFacings) => ({
     data: {
