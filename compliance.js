@@ -67,13 +67,25 @@ const displayTemplates = {
       currentComplianceReport = sections[complianceReport];
       interfaceModule.createHTMLSection(complianceReport,currentComplianceReport?.title,currentComplianceReport?.logo,currentComplianceReport?.type,currentComplianceReport?.options);
 
-        let mol=currentComplianceReport.mol;
+
+      complianceReport(currentComplianceReport);
+
+
+        
+
+}
+  }
+
+
+  complianceReport = async function(report){
+
+    let mol=report.mol;
 
       setTimeout(()=>{
               selectAllMOL(mol).then((a)=>{
 
 
-              const skuArray = vpGetTextResults(mol+".A"+currentComplianceReport.skuColumn).split(',').map(s => s.trim());
+              const skuArray = vpGetTextResults(mol+".A"+report.skuColumn).split(',').map(s => s.trim());
               const exp = vpGetTextResults(mol+".A2").split(',').map(s => s.trim());
               const name = vpGetTextResults(mol+".A3").split(',').map(s => s.trim());
               //complianceCheck();
@@ -87,11 +99,11 @@ const displayTemplates = {
                 SKUindex = skuArray.indexOf(currentSKU);
 
                 const myTile = interfaceModule.htmlTile(
-                  currentComplianceReport.displayTemplate(SKUindex,currentSKU, skuList, skuArray, expFacings)
+                  report.displayTemplate(SKUindex,currentSKU, skuList, skuArray, expFacings)
                 );
 
 
-                jQuery("#"+currentComplianceReport.destination).append(myTile);
+                jQuery("#"+report.destination).append(myTile);
                 interfaceModule.barcodeGenerate(currentSKU);
                 
 
@@ -102,7 +114,6 @@ const displayTemplates = {
 
           }, 1000);
 
-}
   }
 
 
