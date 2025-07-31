@@ -142,10 +142,10 @@ var getMissionResponse = async function(missionResponseID){
 
 var getTaskResponse = async function(taskResponseId){
 
-  //  return new Promise(async (resolve, reject) => {
 
-    //url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_id.eq="+campaingnID+"&place_id.eq="+placeId+"&completed_at.gt="+getTimeStamps(timeFrame).back+"&include=user,task_responses";
-    url = "https://admin.gospotcheck.com//external/v1/mission_responses/"+taskResponseId;
+  console.log("getTaskResponse starting: ",taskResponseId);
+
+   url = "https://admin.gospotcheck.com//external/v1/mission_responses/"+taskResponseId;
 
 
     try { 
