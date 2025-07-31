@@ -130,6 +130,9 @@ const displayTemplates = {
     Run: function (settings) {
       init(settings);
     },
+    complianceReportCreation: function (currentComplianceReport, complianceReport) {
+      complianceReportCreation(currentComplianceReport, complianceReport);
+    },
     displayTemplates,
   }
 
