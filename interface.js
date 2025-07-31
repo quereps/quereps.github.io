@@ -556,13 +556,13 @@ var POG = function(category,destination){
         resultLabel = "",
         result: {
           expected = 0,
-          actual   = 0
+          actual   = 0,
+          check = "",
         } = {},
         meter: {
           value = 0,
           full   = 0
         } = {},
-        check = "",
         barcode = false,
         packshot = false,
         cssClass = "",
@@ -617,7 +617,10 @@ var POG = function(category,destination){
       expectedHTML = "<div class='expected'>"+expected+"</div>"; 
     }
    
-    resultContainerHTML = "<div class='resultContainer'><h4>"+resultLabel+"</h4>"+meterHTML+expectationHTML+expectedHTML+"</div>" 
+    let checkHTML = check ? "<div class='check check_"+check+"''></div>" : "";
+    
+
+    resultContainerHTML = "<div class='resultContainer'><h4>"+resultLabel+"</h4>"+checkHTML+meterHTML+expectationHTML+expectedHTML+"</div>" 
    
 
     let tableHTML = "<table>";
