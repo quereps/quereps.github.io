@@ -618,7 +618,7 @@ var POG = function(category,destination){
     }
    
     let checkHTML = check ? "<div class='check check_"+check+"''>hey</div>" : "";
-    
+    console.log("checkHTML: ",checkHTML);
 
     resultContainerHTML = "<div class='resultContainer'><h4>"+resultLabel+"</h4>"+checkHTML+meterHTML+expectationHTML+expectedHTML+"</div>" 
    
