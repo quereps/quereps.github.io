@@ -562,6 +562,7 @@ var POG = function(category,destination){
           value = 0,
           full   = 0
         } = {},
+        check = "",
         barcode = "",
         action: {
           target = "",
@@ -642,7 +643,7 @@ var POG = function(category,destination){
 
     htmlContent = headerHTML+resultContainerHTML+actionContainer;
   
-    const HTMLOutput = "<div class='SKULabel' id='fc"+barcode+"'>"+htmlContent+"</div>";
+    const HTMLOutput = "<div class='SKULabel' id='fc"+barcode+"' class='check_"+check+"'>"+htmlContent+"</div>";
 
     console.log(HTMLOutput);
     return HTMLOutput;

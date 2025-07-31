@@ -80,7 +80,10 @@ const displayTemplates = {
                 );
 
                 jQuery("#mustHaveAvailability").append(myTile);
-                interfaceModule.barcodeGenerate(currentSKU);
+
+
+                  interfaceModule.barcodeGenerate(currentSKU);
+                
 
               }
                 
