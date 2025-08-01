@@ -189,7 +189,7 @@ var removeNotification = function(destination) {
 */
 
 var notification = function(type, message, destination) {
-  let $container = destination ? $(destination) : $("#main_frame");
+  let $container = destination ? jQuery(destination) : $("#main_frame");
 
   console.log("destination: ", destination);
 
