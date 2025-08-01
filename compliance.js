@@ -15,9 +15,9 @@ const complianceModule = (function($, ksAPI){
           percentages[key] = total ? ((this.results[key] / total) * 100).toFixed(1) + "%" : "0%";
         }
         return percentages;
-      }
+      };
     };
-  }
+  
 
 
 const displayTemplates = {
@@ -37,8 +37,6 @@ const displayTemplates = {
   presenceSimple: (SKUindex,currentSKU, skuList, skuArray, dmData) => ({
     data: {
       title: skuList[currentSKU].name+" "+skuList[currentSKU].size,
-      //subtitle: skuList[currentSKU].brand,
-      //number: skuList[currentSKU].upc,
     },
     result:{
       resultLabel: "Availability",
@@ -47,11 +45,6 @@ const displayTemplates = {
     },
     packshot:true,
     cssClass:"dirRow noWrap",
-    //resultLabel: "Availability",
-    //meter: {
-    //  value: skuList[currentSKU].facings,
-    //  full: dmData[exp],
-    //},
     upc: skuList[currentSKU].upc,
     barcode:true,
   }),
