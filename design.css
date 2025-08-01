@@ -715,7 +715,7 @@ table.customTable.IRDataTable th{
     text-align:center;
 }
 
-.notification.Loading {
+.notification.loading {
     background:url(https://app.form.com/fs/v1/h/HsFIjl7WzqrR8GsV_vAWpmYrjfYo1XzqgGu7GfOJj6c/275078.gif) !important;
     background-size:60px !important;
     background-repeat:no-repeat !important;
