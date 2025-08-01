@@ -420,6 +420,10 @@ function createHTMLSection(id,name, imageURL,type, settings){
           classToAdd+="noGrow";
         }
 
+        if(settings?.stretch==true){
+          classToAdd+="stretch";
+        }
+
         title = name || "";
         //name = title.replace(/\s+/g, "_"); // Replace spaces with underscores
         headerHTML = "";
