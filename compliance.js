@@ -93,7 +93,8 @@ const displayTemplates = {
               complianceData.results[report.title] = skuArray.length;
 
               if(report.score==true){
-                jQuery(destination+" .score").append(complianceData.getPercentages()[report.title]);
+                console.log("Applying score");
+                jQuery("#"+report.options.destination+" #Container"+containerNum+" .score").append(complianceData.getPercentages()[report.title]);
               }
 
 
