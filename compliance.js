@@ -63,7 +63,7 @@ const displayTemplates = {
 
     let dmData = {};
 
-    console.log("containerNum: ",containerNum);
+    //console.log("containerNum: ",containerNum);
 
       setTimeout(()=>{
               selectAllMOL(mol).then((a)=>{
@@ -80,12 +80,12 @@ const displayTemplates = {
               const name = vpGetTextResults(mol+".A3").split(',').map(s => s.trim());
               //complianceCheck();
 
-              console.log("skuArray: ",skuArray);
+              //console.log("skuArray: ",skuArray);
 
 
               for(let currentSKU of skuArray){
                 const expFacings = exp[skuArray.indexOf(currentSKU)];
-                console.log("currentSKU: ",currentSKU);
+                //console.log("currentSKU: ",currentSKU);
                 SKUindex = skuArray.indexOf(currentSKU);
 
                 const myTile = interfaceModule.htmlTile(
