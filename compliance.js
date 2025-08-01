@@ -7,7 +7,7 @@ const complianceModule = (function($, ksAPI){
 
 
 const displayTemplates = {
-  presence: (SKUindex,currentSKU, skuList, skuArray, expFacings) => ({
+  presence: (SKUindex,currentSKU, skuList, skuArray, dmData) => ({
     data: {
       title: skuList[currentSKU].name,
       subtitle: skuList[currentSKU].brand,
@@ -15,12 +15,12 @@ const displayTemplates = {
     resultLabel: "Availability",
     meter: {
       value: skuList[currentSKU].facings,
-      full: expFacings,
+      full: dmData[exp],
     },
     upc: skuList[currentSKU].upc,
     barcode:true,
   }),
-  presenceSimple: (SKUindex,currentSKU, skuList, skuArray, expFacings) => ({
+  presenceSimple: (SKUindex,currentSKU, skuList, skuArray, dmData) => ({
     data: {
       title: skuList[currentSKU].name+" "+skuList[currentSKU].size,
       subtitle: skuList[currentSKU].brand,
@@ -35,20 +35,20 @@ const displayTemplates = {
     //resultLabel: "Availability",
     //meter: {
     //  value: skuList[currentSKU].facings,
-    //  full: expFacings,
+    //  full: dmData[exp],
     //},
     upc: skuList[currentSKU].upc,
     barcode:false,
   }),
 
-  oos: (SKUindex,currentSKU, skuList, skuArray, expFacings) => ({
+  oos: (SKUindex,currentSKU, skuList, skuArray, dmData) => ({
     data: {
       title: name[SKUindex],
       // number: skuArray[sku],
     },
     resultLabel: "Expected Facings",
     result: {
-      expected: expFacings,
+      expected: dmData[exp],
     },
     upc: skuArray[SKUindex],
     barcode:true,
@@ -75,9 +75,9 @@ const displayTemplates = {
 
               console.log("dmData: ",dmData);
 
-              const skuArray = vpGetTextResults(mol+".A"+report.skuColumn).split(',').map(s => s.trim());
-              const exp = vpGetTextResults(mol+".A4").split(',').map(s => s.trim());
-              const name = vpGetTextResults(mol+".A3").split(',').map(s => s.trim());
+              //const skuArray = vpGetTextResults(mol+".A"+report.skuColumn).split(',').map(s => s.trim());
+              //const exp = vpGetTextResults(mol+".A4").split(',').map(s => s.trim());
+              //const name = vpGetTextResults(mol+".A3").split(',').map(s => s.trim());
               //complianceCheck();
 
               //console.log("skuArray: ",skuArray);
@@ -89,7 +89,7 @@ const displayTemplates = {
                 SKUindex = skuArray.indexOf(currentSKU);
 
                 const myTile = interfaceModule.htmlTile(
-                  report.displayTemplate(SKUindex,currentSKU, skuList, skuArray, expFacings)
+                  report.displayTemplate(SKUindex,currentSKU, skuList, skuArray, dmData)
                 );
 
 
