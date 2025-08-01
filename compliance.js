@@ -44,7 +44,7 @@ const displayTemplates = {
   oos: (SKUindex,currentSKU, skuList, skuArray, dmData) => ({
     data: {
       title: dmData.name[SKUindex],
-      // number: skuArray[sku],
+      number: skuArray[SKUindex],
     },
     resultLabel: "Expected Facings",
     result: {
@@ -52,6 +52,7 @@ const displayTemplates = {
     },
     upc: skuArray[SKUindex],
     barcode:true,
+    packshot:true,
   }),
 };
 
