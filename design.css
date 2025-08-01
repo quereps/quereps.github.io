@@ -763,3 +763,9 @@ div.container.noGrow {
 }
 
 }
+
+
+.sectionHeader {
+    width: 100% !important;
+    display: flex;
+}
