@@ -5,6 +5,18 @@ const complianceModule = (function($, ksAPI){
 
   let complianceData = {
     results:{},
+    getTotal: function () {
+      return Object.values(this.results).reduce((sum, val) => sum + val, 0);
+    },
+    getPercentages: function () {
+        const total = this.getTotal();
+        const percentages = {};
+        for (let key in this.results) {
+          percentages[key] = total ? ((this.results[key] / total) * 100).toFixed(1) + "%" : "0%";
+        }
+        return percentages;
+      }
+    };
   }
 
 
