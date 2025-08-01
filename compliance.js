@@ -84,7 +84,7 @@ const displayTemplates = {
 
 
               for(let currentSKU of skuArray){
-                const expFacings = exp[skuArray.indexOf(currentSKU)];
+                //const expFacings = exp[skuArray.indexOf(currentSKU)];
                 //console.log("currentSKU: ",currentSKU);
                 SKUindex = skuArray.indexOf(currentSKU);
 
