@@ -95,7 +95,7 @@ const displayTemplates = {
                 );
 
 
-                jQuery("#"+report.options.destination+" #Container"+containerNum).append(myTile);
+                jQuery("#"+report.options.destination+" #Container"+containerNum+" .content").append(myTile);
                 interfaceModule.barcodeGenerate(currentSKU);
                 
 
