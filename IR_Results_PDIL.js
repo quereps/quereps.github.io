@@ -115,7 +115,7 @@ var GetIRResults = async function(photo_grIds, settings){
 //vpShowLoader();
  // return new Promise(async (resolve, reject) => {
 
-interfaceModule.notification("Loading","Getting Tags");
+interfaceModule.notification("loading","Getting Tags");
 
 try {
 
@@ -165,9 +165,6 @@ const clearResults = function(){
       settings.currentMissionResponses=0;
       return;
     }
-
-    
-
 
     
 
