@@ -608,8 +608,8 @@ var POG = function(category,destination){
           number = "",
         },
         table = [],
-        resultLabel = "",
         result: {
+          resultLabel = "",
           expected = 0,
           actual   = 0,
           check = "",

@@ -27,6 +27,7 @@ const displayTemplates = {
       //number: skuList[currentSKU].upc,
     },
     result:{
+      resultLabel: "Availability",
       check:skuList[currentSKU].presence,
       checkIcon:"https://app.form.com/fs/v1/h/1bfwXHoEd90XVh2qaOgP83a-19gdGBMLCCrPVPlGHgE/275043.png",
     },
@@ -46,8 +47,8 @@ const displayTemplates = {
       title: dmData.name[SKUindex],
       //number: skuArray[SKUindex],
     },
-    resultLabel: "Expected Facings",
     result: {
+      resultLabel: "Expected Facings",
       expected: dmData.exp[SKUindex],
     },
     upc: skuArray[SKUindex],
