@@ -3,7 +3,9 @@ const complianceModule = (function($, ksAPI){
 
   let skuList = {};
 
-
+  let complianceData = {
+    results:{},
+  }
 
 
 const displayTemplates = {
@@ -69,29 +71,20 @@ const displayTemplates = {
 
     let dmData = {};
 
-    //console.log("containerNum: ",containerNum);
-
       setTimeout(()=>{
               selectAllMOL(mol).then((a)=>{
-
 
               for(let data of report.dmData){
                 dmData[data.name] = vpGetTextResults(mol+".A"+data.col).split(',').map(s => s.trim());
               }
 
+              complianceData.results[report.title] = dmData[data.name].length;
+
               console.log("dmData: ",dmData);
 
               const skuArray = vpGetTextResults(mol+".A"+report.skuColumn).split(',').map(s => s.trim());
-              //const exp = vpGetTextResults(mol+".A4").split(',').map(s => s.trim());
-              //const name = vpGetTextResults(mol+".A3").split(',').map(s => s.trim());
-              //complianceCheck();
-
-              //console.log("skuArray: ",skuArray);
-
 
               for(let currentSKU of skuArray){
-                //const expFacings = exp[skuArray.indexOf(currentSKU)];
-                //console.log("currentSKU: ",currentSKU);
                 SKUindex = skuArray.indexOf(currentSKU);
 
                 const myTile = interfaceModule.htmlTile(
@@ -102,9 +95,6 @@ const displayTemplates = {
 
                 jQuery("#"+report.options.destination+" #Container"+containerNum+" .content").append(myTile);
                 interfaceModule.barcodeGenerate(currentSKU);
-                
-
-
               }
                 
 
@@ -144,10 +134,6 @@ const displayTemplates = {
   }
 
 
-
-
-
-
  return {
     Run: function (settings) {
       init(settings);
@@ -155,7 +141,11 @@ const displayTemplates = {
     complianceReportCreation: function (currentComplianceReport, complianceReport) {
       complianceReportCreation(currentComplianceReport, complianceReport);
     },
+    getcomplianceData: function () {
+      return complianceData;
+    },
     displayTemplates,
+    
   }
 
 })(jQuery, ksAPI);
