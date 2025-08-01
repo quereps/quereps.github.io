@@ -416,6 +416,10 @@ function createHTMLSection(id,name, imageURL,type, settings){
           classToAdd+="gap";
         }
 
+        if(settings?.grow==false){
+          classToAdd+="noGrow";
+        }
+
         title = name || "";
         //name = title.replace(/\s+/g, "_"); // Replace spaces with underscores
         headerHTML = "";
