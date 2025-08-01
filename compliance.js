@@ -75,7 +75,7 @@ const displayTemplates = {
 
               console.log("dmData: ",dmData);
 
-              //const skuArray = vpGetTextResults(mol+".A"+report.skuColumn).split(',').map(s => s.trim());
+              const skuArray = vpGetTextResults(mol+".A"+report.skuColumn).split(',').map(s => s.trim());
               //const exp = vpGetTextResults(mol+".A4").split(',').map(s => s.trim());
               //const name = vpGetTextResults(mol+".A3").split(',').map(s => s.trim());
               //complianceCheck();
