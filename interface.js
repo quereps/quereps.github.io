@@ -836,7 +836,17 @@ var photo = function(containerId){
 
 
 
+
+const EmptyReport = function(){
+  jQuery("#table-container").empty();
+  jQuery(".sectionContainer").empty();
+}
+
+
 var createReport = function(settingsImport,skuListImport,sectionsImport){
+
+
+  EmptyReport();
 
   complianceModule.Run(settings);
 
