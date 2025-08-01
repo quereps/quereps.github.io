@@ -579,7 +579,7 @@ div#table-container,
     display: flex;
     flex-wrap: wrap;
     gap: 1em;
-    align-items: flex-start;
+    align-items: stretch;
 }
 
 div.container {
