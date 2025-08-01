@@ -78,11 +78,15 @@ const displayTemplates = {
                 dmData[data.name] = vpGetTextResults(mol+".A"+data.col).split(',').map(s => s.trim());
               }
 
-              complianceData.results[report.title] = dmData[data.name].length;
+              
 
               console.log("dmData: ",dmData);
 
               const skuArray = vpGetTextResults(mol+".A"+report.skuColumn).split(',').map(s => s.trim());
+
+
+              complianceData.results[report.title] = skuArray.length;
+
 
               for(let currentSKU of skuArray){
                 SKUindex = skuArray.indexOf(currentSKU);
