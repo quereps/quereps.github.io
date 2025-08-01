@@ -141,6 +141,10 @@ var notification = function(type,message,destination) {
 
   let destinationContainer = destination || "main_frame";
   // Get the container element
+
+  console.log("destinationContainer: ",destinationContainer);
+
+
   var container = document.getElementById(destinationContainer);
   
   if (!container) {
