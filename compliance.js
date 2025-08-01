@@ -15,7 +15,7 @@ const complianceModule = (function($, ksAPI){
           percentages[key] = total ? ((this.results[key] / total) * 100).toFixed(1) + "%" : "0%";
         }
         return percentages;
-      };
+      }
     };
   
 
