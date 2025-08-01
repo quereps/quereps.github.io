@@ -733,9 +733,11 @@ table.customTable.IRDataTable th{
 
 .check.check_true {
     background-image: url("https://app.form.com/fs/v1/h/1bfwXHoEd90XVh2qaOgP83a-19gdGBMLCCrPVPlGHgE/275043.png");
-    background-size:1em;
+    background-size: contain;
     background-repeat:no-repeat;
     background-position:50%;
+    width: 30px;
+    height: 30px;
 }
 
 
