@@ -31,7 +31,7 @@ const displayTemplates = {
       checkIcon:"https://app.form.com/fs/v1/h/1bfwXHoEd90XVh2qaOgP83a-19gdGBMLCCrPVPlGHgE/275043.png",
     },
     packshot:true,
-    cssClass:"dirRow",
+    cssClass:"dirRow noWrap",
     //resultLabel: "Availability",
     //meter: {
     //  value: skuList[currentSKU].facings,
@@ -53,6 +53,7 @@ const displayTemplates = {
     upc: skuArray[SKUindex],
     barcode:true,
     packshot:true,
+    cssClass:"dirRow noWrap",
   }),
 };
 
