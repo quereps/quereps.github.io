@@ -848,7 +848,7 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
 
   EmptyReport();
 
-  complianceModule.Run(settings);
+  complianceModule?.Run(settings);
 
   console.log("Creating Report");
 
