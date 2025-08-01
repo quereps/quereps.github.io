@@ -73,7 +73,7 @@ const displayTemplates = {
                 dmData[data.name] = vpGetTextResults(mol+".A"+data.col).split(',').map(s => s.trim());
               }
 
-              console.log("dmData: "+dmData);
+              console.log("dmData: ",dmData);
 
               const skuArray = vpGetTextResults(mol+".A"+report.skuColumn).split(',').map(s => s.trim());
               const exp = vpGetTextResults(mol+".A4").split(',').map(s => s.trim());
