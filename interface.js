@@ -476,10 +476,10 @@ function createHTMLSection(id,name, imageURL,type, settings){
         headerHTML = "";
 
         if (title) {
-          headerHTML = '<h3>';
+          headerHTML = '<div class="sectionHeader"><h3>';
           headerHTML += (imageURL ? '<img height="40" src="'+imageURL+'"/>' : '');
           headerHTML += title ? title : '';
-          headerHTML += '</h3><div class="score"></div>';
+          headerHTML += '</h3><div class="score"></div></div>';
         }
        
         
