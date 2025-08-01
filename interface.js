@@ -116,9 +116,11 @@ var interfaceModule = (function ($, ksAPI) {
    let  companyId = "";
    let missionId = "";
 
-var removeNotification = function() {
+var removeNotification = function(destination) {
+
+  let destinationContainer = destination || "main_frame";
   // Get the container element
-  var container = document.getElementById('main_frame');
+  var container = document.getElementById(destinationContainer);
   
   if (!container) {
     console.error("Container #main_frame not found.");
