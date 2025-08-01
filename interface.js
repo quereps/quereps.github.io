@@ -950,7 +950,7 @@ function loadReportTemplates(){
       notification(type,message);
     },
     htmlTile: function (settings) {
-      console.log("htmlTile import",settings);
+      //console.log("htmlTile import",settings);
       return htmlTile(settings);
     },
     barcodeGenerate: function (code) {
