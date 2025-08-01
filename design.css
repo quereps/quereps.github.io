@@ -741,7 +741,7 @@ table.customTable.IRDataTable th{
 }
 
 
-.noGrow {
+div.container.noGrow {
     flex-grow: 0;
 }
 
