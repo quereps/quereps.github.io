@@ -381,11 +381,6 @@ h4{margin:0;font-weight:normal;font-size: 0.8em;}
 /* Style the .card based on container's width */
 @container (max-width: 1200px) {
 
-
-.resultContainer h4{
-    display:none;
-}
-
      .IRDataTable td,
      .IRDataTable th{
         font-size:8px  !important;
