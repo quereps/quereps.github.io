@@ -275,7 +275,7 @@ h3 {
     align-items: center;
     gap: 0.5em;
     margin: 0 0 0.5em 0;
-    width: 100% !important;
+    width: 100%;
 }
 
 
@@ -597,7 +597,7 @@ div.container {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    height: 100%;
+    height: calc(100% - 40px);
 }
 
 .noWrap .content{
