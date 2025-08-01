@@ -135,9 +135,11 @@ var removeNotification = function() {
 };
 
 
-var notification = function(type,message) {
+var notification = function(type,message,destination) {
+
+  let destinationContainer = destination || "main_frame";
   // Get the container element
-  var container = document.getElementById('main_frame');
+  var container = document.getElementById(destinationContainer);
   
   if (!container) {
     console.error("Container #main_frame not found.");
