@@ -741,6 +741,9 @@ table.customTable.IRDataTable th{
 }
 
 
+.noGrow {
+    flex-grow: 0;
+}
 
 .content img {
     width: 100%;
