@@ -123,7 +123,7 @@ var removeNotification = function(destination) {
   var container = document.getElementById(destinationContainer);
   
   if (!container) {
-    console.error("Container #main_frame not found.");
+    console.error("Container #"+destinationContainer+" not found.");
     return;
   }
   
