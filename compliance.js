@@ -23,8 +23,8 @@ const displayTemplates = {
   presenceSimple: (SKUindex,currentSKU, skuList, skuArray, dmData) => ({
     data: {
       title: skuList[currentSKU].name+" "+skuList[currentSKU].size,
-      subtitle: skuList[currentSKU].brand,
-      number: skuList[currentSKU].upc,
+      //subtitle: skuList[currentSKU].brand,
+      //number: skuList[currentSKU].upc,
     },
     result:{
       check:skuList[currentSKU].presence,
@@ -38,7 +38,7 @@ const displayTemplates = {
     //  full: dmData[exp],
     //},
     upc: skuList[currentSKU].upc,
-    barcode:false,
+    barcode:true,
   }),
 
   oos: (SKUindex,currentSKU, skuList, skuArray, dmData) => ({
