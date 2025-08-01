@@ -60,11 +60,20 @@ const displayTemplates = {
   const complianceReportCreation = async function(report, containerNum){
 
     let mol=report.mol;
+
+    let dmData = {};
+
     console.log("containerNum: ",containerNum);
 
       setTimeout(()=>{
               selectAllMOL(mol).then((a)=>{
 
+
+              for(let data of report.dmData){
+                dmData[data.name] = vpGetTextResults(mol+".A"+data.col).split(',').map(s => s.trim());
+              }
+
+              console.log("dmData: "+dmData);
 
               const skuArray = vpGetTextResults(mol+".A"+report.skuColumn).split(',').map(s => s.trim());
               const exp = vpGetTextResults(mol+".A4").split(',').map(s => s.trim());
