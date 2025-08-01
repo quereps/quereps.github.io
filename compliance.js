@@ -22,7 +22,7 @@ const displayTemplates = {
   }),
   presenceSimple: (SKUindex,currentSKU, skuList, skuArray, expFacings) => ({
     data: {
-      title: skuList[currentSKU].name,
+      title: skuList[currentSKU].name+" "+skuList[currentSKU].size,
       subtitle: skuList[currentSKU].brand,
       number: skuList[currentSKU].upc,
     },
