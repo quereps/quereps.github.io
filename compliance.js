@@ -100,6 +100,11 @@ const displayTemplates = {
 
   function init(settings){
 
+      const link2 = document.createElement("link");
+  link2.rel = "stylesheet";
+  link2.href = "https://quereps.github.io/pkshot.css";
+  document.head.appendChild(link2);
+
     skuList = APIModule.skuList;
 
     let upcDetectedQRef = APIModule.getSettings().config.upcDetectedQRef;
