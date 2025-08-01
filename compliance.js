@@ -92,6 +92,10 @@ const displayTemplates = {
 
               complianceData.results[report.title] = skuArray.length;
 
+              if(report.score==true){
+                jQuery(destination+" .score").append(complianceData.getPercentages()[report.title]);
+              }
+
 
               for(let currentSKU of skuArray){
                 SKUindex = skuArray.indexOf(currentSKU);
