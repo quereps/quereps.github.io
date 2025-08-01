@@ -116,7 +116,7 @@ var interfaceModule = (function ($, ksAPI) {
    let  companyId = "";
    let missionId = "";
 
-var removeNotification = function(destination) {
+/*var removeNotificationOld = function(destination) {
 
   let destinationContainer = destination || "main_frame";
   // Get the container element
@@ -134,10 +134,26 @@ var removeNotification = function(destination) {
   if (errorDiv) {
     container.removeChild(errorDiv);
   }
+};*/
+
+
+var removeNotification = function(destination) {
+  let $container = destination ? $(destination) : $("#main_frame");
+
+  if ($container.length === 0) {
+    console.error("Container " + destination + " not found.");
+    return;
+  }
+
+  let $notification = $container.find(".notification");
+
+  if ($notification.length > 0) {
+    $notification.remove();
+  }
 };
 
 
-var notification = function(type,message,destination) {
+/*var notificationOld = function(type,message,destination) {
 
   let destinationContainer = destination || "main_frame";
   // Get the container element
@@ -170,8 +186,29 @@ var notification = function(type,message,destination) {
   // Append the new error message to the container
   container.appendChild(errorDiv);
 };
+*/
 
+var notification = function(type, message, destination) {
+  let $container = destination ? $(destination) : $("#main_frame");
 
+  console.log("destination: ", destination);
+
+  if ($container.length === 0) {
+    console.error("Container " + destination + " not found.");
+    return;
+  }
+
+  // Remove any existing notification
+  $container.find(".notification").remove();
+
+  // Create a new notification div
+  let $notification = $("<div></div>")
+    .addClass("notification " + type)
+    .text(message);
+
+  // Append the new notification
+  $container.append($notification);
+};
 
 
 var createTable = function(data, structure) {
