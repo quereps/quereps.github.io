@@ -439,14 +439,14 @@ function createHTMLSection(id,name, imageURL,type, settings){
 
 
 function graph(category, asPercentage = false, filter = null) {
-  console.log("asPercentage: ", asPercentage);
-  console.log("filter: ", filter);
+  //console.log("asPercentage: ", asPercentage);
+  //console.log("filter: ", filter);
   
   const graphData = {};
   let totalFacings = 0;
   
-  console.log("SKU List: ", skuList);
-  console.log("category: ",category);
+  //console.log("SKU List: ", skuList);
+  //console.log("category: ",category);
 
 
   for (let sku in skuList) {
@@ -491,7 +491,7 @@ function graph(category, asPercentage = false, filter = null) {
     }
   }
   
-  console.log("graphData: ", graphData);
+  //console.log("graphData: ", graphData);
   return graphData;
 }
 
@@ -618,9 +618,9 @@ var POG = function(category,destination){
       expectedHTML = "<div class='expected'>"+expected+"</div>"; 
     }
    
-    console.log("check: ",check);
+    //console.log("check: ",check);
     let checkHTML = check ? "<div class='check check_"+check+"''></div>" : "";
-    console.log("checkHTML: ",checkHTML);
+    //console.log("checkHTML: ",checkHTML);
 
     resultContainerHTML = "<div class='resultContainer'><h4>"+resultLabel+"</h4>"+checkHTML+meterHTML+expectationHTML+expectedHTML+"</div>" 
    
@@ -734,7 +734,7 @@ const link1 = document.createElement("link");
     if (data.length > 0) {
       const lat = data[0].lat;
       const lon = data[0].lon;
-      console.log("Coordinates:", lat, lon);
+      //console.log("Coordinates:", lat, lon);
 
       // Now you can initialize your Leaflet map
       const map = L.map('map').setView([lat, lon], 15);
@@ -763,7 +763,7 @@ const link1 = document.createElement("link");
 
 const placeSection = function(placeId,options,destination){
 
-  console.log("placeSection: ", placeId);
+  //console.log("placeSection: ", placeId);
 
   APICallsModule.getPlaceData(placeId).then((placeData)=>{
 
@@ -854,9 +854,9 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
   missionId = config.missionId;
   
 
-  console.log("report: ",report);
+  //console.log("report: ",report);
 
-  console.log("skuList: ",skuList);
+  //console.log("skuList: ",skuList);
 
     for(var element in report){
 
@@ -880,8 +880,8 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
 
       if(current.type=="number"){
 
-        console.log("graph dimension: ", current.dimension);
-        console.log("first SKU keys: ", Object.keys(Object.values(skuList)[0]));
+        //console.log("graph dimension: ", current.dimension);
+        //console.log("first SKU keys: ", Object.keys(Object.values(skuList)[0]));
 
         numberTile(graph(current.dimension,current?.options?.asPercentage),containerId,current.options);
       }
