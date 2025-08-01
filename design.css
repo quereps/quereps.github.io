@@ -117,8 +117,8 @@ span.ui-button-text.checkbox_mob {
 
 .header{
     display:flex;
-    min-width: 300px;
-    width: calc(100% - 300px);
+    /* min-width: 300px; */
+    /* width: calc(100% - 300px); */
 }
 
 .titleGroupHTML{
@@ -131,7 +131,7 @@ span.ui-button-text.checkbox_mob {
 
 .SKULabel {
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     align-items: flex-start;
     justify-content: space-between;
     gap: 1em;
@@ -143,6 +143,7 @@ span.ui-button-text.checkbox_mob {
     margin: 0;
     color: black;
     font-weight: normal;
+    font-size: 1em;
 }
 
 .titleGroupHTML h2 {
@@ -190,14 +191,14 @@ span.ui-button-text.checkbox_mob {
 }
 
 .SKULabel .resultContainer {
-    width: 150px;
+    /* width: 150px; */
     display: flex;
     flex-wrap: wrap;
     grid-area: result;
     gap: 0 0.5em;
     align-items: center;
-    flex-shrink: 0;
-    /* flex-grow: 1; */
+    flex-shrink: 1;
+    flex-grow: 0;
     margin: 0 0.5em;
     text-align: end;
     justify-content: end;
@@ -381,7 +382,9 @@ h4{margin:0;font-weight:normal;font-size: 0.8em;}
 @container (max-width: 1200px) {
 
 
-
+.resultContainer h4{
+    display:none;
+}
 
      .IRDataTable td,
      .IRDataTable th{
@@ -598,6 +601,7 @@ div.container {
     display: flex;
     flex-wrap: wrap;
     height: calc(100% - 40px);
+    gap: 0.25em;
 }
 
 .noWrap .content{
