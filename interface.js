@@ -118,10 +118,10 @@ var interfaceModule = (function ($, ksAPI) {
 
 var removeNotification = function() {
   // Get the container element
-  var container = document.getElementById('table-container');
+  var container = document.getElementById('main_frame');
   
   if (!container) {
-    console.error("Container #table-container not found.");
+    console.error("Container #main_frame not found.");
     return;
   }
   
@@ -137,10 +137,10 @@ var removeNotification = function() {
 
 var notification = function(type,message) {
   // Get the container element
-  var container = document.getElementById('table-container');
+  var container = document.getElementById('main_frame');
   
   if (!container) {
-    console.error("Container #table-container not found.");
+    console.error("Container #main_frame not found.");
     return;
   }
   
@@ -406,7 +406,7 @@ function createHTMLSection(id,name, imageURL,type, settings){
         style += width;
         let color = settings?.color ? "color:"+settings?.color+";" : "";
         style += color;
-        let destination = settings?.destination || "table-container";
+        let destination = settings?.destination || "";
 
         if(settings?.wrap==false){
           classToAdd="noWrap";
@@ -838,7 +838,7 @@ var photo = function(containerId){
 
 
 const EmptyReport = function(){
-  jQuery("#table-container").empty();
+  //jQuery("#table-container").empty();
   jQuery(".sectionContainer").empty();
 }
 
