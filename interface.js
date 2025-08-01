@@ -954,8 +954,8 @@ function loadReportTemplates(){
     removeNotification: function () {
       removeNotification();
     },
-    notification: function (type,message) {
-      notification(type,message);
+    notification: function (type,message,destination) {
+      notification(type,message,destination);
     },
     htmlTile: function (settings) {
       //console.log("htmlTile import",settings);
