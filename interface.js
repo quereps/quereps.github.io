@@ -951,8 +951,8 @@ function loadReportTemplates(){
     createReport: function (settings,skuList,sections) {  
       return createReport(settings,skuList,sections);
     },
-    removeNotification: function () {
-      removeNotification();
+    removeNotification: function (destination) {
+      removeNotification(destination);
     },
     notification: function (type,message,destination) {
       notification(type,message,destination);
