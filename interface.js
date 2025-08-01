@@ -406,6 +406,8 @@ function createHTMLSection(id,name, imageURL,type, settings){
         style += width;
         let color = settings?.color ? "color:"+settings?.color+";" : "";
         style += color;
+        let maxHeight = settings?.maxHeight ? "max-height:"+settings?.maxHeight+";" : "";
+        style += maxHeight;
         let destination = settings?.destination || "";
 
         if(settings?.wrap==false){
