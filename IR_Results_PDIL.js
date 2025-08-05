@@ -229,6 +229,78 @@ const clearResults = function(){
  }
 
 
+
+
+ var getGridData = funtion(missionResponseID){
+
+          APICallsModule.getGrid(missionResponseID).then(async (photo_grids)=>{
+
+          interfaceModule.removeNotification();
+
+
+          // Create an array of promises from getTags
+
+          console.log("photo_grids: ",photo_grids);
+
+
+          for(let grid of photo_grids){
+            APICallsModule.getTaskResponse(grid.metadata.task_response.id).then((data)=>{
+              let image = data.value[0].s3;
+              console.log(image);
+              photoURLs.push(image);
+            });
+              
+            };
+          
+          
+
+
+          let tagPromises = photo_grids.map(async grid => {
+
+          
+             
+
+              const tags = await APICallsModule.getTags(grid.id);
+              interfaceModule.removeNotification();
+              extractIRData(tags);
+          });
+
+          await Promise.all(tagPromises);
+
+
+/*Testing Planogram*/
+          let pogPromises = photo_grids.map(async grid => {
+              const pogs = await APICallsModule.getPlanogram(companyId,grid.id);
+              //interfaceModule.removeNotification();
+              //extractIRData(tags);
+              console.log("pogs",pogs);
+          });
+
+          await Promise.all(pogPromises);
+/*Testing Planogram*/
+
+          if(settings.report){
+          interfaceModule.createReport(settings, skuList, sections);
+        }else{
+          vpHideLoader();
+        }
+
+        if(settings.specificFunction){
+            console.log("Specific Function Detected");
+            settings.specificFunction(skuList,settings);
+          }
+
+          
+        }).catch((err)=>{
+    interfaceModule.notification("error","No Photo Grid found.");
+    console.error(err);
+   });
+
+
+
+ }
+
+
  var init = async function (settingsImport) {
 
   settings=settingsImport;
@@ -314,12 +386,10 @@ const clearResults = function(){
       
       savedResponseData = lastItem;
       
-
-
-
         vpShowLoader();
 
-        APICallsModule.getGrid(lastItem.id).then(async (photo_grids)=>{
+        getGridData(lastItem.id);
+        /*APICallsModule.getGrid(lastItem.id).then(async (photo_grids)=>{
 
           interfaceModule.removeNotification();
 
@@ -354,7 +424,7 @@ const clearResults = function(){
           await Promise.all(tagPromises);
 
 
-/*Testing Planogram*/
+//Testing Planogram
           let pogPromises = photo_grids.map(async grid => {
               const pogs = await APICallsModule.getPlanogram(companyId,grid.id);
               //interfaceModule.removeNotification();
@@ -363,7 +433,7 @@ const clearResults = function(){
           });
 
           await Promise.all(pogPromises);
-/*Testing Planogram*/
+//Testing Planogram
 
           if(settings.report){
           interfaceModule.createReport(settings, skuList, sections);
@@ -380,7 +450,7 @@ const clearResults = function(){
         }).catch((err)=>{
     interfaceModule.notification("error","No Photo Grid found.");
     console.error(err);
-   });
+   });*/
 
       }).catch((err)=>{
     interfaceModule.notification("error","No mission responses found.");
