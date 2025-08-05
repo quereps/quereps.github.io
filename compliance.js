@@ -155,11 +155,13 @@ const displayTemplates = {
 
 const applyScore = function(){
 
+  console.log("applying scores");
+
   complianceModule.getcomplianceData().getPercentages();
   let complianceData = complianceModule.getcomplianceData().results;
 
   for(let data of complianceData){
-    if (data.aaplyScore==true){
+    if (data.applyScore==true){
         jQuery("#"+data.destination+" #Container"+containerNum+" .score").append(data.percentages);
 
     }
