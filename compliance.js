@@ -164,15 +164,13 @@ const applyScore = function(){
 
   console.log("complianceData",complianceData);
 
-  for(let data of complianceData){
+  for (let data of Object.values(complianceData)) {
+  console.log(data);
 
-    console.log(data);
-
-    if (data.applyScore==true){
-        jQuery(data.destination).append(data.percentages);
-
-    }
-      }
+  if (data.applyScore === true) {
+    jQuery(data.destination).append(data.percentages);
+  }
+}
 }
 
 
