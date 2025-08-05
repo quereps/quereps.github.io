@@ -187,7 +187,7 @@ const applyScore = function(){
       return complianceData;
     },
     applyScore: function () {
-      return applyScore;
+      applyScore();
     },
     displayTemplates,
     
