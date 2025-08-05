@@ -70,6 +70,8 @@ const displayTemplates = {
   const complianceReportCreation = async function(report, containerNum){
 
     let destination = "#"+report.options.destination+" #Container"+containerNum+" .content";
+
+    jQuery(destination).empty();
     interfaceModule.notification("loading","Calculating Compliance",destination);
 
     let mol=report.mol;
