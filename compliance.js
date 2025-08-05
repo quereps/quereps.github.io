@@ -163,6 +163,9 @@ const applyScore = function(){
   console.log("complianceData",complianceData);
 
   for(let data of complianceData){
+
+    console.log(data);
+
     if (data.applyScore==true){
         jQuery("#"+data.destination+" #Container"+containerNum+" .score").append(data.percentages);
 
