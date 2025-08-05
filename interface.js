@@ -982,6 +982,9 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
 
     }
 
+
+    complianceModule.applyScore();
+
     vpHideLoader();
 }
 

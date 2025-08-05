@@ -119,7 +119,7 @@ const displayTemplates = {
             });
 
 
-              complianceModule.applyScore();
+              
 
           }, 2500);
 
