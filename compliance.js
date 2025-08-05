@@ -155,6 +155,7 @@ const displayTemplates = {
 
 const applyScore = function(){
 
+  complianceModule.getcomplianceData().getPercentages();
   let complianceData = complianceModule.getcomplianceData().results;
 
   for(let data of complianceData){
