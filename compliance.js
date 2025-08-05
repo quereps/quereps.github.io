@@ -12,7 +12,7 @@ const complianceModule = (function($, ksAPI){
         const total = this.getTotal();
         const percentages = {};
         for (let key in this.results) {
-          this.results[key].percentages = total ? ((this.results[key] / total) * 100).toFixed(1) + "%" : "0%";
+          this.results[key].percentages = total ? ((this.results[key].count / total) * 100).toFixed(1) + "%" : "0%";
         }
         //return percentages;
       }
