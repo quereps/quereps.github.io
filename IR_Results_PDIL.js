@@ -194,6 +194,8 @@ const clearResults = function(){
 
         vpShowLoader();
 
+        getGridData(lastItem.id);
+        /*
         APICallsModule.getGrid(lastItem.id).then(async (photo_grids)=>{
 
           interfaceModule.removeNotification();
@@ -219,11 +221,11 @@ const clearResults = function(){
           
 
           console.log(skuList);
-          /*Coke Demo specifics END*/
+          //Coke Demo specifics END
 
           interfaceModule.createReport(settings, skuList, sections);
 
-        });
+        });*/
 
       });
  }
