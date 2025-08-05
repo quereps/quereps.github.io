@@ -983,7 +983,7 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
     }
 
 
-    complianceModule.applyScore();
+    complianceModule?.applyScore();
 
     vpHideLoader();
 }
