@@ -155,16 +155,14 @@ const displayTemplates = {
 
 const applyScore = function(){
 
-  let complianceData = getcomplianceData();
+  let complianceData = complianceModule.getcomplianceData().results;
 
   for(let data of complianceData){
-    jQuery("#"+data.destination+" #Container"+containerNum+" .score").append(complianceData.getPercentages()[report.title]);
-  }
+    if (data.aaplyScore==true){
+        jQuery("#"+data.destination+" #Container"+containerNum+" .score").append(data.percentages);
 
-  if(report.options.score==true){
-                console.log("Applying score");
-                
-              }
+    }
+      }
 }
 
 
