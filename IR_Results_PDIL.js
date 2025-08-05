@@ -91,6 +91,8 @@ var APIModule = (function ($, ksAPI) {
             skuList[upcTarget].prices = data[item].values.prices;
           }
 
+            skuList[upcTarget].hasPriceTag== skuList[upcTarget]?.prices?.length>0 ? true : false;
+
     }    
 
   }
