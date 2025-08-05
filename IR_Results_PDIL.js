@@ -231,7 +231,7 @@ const clearResults = function(){
 
 
 
- var getGridData = funtion(missionResponseID){
+ var getGridData = function(missionResponseID){
 
           APICallsModule.getGrid(missionResponseID).then(async (photo_grids)=>{
 
