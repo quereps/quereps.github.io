@@ -769,3 +769,8 @@ div.container.noGrow {
     width: 100% !important;
     display: flex;
 }
+
+
+.photo .content {
+    flex-wrap: nowrap;
+}
