@@ -178,6 +178,9 @@ const applyScore = function(){
     getcomplianceData: function () {
       return complianceData;
     },
+    applyScore: function () {
+      return applyScore;
+    },
     displayTemplates,
     
   }
