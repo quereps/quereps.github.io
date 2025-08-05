@@ -90,12 +90,14 @@ const displayTemplates = {
               const skuArray = vpGetTextResults(mol+".A"+report.skuColumn).split(',').map(s => s.trim());
 
 
-              complianceData.results[report.title] = skuArray.length;
-
-              if(report.options.score==true){
-                console.log("Applying score");
-                jQuery("#"+report.options.destination+" #Container"+containerNum+" .score").append(complianceData.getPercentages()[report.title]);
+              complianceData.results[report.title] = {
+                count:skuArray.length,
+                destination:report.options.destination,
+                applyScore:report.options.score
               }
+              //complianceData.destination[report.title] = report.options.destination;
+
+              
 
 
               for(let currentSKU of skuArray){
@@ -113,6 +115,9 @@ const displayTemplates = {
                 
 
             });
+
+
+              
 
           }, 2500);
 
@@ -146,6 +151,21 @@ const displayTemplates = {
 
 //}
   }
+
+
+const applyScore = function(){
+
+  let complianceData = getcomplianceData();
+
+  for(let data of complianceData){
+    jQuery("#"+data.destination+" #Container"+containerNum+" .score").append(complianceData.getPercentages()[report.title]);
+  }
+
+  if(report.options.score==true){
+                console.log("Applying score");
+                
+              }
+}
 
 
  return {
