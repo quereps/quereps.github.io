@@ -92,7 +92,9 @@ const displayTemplates = {
 
               complianceData.results[report.title] = {
                 count:skuArray.length,
-                destination:report.options.destination,
+                destination:"#"+report.options.destination+" #Container"+containerNum+" .score",
+
+                //containerNum:containerNum,
                 applyScore:report.options.score
               }
               //complianceData.destination[report.title] = report.options.destination;
@@ -167,7 +169,7 @@ const applyScore = function(){
     console.log(data);
 
     if (data.applyScore==true){
-        jQuery("#"+data.destination+" #Container"+containerNum+" .score").append(data.percentages);
+        jQuery(data.destination).append(data.percentages);
 
     }
       }
