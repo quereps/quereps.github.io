@@ -151,6 +151,7 @@ try {
 
 const clearResults = function(){
   skuList = {};
+  photoURLs = [];
   jQuery("#table-container").empty();
   jQuery(".sectionContainer").empty();
 }
