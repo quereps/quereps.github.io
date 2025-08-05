@@ -6,7 +6,7 @@ const complianceModule = (function($, ksAPI){
   let complianceData = {
     results:{},
     getTotal: function () {
-      return Object.values(this.results).reduce((sum, val) => sum + val, 0);
+      return Object.values(this.results).reduce((sum, val) => sum + (val.count || 0), 0);
     },
     getPercentages: function () {
         const total = this.getTotal();
