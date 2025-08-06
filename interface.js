@@ -903,7 +903,9 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
 
   EmptyReport();
 
-  complianceModule?.Run(settings);
+  if (typeof complianceModule !== "undefined") {
+  complianceModule.Run(settings);
+}
 
   console.log("Creating Report");
 
@@ -982,8 +984,10 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
 
     }
 
+    if (typeof complianceModule !== "undefined") {
+      complianceModule.applyScore();
+    }
 
-    complianceModule?.applyScore();
 
     vpHideLoader();
 }
