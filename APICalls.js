@@ -176,7 +176,7 @@ var getMissionResponses = async function(placeId,campaignId,timeFrame, limit){
 
     //url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_id.eq="+campaingnID+"&place_id.eq="+placeId+"&completed_at.gt="+getTimeStamps(timeFrame).back+"&include=user,task_responses";
     
-    url = "https://admin.gospotcheck.com//external/v1/mission_responses?
+    url = "https://admin.gospotcheck.com//external/v1/mission_responses?";
 
     if(campaignId && campaignId.length>0){
       url=url+"campaign_id.eq="+campaignId+"&";
@@ -190,7 +190,7 @@ var getMissionResponses = async function(placeId,campaignId,timeFrame, limit){
       url=url+"completed_at.gt="+getTimeStamps(timeFrame).back+"&";
     }
 
-    url=url+"&include=user";
+    url=url+"&include=user,place,task_responses";
 
 
 
