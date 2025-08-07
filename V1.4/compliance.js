@@ -138,8 +138,22 @@ const displayTemplates = {
     skuList = APIModule.skuList;
 
     let upcDetectedQRef = APIModule.getSettings().config.upcDetectedQRef;
+    //let sections = settings.sections;
 
     vpSetResults(upcDetectedQRef,arrayToPipe(Object.keys(skuList)));
+
+    //for(let complianceReport in sections){
+
+     // currentComplianceReport = sections[complianceReport];
+     // interfaceModule.createHTMLSection("comp_"+complianceReport,currentComplianceReport?.title,currentComplianceReport?.logo,currentComplianceReport?.type,currentComplianceReport?.options);
+
+
+      //complianceModule.complianceReportCreation(currentComplianceReport, complianceReport);
+
+
+        
+
+//}
   }
 
 
