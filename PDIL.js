@@ -15,99 +15,7 @@ var pdilModule = (function ($, ksAPI) {
 
    let settings = {};
 
- 
-  var extractIRData = async function(data){
 
-    console.log("Extracting Data: ", data)
-
-    for(let item in data){
-
-      let upcTarget = "";
-
-         const y = data[item].values.shelf_index_y;
-        const x = data[item].values.shelf_index_x;
-        let type = "";
-
-          if (!realogram[y]) {
-              realogram[y] = [];
-            }
-
-            realogram[y][x] = data[item].values;
-
-            let IRData = data[item].values;
-
-            if (data[item].type == "coldbox_unrecognizable_product") {
-              realogram[y][x].type = "unknown"; // <-- Assignment!
-              upcTarget = "Unrecognized";
-              type = "Unrecognized";
-            }
-            else if (data[item].type == "empty_facing") {
-              realogram[y][x].type = "empty"; // <-- Assignment!
-              upcTarget = "Empty Facing";
-              type = "Empty Facing";
-            }
-            else if (data[item].type == "shelf_product" && data[item].values.upc) {
-              realogram[y][x].type = "sku"; // <-- Assignment!
-              upcTarget = data[item].values.upc;
-              type = "SKU";
-              
-            }
-
-              //console.log(data[item]);
-
-              //To move in its own function
-              const key = data[item].values.classification;
-              sections[key] = (sections[key] ?? 0) + 1;
-
-
-        //console.log(data[item]);
-
-        //let upcTarget = data[item].values.upc;
-        let skuListTarget = skuList[upcTarget];
-
-        
-
-        if(!skuListTarget){
-          skuList[upcTarget] = new skuObj({type:type,upc:upcTarget, IRData: IRData});
-          skuList[upcTarget].addFacing(IRData);
-        }
-        else{
-            skuList[upcTarget].addFacing(IRData);
-        }
-
-          if(skuList[upcTarget].prices){
-            Array.prototype.push.apply(skuListTarget.prices, data[item].values.prices);
-          }
-          else{
-            skuList[upcTarget].prices = data[item].values.prices;
-          }
-
-            skuList[upcTarget].hasPriceTag== skuList[upcTarget]?.prices?.length>0 ? true : false;
-
-    }    
-
-  }
-
-
-
-
-
-
-/*var addTile = function(destination,Id,sku,profile){
-  let container = vpGetLabel(destination);
-  const dataTable = ["size","classification","subclassification"];
-  jQuery(container).empty();
-  jQuery(container).html(htmlTile(profile));
-};*/
-
-
-
-const clearResults = function(){ //Should go to interface
-  skuList = {};
-  photoURLs = [];
-  jQuery("#table-container").empty();
-  jQuery(".sectionContainer").empty();
-}
 
  const ChangeMissionResponse = function(amount){
 
@@ -144,117 +52,14 @@ const clearResults = function(){ //Should go to interface
       
       savedResponseData = lastItem;
 
-
-
         vpShowLoader();
 
         getGridData(lastItem.id);
-        /*
-        APICallsModule.getGrid(lastItem.id).then(async (photo_grids)=>{
 
-          interfaceModule.removeNotification();
-
-
-          // Create an array of promises from getTags
-
-          console.log("photo_grids: ",photo_grids);
-
-          let tagPromises = photo_grids.map(async grid => {
-              const tags = await APICallsModule.getTags(grid.id);
-              interfaceModule.removeNotification();
-              extractIRData(tags);
-          });
-
-          await Promise.all(tagPromises);
-
-
-          if(settings.specificFunction){
-            settings.specificFunction(skuList);
-          }
-          
-          
-
-          console.log(skuList);
-          //Coke Demo specifics END
-
-          interfaceModule.createReport(settings, skuList, sections);
-
-        });*/
 
       });
  }
 
-
-
-
- var getGridData = function(missionResponseID){
-
-          APICallsModule.getGrid(missionResponseID).then(async (photo_grids)=>{
-
-          interfaceModule.removeNotification();
-
-
-          // Create an array of promises from getTags
-
-          console.log("photo_grids: ",photo_grids);
-
-
-          for(let grid of photo_grids){
-            APICallsModule.getTaskResponse(grid.metadata.task_response.id).then((data)=>{
-              let image = data.value[0].s3;
-              console.log(image);
-              photoURLs.push(image);
-            });
-              
-            };
-          
-          
-
-
-          let tagPromises = photo_grids.map(async grid => {
-
-          
-             
-
-              const tags = await APICallsModule.getTags(grid.id);
-              interfaceModule.removeNotification();
-              extractIRData(tags);
-          });
-
-          await Promise.all(tagPromises);
-
-
-/*Testing Planogram*/
-          let pogPromises = photo_grids.map(async grid => {
-              const pogs = await APICallsModule.getPlanogram(companyId,grid.id);
-              //interfaceModule.removeNotification();
-              //extractIRData(tags);
-              console.log("pogs",pogs);
-          });
-
-          await Promise.all(pogPromises);
-/*Testing Planogram*/
-
-          if(settings.report){
-          interfaceModule.createReport(settings, skuList, sections);
-        }else{
-          vpHideLoader();
-        }
-
-        if(settings.specificFunction){
-            console.log("Specific Function Detected");
-            settings.specificFunction(skuList,settings);
-          }
-
-          
-        }).catch((err)=>{
-    interfaceModule.notification("error","No Photo Grid found.");
-    console.error(err);
-   });
-
-
-
- }
 
 
  var init = async function (settingsImport) {
@@ -291,41 +96,16 @@ const clearResults = function(){ //Should go to interface
   link1.href = "https://quereps.github.io/design.css";
   document.head.appendChild(link1);
 
-
-  if(settings.gridIdArray && settings.gridIdArray.length>0){
-
-    console.log("I got the grIds");
-    GetIRResults(settings.gridIdArray, settings);
-
-  }
-
-  
-  else{
-
-
-
-
-    /*Tests*/
-
-
-
-
     APICallsModule.getMissionVersions(missionId).then((data)=>{
       console.log(data);
     });
 
-    /*Tests*/
+    if(placeId && placeId.length>0){
+      let placeData = await APICallsModule.getPlaceData(placeId);
+      savedPlaceData = placeData;
+    }
 
 
-    console.log("placeId: ",placeId);
-
-   APICallsModule.getPlaceData(placeId).then((placeData)=>{
-
-
-
-    savedPlaceData = placeData;
-    console.log("savedPlaceData: ",savedPlaceData, placeId, missionId);
-    
      APICallsModule.getMissionResponses(placeId,missionId,600000000,10).then((lastItems)=>{
         console.log("lastItems: ",lastItems);
  //    });
@@ -345,68 +125,7 @@ const clearResults = function(){ //Should go to interface
         vpShowLoader();
 
         getGridData(lastItem.id);
-        /*APICallsModule.getGrid(lastItem.id).then(async (photo_grids)=>{
 
-          interfaceModule.removeNotification();
-
-
-          // Create an array of promises from getTags
-
-          console.log("photo_grids: ",photo_grids);
-
-
-          for(let grid of photo_grids){
-            APICallsModule.getTaskResponse(grid.metadata.task_response.id).then((data)=>{
-              let image = data.value[0].s3;
-              console.log(image);
-              photoURLs.push(image);
-            });
-              
-            };
-          
-          
-
-
-          let tagPromises = photo_grids.map(async grid => {
-
-          
-             
-
-              const tags = await APICallsModule.getTags(grid.id);
-              interfaceModule.removeNotification();
-              extractIRData(tags);
-          });
-
-          await Promise.all(tagPromises);
-
-
-//Testing Planogram
-          let pogPromises = photo_grids.map(async grid => {
-              const pogs = await APICallsModule.getPlanogram(companyId,grid.id);
-              //interfaceModule.removeNotification();
-              //extractIRData(tags);
-              console.log("pogs",pogs);
-          });
-
-          await Promise.all(pogPromises);
-//Testing Planogram
-
-          if(settings.report){
-          interfaceModule.createReport(settings, skuList, sections);
-        }else{
-          vpHideLoader();
-        }
-
-        if(settings.specificFunction){
-            console.log("Specific Function Detected");
-            settings.specificFunction(skuList,settings);
-          }
-
-          
-        }).catch((err)=>{
-    interfaceModule.notification("error","No Photo Grid found.");
-    console.error(err);
-   });*/
 
       }).catch((err)=>{
     interfaceModule.notification("error","No mission responses found.");
@@ -422,8 +141,7 @@ const clearResults = function(){ //Should go to interface
     console.error(err);
    });
    
-  }
-  //  $('#table-container').append(tableElement);
+
 
  };
 
