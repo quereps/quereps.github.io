@@ -124,7 +124,7 @@ var pdilModule = (function ($, ksAPI) {
       
         vpShowLoader();
 
-        getGridData(lastItem.id);
+       // getGridData(lastItem.id);
 
 
       }).catch((err)=>{
