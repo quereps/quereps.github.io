@@ -111,7 +111,7 @@ var pdilModule = (function ($, ksAPI) {
       
       if(settings.taskResponseSave){
         for(let item in settings.taskResponseSave){
-
+ 
           let theItem = settings.taskResponseSave[item];
 
           vpSetResults(theItem.responseId,savedResponseData.task_responses[theItem.num]).value;
