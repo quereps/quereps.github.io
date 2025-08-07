@@ -175,7 +175,26 @@ var getMissionResponses = async function(placeId,campaignId,timeFrame, limit){
   //  return new Promise(async (resolve, reject) => {
 
     //url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_id.eq="+campaingnID+"&place_id.eq="+placeId+"&completed_at.gt="+getTimeStamps(timeFrame).back+"&include=user,task_responses";
-    url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_id.eq="+campaignId+"&place_id.eq="+placeId+"&completed_at.gt="+getTimeStamps(timeFrame).back+"&include=user";
+    
+    url = "https://admin.gospotcheck.com//external/v1/mission_responses?
+
+    if(campaignId && campaignId.length>0){
+      url=url+"campaign_id.eq="+campaignId+"&";
+    }
+
+    if(placeId && placeId.length>0){
+      url=url+"place_id.eq="+placeId+"&";
+    }
+
+    if(timeFrame && timeFrame.length>0){
+      url=url+"completed_at.gt="+getTimeStamps(timeFrame).back+"&";
+    }
+
+    url=url+"&include=user";
+
+
+
+    //url = "https://admin.gospotcheck.com//external/v1/mission_responses?campaign_id.eq="+campaignId+"&place_id.eq="+placeId+"&completed_at.gt="+getTimeStamps(timeFrame).back+"&include=user";
 
 
     try {
