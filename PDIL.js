@@ -114,9 +114,7 @@ var pdilModule = (function ($, ksAPI) {
 
           let theItem = settings.taskResponseSave[item];
 
-          let theKey = Object.keys(theItem);
-
-          vpSetResults(theItem[theKey],savedResponseData.task_responses[theKey]);
+          vpSetResults(theItem.responseId,savedResponseData.task_responses[theItem.num);
         }
       }
        // vpShowLoader();
