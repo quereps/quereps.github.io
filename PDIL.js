@@ -133,16 +133,6 @@ var pdilModule = (function ($, ksAPI) {
    });
 
 
-
-
-
-   }).catch((err)=>{
-    interfaceModule.notification("error","Place not found.");
-    console.error(err);
-   });
-   
-
-
  };
 
 
