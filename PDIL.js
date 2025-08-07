@@ -96,25 +96,25 @@ var pdilModule = (function ($, ksAPI) {
   link1.href = "https://quereps.github.io/design.css";
   document.head.appendChild(link1);
 
-    APICallsModule.getMissionVersions(missionId).then((data)=>{
-      console.log(data);
-    });
+   // APICallsModule.getMissionVersions(missionId).then((data)=>{
+    //  console.log(data);
+    //});
 
-    if(placeId && placeId.length>0){
-      let placeData = await APICallsModule.getPlaceData(placeId);
-      savedPlaceData = placeData;
-    }
+    //if(placeId && placeId.length>0){
+    //  let placeData = await APICallsModule.getPlaceData(placeId);
+    //  savedPlaceData = placeData;
+   // }
 
 
-     APICallsModule.getMissionResponses(placeId,missionId,600000000,10).then((lastItems)=>{
-        console.log("lastItems: ",lastItems);
+     APICallsModule.getMissionResponses(placeId,missionId,600000000,10).then((responses)=>{
+        console.log("responses: ",responses);
  //    });
       
 
  //   APICallsModule.getLastMissionResponse(placeId,missionId,600000).then((lastItem)=>{
-      settings.missionResponses = lastItems;
+      settings.missionResponses = responses;
 
-      let lastItem = lastItems[0];
+      let lastItem = responses[0];
       console.log(lastItem);
 
       interfaceModule.removeNotification();
@@ -122,7 +122,7 @@ var pdilModule = (function ($, ksAPI) {
       
       savedResponseData = lastItem;
       
-        vpShowLoader();
+       // vpShowLoader();
 
        // getGridData(lastItem.id);
 
