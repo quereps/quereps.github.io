@@ -91,27 +91,14 @@ var pdilModule = (function ($, ksAPI) {
     tokenV2:tokenV2
    });
 
-   const link1 = document.createElement("link");
+   const link1 = document.createElement("link"); //Move to interface
   link1.rel = "stylesheet";
   link1.href = "https://quereps.github.io/design.css";
   document.head.appendChild(link1);
 
-   // APICallsModule.getMissionVersions(missionId).then((data)=>{
-    //  console.log(data);
-    //});
-
-    //if(placeId && placeId.length>0){
-    //  let placeData = await APICallsModule.getPlaceData(placeId);
-    //  savedPlaceData = placeData;
-   // }
-
-
      APICallsModule.getMissionResponses(placeId,missionId,600000000,10).then((responses)=>{
         console.log("responses: ",responses);
- //    });
-      
 
- //   APICallsModule.getLastMissionResponse(placeId,missionId,600000).then((lastItem)=>{
       settings.missionResponses = responses;
 
       let lastItem = responses[0];
@@ -122,6 +109,13 @@ var pdilModule = (function ($, ksAPI) {
       
       savedResponseData = lastItem;
       
+      if(settings.taskResponseSave){
+        for(let item in settings.taskResponseSave){
+          let toSave = settings.taskResponseSave[item];
+
+          vpSetResults(toSave[item],savedResponseData.task_responses[item]);
+        }
+      }
        // vpShowLoader();
 
        // getGridData(lastItem.id);
