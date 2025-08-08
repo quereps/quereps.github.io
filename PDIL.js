@@ -4,18 +4,6 @@ var pdilModule = (function ($, ksAPI) {
  let report = {};
  let features = {};
 
-
-   //let placeId = "";
-   //let companyId = "";
-   //let missionId = "";
-   //let tokenV1 = "";
-   //let tokenV2 = "";
-   //let features = "";
-   //let photoGrId = "";
-   //let photoURLs = [];
-
-   //let settings = {};
-
    let config = {};
    let missionResponses = {
     array:[],
@@ -65,12 +53,9 @@ var pdilModule = (function ($, ksAPI) {
  }
 
 
-var getData = async function(){
+var getMissionResponses = async function(){
   missionResponses.array = await APICallsModule.getMissionResponses(config.placeId,config.missionId,600000000,10);
-
   savedResponseData = missionResponses.array[missionResponses.current];
-      
-      console.log("savedResponseData",savedResponseData);
 }
 
 
@@ -79,24 +64,17 @@ var getData = async function(){
   report = settingsImport.report;
   features = settingsImport.features;
 
-  console.log("iniiiiit:", config);
-
-   APICallsModule.Run({
+  APICallsModule.Run({
     companyId:config.companyId,
     tokenV1:config.tokenV1,
     tokenV2:config.tokenV2
-   });
+  });
 
-   if(features?.IR==true){
+  if(features?.IR==true){
     IRModule.Run(config);
-   }
+  }
 
-   const link1 = document.createElement("link"); //Move to interface
-  link1.rel = "stylesheet";
-  link1.href = "https://quereps.github.io/design.css";
-  document.head.appendChild(link1);
-
-  getData();
+  getMissionResponses();
   
  // interfaceModule.removeNotification();
   //vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());

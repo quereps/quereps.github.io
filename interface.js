@@ -900,6 +900,10 @@ const EmptyReport = function(){
 
 var createReport = function(settingsImport,skuListImport,sectionsImport){
 
+    const link1 = document.createElement("link"); //Move to interface
+  link1.rel = "stylesheet";
+  link1.href = "https://quereps.github.io/design.css";
+  document.head.appendChild(link1);
 
   EmptyReport();
 
