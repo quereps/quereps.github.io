@@ -65,7 +65,7 @@ var pdilModule = (function ($, ksAPI) {
  }
 
 
-var getData = function(){
+var getData = async function(){
   missionResponses.array = await APICallsModule.getMissionResponses(config.placeId,config.missionId,600000000,10);
 
   savedResponseData = missionResponses.array[missionResponses.current];
