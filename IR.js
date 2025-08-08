@@ -44,11 +44,21 @@ var IRModule = (function ($, ksAPI) {
               const key = data[item].values.classification;
               sections[key] = (sections[key] ?? 0) + 1;
 
-
+              createOrAddSKU(upcTarget,IRData);
         //console.log(data[item]);
 
         //let upcTarget = data[item].values.upc;
-        let skuListTarget = skuList[upcTarget];
+        
+
+    }    
+
+  }
+
+
+
+
+let createOrAddSKU = function(upcTarget,IRData){
+  let skuListTarget = skuList[upcTarget];
 
         
 
@@ -68,14 +78,7 @@ var IRModule = (function ($, ksAPI) {
           }
 
             skuList[upcTarget].hasPriceTag== skuList[upcTarget]?.prices?.length>0 ? true : false;
-
-    }    
-
-  }
-
-
-
-
+}
 
 /*
 var addTile = function(destination,Id,sku,profile){
@@ -310,7 +313,10 @@ const clearResults = function(){
     },
   getGridData: function (gridID) {
     getGridData(gridID);
-  }
+  },
+  createOrAddSKU: function (upcTarget,IRData) {
+    createOrAddSKU(upcTarget,IRData);
+  },
   }
 })(jQuery, ksAPI);
 
