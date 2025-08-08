@@ -11,6 +11,12 @@ function selectAllMOL(dm){
   return new Promise((resolve, reject) => {
         vpResetResults(dm);
         const $labels = jQuery(`.aDivQId_${dm} .lookupCheckbox label`);
+
+
+
+
+
+        
         $labels.each((i, el) => jQuery(el).click());
 
 
