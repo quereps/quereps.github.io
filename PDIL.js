@@ -71,7 +71,9 @@ var getMissionResponses = async function(){
       let currentSet = settings.skuListImport[dataset];
 
       if(currentSet.fromType=="dm"){
-        selectAllMOL(currentSet.ref);
+        selectAllMOL(currentSet.ref).then(()=>{
+          molToSKUList(currentSet.ref,currentSet.mapping);
+        });
       }
       
 

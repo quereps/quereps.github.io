@@ -77,6 +77,18 @@ function getMOLLength(dm){
 }
 
 
+
+
+var molToSKUList = function(mol,mapping){
+  console.log(mol,mapping);
+
+  for (const [field, column] of Object.entries(mapping)) {
+    console.log(`Field: ${field} | Column: ${column}`);
+  }
+
+}
+
+
 var molToMatrix = function(mapping){
 
   setTimeout(()=>{
