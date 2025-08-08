@@ -13,7 +13,7 @@ var pdilModule = (function ($, ksAPI) {
 
  const ChangeMissionResponse = function(amount){
 
-  console.log("previous MissionResponses: ",missionResponses.current);
+  //console.log("previous MissionResponses: ",missionResponses.current);
 
     missionResponses.current = missionResponses.current+amount;
 
@@ -26,36 +26,23 @@ var pdilModule = (function ($, ksAPI) {
       return;
     }
     
-    console.log("currentMissionResponses: ",missionResponses.current);
-    console.log("ChangeMissionResponse: ",amount);
+    //console.log("currentMissionResponses: ",missionResponses.current);
+    //console.log("ChangeMissionResponse: ",amount);
 
-    clearResults();
+    //clearResults();
 
-    console.log("Mission Responses: ",missionResponses.array);
-    console.log("new Mission Response: ",missionResponses.array[missionResponses.current]);
+    //console.log("Mission Responses: ",missionResponses.array);
+    //console.log("new Mission Response: ",missionResponses.array[missionResponses.current]);
+    console.log(missionResponses.array[missionResponses.current]);
 
-         APICallsModule.getMissionResponse(missionResponses.array[missionResponses.current].id).then((lastItem)=>{
-
-      //let lastItem = lastItems[0];
-      console.log(lastItem);
-
-      interfaceModule.removeNotification();
-      vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
-      
-      savedResponseData = lastItem;
-
-        vpShowLoader();
-
-        IRModule.getGridData(lastItem.id);
-
-
-      });
  }
 
 
 var getMissionResponses = async function(){
   missionResponses.array = await APICallsModule.getMissionResponses(config.placeId,config.missionId,600000000,10);
-  savedResponseData = missionResponses.array[missionResponses.current];
+  lastMissionResponse = missionResponses.array[missionResponses.current];
+
+  return lastMissionResponse;
 }
 
 
@@ -74,7 +61,9 @@ var getMissionResponses = async function(){
     IRModule.Run(config);
   }
 
-  getMissionResponses();
+  await getMissionResponses();
+
+  console.log(missionResponses.array[missionResponses.current]);
   
  // interfaceModule.removeNotification();
   //vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
