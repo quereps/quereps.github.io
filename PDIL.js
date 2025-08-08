@@ -1,6 +1,6 @@
 var pdilModule = (function ($, ksAPI) {
 
- let skuList = {};
+ //let skuList = {};
  let report = {};
  let features = {};
 
@@ -46,10 +46,10 @@ var getMissionResponses = async function(){
 }
 
 
- var init = async function (settingsImport) {
-  config=settingsImport.config;
-  report = settingsImport.report;
-  features = settingsImport.features;
+ var init = async function (settings) {
+  config=settings.config;
+  report = settings.report;
+  features = settings.features;
 
   APICallsModule.Run({
     companyId:config.companyId,
@@ -64,6 +64,23 @@ var getMissionResponses = async function(){
   await getMissionResponses();
 
   console.log("hey",missionResponses.array[missionResponses.current]);
+
+
+  if(settings.skuListImport){
+    for(let dataset in settings.skuListImport){
+      let currentSet = settings.skuListImport[dataset];
+
+      if(currentSet.fromType=="dm"){
+        selectAllMOL(currentSet.ref);
+      }
+      
+
+    }
+
+
+    selectAllMOL(dm)
+  }
+  
   
  // interfaceModule.removeNotification();
   //vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
