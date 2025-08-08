@@ -64,11 +64,16 @@ var pdilModule = (function ($, ksAPI) {
  }
 
 
+var getData = function(){
+  missionResponses.array = await APICallsModule.getMissionResponses(config.placeId,config.missionId,600000000,10);
+
+  savedResponseData = missionResponses.array[missionResponses.current];
+      
+      console.log("savedResponseData",savedResponseData);
+}
+
 
  var init = async function (settingsImport) {
-
-
-
   config=settingsImport.config;
   report = settingsImport.report;
 
@@ -85,15 +90,12 @@ var pdilModule = (function ($, ksAPI) {
   link1.href = "https://quereps.github.io/design.css";
   document.head.appendChild(link1);
 
-
-  missionResponses.array = await APICallsModule.getMissionResponses(config.placeId,config.missionId,600000000,10);
-
-  interfaceModule.removeNotification();
+  getData();
+  
+ // interfaceModule.removeNotification();
   //vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
       
-      savedResponseData = missionResponses.array[missionResponses.current];
       
-      console.log("savedResponseData",savedResponseData);
       /*
       if(settings.taskResponseSave){
         for(let item in settings.taskResponseSave){
