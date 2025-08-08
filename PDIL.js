@@ -109,7 +109,7 @@ var pdilModule = (function ($, ksAPI) {
       interfaceModule.removeNotification();
       vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
       
-      /*savedResponseData = lastItem;
+      savedResponseData = lastItem;
       
       if(settings.taskResponseSave){
         for(let item in settings.taskResponseSave){
@@ -120,7 +120,7 @@ var pdilModule = (function ($, ksAPI) {
 
           vpSetResults(theItem.responseId, response.value);
         }
-      }*/
+      }
        // vpShowLoader();
 
        // getGridData(lastItem.id);
