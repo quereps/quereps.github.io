@@ -1,23 +1,23 @@
 var IRModule = (function ($, ksAPI) {
 
-  let sections = {};
+  //let sections = {};
  let skuList = {};
- let report = {};
+ //let report = {};
 
 
-  let placeId = "";
-   let  companyId = "";
-   let missionId = "";
-   let tokenV1 = "";
-   let tokenV2 = "";
-   let features = "";
-   let photoGrId = "";
-   let photoURLs = [];
+  //let placeId = "";
+   //let  companyId = "";
+   //let missionId = "";
+   //let tokenV1 = "";
+   //let tokenV2 = "";
+   //let features = "";
+   //let photoGrId = "";
+   //let photoURLs = [];
 
-   let realogram = [];
+   //let realogram = [];
 
 
-   let settings = {};
+   //let settings = {};
 
  
   var extractIRData = async function(data){
@@ -390,9 +390,9 @@ const clearResults = function(){
   getGridData: function (gridID) {
     getGridData(gridID);
   },
-    skuList,
-    companyId,
-    photoURLs,
+    //skuList,
+    //companyId,
+    //photoURLs,
   }
 })(jQuery, ksAPI);
 
