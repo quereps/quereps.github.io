@@ -82,9 +82,17 @@ function getMOLLength(dm){
 var molToSKUList = function(mol,mapping){
   console.log(mol,mapping);
 
+   let IRData = {};
+
+
   for (const [field, column] of Object.entries(mapping)) {
     console.log(`Field: ${field} | Column: ${column}`);
+
+    IRData[field] = vpGetTextResults(mol + ".A" + column);
   }
+
+  let upcTarget = IRData[upc],
+  createOrAddSKU(upcTarget,IRData);
 
 }
 
