@@ -54,7 +54,7 @@ var pdilModule = (function ($, ksAPI) {
 
         vpShowLoader();
 
-        getGridData(lastItem.id);
+        IRModule.getGridData(lastItem.id);
 
 
       });
@@ -142,14 +142,9 @@ var pdilModule = (function ($, ksAPI) {
     ChangeMissionResponse: function (amount) {
       ChangeMissionResponse(amount);
     },
-    getSKUList : function(){
-      return skuList;
-    },
     getSettings: function () {
     return settings;
   },
-    skuList,
-    companyId,
     photoURLs,
   }
 })(jQuery, ksAPI);

@@ -1,4 +1,4 @@
-var APIModule = (function ($, ksAPI) {
+var IRModule = (function ($, ksAPI) {
 
   let sections = {};
  let skuList = {};
@@ -16,11 +16,6 @@ var APIModule = (function ($, ksAPI) {
 
    let realogram = [];
 
-
-   //let missionResponses = [];
-
-   
-   //let currentMissionResponses = 0;
 
    let settings = {};
 
@@ -158,7 +153,7 @@ const clearResults = function(){
   jQuery(".sectionContainer").empty();
 }
 
- const ChangeMissionResponse = function(amount){
+/* const ChangeMissionResponse = function(amount){
 
   console.log("previous MissionResponses: ",settings.currentMissionResponses);
 
@@ -198,42 +193,12 @@ const clearResults = function(){
         vpShowLoader();
 
         getGridData(lastItem.id);
-        /*
-        APICallsModule.getGrid(lastItem.id).then(async (photo_grids)=>{
 
-          interfaceModule.removeNotification();
-
-
-          // Create an array of promises from getTags
-
-          console.log("photo_grids: ",photo_grids);
-
-          let tagPromises = photo_grids.map(async grid => {
-              const tags = await APICallsModule.getTags(grid.id);
-              interfaceModule.removeNotification();
-              extractIRData(tags);
-          });
-
-          await Promise.all(tagPromises);
-
-
-          if(settings.specificFunction){
-            settings.specificFunction(skuList);
-          }
-          
-          
-
-          console.log(skuList);
-          //Coke Demo specifics END
-
-          interfaceModule.createReport(settings, skuList, sections);
-
-        });*/
 
       });
  }
 
-
+*/
 
 
  var getGridData = function(missionResponseID){
@@ -311,7 +276,6 @@ const clearResults = function(){
   settings=settingsImport;
 
 
-
   settings.currentMissionResponses = 0;
    settings.missionResponses = [];
 
@@ -351,14 +315,6 @@ const clearResults = function(){
   
   else{
 
-
-
-
-    /*Tests*/
-
-
-
-
     APICallsModule.getMissionVersions(missionId).then((data)=>{
       console.log(data);
     });
@@ -394,68 +350,7 @@ const clearResults = function(){
         vpShowLoader();
 
         getGridData(lastItem.id);
-        /*APICallsModule.getGrid(lastItem.id).then(async (photo_grids)=>{
 
-          interfaceModule.removeNotification();
-
-
-          // Create an array of promises from getTags
-
-          console.log("photo_grids: ",photo_grids);
-
-
-          for(let grid of photo_grids){
-            APICallsModule.getTaskResponse(grid.metadata.task_response.id).then((data)=>{
-              let image = data.value[0].s3;
-              console.log(image);
-              photoURLs.push(image);
-            });
-              
-            };
-          
-          
-
-
-          let tagPromises = photo_grids.map(async grid => {
-
-          
-             
-
-              const tags = await APICallsModule.getTags(grid.id);
-              interfaceModule.removeNotification();
-              extractIRData(tags);
-          });
-
-          await Promise.all(tagPromises);
-
-
-//Testing Planogram
-          let pogPromises = photo_grids.map(async grid => {
-              const pogs = await APICallsModule.getPlanogram(companyId,grid.id);
-              //interfaceModule.removeNotification();
-              //extractIRData(tags);
-              console.log("pogs",pogs);
-          });
-
-          await Promise.all(pogPromises);
-//Testing Planogram
-
-          if(settings.report){
-          interfaceModule.createReport(settings, skuList, sections);
-        }else{
-          vpHideLoader();
-        }
-
-        if(settings.specificFunction){
-            console.log("Specific Function Detected");
-            settings.specificFunction(skuList,settings);
-          }
-
-          
-        }).catch((err)=>{
-    interfaceModule.notification("error","No Photo Grid found.");
-    console.error(err);
-   });*/
 
       }).catch((err)=>{
     interfaceModule.notification("error","No mission responses found.");
@@ -491,6 +386,9 @@ const clearResults = function(){
     },
     getSettings: function () {
     return settings;
+  },
+  getGridData: function (gridID) {
+    getGridData(gridID);
   },
     skuList,
     companyId,
