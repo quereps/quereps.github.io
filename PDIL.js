@@ -2,6 +2,7 @@ var pdilModule = (function ($, ksAPI) {
 
  let skuList = {};
  let report = {};
+ let features = {};
 
 
    //let placeId = "";
@@ -76,6 +77,7 @@ var getData = function(){
  var init = async function (settingsImport) {
   config=settingsImport.config;
   report = settingsImport.report;
+  features = settingsImport.features;
 
   console.log("iniiiiit:", config);
 
@@ -84,6 +86,10 @@ var getData = function(){
     tokenV1:config.tokenV1,
     tokenV2:config.tokenV2
    });
+
+   if(features?.IR==true){
+    IRModule.Run(config);
+   }
 
    const link1 = document.createElement("link"); //Move to interface
   link1.rel = "stylesheet";
