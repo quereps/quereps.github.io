@@ -89,7 +89,7 @@ var pdilModule = (function ($, ksAPI) {
   interfaceModule.removeNotification();
   //vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
       
-      savedResponseData = lastItem;
+      savedResponseData = missionResponses.array[missionResponses.current];
       
       if(settings.taskResponseSave){
         for(let item in settings.taskResponseSave){
