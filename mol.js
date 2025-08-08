@@ -98,7 +98,7 @@ var molToSKUList = function(mol,mapping){
   }
 
   let upcTarget = IRData.upc;
-  createOrAddSKU(upcTarget,IRData);
+  IRModule.createOrAddSKU(upcTarget,IRData);
 
 }
 
