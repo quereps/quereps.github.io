@@ -116,6 +116,9 @@ var getMissionResponses = async function(){
     getSettings: function () {
     return settings;
   },
+    getCurrentMissionResponse: function () {
+    return missionResponses.array[missionResponses.current];
+  },
     //photoURLs,
   }
 })(jQuery, ksAPI);
