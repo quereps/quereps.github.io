@@ -96,14 +96,14 @@ var IRModule = (function ($, ksAPI) {
 
 
 
-
+/*
 var addTile = function(destination,Id,sku,profile){
   let container = vpGetLabel(destination);
   const dataTable = ["size","classification","subclassification"];
   jQuery(container).empty();
   jQuery(container).html(htmlTile(profile));
 };
-
+*/
 
 
 
@@ -378,21 +378,12 @@ const clearResults = function(){
     Run: function (settings) {
       init(settings);
     },
-    ChangeMissionResponse: function (amount) {
-      ChangeMissionResponse(amount);
-    },
     getSKUList : function(){
       return skuList;
     },
-    getSettings: function () {
-    return settings;
-  },
   getGridData: function (gridID) {
     getGridData(gridID);
-  },
-    //skuList,
-    //companyId,
-    //photoURLs,
+  }
   }
 })(jQuery, ksAPI);
 
