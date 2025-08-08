@@ -1,5 +1,5 @@
 class skuObj {
-  constructor({type = "",upc = "", IRData = ""}){
+  constructor({type = "",upc = "", IRData = "", complianceData = ""}){
 
   //  console.log("Constructor",IRData);
 
@@ -86,7 +86,4 @@ class skuObj {
       console.log("getIRData: ",data);
       this.IRData = data;
   }
-
-
-
 }
