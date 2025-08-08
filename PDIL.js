@@ -33,8 +33,6 @@ var pdilModule = (function ($, ksAPI) {
       return;
     }
 
-    
-
     if(missionResponses.current>missionResponses.array.length){
       return;
     }
@@ -69,23 +67,10 @@ var pdilModule = (function ($, ksAPI) {
 
  var init = async function (settingsImport) {
 
-  //settings=settingsImport;
   config=settingsImport.config;
   report = settings.report;
 
   console.log("iniiiiit:", config);
-
-   // placeId = settings.config.placeId;
-   // companyId = settings.config.companyId;
-   // missionId = settings.config.missionId;
-   // tokenV1 = settings.config.tokenV1;
-   // tokenV2 = settings.config.tokenV2;
-   // features = settings.features;
-    
-    //photoGrId = settings.photoGrId;
-
-    //console.log("placeId:",placeId);
-
 
    APICallsModule.Run({
     companyId:config.companyId,
@@ -98,16 +83,11 @@ var pdilModule = (function ($, ksAPI) {
   link1.href = "https://quereps.github.io/design.css";
   document.head.appendChild(link1);
 
-     APICallsModule.getMissionResponses(config.placeId,config.missionId,600000000,10).then((responses)=>{
-        console.log("responses: ",responses);
 
-      missionResponses.array = responses;
+  missionResponses.array = await APICallsModule.getMissionResponses(config.placeId,config.missionId,600000000,10);
 
-      let lastItem = responses[0];
-      console.log(lastItem);
-
-      interfaceModule.removeNotification();
-      vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
+  interfaceModule.removeNotification();
+  //vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
       
       savedResponseData = lastItem;
       
@@ -121,17 +101,8 @@ var pdilModule = (function ($, ksAPI) {
           vpSetResults(theItem.responseId, response.value);
         }
       }
-       // vpShowLoader();
 
        // getGridData(lastItem.id);
-
-
-      }).catch((err)=>{
-    interfaceModule.notification("error","No mission responses found.");
-    console.error(err);
-   });
-
-
  };
 
 
