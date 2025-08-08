@@ -75,6 +75,9 @@ var getMissionResponses = async function(){
           molToSKUList(currentSet.ref,currentSet.mapping);
         });
       }
+      else if(currentSet.fromType=="task_response"){
+        
+      }
       
 
     }
