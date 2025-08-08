@@ -67,6 +67,8 @@ var pdilModule = (function ($, ksAPI) {
 
  var init = async function (settingsImport) {
 
+
+
   config=settingsImport.config;
   report = settingsImport.report;
 
@@ -91,6 +93,8 @@ var pdilModule = (function ($, ksAPI) {
       
       savedResponseData = missionResponses.array[missionResponses.current];
       
+      console.log("savedResponseData",savedResponseData);
+      /*
       if(settings.taskResponseSave){
         for(let item in settings.taskResponseSave){
  
@@ -100,7 +104,7 @@ var pdilModule = (function ($, ksAPI) {
 
           vpSetResults(theItem.responseId, response.value);
         }
-      }
+      }*/
 
        // getGridData(lastItem.id);
  };
