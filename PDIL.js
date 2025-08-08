@@ -76,9 +76,6 @@ var getMissionResponses = async function(){
       
 
     }
-
-
-    selectAllMOL(dm)
   }
   
   
