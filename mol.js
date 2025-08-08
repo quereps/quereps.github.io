@@ -98,6 +98,7 @@ var molToSKUList = function(mol,mapping){
     data[field] = vpGetTextResults(mol + ".A" + column);
   }
 
+  console.log("data",data);
 
   let IRData = {};
 
