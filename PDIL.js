@@ -4,17 +4,22 @@ var pdilModule = (function ($, ksAPI) {
  let report = {};
 
 
-   let placeId = "";
-   let  companyId = "";
-   let missionId = "";
-   let tokenV1 = "";
-   let tokenV2 = "";
-   let features = "";
-   let photoGrId = "";
-   let photoURLs = [];
+   //let placeId = "";
+   //let companyId = "";
+   //let missionId = "";
+   //let tokenV1 = "";
+   //let tokenV2 = "";
+   //let features = "";
+   //let photoGrId = "";
+   //let photoURLs = [];
 
-   let settings = {};
+   //let settings = {};
 
+   let config = {};
+   let missionResponses = {
+    array:[],
+    current:0,
+   };
 
 
  const ChangeMissionResponse = function(amount){
@@ -64,31 +69,28 @@ var pdilModule = (function ($, ksAPI) {
 
  var init = async function (settingsImport) {
 
-  settings=settingsImport;
+  //settings=settingsImport;
+  config=settingsImport.config;
+  report = settings.report;
 
+  console.log("iniiiiit:", config);
 
+   // placeId = settings.config.placeId;
+   // companyId = settings.config.companyId;
+   // missionId = settings.config.missionId;
+   // tokenV1 = settings.config.tokenV1;
+   // tokenV2 = settings.config.tokenV2;
+   // features = settings.features;
+    
+    //photoGrId = settings.photoGrId;
 
-  settings.currentMissionResponses = 0;
-   settings.missionResponses = [];
-
-  console.log("iniiiiit:", settings);
-
-    placeId = settings.config.placeId;
-    companyId = settings.config.companyId;
-    missionId = settings.config.missionId;
-    tokenV1 = settings.config.tokenV1;
-    tokenV2 = settings.config.tokenV2;
-    features = settings.features;
-    report = settings.report;
-    photoGrId = settings.photoGrId;
-
-    console.log("placeId:",placeId);
+    //console.log("placeId:",placeId);
 
 
    APICallsModule.Run({
-    companyId:companyId,
-    tokenV1:tokenV1,
-    tokenV2:tokenV2
+    companyId:config.companyId,
+    tokenV1:config.tokenV1,
+    tokenV2:config.tokenV2
    });
 
    const link1 = document.createElement("link"); //Move to interface
@@ -96,10 +98,10 @@ var pdilModule = (function ($, ksAPI) {
   link1.href = "https://quereps.github.io/design.css";
   document.head.appendChild(link1);
 
-     APICallsModule.getMissionResponses(placeId,missionId,600000000,10).then((responses)=>{
+     APICallsModule.getMissionResponses(config.placeId,config.missionId,600000000,10).then((responses)=>{
         console.log("responses: ",responses);
 
-      settings.missionResponses = responses;
+      missionResponses.array = responses;
 
       let lastItem = responses[0];
       console.log(lastItem);
@@ -107,7 +109,7 @@ var pdilModule = (function ($, ksAPI) {
       interfaceModule.removeNotification();
       vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
       
-      savedResponseData = lastItem;
+      /*savedResponseData = lastItem;
       
       if(settings.taskResponseSave){
         for(let item in settings.taskResponseSave){
@@ -118,7 +120,7 @@ var pdilModule = (function ($, ksAPI) {
 
           vpSetResults(theItem.responseId, response.value);
         }
-      }
+      }*/
        // vpShowLoader();
 
        // getGridData(lastItem.id);
