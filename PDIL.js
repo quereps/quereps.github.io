@@ -24,30 +24,30 @@ var pdilModule = (function ($, ksAPI) {
 
  const ChangeMissionResponse = function(amount){
 
-  console.log("previous MissionResponses: ",settings.currentMissionResponses);
+  console.log("previous MissionResponses: ",missionResponses.current);
 
-    settings.currentMissionResponses = settings.currentMissionResponses+amount;
+    missionResponses.current = missionResponses.current+amount;
 
-    if(settings.currentMissionResponses<0){
-      settings.currentMissionResponses=0;
+    if(missionResponses.current<0){
+      missionResponses.current=0;
       return;
     }
 
     
 
-    if(settings.currentMissionResponses>settings.missionResponses.length){
+    if(missionResponses.current>missionResponses.array.length){
       return;
     }
     
-    console.log("currentMissionResponses: ",settings.currentMissionResponses);
+    console.log("currentMissionResponses: ",missionResponses.current);
     console.log("ChangeMissionResponse: ",amount);
 
     clearResults();
 
-    console.log("Mission Responses: ",settings.missionResponses);
-    console.log("new Mission Response: ",settings.missionResponses[settings.currentMissionResponses]);
+    console.log("Mission Responses: ",missionResponses.array);
+    console.log("new Mission Response: ",missionResponses.array[missionResponses.current]);
 
-         APICallsModule.getMissionResponse(settings.missionResponses[settings.currentMissionResponses].id).then((lastItem)=>{
+         APICallsModule.getMissionResponse(missionResponses.array[missionResponses.current].id).then((lastItem)=>{
 
       //let lastItem = lastItems[0];
       console.log(lastItem);
