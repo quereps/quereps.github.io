@@ -68,7 +68,7 @@ var pdilModule = (function ($, ksAPI) {
  var init = async function (settingsImport) {
 
   config=settingsImport.config;
-  report = settings.report;
+  report = settingsImport.report;
 
   console.log("iniiiiit:", config);
 
