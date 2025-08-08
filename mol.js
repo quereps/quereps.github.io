@@ -103,7 +103,7 @@ function getMOLLength(dm){
 }*/
 
 
-function molToSKUList(mol, mapping) {
+/*function molToSKUList(mol, mapping) {
   // 1) Pull all columns up-front as arrays
   const cols = {};
   for (const [field, column] of Object.entries(mapping)) {
@@ -124,8 +124,39 @@ function molToSKUList(mol, mapping) {
     const upcTarget = IRData.upc; // or String(IRData.upc).trim() if needed
     IRModule.createOrAddSKU("SKU", upcTarget, IRData);
   }
-
+ 
   return rows; // how many created
+}*/
+
+
+function molToSKUList(mol, mapping) {
+  // 1) Fetch each mapped column as an array
+  const cols = {};
+  for (const [field, column] of Object.entries(mapping)) {
+    const out = vpGetTextResults(`${mol}.A${column}`) || [];
+    cols[field] = Array.isArray(out) ? out : [out];
+  }
+
+  // 2) Decide row count (prefer UPC length if present, else longest column)
+  const rowCount = (cols.upc && cols.upc.length)
+    ? cols.upc.length
+    : Math.max(0, ...Object.values(cols).map(a => a.length));
+
+  // 3) Build one IRData per row
+  for (let i = 0; i < rowCount; i++) {
+    const IRData = {};
+
+    for (const [field, arr] of Object.entries(cols)) {
+      // broadcast singletons; tolerate ragged columns
+      IRData[field] = (arr[i] !== undefined) ? arr[i]
+                    : (arr.length === 1 ? arr[0] : null);
+    }
+
+    // 4) One call per row with a scalar UPC
+    const upcTarget = IRData.upc?.toString().trim();
+    if (!upcTarget) continue;              // skip empty UPC rows
+    IRModule.createOrAddSKU("SKU", upcTarget, IRData);
+  }
 }
 
 
