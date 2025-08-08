@@ -85,7 +85,7 @@ function getMOLLength(dm){
 
 
 
-var molToSKUList = function(mol,mapping){
+/*var molToSKUList = function(mol,mapping){
   console.log(mol,mapping);
 
    let IRData = {};
@@ -100,6 +100,32 @@ var molToSKUList = function(mol,mapping){
   let upcTarget = IRData.upc;
   IRModule.createOrAddSKU("SKU",upcTarget,IRData);
 
+}*/
+
+
+function molToSKUList(mol, mapping) {
+  // 1) Pull all columns up-front as arrays
+  const cols = {};
+  for (const [field, column] of Object.entries(mapping)) {
+    const arr = vpGetTextResults(`${mol}.A${column}`) || [];
+    cols[field] = Array.isArray(arr) ? arr : [arr];
+  }
+
+  // 2) Determine how many rows we have (the longest column wins)
+  const rows = Math.max(0, ...Object.values(cols).map(a => a.length));
+
+  // 3) Build one IRData per row and push
+  for (let i = 0; i < rows; i++) {
+    const IRData = {};
+    for (const field of Object.keys(cols)) {
+      IRData[field] = cols[field][i] ?? null; // tolerate ragged columns
+    }
+
+    const upcTarget = IRData.upc; // or String(IRData.upc).trim() if needed
+    IRModule.createOrAddSKU("SKU", upcTarget, IRData);
+  }
+
+  return rows; // how many created
 }
 
 
