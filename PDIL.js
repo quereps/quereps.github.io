@@ -118,7 +118,7 @@ var pdilModule = (function ($, ksAPI) {
     getSettings: function () {
     return settings;
   },
-    photoURLs,
+    //photoURLs,
   }
 })(jQuery, ksAPI);
 
