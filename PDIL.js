@@ -63,7 +63,7 @@ var getMissionResponses = async function(){
 
   await getMissionResponses();
 
-  console.log(missionResponses.array[missionResponses.current]);
+  console.log("hey",missionResponses.array[missionResponses.current]);
   
  // interfaceModule.removeNotification();
   //vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
