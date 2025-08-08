@@ -85,22 +85,26 @@ function getMOLLength(dm){
 
 
 
-/*var molToSKUList = function(mol,mapping){
+var molToSKUList = function(mol,mapping){
   console.log(mol,mapping);
 
-   let IRData = {};
+    let data = {};
+
+   
 
 
   for (const [field, column] of Object.entries(mapping)) {
     console.log(`Field: ${field} | Column: ${column}`);
-
-    IRData[field] = vpGetTextResults(mol + ".A" + column);
+    data[field] = vpGetTextResults(mol + ".A" + column);
   }
+
+
+  let IRData = {};
 
   let upcTarget = IRData.upc;
   IRModule.createOrAddSKU("SKU",upcTarget,IRData);
 
-}*/
+}
 
 
 /*function molToSKUList(mol, mapping) {
@@ -129,7 +133,7 @@ function getMOLLength(dm){
 }*/
 
 
-function molToSKUList(mol, mapping) {
+/*function molToSKUList(mol, mapping) {
   // 1) Fetch each mapped column as an array
   const cols = {};
   for (const [field, column] of Object.entries(mapping)) {
@@ -157,7 +161,7 @@ function molToSKUList(mol, mapping) {
     if (!upcTarget) continue;              // skip empty UPC rows
     IRModule.createOrAddSKU("SKU", upcTarget, IRData);
   }
-}
+}*/
 
 
 var molToMatrix = function(mapping){
