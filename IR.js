@@ -57,7 +57,7 @@ var IRModule = (function ($, ksAPI) {
 
 
 
-let createOrAddSKU = function(upcTarget,IRData){
+let createOrAddSKU = function(type,upcTarget,IRData){
   let skuListTarget = skuList[upcTarget];
 
         
@@ -314,8 +314,8 @@ const clearResults = function(){
   getGridData: function (gridID) {
     getGridData(gridID);
   },
-  createOrAddSKU: function (upcTarget,IRData) {
-    createOrAddSKU(upcTarget,IRData);
+  createOrAddSKU: function (type,upcTarget,IRData) {
+    createOrAddSKU(type,upcTarget,IRData);
   },
   }
 })(jQuery, ksAPI);
