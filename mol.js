@@ -16,7 +16,7 @@ function selectAllMOL(dm){
 
 
 
-        
+
         $labels.each((i, el) => jQuery(el).click());
 
 
@@ -97,7 +97,7 @@ var molToSKUList = function(mol,mapping){
     IRData[field] = vpGetTextResults(mol + ".A" + column);
   }
 
-  let upcTarget = IRData[upc];
+  let upcTarget = IRData.upc;
   createOrAddSKU(upcTarget,IRData);
 
 }
