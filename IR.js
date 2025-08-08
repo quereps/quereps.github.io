@@ -1,25 +1,6 @@
 var IRModule = (function ($, ksAPI) {
-
-  //let sections = {};
  let skuList = {};
- //let report = {};
 
-
-  //let placeId = "";
-   //let  companyId = "";
-   //let missionId = "";
-   //let tokenV1 = "";
-   //let tokenV2 = "";
-   //let features = "";
-   //let photoGrId = "";
-   //let photoURLs = [];
-
-   //let realogram = [];
-
-
-   //let settings = {};
-
- 
   var extractIRData = async function(data){
 
     console.log("Extracting Data: ", data)
@@ -153,54 +134,6 @@ const clearResults = function(){
   jQuery(".sectionContainer").empty();
 }
 
-/* const ChangeMissionResponse = function(amount){
-
-  console.log("previous MissionResponses: ",settings.currentMissionResponses);
-
-    settings.currentMissionResponses = settings.currentMissionResponses+amount;
-
-    if(settings.currentMissionResponses<0){
-      settings.currentMissionResponses=0;
-      return;
-    }
-
-    
-
-    if(settings.currentMissionResponses>settings.missionResponses.length){
-      return;
-    }
-    
-    console.log("currentMissionResponses: ",settings.currentMissionResponses);
-    console.log("ChangeMissionResponse: ",amount);
-
-    clearResults();
-
-    console.log("Mission Responses: ",settings.missionResponses);
-    console.log("new Mission Response: ",settings.missionResponses[settings.currentMissionResponses]);
-
-         APICallsModule.getMissionResponse(settings.missionResponses[settings.currentMissionResponses].id).then((lastItem)=>{
-
-      //let lastItem = lastItems[0];
-      console.log(lastItem);
-
-      interfaceModule.removeNotification();
-      vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
-      
-      savedResponseData = lastItem;
-
-
-
-        vpShowLoader();
-
-        getGridData(lastItem.id);
-
-
-      });
- }
-
-*/
-
-
  var getGridData = function(missionResponseID){
 
           APICallsModule.getGrid(missionResponseID).then(async (photo_grids)=>{
@@ -221,14 +154,8 @@ const clearResults = function(){
             });
               
             };
-          
-          
-
 
           let tagPromises = photo_grids.map(async grid => {
-
-          
-             
 
               const tags = await APICallsModule.getTags(grid.id);
               interfaceModule.removeNotification();
