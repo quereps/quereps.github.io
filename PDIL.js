@@ -75,7 +75,7 @@ var getMissionResponses = async function(){
 
       if(currentSet.fromType=="dm"){
         selectAllMOL(currentSet.ref).then(()=>{
-          molToSKUList(currentSet.ref,currentSet.mapping);
+          molToSKUList(currentSet.ref,currentSet.mapping,currentSet.complianceData);
         });
       }
       else if(currentSet.fromType=="task_response"){
