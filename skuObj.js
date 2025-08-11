@@ -75,6 +75,21 @@ class skuObj {
     }
 
 
+    checkAvailability(){
+      if(this.facings>0){
+          this.availabilityStatus = "In Stock";
+      }
+
+      else if(this.facings==0 && this.expected==true){
+        this.availabilityStatus = "Out of Stock";
+      }
+
+      else if(this.facings==0 && !this.expected){
+        this.availabilityStatus = "VOID";
+      }
+    }
+
+
   checkFacingsCompliance(exp){
     console.log("facings:", this.facings, typeof this.facings);
     console.log("exp:", exp, typeof exp);
