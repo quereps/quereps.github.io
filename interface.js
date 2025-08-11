@@ -917,7 +917,7 @@ var createReport = function(/*settingsImport,skuListImport,sectionsImport*/){
   //skuList = skuListImport;
   //sections = sectionsImport;
   //settings = settingsImport;
-  //config = settingsImport.config;
+  config = pdilModule.getConfig();
   report = pdilModule.getReportSettings();
 
   companyId = config.companyId;
