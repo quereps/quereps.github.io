@@ -60,7 +60,7 @@ var IRModule = (function ($, ksAPI) {
 let createOrAddSKU = function(type,upcTarget,IRData,addFacing){
   let skuListTarget = skuList[upcTarget];
 
-  console.log("IRData",IRData);
+  //console.log("IRData",IRData);
         
 
         if(!skuListTarget){
