@@ -158,7 +158,7 @@ var molToSKUList = function(mol, mapping){
     data[field] = String(txt);
   }
 
-  console.log("data",data);
+  //console.log("data",data);
 
   // 2) Helper: split on commas and trim
   const splitVals = (s) => s
@@ -172,7 +172,7 @@ var molToSKUList = function(mol, mapping){
     arrays[field] = splitVals(str);
   }
 
-  console.log("arrays",arrays);
+ // console.log("arrays",arrays);
 
   // 4) Sanity check lengths (use UPC count as the driver)
   const upcs = arrays.upc || [];
@@ -197,7 +197,7 @@ var molToSKUList = function(mol, mapping){
     const upc = String(obj.upc);             // keep as string to preserve leading zeros
     IRDataByUpc[upc] = obj;
 
-      console.log("before creating",upc,obj);
+     // console.log("before creating",upc,obj);
 
     IRModule.createOrAddSKU("SKU", upc, obj,{addFacing:false});
   }
