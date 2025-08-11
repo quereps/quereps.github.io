@@ -72,10 +72,10 @@ let createOrAddSKU = function(type,upcTarget,IRData){
         }
 
           if(skuListTarget.prices){
-            //Array.prototype.push.apply(skuListTarget.prices, IRData.values.prices);
+            Array.prototype.push.apply(skuListTarget.prices, IRData.prices);
           }
           else{
-            //skuList[upcTarget].prices = data[item].values.prices;
+            skuList[upcTarget].prices = IRData.prices;
           }
 
             skuList[upcTarget].hasPriceTag== skuList[upcTarget]?.prices?.length>0 ? true : false;
