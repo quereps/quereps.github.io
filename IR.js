@@ -339,6 +339,12 @@ const clearResults = function(){
   createOrAddSKU: function (type,upcTarget,IRData,complianceData) {
     createOrAddSKU(type,upcTarget,IRData,complianceData);
   },
+  checkAvailability: function () {
+    checkAvailability();
+  },
+
+
+  
   }
 })(jQuery, ksAPI);
 
