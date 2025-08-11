@@ -1,4 +1,4 @@
-var getCurrentMissionResponse = (function ($, ksAPI) {
+var pdilModule = (function ($, ksAPI) {
 
  //let skuList = {};
  let report = {};
@@ -47,6 +47,9 @@ var getMissionResponses = async function(){
 
 
  var init = async function (settings) {
+
+
+  console.log("iniiiit");
   config=settings.config;
   report = settings.report;
   features = settings.features;
@@ -77,18 +80,11 @@ var getMissionResponses = async function(){
       }
       else if(currentSet.fromType=="task_response"){
 
-        getCurrentMissionResponse
+        let skuArray = pdilModule.getCurrentMissionResponse().task_responses[(currentSet.taskNum-1)].value;
 
-        for(let item in settings.taskResponseSave){
- 
-          let theItem = settings.taskResponseSave[item];
-
-          const response = savedResponseData.task_responses[theItem.num];
+        for(let sku in skuArray){
+          IRModule.createOrAddSKU("SKU", upc, obj,currentSet.addFacing,currentSet.currentSet.addFacing);
         }
-        
-
-      
-
     }
   }
   }
