@@ -26,7 +26,7 @@ carrefourSpecial = function(skuList,settings){
 
 
   setTimeout(()=>{
-              selectAllMOL("mol").then((a)=>{
+              selectAllMOL("ingest").then((a)=>{
 
 
               const skuArray = vpGetTextResults("mol.A3").split(',').map(s => s.trim());
@@ -76,7 +76,7 @@ carrefourSpecial = function(skuList,settings){
                 
 
             });
-            selectAllMOL("mol2").then((a)=>{
+            selectAllMOL("oosMOL").then((a)=>{
 
               const skuArray = vpGetTextResults("mol2.A3").split(',').map(s => s.trim());
               const exp = vpGetTextResults("mol2.A5").split(',').map(s => s.trim());

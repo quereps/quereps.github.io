@@ -57,7 +57,7 @@ var IRModule = (function ($, ksAPI) {
 
 
 
-let createOrAddSKU = function(type,upcTarget,IRData,addFacing){
+let createOrAddSKU = function(type,upcTarget,IRData,settings){
   let skuListTarget = skuList[upcTarget];
 
   //console.log("IRData",IRData);
@@ -67,7 +67,7 @@ let createOrAddSKU = function(type,upcTarget,IRData,addFacing){
           skuList[upcTarget] = new skuObj({type:type,upc:upcTarget, IRData: IRData});
         }
 
-        if(addFacing==true){
+        if(settings.addFacing==true){
             skuList[upcTarget].addFacing(IRData);
         }
 

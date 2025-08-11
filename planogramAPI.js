@@ -1,5 +1,4 @@
 var planogramAPIModule = (function ($, ksAPI) {
-
  
  var init = async function (companyId,gridId) {
 

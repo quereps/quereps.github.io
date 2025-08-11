@@ -11,7 +11,7 @@ class skuObj {
     this.shelf_index_yArray = [];
     this.stack_indexArray = [];
     this.presence = false;
-    this.availabilityStatus = "";
+    this.availabilityStatus = "Out Of Stock";
 
     if(IRData){
       this.facings=0;
@@ -46,6 +46,13 @@ class skuObj {
       this.updateAverages();
     }
   }
+
+
+
+    checkPresence(){
+
+    }
+
 
   checkFacingsCompliance(exp){
     console.log("facings:", this.facings, typeof this.facings);

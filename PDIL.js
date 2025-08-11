@@ -1,4 +1,4 @@
-var pdilModule = (function ($, ksAPI) {
+var getCurrentMissionResponse = (function ($, ksAPI) {
 
  //let skuList = {};
  let report = {};
@@ -76,28 +76,29 @@ var getMissionResponses = async function(){
         });
       }
       else if(currentSet.fromType=="task_response"){
+
+        getCurrentMissionResponse
+
+        for(let item in settings.taskResponseSave){
+ 
+          let theItem = settings.taskResponseSave[item];
+
+          const response = savedResponseData.task_responses[theItem.num];
+        }
         
-      }
+
       
 
     }
   }
-  
+  }
   
  // interfaceModule.removeNotification();
   //vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
       
       
       /*
-      if(settings.taskResponseSave){
-        for(let item in settings.taskResponseSave){
- 
-          let theItem = settings.taskResponseSave[item];
-
-          const response = savedResponseData.task_responses[theItem.num];
-
-          vpSetResults(theItem.responseId, response.value);
-        }
+      
       }*/
 
        // getGridData(lastItem.id);
