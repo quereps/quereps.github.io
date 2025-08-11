@@ -65,7 +65,7 @@ class skuObj {
   }
 
     updateStatus(status,overwrite){
-      if(this.availabilityStatus=="" || overwrite==1){
+      if(!this.availabilityStatus || overwrite==1){
         this.availabilityStatus = status;
       }
     }
