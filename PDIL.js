@@ -83,7 +83,7 @@ var getMissionResponses = async function(){
         let skuArray = pdilModule.getCurrentMissionResponse().task_responses[(currentSet.taskNum-1)].value;
 
         for(let sku in skuArray){
-          IRModule.createOrAddSKU("SKU", upc, obj,currentSet.addFacing,currentSet.currentSet.addFacing);
+          IRModule.createOrAddSKU("SKU", skuArray[sku], null,currentSet.complianceData);
         }
     }
   }
