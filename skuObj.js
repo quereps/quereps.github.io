@@ -14,7 +14,7 @@ class skuObj {
     this.availabilityStatus = "Out Of Stock";
     this.upc = upc;
 
-    if(IRData){
+    if(IRData && IRData!= null){
       this.facings=0;
       this.name = IRData.name || this.type || "";
       //this.upc = IRData.upc || this.type || "";
