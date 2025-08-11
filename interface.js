@@ -934,6 +934,8 @@ var createReport = function(/*settingsImport,skuListImport,sectionsImport*/){
       var current = report[element];
       var containerId = "Container"+element;
 
+      console.log("current report element",current);
+
       createHTMLSection(element,current?.title,current?.logo,current?.type,current?.options);
 
       if(current.type=="place"){
