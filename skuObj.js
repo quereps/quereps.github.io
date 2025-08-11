@@ -19,7 +19,7 @@ class skuObj {
       
       this.facings=0;
 
-      this.updateData();
+      this.updateData(IRData);
 
     }
 
@@ -45,12 +45,12 @@ class skuObj {
 
       this.updateAverages();
 
-      this.updateData();
+      this.updateData(IRData);
     }
   }
 
 
-  updateData(){
+  updateData(IRData){
       this.name = IRData.name || this.type || "";
       //this.upc = IRData.upc || this.type || "";
       this.guid = IRData.guid || this.type || "";
