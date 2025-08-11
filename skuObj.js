@@ -12,7 +12,7 @@ class skuObj {
     this.shelf_index_yArray = [];
     this.stack_indexArray = [];
     this.presence = false;
-    //this.availabilityStatus = "";
+    this.availabilityStatus = "";
     this.upc = upc;
     this.facings=null;
 
