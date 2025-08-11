@@ -10,6 +10,7 @@ class skuObj {
     this.shelf_index_xArray = [];
     this.shelf_index_yArray = [];
     this.stack_indexArray = [];
+    this.presence = false;
 
     if(IRData){
       this.facings=0;
