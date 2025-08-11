@@ -82,6 +82,8 @@ var getMissionResponses = async function(){
 
         let skuArray = pdilModule.getCurrentMissionResponse().task_responses[(currentSet.taskNum-1)].value;
 
+        console.log("skuArray",skuArray);
+
         for(let sku in skuArray){
           IRModule.createOrAddSKU("SKU", skuArray[sku], null,currentSet.complianceData);
         }
