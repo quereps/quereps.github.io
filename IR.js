@@ -71,7 +71,7 @@ let createOrAddSKU = function(type,upcTarget,IRData){
             skuList[upcTarget].addFacing(IRData);
         }
 
-          if(skuListTarget.prices){
+          if(skuListTarget?.prices){
             Array.prototype.push.apply(skuListTarget.prices, IRData.prices);
           }
           else{
