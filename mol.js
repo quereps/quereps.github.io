@@ -158,6 +158,8 @@ var molToSKUList = function(mol, mapping){
     data[field] = String(txt);
   }
 
+  console.log("data",data);
+
   // 2) Helper: split on commas and trim
   const splitVals = (s) => s
     .split(",")
@@ -193,9 +195,7 @@ var molToSKUList = function(mol, mapping){
     const upc = String(obj.upc);             // keep as string to preserve leading zeros
     IRDataByUpc[upc] = obj;
 
-    // Your existing integration:
-    let settings = {addFacing:false};
-    IRModule.createOrAddSKU("SKU", upc, obj,settings);
+    IRModule.createOrAddSKU("SKU", upc, obj,{addFacing:false});
   }
 
   // Return whatever is convenient for debugging/inspection
