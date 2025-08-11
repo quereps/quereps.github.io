@@ -29,14 +29,20 @@ class skuObj {
       this.brand = IRData.brand || this.type || "";
     }
 
+
+    if(complianceData){
+      this.availabilityStatus = complianceData.availabilityStatus || "";
+    }
+
     return this;
   }
 
   addFacing(IRData){
-    if(IRData){
       this.presence = true;
       this.availabilityStatus = "On Shelf";
       this.facings++;
+
+    if(IRData){      
       this.shelf_index_xArray.push(IRData.shelf_index_x);
       this.shelf_index_yArray.push(IRData.shelf_index_y);
       this.stack_indexArray.push(IRData.stack_index);
