@@ -78,7 +78,7 @@ let createOrAddSKU = function(type,upcTarget,IRData,complianceData){
         }
 
         if(complianceData.expected==true){
-            skuList[upcTarget].expected==true;
+            skuList[upcTarget].expected=true;
         }
 
         if(complianceData.availabilityStatus){
