@@ -109,12 +109,12 @@ const reportTemplates = {
 var interfaceModule = (function ($, ksAPI) {
 
 
-  let skuList = {};
-  let settings = {};
-  let realogram = [];
-   let placeId = "";
-   let  companyId = "";
-   let missionId = "";
+  //let skuList = {};
+  //let settings = {};
+ // let realogram = [];
+   //let placeId = "";
+   //let  companyId = "";
+   //let missionId = "";
 
 /*var removeNotificationOld = function(destination) {
 
@@ -898,7 +898,7 @@ const EmptyReport = function(){
 }
 
 
-var createReport = function(settingsImport,skuListImport,sectionsImport){
+var createReport = function(/*settingsImport,skuListImport,sectionsImport*/){
 
     const link1 = document.createElement("link"); //Move to interface
   link1.rel = "stylesheet";
@@ -914,11 +914,11 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
   console.log("Creating Report");
 
   
-  skuList = skuListImport;
-  sections = sectionsImport;
-  settings = settingsImport;
-  config = settingsImport.config;
-  report = settingsImport.report;
+  //skuList = skuListImport;
+  //sections = sectionsImport;
+  //settings = settingsImport;
+  //config = settingsImport.config;
+  report = pdilModule.getReportSettings();
 
   companyId = config.companyId;
   placeId = config.placeId;
