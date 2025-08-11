@@ -14,7 +14,7 @@ class skuObj {
     this.presence = false;
     //this.availabilityStatus = "";
     this.upc = upc;
-    this.facings=0;
+    this.facings=null;
 
     if(IRData && IRData!= null){
       
@@ -34,7 +34,7 @@ class skuObj {
  
   addFacing(IRData){
       this.presence = true;
-      this.facings++;
+      this.facings ? this.facings++ : this.facings=1;
 
     if(IRData){      
       this.shelf_index_xArray.push(IRData.shelf_index_x);
