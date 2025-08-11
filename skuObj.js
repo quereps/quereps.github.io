@@ -50,7 +50,7 @@ class skuObj {
   }
 
 
-  updateData(IRData){
+  /*updateData(IRData){
       this.name = !this.name ? IRData?.name || this.type || "";
       //this.upc = IRData.upc || this.type || "";
       this.guid = !this.guid ? IRData?.guid || this.type || "";
@@ -63,6 +63,19 @@ class skuObj {
       this.supplier = !this.supplier ? IRData?.supplier || this.type || "";
       this.brand_family = !this.brand_family ? IRData?.brand_family || this.type || "";
       this.brand = !this.brand ? IRData?.brand || this.type || "";
+  }*/
+
+  updateData(IRData) {
+    const isEmpty = val => val === undefined || val === null || val === "";
+
+    if (isEmpty(this.name)) this.name = IRData?.name || this.type || "";
+    if (isEmpty(this.guid)) this.guid = IRData?.guid || this.type || "";
+    if (isEmpty(this.classification)) this.classification = IRData?.classification || this.type || "";
+    if (isEmpty(this.subclassification)) this.subclassification = IRData?.subclassification || this.type || "";
+    if (isEmpty(this.size)) this.size = IRData?.size || this.type || "";
+    if (isEmpty(this.supplier)) this.supplier = IRData?.supplier || this.type || "";
+    if (isEmpty(this.brand_family)) this.brand_family = IRData?.brand_family || this.type || "";
+    if (isEmpty(this.brand)) this.brand = IRData?.brand || this.type || "";
   }
 
     updateStatus(status,overwrite){
