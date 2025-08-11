@@ -988,9 +988,9 @@ var createReport = function(/*settingsImport,skuListImport,sectionsImport*/){
 
     }
 
-    if (typeof complianceModule !== "undefined") {
-      complianceModule.applyScore();
-    }
+   // if (typeof complianceModule !== "undefined") {
+   //   complianceModule.applyScore();
+   // }
 
 
     vpHideLoader();
