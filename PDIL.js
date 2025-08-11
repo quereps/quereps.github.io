@@ -90,16 +90,11 @@ var getMissionResponses = async function(){
     }
   }
   }
-  
- // interfaceModule.removeNotification();
-  //vpSetResults("missionTimeStamp",moment(lastItem.completed_at).valueOf());
-      
-      
-      /*
-      
-      }*/
 
-       // getGridData(lastItem.id);
+
+  interfaceModule.createReport();
+  
+
  };
 
 
