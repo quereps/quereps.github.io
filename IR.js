@@ -55,6 +55,11 @@ var IRModule = (function ($, ksAPI) {
   }
 
 
+let checkAvailability = function(){
+  for(let sku of skuList){
+    sku.checkAvailability();
+  }
+}
 
 
 let createOrAddSKU = function(type,upcTarget,IRData,complianceData){
