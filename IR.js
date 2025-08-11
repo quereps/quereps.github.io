@@ -76,6 +76,10 @@ let createOrAddSKU = function(type,upcTarget,IRData,complianceData){
             skuList[upcTarget].addFacing(IRData);
         }
 
+        if(complianceData.expected==true){
+            skuList[upcTarget].expected==true;
+        }
+
         if(complianceData.availabilityStatus){
             console.log("will update status");
             skuList[upcTarget].updateStatus(complianceData.availabilityStatus,complianceData.overwrite);
