@@ -85,13 +85,10 @@ function getMOLLength(dm){
 
 
 
-var molToSKUList = function(mol,mapping){
+/*var molToSKUList = function(mol,mapping){
   console.log(mol,mapping);
 
     let data = {};
-
-   
-
 
   for (const [field, column] of Object.entries(mapping)) {
     console.log(`Field: ${field} | Column: ${column}`);
@@ -101,68 +98,63 @@ var molToSKUList = function(mol,mapping){
   console.log("data",data);
 
   let IRData = {};
+  
 
   let upcTarget = IRData.upc;
   IRModule.createOrAddSKU("SKU",upcTarget,IRData);
 
-}
-
-
-/*function molToSKUList(mol, mapping) {
-  // 1) Pull all columns up-front as arrays
-  const cols = {};
-  for (const [field, column] of Object.entries(mapping)) {
-    const arr = vpGetTextResults(`${mol}.A${column}`) || [];
-    cols[field] = Array.isArray(arr) ? arr : [arr];
-  }
-
-  // 2) Determine how many rows we have (the longest column wins)
-  const rows = Math.max(0, ...Object.values(cols).map(a => a.length));
-
-  // 3) Build one IRData per row and push
-  for (let i = 0; i < rows; i++) {
-    const IRData = {};
-    for (const field of Object.keys(cols)) {
-      IRData[field] = cols[field][i] ?? null; // tolerate ragged columns
-    }
-
-    const upcTarget = IRData.upc; // or String(IRData.upc).trim() if needed
-    IRModule.createOrAddSKU("SKU", upcTarget, IRData);
-  }
- 
-  return rows; // how many created
 }*/
 
-
-/*function molToSKUList(mol, mapping) {
-  // 1) Fetch each mapped column as an array
-  const cols = {};
+var molToSKUList = function(mol, mapping){
+  // 1) Read raw strings for each field
+  const data = {};
   for (const [field, column] of Object.entries(mapping)) {
-    const out = vpGetTextResults(`${mol}.A${column}`) || [];
-    cols[field] = Array.isArray(out) ? out : [out];
+    const txt = vpGetTextResults(`${mol}.A${column}`) ?? "";
+    data[field] = String(txt);
   }
 
-  // 2) Decide row count (prefer UPC length if present, else longest column)
-  const rowCount = (cols.upc && cols.upc.length)
-    ? cols.upc.length
-    : Math.max(0, ...Object.values(cols).map(a => a.length));
+  // 2) Helper: split on commas and trim
+  const splitVals = (s) => s
+    .split(",")
+    .map(x => x.trim())
+    .filter(x => x.length > 0);
 
-  // 3) Build one IRData per row
-  for (let i = 0; i < rowCount; i++) {
-    const IRData = {};
+  // 3) Convert each field string -> array
+  const arrays = {};
+  for (const [field, str] of Object.entries(data)) {
+    arrays[field] = splitVals(str);
+  }
 
-    for (const [field, arr] of Object.entries(cols)) {
-      // broadcast singletons; tolerate ragged columns
-      IRData[field] = (arr[i] !== undefined) ? arr[i]
-                    : (arr.length === 1 ? arr[0] : null);
+  // 4) Sanity check lengths (use UPC count as the driver)
+  const upcs = arrays.upc || [];
+  if (!upcs.length) {
+    console.warn("No UPCs found in data.upc");
+    return;
+  }
+  const expected = upcs.length;
+  for (const [field, arr] of Object.entries(arrays)) {
+    if (arr.length !== expected) {
+      console.warn(`Field "${field}" has ${arr.length} values; expected ${expected}`);
     }
-
-    // 4) One call per row with a scalar UPC
-    const upcTarget = IRData.upc?.toString().trim();
-    if (!upcTarget) continue;              // skip empty UPC rows
-    IRModule.createOrAddSKU("SKU", upcTarget, IRData);
   }
-}*/
+
+  // 5) Build one IR object per UPC and send to IRModule
+  const IRDataByUpc = {};           // optional: keep a keyed map if you want it
+  for (let i = 0; i < expected; i++) {
+    const obj = {};
+    for (const field of Object.keys(arrays)) {
+      obj[field] = arrays[field][i] ?? null;  // null if a field was short
+    }
+    const upc = String(obj.upc);             // keep as string to preserve leading zeros
+    IRDataByUpc[upc] = obj;
+
+    // Your existing integration:
+    IRModule.createOrAddSKU("SKU", upc, obj);
+  }
+
+  // Return whatever is convenient for debugging/inspection
+  return IRDataByUpc;
+};
 
 
 var molToMatrix = function(mapping){
