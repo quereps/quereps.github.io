@@ -65,7 +65,7 @@ let createOrAddSKU = function(type,upcTarget,IRData,settings){
         
 
         if(!skuListTarget){
-          skuList[upcTarget] = new skuObj({type:type,upc:upcTarget, IRData: IRData});
+          skuList[upcTarget] = new skuObj({type:type,upc:upcTarget, IRData: IRData,complianceData: settings});
         }
 
         if(settings.addFacing==true){
