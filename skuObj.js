@@ -33,7 +33,6 @@ class skuObj {
  
   addFacing(IRData){
       this.presence = true;
-      //this.availabilityStatus = "";
       this.facings++;
 
     if(IRData){      
@@ -65,8 +64,8 @@ class skuObj {
       this.brand = IRData.brand || this.type || "";
   }
 
-    checkPresence(){
-
+    updateStatus(status){
+      this.availabilityStatus = status;
     }
 
 
