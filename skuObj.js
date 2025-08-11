@@ -14,10 +14,11 @@ class skuObj {
     this.presence = false;
     //this.availabilityStatus = "";
     this.upc = upc;
+    this.facings=0;
 
     if(IRData && IRData!= null){
       
-      this.facings=0;
+      
 
       this.updateData(IRData);
 
@@ -68,6 +69,7 @@ class skuObj {
       if(!this.availabilityStatus || overwrite==1){
         this.availabilityStatus = status;
       }
+      if(!this.expected && )
     }
 
 
