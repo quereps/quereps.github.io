@@ -150,7 +150,7 @@ function getMOLLength(dm){
 
 }*/
 
-var molToSKUList = function(mol, mapping){
+var molToSKUList = function(mol, mapping,complianceData){
   // 1) Read raw strings for each field
   const data = {};
   for (const [field, column] of Object.entries(mapping)) {
@@ -199,7 +199,7 @@ var molToSKUList = function(mol, mapping){
 
      // console.log("before creating",upc,obj);
 
-    IRModule.createOrAddSKU("SKU", upc, obj,{addFacing:false});
+    IRModule.createOrAddSKU("SKU", upc, obj,complianceData);
   }
 
   // Return whatever is convenient for debugging/inspection
