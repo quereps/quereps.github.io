@@ -114,6 +114,8 @@ var getMissionResponses = async function(){
     },
     getSettings: function () {
     return settings;
+  }, getReportSettings: function () {
+    return report;
   },
     getCurrentMissionResponse: function () {
     return missionResponses.array[missionResponses.current];
