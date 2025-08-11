@@ -69,11 +69,15 @@ let createOrAddSKU = function(type,upcTarget,IRData,complianceData){
           skuList[upcTarget] = new skuObj({type:type,upc:upcTarget, IRData: IRData});
         }
           else{
-    skuList[upcTarget].updateData(IRData);
-  }
+          skuList[upcTarget].updateData(IRData);
+        }
 
         if(complianceData.addFacing==true){
             skuList[upcTarget].addFacing(IRData);
+        }
+
+        if(complianceData.availabilityStatus){
+            skuList[upcTarget].updateStatus(complianceData.availabilityStatus);
         }
 
           if(IRData && skuListTarget?.prices){
