@@ -69,7 +69,8 @@ var getMissionResponses = async function(){
   console.log("hey",missionResponses.array[missionResponses.current]);
 
 
-  if(settings.skuListImport){
+  loadDatasets(settings);
+  /*if(settings.skuListImport){
     for(let dataset in settings.skuListImport){
       let currentSet = settings.skuListImport[dataset];
 
@@ -89,14 +90,32 @@ var getMissionResponses = async function(){
         }
     }
   }
-  }
-
-
- 
-  
+  }*/
 
  };
 
+
+async function loadDatasets(settings) {
+  if (settings.skuListImport) {
+    for (let dataset in settings.skuListImport) {
+      let currentSet = settings.skuListImport[dataset];
+
+      if (currentSet.fromType === "dm") {
+        // Wait until selectAllMOL is fully done before continuing
+        await selectAllMOL(currentSet.ref);
+        molToSKUList(currentSet.ref, currentSet.mapping, currentSet.complianceData);
+      } 
+      else if (currentSet.fromType === "task_response") {
+        let skuArray = pdilModule.getCurrentMissionResponse().task_responses[(currentSet.taskNum - 1)].value;
+        console.log("skuArray", skuArray);
+
+        for (let sku in skuArray) {
+          IRModule.createOrAddSKU("SKU", skuArray[sku], null, currentSet.complianceData);
+        }
+      }
+    }
+  }
+}
 
 
 
