@@ -75,7 +75,7 @@ let createOrAddSKU = function(type,upcTarget,IRData,complianceData){
             Array.prototype.push.apply(skuListTarget.prices, IRData.prices);
           }
           else{
-            skuList[upcTarget].prices = IRData.prices;
+            skuList[upcTarget].prices = IRData.prices || [];
           }
 
             skuList[upcTarget].hasPriceTag== skuList[upcTarget]?.prices?.length>0 ? true : false;
