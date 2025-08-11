@@ -149,7 +149,8 @@ var molToSKUList = function(mol, mapping){
     IRDataByUpc[upc] = obj;
 
     // Your existing integration:
-    IRModule.createOrAddSKU("SKU", upc, obj,{addFacing:false});
+    let settings = {addFacing:false};
+    IRModule.createOrAddSKU("SKU", upc, obj,settings);
   }
 
   // Return whatever is convenient for debugging/inspection
