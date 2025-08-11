@@ -1009,8 +1009,8 @@ function loadReportTemplates(){
 } 
 
  return {
-    createReport: function (settings,skuList,sections) {  
-      return createReport(settings,skuList,sections);
+    createReport: function () {  
+      return createReport();
     },
     removeNotification: function (destination) {
       removeNotification(destination);
