@@ -920,9 +920,9 @@ var createReport = function(/*settingsImport,skuListImport,sectionsImport*/){
   config = pdilModule.getConfig();
   report = pdilModule.getReportSettings();
 
-  companyId = config.companyId;
-  placeId = config.placeId;
-  missionId = config.missionId;
+  let companyId = config.companyId;
+  let placeId = config.placeId;
+  let missionId = config.missionId;
   
 
   //console.log("report: ",report);
