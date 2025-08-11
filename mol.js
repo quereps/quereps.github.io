@@ -4,6 +4,8 @@ function commaToPipe(ref){
   vpSetResults(ref, text.replace(/,/g, '|'));
 }
 
+
+/*
 function selectAllMOL(dm){
 
   //console.log("I am in selectAllMOL");
@@ -42,6 +44,49 @@ function selectAllMOL(dm){
     }, 200);
 
 
+  });
+}
+*/
+
+
+function selectAllMOL(dm) {
+  return new Promise((resolve, reject) => {
+    vpResetResults(dm);
+
+    let labelAttempts = 0;
+    const labelInterval = setInterval(() => {
+      const $labels = jQuery(`.aDivQId_${dm} .lookupCheckbox label`);
+
+      if ($labels.length > 0) {
+        clearInterval(labelInterval);
+
+        // Click each label
+        $labels.each((i, el) => jQuery(el).click());
+
+        // Now poll every 200ms up to 10 times to see if vpResetResults(dm) has results
+        let attempts = 0;
+        let prev = 0;
+
+        const intervalId = setInterval(() => {
+          attempts++;
+          const results = vpGetResults(dm);
+          const newLength = results.length;
+
+          if (results && results.length > 0 && newLength === prev) {
+            clearInterval(intervalId);
+            setTimeout(() => resolve("It worked!"), 1000);
+          } else if (attempts >= 10) {
+            clearInterval(intervalId);
+            reject("Something went wrong (no results after clicking).");
+          }
+          prev = newLength;
+          console.log("prev:", prev);
+        }, 200);
+      } else if (++labelAttempts >= 20) { // ~4 seconds max wait for labels
+        clearInterval(labelInterval);
+        reject("Labels not found within timeout.");
+      }
+    }, 200);
   });
 }
 
