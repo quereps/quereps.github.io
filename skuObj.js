@@ -16,19 +16,11 @@ class skuObj {
     this.upc = upc;
 
     if(IRData && IRData!= null){
+      
       this.facings=0;
-      this.name = IRData.name || this.type || "";
-      //this.upc = IRData.upc || this.type || "";
-      this.guid = IRData.guid || this.type || "";
-      
-      this.classification = IRData.classification || this.type || "";
-      this.subclassification = IRData.subclassification || this.type || "";
 
-      this.size = IRData.size || this.type || "";
-      
-      this.supplier = IRData.supplier || this.type || "";
-      this.brand_family = IRData.brand_family || this.type || "";
-      this.brand = IRData.brand || this.type || "";
+      this.updateData();
+
     }
 
 
@@ -52,10 +44,26 @@ class skuObj {
       if (IRData.width) this.widthArray.push(IRData.width);
 
       this.updateAverages();
+
+      this.updateData();
     }
   }
 
 
+  updateData(){
+      this.name = IRData.name || this.type || "";
+      //this.upc = IRData.upc || this.type || "";
+      this.guid = IRData.guid || this.type || "";
+      
+      this.classification = IRData.classification || this.type || "";
+      this.subclassification = IRData.subclassification || this.type || "";
+
+      this.size = IRData.size || this.type || "";
+      
+      this.supplier = IRData.supplier || this.type || "";
+      this.brand_family = IRData.brand_family || this.type || "";
+      this.brand = IRData.brand || this.type || "";
+  }
 
     checkPresence(){
 
