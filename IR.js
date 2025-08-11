@@ -57,17 +57,17 @@ var IRModule = (function ($, ksAPI) {
 
 
 
-let createOrAddSKU = function(type,upcTarget,IRData,settings){
+let createOrAddSKU = function(type,upcTarget,IRData,complianceData){
   let skuListTarget = skuList[upcTarget];
   
   //console.log("IRData",IRData);
         
 
         if(!skuListTarget){
-          skuList[upcTarget] = new skuObj({type:type,upc:upcTarget, IRData: IRData,complianceData: settings});
+          skuList[upcTarget] = new skuObj({type:type,upc:upcTarget, IRData: IRData,complianceData: complianceData});
         }
 
-        if(settings.addFacing==true){
+        if(complianceData.addFacing==true){
             skuList[upcTarget].addFacing(IRData);
         }
 
@@ -315,8 +315,8 @@ const clearResults = function(){
   getGridData: function (gridID) {
     getGridData(gridID);
   },
-  createOrAddSKU: function (type,upcTarget,IRData,settings) {
-    createOrAddSKU(type,upcTarget,IRData,settings);
+  createOrAddSKU: function (type,upcTarget,IRData,complianceData) {
+    createOrAddSKU(type,upcTarget,IRData,complianceData);
   },
   }
 })(jQuery, ksAPI);
