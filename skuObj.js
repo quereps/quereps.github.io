@@ -51,18 +51,18 @@ class skuObj {
 
 
   updateData(IRData){
-      this.name = IRData?.name || this.type || "";
+      this.name = !this.name ? IRData?.name || this.type || "";
       //this.upc = IRData.upc || this.type || "";
-      this.guid = IRData?.guid || this.type || "";
+      this.guid = !this.guid ? IRData?.guid || this.type || "";
       
-      this.classification = IRData?.classification || this.type || "";
-      this.subclassification = IRData?.subclassification || this.type || "";
+      this.classification = !this.classification ? IRData?.classification || this.type || "";
+      this.subclassification = !this.subclassification ? IRData?.subclassification || this.type || "";
 
-      this.size = IRData?.size || this.type || "";
+      this.size = !this.size ? IRData?.size || this.type || "";
       
-      this.supplier = IRData?.supplier || this.type || "";
-      this.brand_family = IRData?.brand_family || this.type || "";
-      this.brand = IRData?.brand || this.type || "";
+      this.supplier = !this.supplier ? IRData?.supplier || this.type || "";
+      this.brand_family = !this.brand_family ? IRData?.brand_family || this.type || "";
+      this.brand = !this.brand ? IRData?.brand || this.type || "";
   }
 
     updateStatus(status,overwrite){
