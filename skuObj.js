@@ -37,7 +37,7 @@ class skuObj {
 
     return this;
   }
-
+ 
   addFacing(IRData){
       this.presence = true;
       this.availabilityStatus = "On Shelf";
