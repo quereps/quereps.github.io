@@ -11,6 +11,7 @@ class skuObj {
     this.shelf_index_yArray = [];
     this.stack_indexArray = [];
     this.presence = false;
+    this.availabilityStatus = "";
 
     if(IRData){
       this.facings=0;
@@ -34,6 +35,7 @@ class skuObj {
   addFacing(IRData){
     if(IRData){
       this.presence = true;
+      this.availabilityStatus = "On Shelf";
       this.facings++;
       this.shelf_index_xArray.push(IRData.shelf_index_x);
       this.shelf_index_yArray.push(IRData.shelf_index_y);
