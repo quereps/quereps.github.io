@@ -113,6 +113,7 @@ async function loadDatasets(settings) {
           IRModule.createOrAddSKU("SKU", skuArray[sku], null, currentSet.complianceData);
         }
       }
+      console.log("skuList",IRModule.getSKUList());
     }
   }
 }
