@@ -72,7 +72,7 @@ let createOrAddSKU = function(type,upcTarget,IRData,complianceData){
         }
 
           if(IRData && skuListTarget?.prices){
-            Array.prototype.push.apply(skuListTarget.prices, IRData.prices);
+            Array.prototype.push.apply(skuListTarget.prices, IRData?.prices);
           }
           else if(IRData){
             skuList[upcTarget].prices = IRData?.prices || [];
