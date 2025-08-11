@@ -58,6 +58,7 @@ var IRModule = (function ($, ksAPI) {
 let checkAvailability = function(){
   for(let sku of skuList){
     sku.checkAvailability();
+    console.log("New Status: "+sku.availabilityStatus);
   }
 }
 
