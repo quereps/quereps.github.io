@@ -6,6 +6,7 @@ class skuObj {
     this.type = type;
     this.heightArray = [];
     this.widthArray = [];
+    this.prices = [];
     this.shelf_index_xArray = [];
     this.shelf_index_yArray = [];
     this.stack_indexArray = [];
@@ -27,7 +28,6 @@ class skuObj {
     }
 
     return this;
-    
   }
 
   addFacing(IRData){
@@ -45,7 +45,6 @@ class skuObj {
   }
 
   checkFacingsCompliance(exp){
-
     console.log("facings:", this.facings, typeof this.facings);
     console.log("exp:", exp, typeof exp);
 
@@ -87,3 +86,19 @@ class skuObj {
       this.IRData = data;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
