@@ -64,7 +64,7 @@ class skuObj {
       this.brand = IRData?.brand || this.type || "";
   }
 
-    updateStatus(status){
+    updateStatus(status,overwrite){
       this.availabilityStatus = status;
     }
 
