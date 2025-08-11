@@ -77,6 +77,7 @@ let createOrAddSKU = function(type,upcTarget,IRData,complianceData){
         }
 
         if(complianceData.availabilityStatus){
+            console.log("will update status");
             skuList[upcTarget].updateStatus(complianceData.availabilityStatus);
         }
 
