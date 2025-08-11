@@ -1,5 +1,5 @@
 class skuObj {
-  constructor({type = "",upc = "", IRData = "", complianceData = ""}){
+  constructor({type = "",upc = "", IRData = ""/*, complianceData = ""*/}){
 
     console.log("Constructor",IRData);
 
@@ -12,7 +12,7 @@ class skuObj {
     this.shelf_index_yArray = [];
     this.stack_indexArray = [];
     this.presence = false;
-    this.availabilityStatus = "Out Of Stock";
+    this.availabilityStatus = "";
     this.upc = upc;
 
     if(IRData && IRData!= null){
@@ -24,9 +24,9 @@ class skuObj {
     }
 
 
-    if(complianceData){
+/*    if(complianceData){
       this.availabilityStatus = complianceData.availabilityStatus || "";
-    }
+    }*/
 
     return this;
   }

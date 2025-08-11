@@ -66,7 +66,7 @@ let createOrAddSKU = function(type,upcTarget,IRData,complianceData){
         
 
         if(!skuListTarget){
-          skuList[upcTarget] = new skuObj({type:type,upc:upcTarget, IRData: IRData,complianceData: complianceData});
+          skuList[upcTarget] = new skuObj({type:type,upc:upcTarget, IRData: IRData});
         }
           else{
     skuList[upcTarget].updateData(IRData);
