@@ -60,6 +60,7 @@ var IRModule = (function ($, ksAPI) {
 let createOrAddSKU = function(type,upcTarget,IRData){
   let skuListTarget = skuList[upcTarget];
 
+  console.log("IRData",IRData);
         
 
         if(!skuListTarget){
@@ -70,11 +71,11 @@ let createOrAddSKU = function(type,upcTarget,IRData){
             skuList[upcTarget].addFacing(IRData);
         }
 
-          if(skuList[upcTarget].prices){
-            Array.prototype.push.apply(skuListTarget.prices, data[item].values.prices);
+          if(skuListTarget.prices){
+            //Array.prototype.push.apply(skuListTarget.prices, IRData.values.prices);
           }
           else{
-            skuList[upcTarget].prices = data[item].values.prices;
+            //skuList[upcTarget].prices = data[item].values.prices;
           }
 
             skuList[upcTarget].hasPriceTag== skuList[upcTarget]?.prices?.length>0 ? true : false;
