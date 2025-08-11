@@ -92,7 +92,7 @@ var getMissionResponses = async function(){
   }
 
 
-  interfaceModule.createReport();
+ 
   
 
  };
