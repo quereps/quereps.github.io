@@ -12,11 +12,12 @@ class skuObj {
     this.stack_indexArray = [];
     this.presence = false;
     this.availabilityStatus = "Out Of Stock";
+    this.upc = upc;
 
     if(IRData){
       this.facings=0;
       this.name = IRData.name || this.type || "";
-      this.upc = IRData.upc || this.type || "";
+      //this.upc = IRData.upc || this.type || "";
       this.guid = IRData.guid || this.type || "";
       
       this.classification = IRData.classification || this.type || "";
