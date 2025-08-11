@@ -172,6 +172,8 @@ var molToSKUList = function(mol, mapping){
     arrays[field] = splitVals(str);
   }
 
+  console.log("arrays",arrays);
+
   // 4) Sanity check lengths (use UPC count as the driver)
   const upcs = arrays.upc || [];
   if (!upcs.length) {
@@ -194,6 +196,8 @@ var molToSKUList = function(mol, mapping){
     }
     const upc = String(obj.upc);             // keep as string to preserve leading zeros
     IRDataByUpc[upc] = obj;
+
+      console.log("before creating",upc,obj);
 
     IRModule.createOrAddSKU("SKU", upc, obj,{addFacing:false});
   }
