@@ -907,9 +907,9 @@ var createReport = function(settingsImport,skuListImport,sectionsImport){
 
   EmptyReport();
 
-  if (typeof complianceModule !== "undefined") {
-  complianceModule.Run(settings);
-}
+  //if (typeof complianceModule !== "undefined") {
+  //complianceModule.Run(settings);
+//}
 
   console.log("Creating Report");
 
