@@ -109,7 +109,7 @@ const reportTemplates = {
 var interfaceModule = (function ($, ksAPI) {
 
 
-  //let skuList = {};
+  let skuList = {};
   //let settings = {};
  // let realogram = [];
    //let placeId = "";
@@ -914,7 +914,7 @@ var createReport = function(/*settingsImport,skuListImport,sectionsImport*/){
   console.log("Creating Report");
 
   
-  //skuList = skuListImport;
+  skuList = IRModule.getSKUList();
   //sections = sectionsImport;
   //settings = settingsImport;
   config = pdilModule.getConfig();
