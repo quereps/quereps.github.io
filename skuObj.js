@@ -69,7 +69,9 @@ class skuObj {
       if(!this.availabilityStatus || overwrite==1){
         this.availabilityStatus = status;
       }
-      if(!this.expected && )
+      if(!this.expected){
+          this.availabilityStatus = "VOID";
+      }
     }
 
 
