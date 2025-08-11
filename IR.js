@@ -316,8 +316,8 @@ const clearResults = function(){
   getGridData: function (gridID) {
     getGridData(gridID);
   },
-  createOrAddSKU: function (type,upcTarget,IRData) {
-    createOrAddSKU(type,upcTarget,IRData);
+  createOrAddSKU: function (type,upcTarget,IRData,settings) {
+    createOrAddSKU(type,upcTarget,IRData,settings);
   },
   }
 })(jQuery, ksAPI);
