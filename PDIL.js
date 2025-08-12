@@ -80,6 +80,7 @@ async function loadDatasets(settings) {
     for (let dataset in settings.skuListImport) {
       let currentSet = settings.skuListImport[dataset];
       if (currentSet.fromType === "IR") {
+        console.log("let's get IR data");
         let griID = await APICallsModule.getGrid(pdilModule.getCurrentMissionResponse().id);
         await IRModule.getGridData(gridID);
       } 
