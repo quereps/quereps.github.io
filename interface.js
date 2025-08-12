@@ -869,7 +869,7 @@ const MissionResponseSection = function(placeId,missionId,destination){
               jQuery('#nextMRID').prop('disabled', false);
             }
 
-            if(settings.currentMissionResponses==0){
+            if(currentMRnum==0){
               jQuery('#prevMRID').prop('disabled', true);
             }
             else{
