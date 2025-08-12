@@ -360,7 +360,7 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
         color: '#ffffff',
         responsive: true,
         maintainAspectRatio: false,
-        indexAxis: settings.indexAxis || "",
+        indexAxis: settings?.indexAxis || "",
         plugins: {
             title: {
                 display: false,
