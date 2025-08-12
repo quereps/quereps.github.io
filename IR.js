@@ -63,10 +63,10 @@ let checkAvailability = function(){
 }
 
 
-let createOrAddSKU = function(type,upcTarget,IRData,complianceData){
+let createOrAddSKU = function(type,upcTarget,IRData,{addFacing, expected,availabilityStatus, overwrite}){
 
   console.log("IRData",IRData);
-  console.log("complianceData",complianceData);
+  //console.log("complianceData",complianceData);
   let skuListTarget = skuList[upcTarget];
   
   //console.log("IRData",IRData);
@@ -79,17 +79,20 @@ let createOrAddSKU = function(type,upcTarget,IRData,complianceData){
           skuList[upcTarget].updateData(IRData);
         }
 
-        if(complianceData.addFacing==true){
+        //if(complianceData.addFacing==true){
+        if(addFacing==true){ 
             skuList[upcTarget].addFacing(IRData);
         }
 
-        if(complianceData.expected==true){
+        //if(complianceData.expected==true){
+        if(expected==true){
             skuList[upcTarget].expected=true;
         }
 
-        if(complianceData.availabilityStatus){
+        //if(complianceData.availabilityStatus){
+        if(availabilityStatus){
             console.log("will update status");
-            skuList[upcTarget].updateStatus(complianceData.availabilityStatus,complianceData.overwrite);
+            skuList[upcTarget].updateStatus(availabilityStatus,overwrite);
         }
 
           if(IRData && skuListTarget?.prices){
