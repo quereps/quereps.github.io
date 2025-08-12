@@ -70,6 +70,17 @@ const reportTemplates = {
           destination:"report",
         } 
       },
+      availabilityList:{
+        type:"skuList",
+        title:"SKU List",
+        logo:"https://app.form.com/fs/v1/h/aMdkGmN080RYiT1L7rDWkrKEKuFd-b76KN8Wt-djYao/277611.png",
+        columns:["upc","name", "availabilityStatus"],
+        options:{
+            legend:false,
+          exclude:["undefined","Unrecognized","Empty Facing"],
+          destination:"report",
+        } 
+      },
       supplierShare:{
         type:"graph",
         title:"Suppliers",
