@@ -493,9 +493,10 @@ function createHTMLSection(id,name, imageURL,type, settings){
 
 
 
-function graph(category, asPercentage = false, filter = null) {
+function graph(category, asPercentage = false, filter = null,method = "facings") {
   //console.log("asPercentage: ", asPercentage);
   //console.log("filter: ", filter);
+  console.log("method: ", method);
   
   const graphData = {};
   let totalFacings = 0;
@@ -526,11 +527,7 @@ function graph(category, asPercentage = false, filter = null) {
         console.warn("Missing expected category key:", category, "in SKU:", current);
       }
 
-
-
-
-
-    const facings = Number(current.facings) || 0;
+    const facings = method=="facings" ? Number(current.facings) || 0 : 1;
     
     if (!graphData[categoryValue]) {
       graphData[categoryValue] = 0;
