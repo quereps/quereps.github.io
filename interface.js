@@ -948,9 +948,9 @@ var createReport = function(/*settingsImport,skuListImport,sectionsImport*/){
         placeSection(placeId,current.options,containerId);
       }
 
-      if(current.type=="Compliance"){
-        complianceModule.complianceReportCreation(current, element);
-      }
+      //if(current.type=="Compliance"){
+      //  complianceModule.complianceReportCreation(current, element);
+      //}
 
       if(current.type=="response"){
         MissionResponseSection(placeId,missionId,containerId);
