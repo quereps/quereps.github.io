@@ -67,6 +67,7 @@ const reportTemplates = {
         options:{
             legend:false,
           exclude:["undefined","Unrecognized","Empty Facing"],
+          destination:"report",
         } 
       },
       supplierShare:{
@@ -83,6 +84,7 @@ const reportTemplates = {
           showLabels:true,
           labelType:"label",
           asPercentage:true,
+          destination:"report",
         }    
       },
         brandShare:{
@@ -101,6 +103,7 @@ const reportTemplates = {
             showLabels:true,
             labelType:"value",
             asPercentage:true,
+            destination:"report",
         }    
       }
 };
