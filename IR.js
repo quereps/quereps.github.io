@@ -3,7 +3,7 @@ var IRModule = (function ($, ksAPI) {
  let photoURLs=[];
  let realogram = [];
   let sections = {};
-  let companyId = 0;
+
 
   var extractIRData = async function(data){
 
@@ -185,7 +185,7 @@ const clearResults = function(){
 
 /*Testing Planogram*/
           let pogPromises = photo_grids.map(async grid => {
-              const pogs = await APICallsModule.getPlanogram(companyId,grid.id);
+              const pogs = await APICallsModule.getPlanogram(pdilModule.getConfig().companyId,grid.id);
               //interfaceModule.removeNotification();
               //extractIRData(tags);
               console.log("pogs",pogs);
