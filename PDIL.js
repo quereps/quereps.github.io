@@ -71,6 +71,7 @@ var getMissionResponses = async function(){
 
   await loadDatasets(settings);
 
+   console.log("ready to create report");
   interfaceModule.createReport()
  };
 
