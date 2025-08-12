@@ -858,7 +858,11 @@ const MissionResponseSection = function(placeId,missionId,destination){
         jQuery('#prevMRID').prop('disabled', true);
 
 
-        if(settings.currentMissionResponses+1==settings.missionResponses.length){
+        let currentMRnum = pdilModule.getMissionResponsesObj().current;
+        let MRArray = pdilModule.getMissionResponsesObj().array;
+
+
+        if(currentMRnum+1==MRArray.length){
               jQuery('#nextMRID').prop('disabled', true);
             }
             else{
