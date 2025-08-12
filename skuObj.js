@@ -1,7 +1,7 @@
 class skuObj {
   constructor({type = "",upc = "", IRData = ""/*, complianceData = ""*/}){
 
-    console.log("Constructor",IRData);
+    //console.log("Constructor",IRData);
 
 
     this.type = type;
