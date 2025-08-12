@@ -79,8 +79,11 @@ async function loadDatasets(settings) {
   if (settings.skuListImport) {
     for (let dataset in settings.skuListImport) {
       let currentSet = settings.skuListImport[dataset];
-
-      if (currentSet.fromType === "dm") {
+      if (currentSet.fromType === "IR") {
+        let griID = await APICallsModule.getGrid(pdilModule.getCurrentMissionResponse().id);
+        await IRModule.getGridData(gridID);
+      } 
+      else if (currentSet.fromType === "dm") {
         // Wait until selectAllMOL is fully done before continuing
         await selectAllMOL(currentSet.ref);
         molToSKUList(currentSet.ref, currentSet.mapping, currentSet.complianceData);
