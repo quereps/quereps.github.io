@@ -493,7 +493,7 @@ function createHTMLSection(id,name, imageURL,type, settings){
 
 
 
-function graph(category, asPercentage = false, filter = null,countFacings = true) {
+function graph(category, {asPercentage = false, filter = null,countFacings = true}) {
   //console.log("asPercentage: ", asPercentage);
   //console.log("filter: ", filter);
   console.log("countFacings: ", countFacings);
@@ -968,7 +968,7 @@ var createReport = function(/*settingsImport,skuListImport,sectionsImport*/){
 
        if(current.type=="graph"){
 
-        let data = graph(current.dimension,current?.options?.asPercentage,current?.options?.filter);
+        let data = graph(current.dimension,current?.options);
        
         if(Object.keys(data).length>0){
           JSONToGraph(data, current.dimension ,current.graphType, containerId, current.options);
