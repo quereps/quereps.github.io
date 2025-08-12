@@ -971,10 +971,10 @@ var createReport = function(/*settingsImport,skuListImport,sectionsImport*/){
 
        if(current.type=="graph"){
 
-        let data = graph(current.dimension,current?.settings?.asPercentage,current?.settings?.filter);
+        let data = graph(current.dimension,current?.options?.asPercentage,current?.options?.filter);
        
         if(Object.keys(data).length>0){
-          JSONToGraph(data, current.dimension ,current.graphType, containerId, current.settings);
+          JSONToGraph(data, current.dimension ,current.graphType, containerId, current.options);
         } else{
           jQuery("#"+containerId).hide();
         }
