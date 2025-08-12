@@ -81,8 +81,8 @@ async function loadDatasets(settings) {
       let currentSet = settings.skuListImport[dataset];
       if (currentSet.fromType === "IR") {
         console.log("let's get IR data");
-        let gridId = await APICallsModule.getGrid(pdilModule.getCurrentMissionResponse().id);
-        await IRModule.getGridData(gridId);
+        //let gridId = await APICallsModule.getGrid(pdilModule.getCurrentMissionResponse().id);
+        await IRModule.getGridData(pdilModule.getCurrentMissionResponse().id);
       } 
       else if (currentSet.fromType === "dm") {
         // Wait until selectAllMOL is fully done before continuing
