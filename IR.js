@@ -65,7 +65,7 @@ let checkAvailability = function(){
 
 let createOrAddSKU = function(type,upcTarget,IRData,{addFacing, expected,availabilityStatus, overwrite}){
 
-  console.log("IRData",IRData);
+  //console.log("IRData",IRData);
   //console.log("complianceData",complianceData);
   let skuListTarget = skuList[upcTarget];
   
