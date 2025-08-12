@@ -118,6 +118,9 @@ async function loadDatasets(settings) {
     getCurrentMissionResponse: function () {
     return missionResponses.array[missionResponses.current];
   },
+  getMissionResponsesObj: function () {
+    return missionResponses;
+  },
     //photoURLs,
   }
 })(jQuery, ksAPI);
