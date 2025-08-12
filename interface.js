@@ -64,7 +64,7 @@ const reportTemplates = {
         title:"SKU List",
         logo:"https://app.form.com/fs/v1/h/aMdkGmN080RYiT1L7rDWkrKEKuFd-b76KN8Wt-djYao/277611.png",
         columns:["upc", "brand","name", "facings"],
-        settings:{
+        options:{
             legend:false,
           exclude:["undefined","Unrecognized","Empty Facing"],
         } 
@@ -75,7 +75,7 @@ const reportTemplates = {
         logo:"https://app.form.com/fs/v1/h/ayYV9BfGgRa2acx899yrpYD2EChBtrQoXiMwKcEy504/277594.png",
         dimension:"supplier",
         graphType:"pie",
-        settings:{
+        options:{
             legend:true,
           exclude:["undefined","Unrecognized","Empty Facing"],
           colorMap:legendColors || [],
@@ -91,7 +91,7 @@ const reportTemplates = {
         logo:"https://app.form.com/fs/v1/h/o2Hec5ANCkdseEnpn-lMSfjWJg5I4VTFnGY4yVyEDR4/277586.png",
         dimension:"brand",
         graphType:"bar",
-        settings:{
+        options:{
             legend:false,
           exclude:["undefined","Unrecognized","Empty Facing"],
           colorMap:legendColors || [],
