@@ -3,6 +3,7 @@ var IRModule = (function ($, ksAPI) {
  let photoURLs=[];
  let realogram = [];
   let sections = {};
+  let companyId = 0;
 
   var extractIRData = async function(data){
 
