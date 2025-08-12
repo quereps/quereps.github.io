@@ -48,7 +48,7 @@ var IRModule = (function ($, ksAPI) {
               const key = data[item].values.classification;
               sections[key] = (sections[key] ?? 0) + 1;
 
-              createOrAddSKU(upcTarget,IRData,{addFacing:true});
+              createOrAddSKU(type,upcTarget,IRData,{addFacing:true});
 
     }    
 
