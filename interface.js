@@ -854,8 +854,8 @@ const MissionResponseSection = function(placeId,missionId,destination){
         jQuery('#'+destination+" .content").append(tableElement);
 
         let buttons = `
-          <button id="prevMRID" type="button" onclick="APIModule.ChangeMissionResponse(-1)">Previous</button>
-          <button id="nextMRID" type="button" onclick="APIModule.ChangeMissionResponse(1)">Next</button>
+          <button id="prevMRID" type="button" onclick="pdilModule.ChangeMissionResponse(-1)">Previous</button>
+          <button id="nextMRID" type="button" onclick="pdilModule.ChangeMissionResponse(1)">Next</button>
         `;
         jQuery('#' + destination + " .content").append(buttons);
         jQuery('#prevMRID').prop('disabled', true);
