@@ -45,10 +45,6 @@ var IRModule = (function ($, ksAPI) {
               sections[key] = (sections[key] ?? 0) + 1;
 
               createOrAddSKU(upcTarget,IRData,{addFacing:true});
-        //console.log(data[item]);
-
-        //let upcTarget = data[item].values.upc;
-        
 
     }    
 
@@ -102,14 +98,7 @@ let createOrAddSKU = function(type,upcTarget,IRData,complianceData){
             skuList[upcTarget].hasPriceTag== skuList[upcTarget]?.prices?.length>0 ? true : false;
 }
 
-/*
-var addTile = function(destination,Id,sku,profile){
-  let container = vpGetLabel(destination);
-  const dataTable = ["size","classification","subclassification"];
-  jQuery(container).empty();
-  jQuery(container).html(htmlTile(profile));
-};
-*/
+
 
 
 
@@ -138,7 +127,7 @@ try {
             settings.specificFunction();
           }
 
-          interfaceModule.createReport(settings, skuList, sections);
+          //interfaceModule.createReport(settings, skuList, sections);
         
 
     } catch (error) {
