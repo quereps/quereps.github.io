@@ -2,6 +2,7 @@ var IRModule = (function ($, ksAPI) {
  let skuList = {};
  let photoURLs=[];
  let realogram = [];
+  let sections = {};
 
   var extractIRData = async function(data){
 
