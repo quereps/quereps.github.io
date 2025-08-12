@@ -69,29 +69,9 @@ var getMissionResponses = async function(){
   console.log("hey",missionResponses.array[missionResponses.current]);
 
 
-  loadDatasets(settings);
-  /*if(settings.skuListImport){
-    for(let dataset in settings.skuListImport){
-      let currentSet = settings.skuListImport[dataset];
+  await loadDatasets(settings);
 
-      if(currentSet.fromType=="dm"){
-        selectAllMOL(currentSet.ref).then(()=>{
-          molToSKUList(currentSet.ref,currentSet.mapping,currentSet.complianceData);
-        });
-      }
-      else if(currentSet.fromType=="task_response"){
-
-        let skuArray = pdilModule.getCurrentMissionResponse().task_responses[(currentSet.taskNum-1)].value;
-
-        console.log("skuArray",skuArray);
-
-        for(let sku in skuArray){
-          IRModule.createOrAddSKU("SKU", skuArray[sku], null,currentSet.complianceData);
-        }
-    }
-  }
-  }*/
-
+  interfaceModule.createReport()
  };
 
 
