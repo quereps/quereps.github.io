@@ -66,7 +66,8 @@ const reportTemplates = {
         columns:["upc", "brand","name", "facings"],
         options:{
             legend:false,
-          exclude:["undefined","Unrecognized","Empty Facing"],
+          exclude:["undefined","Unrecognized","Empty Facing","null"],
+          excludeBy:["type","availabilityStatus","facings"],
           destination:"report",
         } 
       },
@@ -77,7 +78,8 @@ const reportTemplates = {
         columns:["upc","name", "availabilityStatus"],
         options:{
             legend:false,
-          exclude:["undefined","Unrecognized","Empty Facing"],
+          exclude:["undefined","Unrecognized","Empty Facing","null"],
+          excludeBy:["type","availabilityStatus"],
           destination:"report",
         } 
       },
@@ -122,34 +124,7 @@ const reportTemplates = {
 
 var interfaceModule = (function ($, ksAPI) {
 
-
   let skuList = {};
-  //let settings = {};
- // let realogram = [];
-   //let placeId = "";
-   //let  companyId = "";
-   //let missionId = "";
-
-/*var removeNotificationOld = function(destination) {
-
-  let destinationContainer = destination || "main_frame";
-  // Get the container element
-  var container = document.getElementById(destinationContainer);
-  
-  if (!container) {
-    console.error("Container #"+destinationContainer+" not found.");
-    return;
-  }
-  
-  // Look for the error message element within the container
-  var errorDiv = container.querySelector('.notification');
-  
-  // If an error message is found, remove it
-  if (errorDiv) {
-    container.removeChild(errorDiv);
-  }
-};*/
-
 
 var removeNotification = function(destination) {
   let $container = destination ? $(destination) : $("#main_frame");
@@ -166,41 +141,6 @@ var removeNotification = function(destination) {
   }
 };
 
-
-/*var notificationOld = function(type,message,destination) {
-
-  let destinationContainer = destination || "main_frame";
-  // Get the container element
-
-  console.log("destinationContainer: ",destinationContainer);
-
-
-  var container = document.getElementById(destinationContainer);
-  
-  if (!container) {
-    console.error("Container #"+destinationContainer+" not found.");
-    return;
-  }
-  
-  // Remove any existing error message (assumed to have the class 'error-message')
-  var existingError = container.querySelector('.notification');
-  if (existingError) {
-    container.removeChild(existingError);
-  }
-  
-  // Create a new div element for the error message
-  var errorDiv = document.createElement('div');
-  
-  // Assign a class for styling and Identification
-  errorDiv.className = 'notification '+type;
-  
-  // Set the text content to the provIded message
-  errorDiv.textContent = message;
-  
-  // Append the new error message to the container
-  container.appendChild(errorDiv);
-};
-*/
 
 var notification = function(type, message, destination) {
   let $container = destination ? jQuery(destination) : $("#main_frame");
@@ -251,7 +191,7 @@ var createTable = function(data, structure) {
 
 
 
-function JSONToHTMLTable(jsonArray, destination, settings) {
+/*function JSONToHTMLTable(jsonArray, destination, settings) {
 
     // Get the list of keys to exclude, defaulting to an empty array if not provIded
     const excludeList = settings?.exclude || [];
@@ -293,9 +233,66 @@ function JSONToHTMLTable(jsonArray, destination, settings) {
 
     // Return the full HTML string (useful if needed elsewhere)
     return html;
+}*/
+
+function JSONToHTMLTable(jsonArray, destination, settings = {}) {
+  const excludeValues = new Set(
+    (settings.exclude || []).map(v => String(v).trim().toLowerCase())
+  );
+
+  // fields to check for exclusion; default = all keys in the object
+  const fieldsToCheck = settings.excludeBy && settings.excludeBy.length
+    ? settings.excludeBy
+    : Array.from(
+        jsonArray.reduce((s, o) => {
+          Object.keys(o).forEach(k => s.add(k));
+          return s;
+        }, new Set())
+      );
+
+  // helper: decide if a row should be excluded
+  const shouldExclude = (obj) => {
+    return fieldsToCheck.some((field) => {
+      const val = obj[field];
+      if (val === undefined || val === null || val === "") {
+        // allow excluding “empties” via 'undefined' or '' sentinel
+        return excludeValues.has("undefined") || excludeValues.has("null") || excludeValues.has("");
+      }
+      return excludeValues.has(String(val).toLowerCase());
+    });
+  };
+
+  // filter rows
+  const filteredArray = jsonArray.filter(obj => !shouldExclude(obj));
+
+  // choose columns (respect settings.columns if provided)
+  const keys = settings.columns && settings.columns.length
+    ? settings.columns
+    : Array.from(
+        filteredArray.reduce((set, obj) => {
+          Object.keys(obj).forEach(key => set.add(key));
+          return set;
+        }, new Set())
+      );
+
+  // build table
+  let html = "<table class='customTable IRDataTable'><thead><tr>";
+  html += keys.map(key => `<th>${toTitleCase(key)}</th>`).join("");
+  html += "</tr></thead><tbody>";
+
+  filteredArray.forEach(obj => {
+    html += "<tr>";
+    html += keys.map(key => `<td>${obj[key] != null ? obj[key] : ""}</td>`).join("");
+    html += "</tr>";
+  });
+
+  html += "</tbody></table>";
+
+  if (destination) {
+    jQuery("#" + destination + " .content").append(html);
+  }
+  return html;
 }
-
-
 
 
 
