@@ -93,7 +93,7 @@ class skuObj {
         this.availabilityStatus = "Out of Stock";
       }
 
-      else if(this.facings==0 && !this.expected){
+      else if(this.facings==0 && !this.expected==true){
         this.availabilityStatus = "VOID";
       }
     }
