@@ -11,7 +11,7 @@ var pdilModule = (function ($, ksAPI) {
    };
 
 
- const ChangeMissionResponse = function(amount){
+ const ChangeMissionResponse = async function(amount){
     missionResponses.current = missionResponses.current+amount;
 
     if(missionResponses.current<0){
