@@ -236,61 +236,60 @@ var createTable = function(data, structure) {
 }*/
 
 function JSONToHTMLTable(jsonArray, destination, settings = {}) {
-  const excludeValues = new Set(
-    (settings.exclude || []).map(v => String(v).trim().toLowerCase())
-  );
+  // 0) normalize input into an array of plain row objects
+  let rows = Array.isArray(jsonArray) ? jsonArray : Object.values(jsonArray || {});
+  rows = rows.map(item => {
+    // handle [key, obj] shape
+    if (Array.isArray(item) && item.length === 2 && item[1] && typeof item[1] === "object") return item[1];
+    // already an object
+    return item;
+  }).filter(Boolean);
 
-  // fields to check for exclusion; default = all keys in the object
-  const fieldsToCheck = settings.excludeBy && settings.excludeBy.length
+  const excludeValues = new Set((settings.exclude || []).map(v => String(v).trim().toLowerCase()));
+
+  // 1) decide which fields we check for exclusion
+  const fieldsToCheck = (settings.excludeBy && settings.excludeBy.length)
     ? settings.excludeBy
-    : Array.from(
-        jsonArray.reduce((s, o) => {
-          Object.keys(o).forEach(k => s.add(k));
-          return s;
-        }, new Set())
-      );
+    : Array.from(rows.reduce((s, o) => { Object.keys(o).forEach(k => s.add(k)); return s; }, new Set()));
 
-  // helper: decide if a row should be excluded
+  // 2) helper: should we exclude this row?
   const shouldExclude = (obj) => {
     return fieldsToCheck.some((field) => {
       const val = obj[field];
       if (val === undefined || val === null || val === "") {
-        // allow excluding “empties” via 'undefined' or '' sentinel
+        // only exclude empties if caller explicitly asked for it
         return excludeValues.has("undefined") || excludeValues.has("null") || excludeValues.has("");
       }
       return excludeValues.has(String(val).toLowerCase());
     });
   };
 
-  // filter rows
-  const filteredArray = jsonArray.filter(obj => !shouldExclude(obj));
+  // 3) filter
+  let filtered = rows.filter(obj => !shouldExclude(obj));
 
-  // choose columns (respect settings.columns if provided)
-  const keys = settings.columns && settings.columns.length
+  // 3b) safety net: if we nuked everything, show unfiltered so you can see what's going on
+  if (rows.length && !filtered.length && (settings.exclude?.length || settings.excludeBy?.length)) {
+    console.warn("[JSONToHTMLTable] Filter removed all rows. Rendering unfiltered for visibility.");
+    filtered = rows;
+  }
+
+  // 4) choose columns (respect provided order)
+  const keys = (settings.columns && settings.columns.length)
     ? settings.columns
-    : Array.from(
-        filteredArray.reduce((set, obj) => {
-          Object.keys(obj).forEach(key => set.add(key));
-          return set;
-        }, new Set())
-      );
+    : Array.from(filtered.reduce((set, obj) => { Object.keys(obj).forEach(k => set.add(k)); return set; }, new Set()));
 
-  // build table
+  // 5) build table
   let html = "<table class='customTable IRDataTable'><thead><tr>";
   html += keys.map(key => `<th>${toTitleCase(key)}</th>`).join("");
   html += "</tr></thead><tbody>";
 
-  filteredArray.forEach(obj => {
-    html += "<tr>";
-    html += keys.map(key => `<td>${obj[key] != null ? obj[key] : ""}</td>`).join("");
-    html += "</tr>";
+  filtered.forEach(obj => {
+    html += "<tr>" + keys.map(key => `<td>${obj[key] ?? ""}</td>`).join("") + "</tr>";
   });
 
   html += "</tbody></table>";
 
-  if (destination) {
-    jQuery("#" + destination + " .content").append(html);
-  }
+  if (destination) jQuery("#" + destination + " .content").append(html);
   return html;
 }
 
