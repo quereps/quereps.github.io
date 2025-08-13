@@ -17,11 +17,7 @@ class skuObj {
     this.facings=0;
 
     if(IRData && IRData!= null){
-      
-      
-
       this.updateData(IRData);
-
     }
 
 
@@ -82,7 +78,7 @@ class skuObj {
       if(!this.availabilityStatus || overwrite==1){
         this.availabilityStatus = status;
       }
-      if(!this.expected){
+      if(this.expected==false){
           this.availabilityStatus = "VOID";
       }
     }
