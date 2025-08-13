@@ -78,6 +78,7 @@ class skuObj {
       }
     }*/
 
+/*
     updateStatus(status, overwrite){
       if (!this.availabilityStatus || overwrite === 1) {
         this.availabilityStatus = status;
@@ -86,7 +87,7 @@ class skuObj {
         this.availabilityStatus = "VOID";
       }
     }
-
+*/
 
     /*checkAvailability(){
 
