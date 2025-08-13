@@ -246,6 +246,7 @@ var getGridData = async function (missionResponseID) {
       const tags = await APICallsModule.getTags(grid.id);
       interfaceModule.removeNotification();
       await extractIRData(tags); // if extractIRData is sync, the await is harmless
+      checkAvailability();
     });
 
     // 3) Planogram calls too
