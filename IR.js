@@ -338,6 +338,9 @@ const clearResults = function(){
   checkAvailability: function () {
     checkAvailability();
   },
+  clearResults: function () {
+    clearResults();
+  },
 
 
   
