@@ -30,6 +30,7 @@ var pdilModule = (function ($, ksAPI) {
     await loadDatasets(skuListImport);
 
     console.log("ready to create report");
+    await IRModule.checkAvailability();
     //interfaceModule.createReport()
     await Promise.resolve(interfaceModule.createReport());
  }
@@ -123,6 +124,8 @@ async function loadDatasets(skuListImport) {
     } else if (dataset.fromType === "task_response") {
       jobs.push((async () => {
         const arr = pdilModule.getCurrentMissionResponse().task_responses[(dataset.taskNum - 1)].value;
+
+        console.log("arr",arr);
         for (const sku of arr) {
           await Promise.resolve(IRModule.createOrAddSKU("SKU", sku, null, dataset.complianceData));
         }
