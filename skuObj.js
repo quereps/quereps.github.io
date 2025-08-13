@@ -69,7 +69,7 @@ class skuObj {
     if (isEmpty(this.brand_family)) this.brand_family = IRData?.brand_family || this.type || "";
     if (isEmpty(this.brand)) this.brand = IRData?.brand || this.type || "";
   }
-
+ 
    /* updateStatus(status,overwrite){
       if(!this.availabilityStatus || overwrite==1){
         this.availabilityStatus = status;
