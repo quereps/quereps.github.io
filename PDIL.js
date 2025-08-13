@@ -29,7 +29,7 @@ var pdilModule = (function ($, ksAPI) {
     //console.log("currentMissionResponses: ",missionResponses.current);
     //console.log("ChangeMissionResponse: ",amount);
 
-    //clearResults();
+    clearResults();
 
     //console.log("Mission Responses: ",missionResponses.array);
     //console.log("new Mission Response: ",missionResponses.array[missionResponses.current]);
