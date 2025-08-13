@@ -149,7 +149,7 @@ try {
 
 
 const clearResults = function(){
- // skuList = {};
+  skuList = {};
   photoURLs = [];
   jQuery("#table-container").empty();
   jQuery(".sectionContainer").empty();
