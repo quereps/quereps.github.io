@@ -11,7 +11,7 @@ class skuObj {
     this.shelf_index_xArray = [];
     this.shelf_index_yArray = [];
     this.stack_indexArray = [];
-    this.presence = false;
+    //this.presence = false;
     this.availabilityStatus = "Undefined";
     this.upc = upc;
     this.facings=0;
@@ -19,11 +19,6 @@ class skuObj {
     if(IRData && IRData!= null){
       this.updateData(IRData);
     }
-
-
-/*    if(complianceData){
-      this.availabilityStatus = complianceData.availabilityStatus || "";
-    }*/
 
     return this;
   }
