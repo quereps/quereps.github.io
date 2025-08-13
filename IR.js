@@ -64,7 +64,7 @@ let checkAvailability = async function(){
 }
 
 
-let createOrAddSKU = function(type,upcTarget,IRData,{addFacing,presence,expected,availabilityStatus, overwrite}){
+/*let createOrAddSKU = function(type,upcTarget,IRData,{addFacing,presence,expected,availabilityStatus, overwrite}){
 
   //console.log("IRData",IRData);
   //console.log("complianceData",complianceData);
@@ -109,7 +109,40 @@ let createOrAddSKU = function(type,upcTarget,IRData,{addFacing,presence,expected
             skuList[upcTarget].hasPriceTag== skuList[upcTarget]?.prices?.length>0 ? true : false;
 }
 
+*/
 
+// destructure with default so presence can be undefined
+let createOrAddSKU = function(type, upcTarget, IRData, {
+  addFacing,
+  presence,           // may be true/false/undefined
+  expected,
+  availabilityStatus,
+  overwrite
+} = {}) {
+
+  let sku = skuList[upcTarget];
+
+  if (!sku) sku = skuList[upcTarget] = new skuObj({ type, upc: upcTarget, IRData });
+  else sku.updateData(IRData);
+
+  if (addFacing === true && IRData) sku.addFacing(IRData); // IR-only increment
+
+  if (expected === true) sku.expected = true;
+
+  // ✅ write even when presence is false
+  if (presence !== undefined) {
+    sku.presence = presence;
+  }
+
+  // if you want to set status here:
+  // if (availabilityStatus) sku.updateStatus(availabilityStatus, overwrite);
+
+  if (IRData && sku.prices) Array.prototype.push.apply(sku.prices, IRData?.prices);
+  else if (IRData) sku.prices = IRData?.prices || [];
+
+  // fix assignment
+  sku.hasPriceTag = (sku?.prices?.length > 0);
+};
 
 
 
