@@ -107,30 +107,31 @@ class skuObj {
     }
 */
 
-    checkAvailability() {
+checkAvailability() {
   const hasFacings = Number(this.facings) > 0;
-  const present    = this.presence === true;   // only true means “seen”
-  const expected   = this.expected === true;   // only true means “listed/ranged”
+  const present    = this.presence === true;     // seen/report evidence
+  const expected   = this.expected === true;     // ranged/listed
 
-  // 1) Any evidence on shelf => present
-  if (hasFacings || present) {
-    this.availabilityStatus = "In Stock";
-    return;
-  }
-
-  // 2) Not present. If expected, it's OOS.
+  // Expected items
   if (expected) {
-    this.availabilityStatus = "Out of Stock";
+    this.availabilityStatus = (present || hasFacings) ? "In Stock" : "Out of Stock";
     return;
   }
 
-  // 3) Not present and not expected => VOID (delisted/not ranged)
+  // Not explicitly expected (false OR undefined)
+  if (present || hasFacings) {
+    // seen but not expected -> unexpected/void on shelf
+    this.availabilityStatus = "VOID";
+    return;
+  }
+
+  // Explicitly not expected and not present
   if (this.expected === false) {
     this.availabilityStatus = "VOID";
     return;
   }
 
-  // 4) Still unknown (expected or presence not set yet)
+  // No presence and no expectation data yet
   this.availabilityStatus = "Undefined";
 }
 
