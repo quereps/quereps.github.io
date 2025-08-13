@@ -88,21 +88,51 @@ class skuObj {
     }
 
 
-    checkAvailability(){
+    /*checkAvailability(){
 
       console.log("checkAvailability", this);
-      if(this.facings>0){
+      if(this.facings>0 || (this.expected==true && this.presence==true)){
           this.availabilityStatus = "In Stock";
       }
 
-      else if(this.facings==0 && this.expected==true){
+      else if(this.expected==true || (this.facings==0 || this.presence==false)){
         this.availabilityStatus = "Out of Stock";
       }
 
-      else if(this.facings==0 && !this.expected==true){
+      else if(!this.expected==true && (this.facings>0 || this.presence==true)){
         this.availabilityStatus = "VOID";
       }
     }
+*/
+
+    checkAvailability() {
+  const hasFacings = Number(this.facings) > 0;
+  const present    = this.presence === true;   // only true means “seen”
+  const expected   = this.expected === true;   // only true means “listed/ranged”
+
+  // 1) Any evidence on shelf => present
+  if (hasFacings || present) {
+    // If you want a special state when present but not expected, use "Unexpected"
+    // this.availabilityStatus = expected ? "In Stock" : "Unexpected";
+    this.availabilityStatus = "In Stock";
+    return;
+  }
+
+  // 2) Not present. If expected, it's OOS.
+  if (expected) {
+    this.availabilityStatus = "Out of Stock";
+    return;
+  }
+
+  // 3) Not present and not expected => VOID (delisted/not ranged)
+  if (this.expected === false) {
+    this.availabilityStatus = "VOID";
+    return;
+  }
+
+  // 4) Still unknown (expected or presence not set yet)
+  this.availabilityStatus = "Undefined";
+}
 
 
   checkFacingsCompliance(exp){
