@@ -29,7 +29,8 @@ var pdilModule = (function ($, ksAPI) {
     await loadDatasets(settings);
 
     console.log("ready to create report");
-    interfaceModule.createReport()
+    //interfaceModule.createReport()
+    await Promise.resolve(interfaceModule.createReport());
  }
 
 
@@ -73,7 +74,7 @@ var getMissionResponses = async function(){
 
 
 
-async function loadDatasets(settings) {
+/*async function loadDatasets(settings) {
   if (settings.skuListImport) {
     for (let dataset in settings.skuListImport) {
       let currentSet = settings.skuListImport[dataset];
@@ -98,8 +99,35 @@ async function loadDatasets(settings) {
       console.log("skuList",IRModule.getSKUList());
     }
   }
-}
+}*/
 
+async function loadDatasets(settings) {
+  if (!settings.skuListImport) return;
+
+  const jobs = [];
+
+  for (const dataset of Object.values(settings.skuListImport)) {
+    if (dataset.fromType === "IR") {
+      jobs.push(IRModule.getGridData(pdilModule.getCurrentMissionResponse().id));
+    } else if (dataset.fromType === "dm") {
+      jobs.push(
+        selectAllMOL(dataset.ref).then(() => 
+          molToSKUList(dataset.ref, dataset.mapping, dataset.complianceData)
+        )
+      );
+    } else if (dataset.fromType === "task_response") {
+      jobs.push((async () => {
+        const arr = pdilModule.getCurrentMissionResponse().task_responses[(dataset.taskNum - 1)].value;
+        for (const sku of arr) {
+          await Promise.resolve(IRModule.createOrAddSKU("SKU", sku, null, dataset.complianceData));
+        }
+      })());
+    }
+  }
+
+  await Promise.all(jobs);
+  console.log("skuList", IRModule.getSKUList());
+}
 
 
  return {
