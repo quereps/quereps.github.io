@@ -88,7 +88,7 @@ async function loadDatasets(settings) {
       else if (currentSet.fromType === "dm") {
         // Wait until selectAllMOL is fully done before continuing
         await selectAllMOL(currentSet.ref);
-        molToSKUList(currentSet.ref, currentSet.mapping, currentSet.complianceData);
+        await molToSKUList(currentSet.ref, currentSet.mapping, currentSet.complianceData);
       } 
       else if (currentSet.fromType === "task_response") {
         let skuArray = pdilModule.getCurrentMissionResponse().task_responses[(currentSet.taskNum - 1)].value;

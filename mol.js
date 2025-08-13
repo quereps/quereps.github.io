@@ -150,7 +150,7 @@ function getMOLLength(dm){
 
 }*/
 
-var molToSKUList = function(mol, mapping,complianceData){
+var molToSKUList = async function(mol, mapping,complianceData){
   // 1) Read raw strings for each field
   const data = {};
   for (const [field, column] of Object.entries(mapping)) {
