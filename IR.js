@@ -127,7 +127,7 @@ let createOrAddSKU = function(type, upcTarget, IRData, {
 
   if (addFacing === true && IRData) sku.addFacing(IRData); // IR-only increment
 
-  if (expected === true) sku.expected = true;
+  if (expected !== undefined) sku.expected = expected;
 
   // ✅ write even when presence is false
   if (presence !== undefined) {
