@@ -124,7 +124,7 @@ var getMissionResponse = async function(missionResponseID){
       else{
         console.log("No mission responses found");
 
-        notification("error","No mission responses found in the last "+timeFrame+" minute !! Checking again in 5 seconds.")
+        interfaceModule.notification("error","No mission responses found in the last "+timeFrame+" minute !! Checking again in 5 seconds.")
         
         setTimeout(function() {
           getMissionResponses(placeId, campaignId, timeFrame, limit).then(resolve).catch(reject);
@@ -214,7 +214,7 @@ var getMissionResponses = async function(placeId,campaignId,timeFrame, limit){
       else{
         console.log("No mission responses found");
 
-        notification("error","No mission responses found in the last "+timeFrame+" minute !! Checking again in 5 seconds.")
+        interfaceModule.notification("error","No mission responses found in the last "+timeFrame+" minute !! Checking again in 5 seconds.")
         
         setTimeout(function() {
           getMissionResponses(placeId, campaignId, timeFrame, limit).then(resolve).catch(reject);
@@ -251,7 +251,7 @@ var getLastMissionResponse = async function(placeId, campaignId, timeFrame) {
 
       } else {
         console.log("No mission responses found");
-        notification("error", "No mission responses found in the last " + timeFrame + " minute !! Checking again in 5 seconds.");
+        interfaceModule.notification("error", "No mission responses found in the last " + timeFrame + " minute !! Checking again in 5 seconds.");
         setTimeout(function() {
           getLastMissionResponse(placeId, campaignId, timeFrame);
         }, 5000);
@@ -288,7 +288,7 @@ var getGrid = async function(MRID){
       else{
         console.log("No Grid found");
 
-        notification("Loading","IR Processing.");
+        interfaceModule.notification("Loading","IR Processing.");
 
         setTimeout(function(){
           getGrid(MRID)}, 5000);
