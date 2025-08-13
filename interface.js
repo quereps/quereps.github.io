@@ -78,7 +78,7 @@ const reportTemplates = {
         columns:["upc","name","availabilityStatus"],
         options:{
             legend:false,
-          exclude:[],
+          exclude:[""],
           excludeBy:["availabilityStatus"],
           destination:"report",
         } 
