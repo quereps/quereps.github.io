@@ -23,7 +23,7 @@ var pdilModule = (function ($, ksAPI) {
       return;
     }
 
-    clearResults();
+    IRModule.clearResults();
     console.log(missionResponses.array[missionResponses.current]);
 
     await loadDatasets(settings);
