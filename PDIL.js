@@ -104,7 +104,7 @@ async function loadDatasets(settings) {
 
  return {
     Run: function (settings) {
-      init(settings);
+      return init(settings);
     },
     ChangeMissionResponse: function (amount) {
       ChangeMissionResponse(amount);
