@@ -70,7 +70,10 @@ var getMissionResponses = async function(){
   await loadDatasets(skuListImport);
 
    console.log("ready to create report");
-  interfaceModule.createReport()
+
+  await pdilModule.checkAvailability();
+
+  interfaceModule.createReport();
  };
 
 

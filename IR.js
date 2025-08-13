@@ -55,7 +55,7 @@ var IRModule = (function ($, ksAPI) {
   }
 
 
-let checkAvailability = function(){
+let checkAvailability = async function(){
   for(let sku in skuList){
     let current = skuList[sku];
     current.checkAvailability();
@@ -247,7 +247,7 @@ var getGridData = async function (missionResponseID) {
       const tags = await APICallsModule.getTags(grid.id);
       interfaceModule.removeNotification();
       await extractIRData(tags); // if extractIRData is sync, the await is harmless
-      checkAvailability();
+      
     });
 
     // 3) Planogram calls too
@@ -386,7 +386,7 @@ var getGridData = async function (missionResponseID) {
     return createOrAddSKU(type,upcTarget,IRData,complianceData);
   },
   checkAvailability: function () {
-    checkAvailability();
+    return checkAvailability();
   },
   clearResults: function () {
     clearResults();
