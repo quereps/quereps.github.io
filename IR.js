@@ -109,7 +109,7 @@ let createOrAddSKU = function(type,upcTarget,IRData,{addFacing, expected,availab
 
 
 
-var GetIRResults = async function(photo_grIds, settings){
+/*var GetIRResults = async function(photo_grIds, settings){
 
 //vpShowLoader();
  // return new Promise(async (resolve, reject) => {
@@ -144,7 +144,25 @@ try {
 
 //});
  
-} 
+} */
+
+
+// AFTER (same logic, but explicitly returns a promise via async/await)
+var GetIRResults = async function(photo_grIds, settings){
+  interfaceModule.notification("loading","Getting Tags");
+  try {
+    const tagPromises = photo_grIds.map(async grId => {
+      const tags = await APICallsModule.getTags(grId.Id);
+      interfaceModule.removeNotification();
+      await extractIRData(tags);
+    });
+    await Promise.all(tagPromises);
+    if (settings.specificFunction) settings.specificFunction();
+  } catch (error) {
+    console.error("Failed to get IR Results:", error);
+    throw error;
+  }
+};
 
 
 
@@ -154,6 +172,9 @@ const clearResults = function(){
   jQuery("#table-container").empty();
   jQuery(".sectionContainer").empty();
 }
+
+
+/*
 
  var getGridData = async function(missionResponseID){
 
@@ -186,7 +207,7 @@ const clearResults = function(){
           await Promise.all(tagPromises);
 
 
-/*Testing Planogram*/
+//Testing Planogram
           let pogPromises = photo_grids.map(async grid => {
               const pogs = await APICallsModule.getPlanogram(pdilModule.getConfig().companyId,grid.id);
               //interfaceModule.removeNotification();
@@ -195,28 +216,55 @@ const clearResults = function(){
           });
 
           await Promise.all(pogPromises);
-/*Testing Planogram*/
 
-     //     if(settings.report){
-     //     interfaceModule.createReport(settings, skuList, sections);
-     //   }else{
-     //     vpHideLoader();
-     //   }
-
-    //    if(settings.specificFunction){
-    //        console.log("Specific Function Detected");
-    //        settings.specificFunction(skuList,settings);
-    //      }
-
-          
         }).catch((err)=>{
     interfaceModule.notification("error","No Photo Grid found.");
     console.error(err);
    });
-
-
-
  }
+*/
+
+// AFTER (returns a Promise and awaits ALL sub-work)
+var getGridData = async function (missionResponseID) {
+  try {
+    const photo_grids = await APICallsModule.getGrid(missionResponseID);
+    interfaceModule.removeNotification();
+    console.log("photo_grids:", photo_grids);
+
+    // 1) Ensure photoURLs pushes finish
+    const photoUrlsPromises = photo_grids.map(async (grid) => {
+      const data = await APICallsModule.getTaskResponse(grid.metadata.task_response.id);
+      const image = data?.value?.[0]?.s3;
+      if (image) {
+        console.log(image);
+        photoURLs.push(image);
+      }
+    });
+
+    // 2) Ensure tag extraction finishes (and extractIRData can stay sync or async)
+    const tagPromises = photo_grids.map(async (grid) => {
+      const tags = await APICallsModule.getTags(grid.id);
+      interfaceModule.removeNotification();
+      await extractIRData(tags); // if extractIRData is sync, the await is harmless
+    });
+
+    // 3) Planogram calls too
+    const pogPromises = photo_grids.map(async (grid) => {
+      const pogs = await APICallsModule.getPlanogram(pdilModule.getConfig().companyId, grid.id);
+      console.log("pogs", pogs);
+    });
+
+    await Promise.all([...photoUrlsPromises, ...tagPromises, ...pogPromises]);
+  } catch (err) {
+    interfaceModule.notification("error", "No Photo Grid found.");
+    console.error(err);
+    throw err; // propagate to callers that are awaiting this
+  }
+};
+
+
+
+
 
 
  var init = async function (settingsImport) {
@@ -330,10 +378,10 @@ const clearResults = function(){
       return skuList;
     },
   getGridData: function (gridID) {
-    getGridData(gridID);
+    return getGridData(gridID);
   },
   createOrAddSKU: function (type,upcTarget,IRData,complianceData) {
-    createOrAddSKU(type,upcTarget,IRData,complianceData);
+    return createOrAddSKU(type,upcTarget,IRData,complianceData);
   },
   checkAvailability: function () {
     checkAvailability();
