@@ -86,7 +86,7 @@ class skuObj {
 
     checkAvailability(){
 
-      console.log("updating status", this);
+      console.log("checkAvailability", this);
       if(this.facings>0){
           this.availabilityStatus = "In Stock";
       }
