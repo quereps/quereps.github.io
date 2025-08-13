@@ -12,9 +12,6 @@ var pdilModule = (function ($, ksAPI) {
 
 
  const ChangeMissionResponse = function(amount){
-
-  //console.log("previous MissionResponses: ",missionResponses.current);
-
     missionResponses.current = missionResponses.current+amount;
 
     if(missionResponses.current<0){
@@ -25,16 +22,9 @@ var pdilModule = (function ($, ksAPI) {
     if(missionResponses.current>missionResponses.array.length){
       return;
     }
-    
-    //console.log("currentMissionResponses: ",missionResponses.current);
-    //console.log("ChangeMissionResponse: ",amount);
 
     clearResults();
-
-    //console.log("Mission Responses: ",missionResponses.array);
-    //console.log("new Mission Response: ",missionResponses.array[missionResponses.current]);
     console.log(missionResponses.array[missionResponses.current]);
-
  }
 
 
