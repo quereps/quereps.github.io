@@ -71,7 +71,7 @@ var getMissionResponses = async function(){
 
    console.log("ready to create report");
 
-  await pdilModule.checkAvailability();
+  await IRModule.checkAvailability();
 
   interfaceModule.createReport();
  };
