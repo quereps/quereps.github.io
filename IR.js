@@ -89,8 +89,8 @@ let createOrAddSKU = function(type,upcTarget,IRData,{addFacing,presence,expected
         if(expected==true){
             skuList[upcTarget].expected=true;
         }
-        if(presence==true){
-            skuList[upcTarget].presence=true;
+        if(presence){
+            skuList[upcTarget].presence=presence;
         }
 
         //if(complianceData.availabilityStatus){
