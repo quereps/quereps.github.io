@@ -155,9 +155,9 @@ const clearResults = function(){
   jQuery(".sectionContainer").empty();
 }
 
- var getGridData = function(missionResponseID){
+ var getGridData = async function(missionResponseID){
 
-          APICallsModule.getGrid(missionResponseID).then(async (photo_grids)=>{
+          await APICallsModule.getGrid(missionResponseID).then(async (photo_grids)=>{
 
           interfaceModule.removeNotification();
 
