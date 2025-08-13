@@ -3,6 +3,7 @@ var pdilModule = (function ($, ksAPI) {
  //let skuList = {};
  let report = {};
  let features = {};
+ let skuListImport = [];
 
    let config = {};
    let missionResponses = {
@@ -26,7 +27,7 @@ var pdilModule = (function ($, ksAPI) {
     IRModule.clearResults();
     console.log(missionResponses.array[missionResponses.current]);
 
-    await loadDatasets(settings);
+    await loadDatasets(skuListImport);
 
     console.log("ready to create report");
     //interfaceModule.createReport()
@@ -49,6 +50,7 @@ var getMissionResponses = async function(){
   config=settings.config;
   report = settings.report;
   features = settings.features;
+  skuListImport = settings.skuListImport;
 
   APICallsModule.Run({
     companyId:config.companyId,
@@ -65,7 +67,7 @@ var getMissionResponses = async function(){
   console.log("hey",missionResponses.array[missionResponses.current]);
 
 
-  await loadDatasets(settings);
+  await loadDatasets(skuListImport);
 
    console.log("ready to create report");
   interfaceModule.createReport()
@@ -101,12 +103,12 @@ var getMissionResponses = async function(){
   }
 }*/
 
-async function loadDatasets(settings) {
-  if (!settings.skuListImport) return;
+async function loadDatasets(skuListImport) {
+  //if (!settings.skuListImport) return;
 
   const jobs = [];
 
-  for (const dataset of Object.values(settings.skuListImport)) {
+  for (const dataset of Object.values(skuListImport)) {
     if (dataset.fromType === "IR") {
       jobs.push(IRModule.getGridData(pdilModule.getCurrentMissionResponse().id));
     } else if (dataset.fromType === "dm") {
