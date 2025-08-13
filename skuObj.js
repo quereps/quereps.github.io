@@ -11,7 +11,7 @@ class skuObj {
     this.shelf_index_xArray = [];
     this.shelf_index_yArray = [];
     this.stack_indexArray = [];
-    this.expected = false;
+    //this.expected = false;
     //this.presence = false;
     this.availabilityStatus = "Undefined";
     this.upc = upc;
