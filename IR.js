@@ -95,10 +95,10 @@ let createOrAddSKU = function(type,upcTarget,IRData,{addFacing,presence,expected
         }
 
         //if(complianceData.availabilityStatus){
-        if(availabilityStatus){
-            console.log("will update status");
-            skuList[upcTarget].updateStatus(availabilityStatus,overwrite);
-        }
+        //if(availabilityStatus){
+        //    console.log("will update status");
+        //    skuList[upcTarget].updateStatus(availabilityStatus,overwrite);
+        //}
 
           if(IRData && skuListTarget?.prices){
             Array.prototype.push.apply(skuListTarget.prices, IRData?.prices);
