@@ -112,9 +112,7 @@ class skuObj {
   const expected   = this.expected === true;   // only true means “listed/ranged”
 
   // 1) Any evidence on shelf => present
-  if (hasFacings || present) {
-    // If you want a special state when present but not expected, use "Unexpected"
-    // this.availabilityStatus = expected ? "In Stock" : "Unexpected";
+  if (expected && (hasFacings || present)) {
     this.availabilityStatus = "In Stock";
     return;
   }
