@@ -14,7 +14,7 @@ class skuObj {
     this.presence = false;
     this.availabilityStatus = "Undefined";
     this.upc = upc;
-    this.facings=null;
+    this.facings=0;
 
     if(IRData && IRData!= null){
       
