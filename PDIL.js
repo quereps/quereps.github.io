@@ -25,6 +25,11 @@ var pdilModule = (function ($, ksAPI) {
 
     clearResults();
     console.log(missionResponses.array[missionResponses.current]);
+
+    await loadDatasets(settings);
+
+    console.log("ready to create report");
+    interfaceModule.createReport()
  }
 
 
@@ -64,6 +69,8 @@ var getMissionResponses = async function(){
    console.log("ready to create report");
   interfaceModule.createReport()
  };
+
+
 
 
 async function loadDatasets(settings) {
