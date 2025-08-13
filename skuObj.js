@@ -11,6 +11,7 @@ class skuObj {
     this.shelf_index_xArray = [];
     this.shelf_index_yArray = [];
     this.stack_indexArray = [];
+    this.expected = false;
     //this.presence = false;
     this.availabilityStatus = "Undefined";
     this.upc = upc;
@@ -112,7 +113,7 @@ class skuObj {
   const expected   = this.expected === true;   // only true means “listed/ranged”
 
   // 1) Any evidence on shelf => present
-  if (expected && (hasFacings || present)) {
+  if (hasFacings || present) {
     this.availabilityStatus = "In Stock";
     return;
   }
