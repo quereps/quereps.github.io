@@ -64,7 +64,7 @@ let checkAvailability = async function(){
 }
 
 
-let createOrAddSKU = function(type,upcTarget,IRData,{addFacing, expected,availabilityStatus, overwrite}){
+let createOrAddSKU = function(type,upcTarget,IRData,{addFacing,presence,expected,availabilityStatus, overwrite}){
 
   //console.log("IRData",IRData);
   //console.log("complianceData",complianceData);
@@ -88,6 +88,9 @@ let createOrAddSKU = function(type,upcTarget,IRData,{addFacing, expected,availab
         //if(complianceData.expected==true){
         if(expected==true){
             skuList[upcTarget].expected=true;
+        }
+        if(presence==true){
+            skuList[upcTarget].presence=true;
         }
 
         //if(complianceData.availabilityStatus){
