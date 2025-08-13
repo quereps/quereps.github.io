@@ -70,8 +70,7 @@ let createOrAddSKU = function(type,upcTarget,IRData,{addFacing,presence,expected
   //console.log("complianceData",complianceData);
   let skuListTarget = skuList[upcTarget];
   
-  console.log("expected",expected);
-  console.log("presence",presence);
+  console.log(upcTarget,expected,presence);
         
 
         if(!skuListTarget){
