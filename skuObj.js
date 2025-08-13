@@ -60,14 +60,14 @@ class skuObj {
   updateData(IRData) {
     const isEmpty = val => val === undefined || val === null || val === "";
 
-    if (isEmpty(this.name)) this.name = IRData?.name || "";
-    if (isEmpty(this.guid)) this.guid = IRData?.guid || "";
-    if (isEmpty(this.classification)) this.classification = IRData?.classification || "";
-    if (isEmpty(this.subclassification)) this.subclassification = IRData?.subclassification || "";
-    if (isEmpty(this.size)) this.size = IRData?.size || "";
-    if (isEmpty(this.supplier)) this.supplier = IRData?.supplier || "";
-    if (isEmpty(this.brand_family)) this.brand_family = IRData?.brand_family || "";
-    if (isEmpty(this.brand)) this.brand = IRData?.brand || "";
+    if (isEmpty(this.name)) this.name = IRData?.name || this.type || "";
+    if (isEmpty(this.guid)) this.guid = IRData?.guid || this.type || "";
+    if (isEmpty(this.classification)) this.classification = IRData?.classification || this.type || "";
+    if (isEmpty(this.subclassification)) this.subclassification = IRData?.subclassification || this.type || "";
+    if (isEmpty(this.size)) this.size = IRData?.size || this.type || "";
+    if (isEmpty(this.supplier)) this.supplier = IRData?.supplier || this.type || "";
+    if (isEmpty(this.brand_family)) this.brand_family = IRData?.brand_family || this.type || "";
+    if (isEmpty(this.brand)) this.brand = IRData?.brand || this.type || "";
   }
 
    /* updateStatus(status,overwrite){
