@@ -110,6 +110,8 @@ var getMissionResponses = async function(){
 async function loadDatasets(skuListImport) {
   //if (!settings.skuListImport) return;
 
+  vpShowLoader();
+
   const jobs = [];
 
   for (const dataset of Object.values(skuListImport)) {
