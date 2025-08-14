@@ -993,7 +993,7 @@ var createReport = function(/*settingsImport,skuListImport,sectionsImport*/){
       }
  
       if(current.type=="skuList"){
-        JSONToHTMLTable(rankObjects(skuList, "availabilityStatus", current.columns), containerId, current.options) 
+        JSONToHTMLTable(rankObjects(skuList, "facings", current.columns), containerId, current.options) 
       }
 
       if(current.type=="pog"){
