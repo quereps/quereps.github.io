@@ -107,7 +107,7 @@ class skuObj {
     }
 */
 
-checkAvailability() {
+/*checkAvailability() {
   const hasFacings = Number(this.facings) > 0;
   const present    = this.presence === true;     // seen/report evidence
   const expected   = this.expected === true;     // ranged/listed
@@ -132,6 +132,30 @@ checkAvailability() {
   }
 
   // No presence and no expectation data yet
+  this.availabilityStatus = "Undefined";
+}*/
+
+
+  checkAvailability() {
+  const expected = this.expected === true;
+  const present  = this.presence === true;
+  const absent   = this.presence === false;
+  const scanned  = present || absent; // true if we got any scan
+
+  if (expected) {
+    if (present)        { this.availabilityStatus = "In Stock";     return; }
+    if (absent)         { this.availabilityStatus = "Out of Stock"; return; }
+    /* expected but not scanned at all */
+    this.availabilityStatus = "VOID";
+    return;
+  }
+
+  // Not expected
+  if (scanned) {
+    this.availabilityStatus = "Unexpected"; // or keep as "In Stock"/"OOS" if you prefer
+    return;
+  }
+
   this.availabilityStatus = "Undefined";
 }
 
