@@ -354,8 +354,8 @@ function JSONToGraph(jsonArray, title, type, destination, settings) {
 
     let parent = jQuery("#"+destination+" .canvasContainer")[0] || document.body;
     let canvas = document.createElement('canvas');
-    canvas.style.width = "100%"; //canvas.width = 250;
-    canvas.style.height = "100%"; //canvas.height = 250;
+    canvas.style.width = "calc(100% - 100px)"; //canvas.width = 250;
+    canvas.style.height = "calc(100% - 20px)"; //canvas.height = 250;
     //canvas.style.width = "100px";
     //canvas.style.height = "100px";
     parent.appendChild(canvas);
