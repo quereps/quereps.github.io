@@ -14,13 +14,9 @@ var pdilModule = (function ($, ksAPI) {
 
 
 
-const buildReportFromCurrent = async function({ clearIR = false } = {}) {
-    if (clearIR && IRModule?.clearResults) {
-      IRModule.clearResults();
-    }
-    console.log(missionResponses.array[missionResponses.current]);
+const buildReportFromCurrent = async function() {
+    IRModule.clearResults();
     await loadDatasets(skuListImport);
-    console.log("ready to create report");
     await IRModule.checkAvailability();
     await Promise.resolve(interfaceModule.createReport());
 };
@@ -71,44 +67,11 @@ var getMissionResponses = async function(){
   }
 
   await getMissionResponses();
-
-  console.log("hey",missionResponses.array[missionResponses.current]);
-
-  await buildReportFromCurrent({ clearIR: false });
+  await buildReportFromCurrent();
  };
 
 
-
-
-/*async function loadDatasets(settings) {
-  if (settings.skuListImport) {
-    for (let dataset in settings.skuListImport) {
-      let currentSet = settings.skuListImport[dataset];
-      if (currentSet.fromType === "IR") {
-        console.log("let's get IR data");
-        //let gridId = await APICallsModule.getGrid(pdilModule.getCurrentMissionResponse().id);
-        await IRModule.getGridData(pdilModule.getCurrentMissionResponse().id);
-      } 
-      else if (currentSet.fromType === "dm") {
-        // Wait until selectAllMOL is fully done before continuing
-        await selectAllMOL(currentSet.ref);
-        await molToSKUList(currentSet.ref, currentSet.mapping, currentSet.complianceData);
-      } 
-      else if (currentSet.fromType === "task_response") {
-        let skuArray = pdilModule.getCurrentMissionResponse().task_responses[(currentSet.taskNum - 1)].value;
-        console.log("skuArray", skuArray);
-
-        for (let sku in skuArray) {
-          IRModule.createOrAddSKU("SKU", skuArray[sku], null, currentSet.complianceData);
-        }
-      }
-      console.log("skuList",IRModule.getSKUList());
-    }
-  }
-}*/
-
 async function loadDatasets(skuListImport) {
-  //if (!settings.skuListImport) return;
 
   vpShowLoader();
 
