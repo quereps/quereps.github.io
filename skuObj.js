@@ -41,22 +41,6 @@ class skuObj {
     }
   }
 
-
-  /*updateData(IRData){
-      this.name = !this.name ? IRData?.name || this.type || "";
-      //this.upc = IRData.upc || this.type || "";
-      this.guid = !this.guid ? IRData?.guid || this.type || "";
-      
-      this.classification = !this.classification ? IRData?.classification || this.type || "";
-      this.subclassification = !this.subclassification ? IRData?.subclassification || this.type || "";
-
-      this.size = !this.size ? IRData?.size || this.type || "";
-      
-      this.supplier = !this.supplier ? IRData?.supplier || this.type || "";
-      this.brand_family = !this.brand_family ? IRData?.brand_family || this.type || "";
-      this.brand = !this.brand ? IRData?.brand || this.type || "";
-  }*/
-
   updateData(IRData) {
     const isEmpty = val => val === undefined || val === null || val === "";
 
@@ -70,71 +54,7 @@ class skuObj {
     if (isEmpty(this.brand)) this.brand = IRData?.brand || this.type || "";
   }
  
-   /* updateStatus(status,overwrite){
-      if(!this.availabilityStatus || overwrite==1){
-        this.availabilityStatus = status;
-      }
-      if(!this.expected==true){
-          this.availabilityStatus = "VOID";
-      }
-    }*/
-
-/*
-    updateStatus(status, overwrite){
-      if (!this.availabilityStatus || overwrite === 1) {
-        this.availabilityStatus = status;
-      }
-      if (this.expected !== true) {
-        this.availabilityStatus = "VOID";
-      }
-    }
-*/
-
-    /*checkAvailability(){
-
-      console.log("checkAvailability", this);
-      if(this.facings>0 || (this.expected==true && this.presence==true)){
-          this.availabilityStatus = "In Stock";
-      }
-
-      else if(this.expected==true || (this.facings==0 || this.presence==false)){
-        this.availabilityStatus = "Out of Stock";
-      }
-
-      else if(!this.expected==true && (this.facings>0 || this.presence==true)){
-        this.availabilityStatus = "VOID";
-      }
-    }
-*/
-
-/*checkAvailability() {
-  const hasFacings = Number(this.facings) > 0;
-  const present    = this.presence === true;     // seen/report evidence
-  const expected   = this.expected === true;     // ranged/listed
-
-  // Expected items
-  if (expected) {
-    this.availabilityStatus = (present || hasFacings) ? "In Stock" : "Out of Stock";
-    return;
-  }
-
-  // Not explicitly expected (false OR undefined)
-  if (present || hasFacings) {
-    // seen but not expected -> unexpected/void on shelf
-    this.availabilityStatus = "VOID";
-    return;
-  }
-
-  // Explicitly not expected and not present
-  if (this.expected === false) {
-    this.availabilityStatus = "VOID";
-    return;
-  }
-
-  // No presence and no expectation data yet
-  this.availabilityStatus = "Undefined";
-}*/
-
+ 
 
   checkAvailability() {
   const expected = this.expected === true;
@@ -160,7 +80,7 @@ class skuObj {
 }
 
 
-  checkFacingsCompliance(exp){
+/*  checkFacingsCompliance(exp){
     console.log("facings:", this.facings, typeof this.facings);
     console.log("exp:", exp, typeof exp);
 
@@ -187,7 +107,7 @@ class skuObj {
         this.pricingCompliance =  false;
         return false;
       }
-    }
+    }*/
 
   updateAverages(){
     this.shelf_index_x = getAverage(this.shelf_index_xArray);
