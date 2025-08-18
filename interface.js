@@ -48,6 +48,7 @@ const reportTemplates = {
           options:{
             width:"40%",
             destination:"intro",
+            height:"200px",
           }
       },
       responseData: {
@@ -57,6 +58,7 @@ const reportTemplates = {
           options:{
             width:"40%",
             destination:"intro",
+            height:"200px",
         }
       }, 
       skuList:{
@@ -69,6 +71,7 @@ const reportTemplates = {
           exclude:["undefined","Unrecognized","Empty Facing","null"],
           excludeBy:["type","facings"],
           destination:"report",
+          height:"200px",
         } 
       },
       availabilityList:{
@@ -81,6 +84,7 @@ const reportTemplates = {
           exclude:["Undefined"],
           excludeBy:["availabilityStatus"],
           destination:"report",
+          height:"200px",
         } 
       },
       supplierShare:{
@@ -98,6 +102,7 @@ const reportTemplates = {
           labelType:"label",
           asPercentage:true,
           destination:"report",
+          height:"200px",
         }    
       },
         brandShare:{
@@ -117,6 +122,7 @@ const reportTemplates = {
             labelType:"value",
             asPercentage:true,
             destination:"report",
+            height:"200px",
         }    
       }
 };
