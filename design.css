@@ -554,6 +554,7 @@ background-image: url("https://app.form.com/fs/v1/h/L6VU56iKClMaWbOpRmLGdgAThFhj
     justify-content: space-evenly;
     margin: 1em 0;
     overflow: scroll;
+    max-height: 500px;
 }
 
 .buttons {
