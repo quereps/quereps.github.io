@@ -12,6 +12,20 @@ var pdilModule = (function ($, ksAPI) {
    };
 
 
+
+
+const buildReportFromCurrent = async function({ clearIR = false } = {}) {
+    if (clearIR && IRModule?.clearResults) {
+      IRModule.clearResults();
+    }
+    console.log(missionResponses.array[missionResponses.current]);
+    await loadDatasets(skuListImport);
+    console.log("ready to create report");
+    await IRModule.checkAvailability();
+    await Promise.resolve(interfaceModule.createReport());
+};
+
+
  const ChangeMissionResponse = async function(amount){
     missionResponses.current = missionResponses.current+amount;
 
@@ -20,19 +34,12 @@ var pdilModule = (function ($, ksAPI) {
       return;
     }
 
-    if(missionResponses.current>missionResponses.array.length){
+    if (missionResponses.current >= missionResponses.array.length) {
+      missionResponses.current = missionResponses.array.length - 1;
       return;
     }
 
-    IRModule.clearResults();
-    console.log(missionResponses.array[missionResponses.current]);
-
-    await loadDatasets(skuListImport);
-
-    console.log("ready to create report");
-    await IRModule.checkAvailability();
-    //interfaceModule.createReport()
-    await Promise.resolve(interfaceModule.createReport());
+    await buildReportFromCurrent({ clearIR: true });
  }
 
 
@@ -67,14 +74,7 @@ var getMissionResponses = async function(){
 
   console.log("hey",missionResponses.array[missionResponses.current]);
 
-
-  await loadDatasets(skuListImport);
-
-   console.log("ready to create report");
-
-  await IRModule.checkAvailability();
-
-  interfaceModule.createReport();
+  await buildReportFromCurrent({ clearIR: false });
  };
 
 
