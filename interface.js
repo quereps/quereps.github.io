@@ -58,7 +58,7 @@ const reportTemplates = {
             width:"40%",
             destination:"intro",
         }
-      },
+      }, 
       skuList:{
         type:"skuList",
         title:"SKU List",
