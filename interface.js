@@ -94,7 +94,7 @@ const reportTemplates = {
         columns:["upc","name","presence","hasPriceTag"],
         options:{
             legend:false,
-          exclude:["Undefined"],
+          exclude:["Undefined","VOID"],
           excludeBy:["availabilityStatus"],
           destination:"report",
           height:"200px",
