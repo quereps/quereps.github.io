@@ -756,6 +756,30 @@ div.container.noGrow {
 
 
 
+.IRDataTable td.true,
+.IRDataTable td.false{
+    color: transparent !important;
+    
+}
+
+
+.IRDataTable td.true {
+  background-image: url("https://app.form.com/fs/v1/h/1bfwXHoEd90XVh2qaOgP83a-19gdGBMLCCrPVPlGHgE/275043.png");
+  background-size:20px !important;
+  background-repeat:no-repeat;
+  background-position:center;
+  opacity:0.7;
+}
+
+.IRDataTable td.false {
+  background-image: url("https://app.form.com/fs/v1/h/loByQIdwQVU1cE-obiV3BdfqJ8RQcEB3UHEV97naQfQ/275031.png");
+  background-size:20px !important;
+  background-repeat:no-repeat;
+  background-position:center;
+  opacity:0.7;
+}
+
+
 
 /* Style the .card based on container's width */
 @container (max-width: 700px) {
