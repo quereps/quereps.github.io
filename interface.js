@@ -94,8 +94,8 @@ const reportTemplates = {
         columns:["upc","name","presence","hasPriceTag"],
         options:{
             legend:false,
-          exclude:["Undefined","VOID"],
-          excludeBy:["availabilityStatus"],
+          exclude:["Undefined","VOID","Unrecognized"],
+          excludeBy:["name","availabilityStatus"],
           destination:"report",
           height:"200px",
         } 
@@ -270,6 +270,60 @@ function JSONToHTMLTable(jsonArray, destination, settings = {}) {
   return html;
 }
 
+
+
+
+function JSONToHTMLTable(jsonArray, destination, settings = {}) {
+  
+  let rows = jsonArray;
+
+  const excludeValues = new Set((settings.exclude || []).map(v => String(v).trim().toLowerCase()));
+
+  // 1) decide which fields we check for exclusion
+  const fieldsToCheck = (settings.excludeBy && settings.excludeBy.length)
+    ? settings.excludeBy
+    : Array.from(rows.reduce((s, o) => { Object.keys(o).forEach(k => s.add(k)); return s; }, new Set()));
+
+  // 2) helper: should we exclude this row?
+  const shouldExclude = (obj) => {
+    return fieldsToCheck.some((field) => {
+      const val = obj[field];
+      if (val === undefined || val === null || val === "") {
+        // only exclude empties if caller explicitly asked for it
+        return excludeValues.has("undefined") || excludeValues.has("null") || excludeValues.has("");
+      }
+      return excludeValues.has(String(val).toLowerCase());
+    });
+  };
+
+  // 3) filter
+  let filtered = rows.filter(obj => !shouldExclude(obj));
+
+  // 3b) safety net: if we nuked everything, show unfiltered so you can see what's going on
+  if (rows.length && !filtered.length && (settings.exclude?.length || settings.excludeBy?.length)) {
+    console.warn("[JSONToHTMLTable] Filter removed all rows. Rendering unfiltered for visibility.");
+    filtered = rows;
+  }
+
+  // 4) choose columns (respect provided order)
+  const keys = (settings.columns && settings.columns.length)
+    ? settings.columns
+    : Array.from(filtered.reduce((set, obj) => { Object.keys(obj).forEach(k => set.add(k)); return set; }, new Set()));
+
+  // 5) build table
+  let html = "<table class='customTable IRDataTable'><thead><tr>";
+  html += keys.map(key => `<th>${toTitleCase(key)}</th>`).join("");
+  html += "</tr></thead><tbody>";
+
+  filtered.forEach(obj => {
+    html += "<tr>" + keys.map(key => `<td class='${key} ${obj[key]}'>${obj[key] ?? ""}</td>`).join("") + "</tr>";
+  });
+
+  html += "</tbody></table>";
+
+  if (destination) jQuery("#" + destination + " .content").append(html);
+  return html;
+}
 
 
 
