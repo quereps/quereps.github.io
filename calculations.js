@@ -11,6 +11,9 @@ function toTitleCase(input) {
   }
 }
 
+function isAllCaps(str) {
+  return str === str.toUpperCase() && /[A-Z]/.test(str);
+}
 
 let mostSeenBrandFamily = function(skuList){
   const brandCounts = {};
