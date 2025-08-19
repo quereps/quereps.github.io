@@ -91,7 +91,7 @@ const reportTemplates = {
         type:"skuList",
         title:"Assortment and Price Compliance",
         logo:"https://app.form.com/fs/v1/h/aMdkGmN080RYiT1L7rDWkrKEKuFd-b76KN8Wt-djYao/277611.png",
-        columns:["upc","name","presence","hasPriceTag"],
+        columns:["upc","name","presence","hasPriceTag","availabilityStatus"],
         options:{
             legend:false,
           exclude:["Undefined","VOID","Unrecognized"],
