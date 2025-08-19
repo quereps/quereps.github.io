@@ -1,6 +1,6 @@
 
 function toTitleCase(input) {
-  if (input && input.length>0){
+  if (input && input.length>0 && !isAllCaps(input)){
   return input
     .replace(/[_\-]+/g, ' ')                 // Replace underscores/hyphens with space
     .replace(/([a-z])([A-Z])/g, '$1 $2')     // Add space between camelCase
