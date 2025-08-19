@@ -87,6 +87,19 @@ const reportTemplates = {
           height:"200px",
         } 
       },
+      AssortmentAndPrice:{
+        type:"skuList",
+        title:"Assortment and Price Compliance",
+        logo:"https://app.form.com/fs/v1/h/aMdkGmN080RYiT1L7rDWkrKEKuFd-b76KN8Wt-djYao/277611.png",
+        columns:["upc","name","availabilityStatus"],
+        options:{
+            legend:false,
+          exclude:["Undefined"],
+          excludeBy:["availabilityStatus"],
+          destination:"report",
+          height:"200px",
+        } 
+      },
       supplierShare:{
         type:"graph",
         title:"Suppliers",
